@@ -1,0 +1,103 @@
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>接口配置</title>
+
+</head>
+
+<body>
+	<table id="remoteInterTable" width="100%" class="table_border">
+		<tr>
+	        <td colspan="2" class="label" style="display: none;"><br/><span class="STYLE4" id="mainTitle">接口配置</span></td>        
+	      </tr>
+	      <tr>
+		  <td colspan="2" width="100%" >
+		  <form id="interForm" name="interForm" >
+			<input id="id" name="id" type="hidden">
+			<table id="interTables" width="100%" height="100%" class="table_border2">
+			  	<tr>
+					<td width="120" nowrap align="right" class="label">類型：</td>
+					<td class="td_border">
+						<select id="type" name="type" style="width:150px;">
+							<option value="3">翻譯接口</option>
+							<option value="4">數據過濾接口</option>
+						</select>
+					</td>
+				</tr>	
+				<tr>
+					<td width="120" nowrap align="right" class="label">名稱：</td>
+					<td class="td_border">
+					<input id="name" name="name" style="width:300px;" type="text" value=""/>
+					</td>
+				</tr>	
+				<tr>	
+					<td width="120" nowrap align="right" class="label">URL：</td>
+					<td  class="td_border" >
+					<input id="url" name="url" style="width:300px;" type="text" value="" />
+					</td>
+			  	</tr>
+				<tr>
+			        <td >
+					</td>
+			        <td class="td_border" colspan="3">
+			        	<input type="button" value="添加" class="create" >
+		        		<input type="button" value="刪除" class="remove" >
+		        		<input type="button" value="更新" class="update" >
+			        </td>
+				</tr>
+				
+				<tr>
+					<td colspan="5">
+						<table id="remoteInterListTable" width="100%" align="center" class="table_border2 tableList" style="border:1px solid #CCCCCC;border-collapse:collapse;background-color: #FFFFFF;">
+							<tr>
+								<td width="5%" nowrap bgcolor="whiteSmoke">&nbsp;選擇</td>
+								<td width="15%" nowrap bgcolor="whiteSmoke">&nbsp;名稱</td>
+								<td width="15%" nowrap bgcolor="whiteSmoke">&nbsp;類型</td>
+								<td width="50%" nowrap bgcolor="whiteSmoke">URL</td>
+								<td width="15%" nowrap bgcolor="whiteSmoke">建立時間</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+		
+		
+			</table>
+			</form>
+		   </td>
+		  </tr>
+		
+	</table>
+	
+  <script type="text/javascript">
+  $(document).ready(function() { 
+	  var initFun = function(){
+		  var containId;
+		  if (!loadConfig) {
+			  containId=$(document).find("#remoteInterListTable").parents('.ui-tabs-panel').attr("id");
+		  }else{
+				containId="config";
+		  }
+		  var formId=containId+' #interForm';
+		  var tableId=containId+' #remoteInterListTable';
+		  var httpInter=new httpInterFun({
+			  containId:containId,
+			  webCrawlerId:webCrawlerId,
+				jsonData:new Array(),
+				formId:formId,
+				tableId:tableId
+		  });
+		  httpInter.fn.init();
+		  httpInter.fn.query();
+		  $('.tooltip').poshytip();
+	};
+	
+	var initLoading=setInterval(function(){
+		if(typeof httpInter != 'undefined'){
+			clearInterval(initLoading);
+			initFun();
+		}
+	},500);
+});
+  </script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<html>
+<head>
+<title>XPath可视化读取工具</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+
+
+#xpath_tools .button.white {
+	background: #fff;
+	color: #444;
+	border: 1px solid #ddd;
+	position: relative;
+}
+
+#xpath_tools .button {
+	padding: 0 30px;
+	background: #D53939;
+	color: #fff;
+	display: inline-block;
+	height: 60px;
+	line-height: 60px;
+	border-radius: 3px;
+	cursor: pointer;
+}
+#xpath_tools .mask-button {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	left: 0;
+	top: 0;
+	font-size: 0;
+	cursor: move;
+}
+</style>
+</head>
+<body>
+	<table width="100%" style="padding: 10px;">
+		<tr>
+			<td colspan="2" class="label">
+				<div id='hello'>
+					<div>
+						<h1>XPath View</h1>
+					</div>
+				</div>
+				<div style='font-size: 12px;' id="xpath_tools">
+
+				</div>
+			</td>
+		</tr>
+	</table>
+<script type="text/javascript">
+	var markURL="https://www.newcrawler.com/static/xpath/mark-min.js";
+	var script="var script = document.createElement('script'); script.setAttribute('type', 'text/javascript'); script.setAttribute('charset', 'UTF-8'); script.src='"+markURL+"?'+Math.floor(+new Date/1e7); document.body.appendChild(script);";
+	var js='javascript: (function() { '+script+' })()';
+	var xpathNode="<div class='button white'>拖动此按钮到书签栏<a title='XPath可视化读取工具' href=\""+js+"\" onclick='alert(\"请把按钮拖动到书签栏\");return false;' class='mask-button'>XPath可视化读取工具</a></div>";
+	
+	document.getElementById("xpath_tools").innerHTML=xpathNode;
+</script>
+</body>
+</html>

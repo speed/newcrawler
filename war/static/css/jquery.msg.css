@@ -1,0 +1,51 @@
+#jquery-msg-bg {
+  -moz-opacity: 0.6;
+  -khtml-opacity: 0.6;
+  opacity: 0.6;
+  filter: alpha(opacity=60);
+  background: black;
+}
+
+.jquery-msg-content {
+  -webkit-background-clip: padding-box;
+  padding: 15px;
+}
+
+.black-on-white .jquery-msg-content {
+  background: white;
+  color: #333333;
+  -moz-opacity: 0.9;
+  -khtml-opacity: 0.9;
+  opacity: 0.9;
+  filter: alpha(opacity=90);
+  -webkit-box-shadow: 5px 5px 30px 0 black;
+  -moz-box-shadow: 5px 5px 30px 0 black;
+  box-shadow: 5px 5px 30px 0 black;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  -o-border-radius: 8px;
+  -khtml-border-radius: 8px;
+  -ms-border-radius: 8px;
+  border-radius: 8px;
+  /* ie fix */
+  -pie-lazy-init: true;
+  behavior: url(PIE.htc);
+}
+
+.white-on-black .jquery-msg-content {
+  -moz-opacity: 0.5;
+  -khtml-opacity: 0.5;
+  opacity: 0.5;
+  filter: alpha(opacity=50);
+  background: black;
+  color: white;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  -o-border-radius: 8px;
+  -khtml-border-radius: 8px;
+  -ms-border-radius: 8px;
+  border-radius: 8px;
+  /* ie fix */
+  -pie-lazy-init: true;
+  behavior: url(PIE.htc);
+}

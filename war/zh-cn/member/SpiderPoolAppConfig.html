@@ -1,0 +1,165 @@
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>爬虫池管理</title>
+</head>
+  <body>
+    <table width="100%" class="table_border" id="spiderPoolAppConfigTable">
+     <tr>
+        <td colspan="2" class="label" height="30px" valign="bottom"><span class="STYLE4">爬虫池</span></td>        
+      </tr>
+      <tr>
+	  <td width="100%" valign="top">
+	  <form  id="spiderPoolAppForm" name="spiderPoolAppForm" method="post">
+	  <input type="hidden" id="id" name="id">
+	  <table width="100%" height="100%" class="table_border2">
+	   <tr>
+        <td width="120" align="right" nowrap class="label">名称:</td>
+        <td class="td_border">
+        <div class="inputOver">
+        <input type="text" id="name" name="name" style="width:100%" />
+        </div>
+        </td>
+      </tr>
+      <tr>
+        <td nowrap align="right" class="label">URL:</td>
+        <td class="td_border">
+        <div class="inputOver">
+        <input type="text" id="url" name="url" style="width:100%" />
+        </div>
+        </td>
+      </tr>
+      <tr>
+        <td ></td>
+        <td class="td_border">
+        <input type="button" value="添加" onClick="spiderPoolApp.fn.create();">
+        <input type="button" value="删除" onClick="spiderPoolApp.fn.remove();">
+        <input type="button" value="更新" onClick="spiderPoolApp.fn.update();">
+        <input type="button" value="更新版本" onClick="spiderPoolApp.fn.upgrade();">
+        <input type="button" value="清除缓存" onClick="spiderPoolApp.fn.clearCache();">
+        </td>
+      </tr>
+      
+      <tr>
+			<td colspan="5">
+				<table id="spiderPoolAppTable" width="100%" align="center" class="table_border2 tableList" style="border:1px solid #CCCCCC;border-collapse:collapse;background-color: #FFFFFF;">
+					<tr>
+						<td width="5%" nowrap bgcolor="whiteSmoke">&nbsp;选择</td>
+						<td width="15%" nowrap bgcolor="whiteSmoke">&nbsp;名称</td>
+						<td width="50%" nowrap bgcolor="whiteSmoke">URL</td>
+						<td width="10%" nowrap bgcolor="whiteSmoke">版本</td>
+						<td width="10%" nowrap bgcolor="whiteSmoke">建立时间</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+      
+	  </table>
+	   </form>
+	  </td>
+	  </tr>
+	  <tr>
+        <td colspan="2" class="label"><span class="STYLE4">爬虫池配置 </span></td>        
+      </tr>
+      <tr>
+	  <td width="100%" valign="top">
+	  <form  method="post" id="spiderPoolAppConfigForm" name="spiderPoolAppConfigForm">
+	  <table width="100%" height="100%" class="table_border2">
+      <tr>
+        <td width="120" align="right" nowrap class="label">活动爬虫数量:</td>
+        <td class="td_border">
+        <div class="inputOver">
+        <input type="text" id="system.property.pool.size" name="system.property.pool.size" style="width:100%" onkeypress="return event.keyCode>=48&&event.keyCode<=57" onblur="this.value=this.value.replace(/[^0-9]/g,'')"/>
+        </div>
+        </td>
+      </tr>
+      
+      <tr>
+        <td ></td>
+        <td class="td_border">
+        <input type="button" value="保存" onClick="spiderPoolAppConfig.fn.save();">
+        </td>
+      </tr>
+	  </table>
+	   </form>
+	  </td>
+	  </tr>
+      
+	  <tr>
+        <td colspan="2" class="label"><span class="STYLE4">爬虫配置</span></td>        
+      </tr>
+      
+	  <tr>
+	  
+	  <td width="100%" valign="top">
+	  <form  id="spiderAppForm" name="spiderAppForm" action="/pool?action=create" method="post">
+	  <input type="hidden" id="id" name="id">
+	  <table width="100%" height="100%" class="table_border2">
+
+	  <tr>
+        <td width="120" nowrap align="right" class="label">URL:</td>
+        <td class="td_border">
+        <div class="inputOver">
+        <input type="text" id="url" name="url" style="width:100%" />
+        </div>
+        </td>
+      </tr>
+	  <tr>
+        <td width="120" align="right" nowrap class="label">负载速率:</td>
+        <td class="td_border">
+        	<select id="rate" name=rate >
+				<option value="R1" selected="selected">1次/分钟</option>
+				<option value="R2">10次/分钟</option>
+				<option value="R3">50次/分钟</option>
+				<option value="R4">100次/分钟</option>
+			</select>
+        </td>
+      </tr>
+      
+      <tr>
+        <td ></td>
+        <td class="td_border">
+        <input type="button" value="添加" onClick="spiderApp.fn.create();">
+        <input type="button" value="删除" onClick="spiderApp.fn.remove();">
+        <input type="button" value="更新" onClick="spiderApp.fn.update();">
+        <input type="button" value="更新版本" onClick="spiderApp.fn.upgrade();">
+        <input type="button" value="清除缓存" onClick="spiderApp.fn.clearCache();">
+        <input type="button" value="更新计划任务" onClick="spiderApp.fn.updateSchedule();">
+        <input type="button" value="刷新列表" onClick="spiderApp.fn.freshList();">
+        </td>
+      </tr>
+      
+      <tr>
+      <td colspan=10>
+       	<table id="spiderDetailList" width="100%" align="center" class="table_border2 tableList" style="border:1px solid #CCCCCC;border-collapse:collapse;background-color: #FFFFFF;">
+		<tbody id="spiderDetailTable">
+			<tr>
+				<td width="5%" nowrap bgcolor="whiteSmoke">&nbsp;选择</td>
+				<td width="45%" nowrap bgcolor="whiteSmoke">URL</td>
+				<td width="10%" nowrap bgcolor="whiteSmoke">版本</td>
+				<td width="10%" nowrap bgcolor="whiteSmoke">负载速率</td>
+				<td width="10%" nowrap bgcolor="whiteSmoke">抓取总流量/日</td>
+				<td width="10%" nowrap bgcolor="whiteSmoke">抓取网址数量/日</td>
+				<td width="10%" nowrap bgcolor="whiteSmoke">抓取网址失败数量/日</td>
+			</tr>
+		</tbody>
+		</table>
+      </td>
+      </tr>
+      
+	  </table>
+	   </form>
+	  </td>
+	  </tr>
+	  
+	  
+	  
+  </table>
+  <script type="text/javascript">
+  $(document).ready(function(){
+	  spiderPoolApp.v.jsonData=new Array();
+	  spiderPoolApp.fn.query();
+  });
+  </script>
+  </body>
+</html>

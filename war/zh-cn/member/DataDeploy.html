@@ -1,0 +1,332 @@
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>数据发布规则</title>
+</head>
+
+  <body>
+    
+	
+    <table width="100%" class="table_border" id="DataDeployTable">     
+      <tr>
+	  <td  valign="top" >
+	  <form  id="deployForm" name="deployForm" method="post">
+	  <input type="hidden" id="id" name="id">
+	  <table width="100%" height="100%" class="table_border2" style="table-layout:fixed;">
+	  <tr>
+        <td width="120"  align="right" class="label">名称：</td>
+        <td class="td_border" style="width:100%">
+        <div class="inputOver">
+        <input name="name"  type="text" id="name" value=""  style="width:100%"/>
+        </div>
+        </td>
+      </tr>
+      <tr>
+        <td width="120"  align="right" class="label">状态：</td>
+        <td class="td_border">
+        	<select id="status" name="status" style="width:160px;">
+         			<option value="ACTIVE">激活</option>
+         			<option value="INACTIVE">未激活</option>
+       		</select>
+        </td>
+      </tr>	
+      <tr>
+        <td width="120"  align="right" class="label">
+        <a class="tooltip" href="javascript:void(0);" title="采集到的数据在发布完成后是否更新其状态。">更新数据状态：</a>
+        </td>
+        <td class="td_border">
+        <input type="radio"  name="updateStatus" id="updateStatus" value="Y" checked="checked">是
+        <input type="radio"  name="updateStatus" id="updateStatus" value="N">否
+        </td>
+      </tr>	
+       <tr>
+        <td width="120"  align="right" class="label">何时发布：</td>
+        <td class="td_border">
+	        <input type="radio"  name="when" id="when" value="1">采集同步发布
+	        <input type="radio"  name="when" id="when" value="2" checked="checked">计划任务发布
+        </td>
+      </tr>
+      
+      <tr>
+        <td width="120"  align="right" class="label">发布方式：</td>
+        <td class="td_border">
+	        <input type="radio"  name="where" id="where" value="1" onchange="dataDeployInter.fn.changeWhere(this.value)" checked="checked">HTTP接口
+	        <input type="radio"  name="where" id="where" value="2" onchange="dataDeployInter.fn.changeWhere(this.value)">发布插件
+	        <input type="radio"  name="where" id="where" value="3" onchange="dataDeployInter.fn.changeWhere(this.value)">电子邮件
+	        <input type="radio"  name="where" id="where" value="4" onchange="dataDeployInter.fn.changeWhere(this.value)">本地网址库
+        </td>
+      </tr>	
+      
+      <tr id="emailNoticeIdTr">
+		<td width="120" align="right" nowrap class="label"><a class="tooltip" href="javascript:void(0);" title="需要在 '设置' > '邮件通知' 中定义">邮件模板：</a></td>
+		<td class="td_border">
+			<select id="emailNoticeId" name="emailNoticeId" style="width:160px;">
+          			<option value=""></option>
+       		</select>
+       		<span class="configBox" lang="EmailNotice.html">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+		</td>
+	</tr>
+      
+      <tr id="deployPluginIdTr">
+		<td width="120" align="right" nowrap class="label"><a class="tooltip" href="javascript:void(0);" title="数据发布插件，需要在 '设置' > '插件管理' 中定义">数据发布插件：</a></td>
+		<td class="td_border">
+			<select id="deployPluginId" name="deployPluginId" style="width:160px;">
+          			<option value=""></option>
+       		</select>
+       		<span class="configBox" lang="PluginManage.html">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+		</td>
+	</tr>
+	
+	<tr id="deployUrlTr">
+        <td width="120"  align="right" class="label">HTTP接口：</td>
+        <td class="td_border">
+        <div class="inputOver">
+        <input name="deployUrl"  type="text" id="deployUrl" value="http://"  style="width:100%"/>
+        </div>
+        </td>
+      </tr>
+      
+	<tr id="httpRequestIdTr">
+		<td width="120" align="right" nowrap class="label"><a class="tooltip" href="javascript:void(0);" title="需要在'设置' > 'HTTP请求'中定义">HTTP请求：</a></td>
+		<td class="td_border">
+			<select id="httpRequestId" name="httpRequestId" style="width:160px;">
+          			<option value=""></option>
+       		</select>
+       		<span class="configBox" lang="HttpRequest.html">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+		</td>
+	</tr>
+	
+	<tr id="siteIdTr">
+		<td width="120" align="right" nowrap class="label"><a class="tooltip" href="javascript:void(0);" title="将网址发布到指定的站点">目标站点：</a></td>
+		<td class="td_border">
+			<select id="siteIdByURL" name="siteIdByURL" style="width:160px;">
+          			<option value=""></option>
+       		</select>
+		</td>
+	</tr>
+	  
+	<tr id="crawlRulesVerIdTr">
+        <td width="120" align="right" nowrap class="label">
+        <a class="tooltip" href="javascript:void(0);" title="限定发布规则只对指定的采集规则版本有效，其它版本匹配到的数据在发布时不会调用此发布规则，不设置对所有版本有效。">采集规则版本：</a>
+        </td>
+        <td>
+        <select id="crawlRulesVerId" name="crawlRulesVerId" style="width:160px;" onChange="dataDeployInter.fn.changeRulesVer(this.value)">
+          	<option value=""></option>
+       	</select>
+        </td>
+      </tr>
+      
+	  <tr id="rulesIdTr">
+		<td width="120" align="right" nowrap class="label"><a class="tooltip" href="javascript:void(0);" title="将标签值作为网址发布">网址所在标签：</a></td>
+		<td class="td_border">
+			<select id="rulesLabel" name="rulesLabel" style="width:160px;" onchange="dataDeployInter.fn.changeRulesLabel(this.value)">
+          			<option value=""></option>
+       		</select>
+       		 <input name="labelByURL"  type="text" id="labelByURL" value=""  style="width:200px"/>
+		</td>
+	  </tr>
+      
+      <tr class="descTr"><td width="120" ></td>
+        <td>
+        	<input type="button" id="advanced-settings-expander" class="link-button">
+        </td>           
+      </tr>
+    
+	  <tr class="advanced-settings">
+        <td width="120" ></td>
+        <td>
+        <div style="float:left;width:100%;padding: 6px 6px 6px 0px;color: #6A86DA;" id="initDeployParams">
+        </div>
+        <div style="float:left;width:100%;padding: 6px 6px 6px 0px;color: red;" >
+        	注意： 系统会自动添加两个参数 crawlUrl(采集的网址)， md5Digest(用来验证采集的数据是否重复)，如果要使用这两个值请不要添加重名参数。
+        </div>
+        </td>
+      </tr>
+      
+      <tr id="deployParamsTr">
+        <td width="120"  align="right" class="label">
+        <a class="tooltip" href="javascript:void(0);" title="格式：'name=${标签名}&name=value${标签名}...' <br/> 使用'${标签名}'的格式来读取规则匹配到的数据">提交数据：</a>
+        </td>
+        <td class="td_border">
+        <div style="padding-right: 3px;">
+        <textarea rows="3" id="deployParams" name="deployParams" style="word-break:break-all;overflow-y:visible;height:60px;width:100%;padding: 0px;margin: 0px"></textarea>
+        </div>
+        </td>
+      </tr>
+      
+      <tr id="deployMessageTr">
+        <td width="120"  align="right" class="label">
+         <a class="tooltip" href="javascript:void(0);" title="当发布接口返回数据与此项一致时表示发布成功，留空则不验证。">发布成功的信息：</a>
+        </td>
+        <td class="td_border">
+        <div class="inputOver">
+        <input name="message"  type="text" id="message" value=""  style="width:100%"/>
+        </div>
+        </td>
+      </tr>
+      
+      <!-- start -->
+    	<tr id="uploadImageTr">
+       	<td width="120" ></td>
+       	<td class="td_border">
+			<table ><tr><td><input id="isUploadImage" name="isUploadImage" type="checkbox" value="Y" onclick="dataDeployInter.fn.showTable(this, 'uploadImageTable')"/></td><td>需要保存文件</td></tr></table>
+			<table id="uploadImageTable" width="100%" height="100%"   style="border: 1px solid #99999;display:none;" align="left">
+				<tr>
+			        <td width="120"  align="right" nowrap>
+			        <a class="tooltip" style="font-weight:normal;"  href="javascript:void(0);" title="文件保存插件，需要在 '设置' > '插件管理' 中定义">文件保存插件：</a>
+			        </td>
+			        <td class="td_border" style="width:160px;">
+				        <select id="fileSavePluginId" name="fileSavePluginId" style="width:160px;">
+	          				<option value=""></option>
+	       				</select>
+       				</td>
+       				<td nowrap="nowrap"   width="150px"  align="right">
+		        	<a class="tooltip" style="font-weight:normal;" title="通过正则匹配需要下载文件的网址，返回正则中第一个分组的内容。"  href="javascript:void(0);">匹配文件（正则）：</a>
+		        	</td>
+		        	<td  style="width:100%;"  align="left">
+		        	<div class="inputOver">
+		        		<input style="width:100%;" id="fileSavePluginRegex" type="text" name="fileSavePluginRegex"/> 
+		        		</div>
+		        	</td>
+			    </tr>
+			    <tr>
+			        <td width="120"  align="right" nowrap>
+			        	<a class="tooltip" style="font-weight:normal;" href="javascript:void(0);" title="多个标签用逗号','分隔，格式'${标签名1},${标签名2},...">文件所在标签：</a>
+			        </td>
+			        <td class="td_border">
+			        	<input type="text" id="imageLabels" name="imageLabels" style="width:162px;"/>
+					</td>
+					<td nowrap="nowrap"   width="150px"  align="right">
+		        	<a class="tooltip" style="font-weight:normal;" title="可以使用${sysDate}获取系统日期，日期格式：yyyyMMdd。可以使用'${标签名}'的格式来读取采集规则匹配到的数据。"  href="javascript:void(0);">文件存放子目录</a>
+		        	</td>
+		        	<td  style="width:100%;"  align="left">
+		        	<div class="inputOver">
+		        		<input style="width:100%;" id="fileSaveSubDir" type="text" name="fileSaveSubDir"/> 
+		        		</div>
+		        	</td>
+			    </tr>
+	        </table>
+		</td>
+      	</tr>
+	<!-- end -->
+	<!-- start -->
+	<tr>
+        <td width="120" >
+        </td>
+        <td class="td_border">
+        <table ><tr><td><input id="isUpdateUrlStatus" name="isUpdateUrlStatus" type="checkbox" value="Y" onclick="dataDeployInter.fn.showTable(this, 'updateUrlStatusTable')"/></td><td><a class="tooltip" style="font-weight:normal;" title="采集到的数据在发布完成后是否更新其状态。"  href="javascript:void(0);">更新网址状态：</a></td></tr></table>
+			
+        <table id="updateUrlStatusTable" width="100%" height="100%"   style="border: 1px solid #99999;display:none;" align="left">
+        	
+        	<tr>
+	        	<td nowrap="nowrap"  width="100"  align="right" >
+	        	<a class="tooltip" style="font-weight:normal;" title="满足指定条件时更新网址状态"  href="javascript:void(0);">条件</a>
+	        	
+	        	</td>
+	        	<td  style="width:100%;"   align="left" colspan="3" nowrap>
+	        	<div class="conditionRulesDiv">
+	        		<div id="conditionRulesDiv1" class="definitionConditionRules" style="width: 690px;">
+	        			<div class="conditionRules" style="height: 25px; margin-top: 6px;float: left;width: 100px;">
+	        			<input type="radio" name="cus_condition1" value="or" disabled="disabled">OR <input type="radio" name="cus_condition1" value="and" checked="checked"  disabled="disabled">AND
+	        			</div>
+	        			<div class="conditionRulesLeft">
+	        			<select id="cus_label" name="cus_label" style="width:160px;">
+		          			<option value="" selected>选择标签</option>
+		       			</select>
+		       			<select name="cus_contain" id="cus_contain" >
+							<option value="Y">包含</option>
+							<option value="N">不包含</option>
+						</select>
+						开启正则<input name="cus_regex" type="checkbox" id="cus_regex" value="true" >
+		       		 	<input name="cus_data"  type="text" id="cus_data" value=""  style="width:200px"/>
+		       		 	</div>
+		       		 	
+		       		 	<div class="addLabel" style="margin-top: 3px;">
+						<a href="javascript:void(0);"  onclick="dataDeployInter.fn.addConditionRulesDiv()">+</a>
+						</div>
+	        		</div>
+				</div>
+				
+	        	</td>
+        	</tr>
+        	
+        	<tr>
+	        	<td nowrap="nowrap"  width="100"  align="right" >
+	        	状态
+	        	</td>
+	        	<td  style="width:100%;"   align="left" colspan="3" nowrap>
+	        	<input name="urlStatus"  type="text" id="urlStatus" value="1"  style="width:200px"/>
+	        	</td>
+        	</tr>
+        	
+        </table>
+        
+        </td>
+      </tr>
+      <!-- end -->
+      <tr>
+        <td width="120" ></td>
+        <td class="td_border">
+        <input type="button" value="添加" onClick="dataDeployInter.fn.create();">
+        <input type="button" value="删除" onclick="dataDeployInter.fn.remove()">
+        <input type="button" value="更新" onClick="dataDeployInter.fn.update();">
+        <input type="button" value="发布测试" onClick="dataDeployInter.fn.deploy();">
+        </td>
+      </tr>
+		<tr>
+			<td colspan="5">
+				<table id="deployListTable" width="100%" align="center" class="table_border2 tableList" style="table-layout:fixed;border:1px solid #CCCCCC;border-collapse:collapse;background-color: #FFFFFF;">
+					<tr>
+						<td width="5%" nowrap bgcolor="whiteSmoke">&nbsp;选择</td>
+						<td width="10%" nowrap bgcolor="whiteSmoke">&nbsp;&nbsp;&nbsp;名称</td>
+						<td width="5%" nowrap bgcolor="whiteSmoke">状态</td>
+						<td width="5%" nowrap bgcolor="whiteSmoke">更新发布状态</td>
+						<td width="10%" nowrap bgcolor="whiteSmoke">何时发布</td>
+						<td width="65%" nowrap bgcolor="whiteSmoke">详细</td>
+					</tr>
+				</table>
+				</td>
+		</tr>
+	  </table>
+	   </form>
+	  </td>
+	  </tr>
+	  
+	  
+	  
+  </table>
+  <script type="text/javascript">
+  $(document).ready(function() { 
+	  var initFun= function(){
+
+			dataDeployInter.v.webCrawlerId=webCrawlerId;
+			dataDeployInter.v.siteId=siteId;
+			dataDeployInter.v.jsonData=null;
+			dataDeployInter.v.index=1;
+			
+			dataDeployInter.fn.changeWhere("1");
+			fillCustomPlugin("4", dataDeployInter.v.formId, "deployPluginId", false);
+			fillCustomPlugin("3", dataDeployInter.v.formId, "fileSavePluginId", false);
+			fillHttpRequest(dataDeployInter.v.formId, "httpRequestId", true);
+			fillEmailNotice(dataDeployInter.v.formId, "emailNoticeId", false);
+			fillSite(dataDeployInter.v.formId, "siteIdByURL");
+			fillRulesVer(dataDeployInter.v.formId, "crawlRulesVerId", true);
+			
+			dataDeployInter.fn.init();
+			dataDeployInter.fn.query();
+			$('.tooltip').poshytip();
+		  };
+		  
+		
+		var initLoading=setInterval(function(){
+			if(typeof dataDeployInter != 'undefined'){
+				clearInterval(initLoading);
+				initFun();
+			}
+		},500);
+		
+	});
+
+  </script>
+  </body>
+</html>

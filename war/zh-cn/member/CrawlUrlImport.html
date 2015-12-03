@@ -1,0 +1,125 @@
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>添加采集网址</title>
+</head>
+
+  <body>
+    <table id="crawlUrlImportTable" width="100%" class="table_border">
+    	<tr>
+			<td colspan="2" class="label"><br/><span class="STYLE4" id="mainTitle" style="display:none;">添加采集网址</span>
+			</td>
+		</tr>
+	  <tr>
+	  <td>
+	  <table width="100%" height="50" class="table_border2">
+	  <tr>
+        <td width="120" align="right" class="label" style="height: 30px;"><a  class="tooltip STYLE4" title="通过API添加网址到当前站点，接口支持GET、POST请求，多个网址用'|$|'分隔，返回成功入库的网址数量。" href="javascript:void(0);">网址导入API：</a></td>
+        <td class="td_border"><span id="apiImportUrl"></span></td>
+      </tr>
+      <tr>
+        <td width="120" align="right" class="label" style="height: 30px;"><a  class="tooltip STYLE4" title="通过API删除当前站点的网址，接口支持GET、POST请求，多个网址用'|$|'分隔，返回成功删除的网址数量。" href="javascript:void(0);">网址删除API：</a></td>
+        <td class="td_border"><span id="apiDeleteUrl"></span></td>
+      </tr>
+      <tr>
+        <td width="120" align="right" class="label" style="height: 30px;"><a  class="tooltip STYLE4" title="通过API使用当前站点的采集规则抓取指定的网址，接口支持GET、POST请求，不支持多个网址，返回JSON格式的采集数据。" href="javascript:void(0);">网址抓取API：</a></td>
+        <td class="td_border"><span id="apiFetchUrl"></span></td>
+      </tr>
+	  </table>
+	  </td>
+	  </tr>
+	  
+	  <tr>
+        <td colspan="2" class="label"><span class="STYLE4">网址批量添加</span></td>        
+      </tr>
+	  <tr>
+	  <td>
+	  <form  id="addByBatchForm" name="addByBatchForm" method="post">
+	  <table style="width:100%;height:120px" class="table_border2">
+	  
+	  <tr>
+        <td width="120" align="right" class="label"><a  class="tooltip" title="多个网址可以是一行一个，也可以使用'|$|'分隔，格式 'http://www.newcrawler.com|$|http://www.newcrawler.com'" href="javascript:void(0);">网址：</a></td>
+        <td class="td_border" height="100%">
+        <div style="padding-right:3px;">
+				<textarea rows="3" id="urls" name="urls"
+					style="word-break:break-all;overflow-y:visible;height:120px;width:100%;padding: 0px;margin: 0px"></textarea>
+				</div>
+        </td>
+      </tr>
+      
+      <tr>
+        <td width="82"></td>
+        <td class="td_border">
+        	<input type="button" value="添加网址" onClick="crawlUrlImport.fn.addByBatch();">        </td>
+      </tr>
+	  </table>
+	   </form>
+	  </td>
+	  </tr>
+	  
+	  <tr>
+        <td colspan="2" class="label"><span class="STYLE4">分页方式添加</span></td>        
+      </tr>
+	  <tr>
+	  <td>
+	  <form  id="addByPageForm" name="addByPageForm" method="post">
+	  <table width="100%" height="150" class="table_border2">
+	  
+	  <tr>
+        <td width="120" align="right" class="label"><a  class="tooltip" title="分页的页号用'(*)'代替" href="javascript:void(0);">开始地址：</a></td>
+        <td class="td_border">
+         <div style="padding-right:3px;">
+				<textarea rows="3" id="url" name="url"
+					style="word-break:break-all;overflow-y:visible;height:40px;width:100%;padding: 0px;margin: 0px"></textarea>
+				</div>
+        </td>
+      </tr>
+      <tr>
+        <td width="120" align="right" class="label">范围：</td>
+        <td class="td_border">
+          <table width="100%" border="0">
+            <tr>
+              <td width="50">从</td>
+              <td width="50">到</td>
+              <td width="100%"></td>
+            </tr>
+            <tr>
+              <td><input name="from" type="text" id="from" value="1" size="10" onkeypress="return event.keyCode>=48&&event.keyCode<=57" onblur="this.value=this.value.replace(/[^0-9]/g,'')"/></td>
+              <td><input name="to" type="text" id="to" value="2" size="10" onkeypress="return event.keyCode>=48&&event.keyCode<=57" onblur="this.value=this.value.replace(/[^0-9]/g,'')"></td>
+              <td></td>
+            </tr>
+            
+          </table></td>
+      </tr>
+      
+      <tr>
+        <td width="82"></td>
+        <td class="td_border" >
+        	<input type="button" value="添加网址" onClick="crawlUrlImport.fn.addByPage();">        </td>
+      </tr>
+	  </table>
+	   </form>
+	  </td>
+	  </tr>
+
+  </table>
+  <script type="text/javascript">
+  $(document).ready(function() { 
+	  var initFun= function(){
+			crawlUrlImport.v.webCrawlerId=webCrawlerId;
+			crawlUrlImport.v.siteId=siteId;
+			
+			crawlUrlImport.fn.init();
+			$('.tooltip').poshytip();
+		  };
+		
+		var initLoading=setInterval(function(){
+			if(typeof crawlUrlImport != 'undefined'){
+				clearInterval(initLoading);
+				initFun();
+			}
+		},500);
+	});
+  </script>
+  </body>
+</html>

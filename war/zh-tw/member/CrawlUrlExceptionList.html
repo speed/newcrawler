@@ -1,0 +1,107 @@
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>采集網址列表</title>
+</head>
+
+  <body>
+	<div id="log-box-url" style="padding: 5px 20px 5px 20px;background-color:#474747;color: white;display: none;"><pre id="log"></pre></div>
+	
+    <table id="crawlExceptionUrlListTable" width="100%" class="table_border">
+      <tr>
+	  <td width="100%" valign="top">
+	  <table width="100%">
+	  	<tr>
+        <td width="100%" class="td_border">
+			<input name="search" type="button" id="search" onClick="crawlExceptionUrlList.fn.search();" value="查詢">
+			<input name="crawl" type="button" id="crawl" onClick="crawlExceptionUrlList.fn.crawl();" value="采集網址">
+		</td>
+        </tr>
+        <tr>
+        <td width="100%" class="td_border" style="padding:5px 5px 5px 5px;">
+        	<table width="100%">
+        		<tr>
+        			<td align="right" nowrap style="width: 60px;">網址：</td>
+        			<td>
+        			<div class="inputOver">
+        			<input type="text" id="url" name="url" style="width:100%"/>
+        			</div>
+        			</td>
+        			
+        		</tr>
+        	</table>
+        </td>
+        </tr>
+        
+		<tr>
+        <td width="100%">
+		
+		</td>
+        </tr>
+        
+		
+	  </table>
+	  <div style="padding:0px 2px 2px 2px;">
+	  	<table id="crawlUrlExceptionList" width="100%" align="center" class="table_border2 tableList" style="table-layout:fixed; border:1px solid #CCCCCC;border-collapse:collapse;background-color: #FFFFFF;">
+			<tr>
+				<td width="50" nowrap bgcolor="whiteSmoke"></td>
+				<td width="50" nowrap bgcolor="whiteSmoke"><input type='checkbox' name='all' id='all' onclick="crawlExceptionUrlList.fn.selectAll(this,'crawlUrlExceptionList','id')" /></td>
+				<td width="80%" nowrap bgcolor="whiteSmoke">網址</td>
+				<td width="160" nowrap bgcolor="whiteSmoke">retryTimes</td>
+				<td width="160" nowrap bgcolor="whiteSmoke">retryDate</td>
+				<td width="160" nowrap bgcolor="whiteSmoke">入庫時間</td>
+				
+			</tr>
+		</table>
+		
+		<div id="line" style="height:5px;"></div>
+		<div id="hiddenresult" style="display:none;">
+        
+        </div>
+		<div id="Pagination"></div>
+	  </div>
+	  </td>
+	  
+	  </tr>
+	  <tr>
+	  <td align="left" style="padding:5px 5px 0px 5px;" >
+	  	 記錄總數(<label id="URL_COUNT" style="color:red;">0</label>)  <label style="color: rgb(34, 102, 187);cursor: pointer;" onClick="crawlExceptionUrlList.fn.statistic();">重新統計</label>
+	  </td>
+	  </tr>
+  </table>
+  
+  	<script type="text/javascript">
+		$( "#log-box-url" ).dialog({ 
+			title: "日誌",
+			autoOpen: false,
+			buttons: {
+				"關閉": function() { $( this ).dialog( "close" ); crawlExceptionUrlList.fn.init();}
+			},
+			height: 400,
+			maxHeight: 500,
+			width: 750,
+			maxWidth: 850,
+			modal: true,
+			resizable: true
+		});
+		
+		$(document).ready(function(){
+			var initFun= function(){
+				crawlExceptionUrlList.v.webCrawlerId=webCrawlerId;
+				crawlExceptionUrlList.v.siteId=siteId;
+				
+				crawlExceptionUrlList.fn.init();
+				$('.tooltip').poshytip();
+			  };
+			
+			
+			var initLoading=setInterval(function(){
+				if(typeof crawlExceptionUrlList != 'undefined'){
+					clearInterval(initLoading);
+					initFun();
+				}
+			},500);
+		});
+	</script>
+  </body>
+</html>

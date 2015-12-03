@@ -1,0 +1,74 @@
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>Acquisition Management </title>
+</head>
+  <body>
+  <form  id="webCrawlerAppForm" name="webCrawlerAppForm" method="post">
+	 <input type="hidden" id="id" name="id">
+    <table width="100%" class="table_border">
+      <tr>
+	  <td width="100%" valign="top">
+	  <table width="100%" height="100%" class="table_border2">
+	  <tr>
+        <td width="120" nowrap align="right" class="label">name :</td>
+        <td width="100%" class="td_border">
+        <div class="inputOver">
+        <input type="text" id="name" name="name" style="width:100%" />
+        </div>
+        </td>
+      </tr>
+      <tr>
+        <td width="120" nowrap align="right" class="label">URL:</td>
+        <td width="100%" class="td_border">
+        <div class="inputOver">
+        <input type="text" id="url" name="url" style="width:100%"/>
+        </div>
+        </td>
+      </tr>
+      <tr>
+        <td ></td>
+        <td class="td_border">
+        <input type="button" value="Create " onClick="crawlerManage.fn.create();">
+        <input type="button" value="Delete " onClick="crawlerManage.fn.remove();">
+        <input type="button" value="Update " onClick="crawlerManage.fn.update();">
+        <input type="button" value="Upgrade Version " onClick="crawlerManage.fn.upgrade();">
+        </td>
+      </tr>
+      
+      <tr>
+			<td colspan="5">
+				<table id="webCrawlerAppTable" width="100%" align="center" class="table_border2 tableList" style="border:1px solid #CCCCCC;border-collapse:collapse;background-color: #FFFFFF;">
+					<tr>
+						<td width="5%" nowrap bgcolor="whiteSmoke">&nbsp;Select </td>
+						<td width="15%" nowrap bgcolor="whiteSmoke">&nbsp;name </td>
+						<td width="50%" nowrap bgcolor="whiteSmoke">URL</td>
+						<td width="10%" nowrap bgcolor="whiteSmoke">version </td>
+						<td width="10%" nowrap bgcolor="whiteSmoke">setup time </td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+		
+	  </table>
+	  </td>
+	  </tr>
+  </table>
+   </form>
+  <script type="text/javascript">
+  $(document).ready(function(){
+	  var initFun=function(){
+		  crawlerManage.fn.query();
+		  crawlerManage.v.jsonData=new Array();
+	  }
+	  
+		var initLoading=setInterval(function(){
+			if(typeof crawlerManage != 'undefined'){
+				clearInterval(initLoading);
+				initFun();
+			}
+		},500);
+	});
+  </script>
+  </body>
+</html>

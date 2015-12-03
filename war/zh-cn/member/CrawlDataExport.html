@@ -1,0 +1,92 @@
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>数据导出</title>
+
+</head>
+
+  <body>
+    <table id="crawlDataExportTable" width="100%" class="table_border">
+    	<tr>
+			<td colspan="2" class="label"><br/><span class="STYLE4" id="mainTitle" style="display:none;">数据导出</span>
+			</td>
+		</tr>
+	  <tr>
+	  <td>
+	  <table width="100%" height="50" class="table_border2">
+	  <tr>
+        <td width="120" align="right" class="label" style="height: 30px;"><a  class="tooltip STYLE4" title="数据返回的格式支持JSON、RSS" href="javascript:void(0);">返回数据格式：</a></td>
+        <td class="td_border">
+        <input name="type" type="radio" id="type" value="json" class="jfk-checkbox" checked>JSON
+        <input name="type" type="radio" id="type" value="rss" class="jfk-checkbox">RSS
+        </td>
+      </tr>
+	  <tr>
+        <td width="120" align="right" class="label" style="height: 30px;"><a  class="tooltip STYLE4" title="数据导出的API，支持分页返回" href="javascript:void(0);">数据导出API：</a></td>
+        <td class="td_border"><span id="apiExportData"></span></td>
+      </tr>
+	  </table>
+	  </td>
+	  </tr>
+	  
+	  <tr>
+        <td colspan="2" class="label"><span class="STYLE4">属性映射</span></td>        
+      </tr>
+	  <tr>
+	  <td>
+	  
+	  <form  id="crawlDataExportForm" name="crawlDataExportForm" method="post">
+	  <table style="width:100%;height:120px" class="table_border2">
+	  <tr>
+        <td width="120" align="right" class="label" style="height: 30px;">
+        <a class="tooltip" href="javascript:void(0);" title="采集规则版本">采集规则版本：</a>
+        </td>
+        <td class="td_border">
+         <select id="crawlRulesVerId" name="crawlRulesVerId" style="width:160px;" onChange="crawlDataExport.fn.changeRulesVer(this.value)">
+          	<option value=""></option>
+       	</select>
+        </td>
+      </tr>
+      
+	  <tr>
+        <td width="120" align="right" class="label" style="height: 30px;">
+        属性：
+        </td>
+        <td class="td_border">
+        <ul class="rules">
+        	
+        </ul>
+        </td>
+      </tr>
+      
+      <tr>
+        <td width="82"></td>
+        <td class="td_border">
+        	<input type="button" value="保存" onClick="crawlDataExport.fn.save();">        </td>
+      </tr>
+	  </table>
+	   </form>
+	  </td>
+	  </tr>
+	  
+  </table>
+  <script type="text/javascript">
+  $(document).ready(function() { 
+	  var initFun= function(){
+		  crawlDataExport.v.webCrawlerId=webCrawlerId;
+		  crawlDataExport.v.siteId=siteId;
+			
+		  crawlDataExport.fn.init();
+			$('.tooltip').poshytip();
+		  };
+		
+		var initLoading=setInterval(function(){
+			if(typeof crawlDataExport != 'undefined'){
+				clearInterval(initLoading);
+				initFun();
+			}
+		},500);
+	});
+  </script>
+  </body>
+</html>

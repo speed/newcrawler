@@ -1,0 +1,302 @@
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>采集器設置</title>
+</head>
+  <body>
+    <table id="webCrawlerConfig" width="100%" class="table_border">
+      <tr class="queueConfig" style="display:none;">
+        <td colspan="2" class="label" height="30px" valign="bottom"><span class="STYLE4">隊列配置</span></td>        
+      </tr>
+      <tr  class="queueConfig" style="display:none;">
+	  <td colspan="2" width="100%" valign="top">
+	  <form  id="queueForm" name="queueForm" method="post">
+	  <input type="hidden" id="id" name="id">
+	  <table width="100%" height="100%" class="table_border2">
+	  <tr>
+        <td width="120" align="right" nowrap class="label">名稱：</td>
+        <td class="td_border">
+        <div class="inputOver" >
+        <input type="text" id="name" name="name" style="width:100%" />
+        </div>
+        </td>
+      </tr>
+       <tr>
+        <td width="120" align="right" nowrap class="label">速率：</td>
+        <td class="td_border">
+        <div class="inputOver" style="padding-left: 8px;">
+	        <div style="float:left;width:200px;padding-top:5px;"><div id="rateSlider" ></div></div>
+			<div style="float:left;width:40px;margin-left: 10px;"><input id="rate" type="text" name="rate" value="" style="border: 0; color: #f6931f; font-weight: bold;" readonly="readonly"/></div>
+	        <select name="rateUnit" id="rateUnit" style="width: 80px;">
+				<option value="s">/s(秒)</option>
+				<option value="m">/m(分)</option>
+				<option value="h">/h(時)</option>
+			</select>
+        </div>
+        </td>
+      </tr>
+      <tr>
+        <td width="120" align="right" nowrap class="label">最大並發：</td>
+        <td class="td_border">
+         	<div class="inputOver" style="padding-left: 8px;">
+        	<div style="float:left;width:200px;padding-top:5px;"><div id="maxConcurrentSlider" ></div></div>
+			<div style="float:left;width:40px;margin-left: 10px;"><input id="maxConcurrent" type="text" name="maxConcurrent" value="" style="border: 0; color: #f6931f; font-weight: bold;" readonly="readonly"/></div>
+			</div>
+        </td>
+      </tr>
+
+      <tr>
+        <td ></td>
+        <td class="td_border">
+        <input type="button" value="添加" onClick="queueManage.fn.create();">
+        <input type="button" value="刪除" onClick="queueManage.fn.remove();">
+        <input type="button" value="更新" onClick="queueManage.fn.update();">
+		</td>
+      </tr>
+      
+      <tr>
+			<td colspan="5">
+				<table id="queueTable" width="100%" align="center" class="table_border2 tableList" style="border:1px solid #CCCCCC;border-collapse:collapse;background-color: #FFFFFF;">
+					<tr>
+						<td width="5%" nowrap bgcolor="whiteSmoke">&nbsp;選擇</td>
+						<td width="10%" nowrap bgcolor="whiteSmoke">名称</td>
+						<td width="50%" nowrap bgcolor="whiteSmoke">速率</td>
+						<td width="10%" nowrap bgcolor="whiteSmoke">最大并发</td>
+						<td width="10%" nowrap bgcolor="whiteSmoke">建立时间</td>
+						<td width="10%" nowrap bgcolor="whiteSmoke">更新时间</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+      
+	  </table>
+	   </form>	  
+	   </td>
+      </tr>
+    
+    
+      <tr>
+        <td colspan="2" class="label"><span class="STYLE4">其它設置</span></td>        
+      </tr>
+      <tr>
+	  <td colspan="2" width="100%" >
+	  <form id="systemConfigForm" name="systemConfigForm" >
+		<input id="id" name="id" type="hidden">
+		<table width="100%" height="100%" class="table_border2">
+			<tr>
+				<td width="120" align="right" class="label"><a class="tooltip" href="javascript:void(0);" title="采集器默認的采集速率，不定義時系統使用R3作為默認采集速率">默認采集速率：</a></td>
+				<td  class="td_border" >
+	       		<select class="queueSelect" id="queueName" name="queueName" style="width:160px;">
+       			</select>
+				</td>
+		  	 </tr>
+		  	 <tr>
+				<td width="120" align="right" class="label"><a class="tooltip" href="javascript:void(0);" title="當采集器作為子爬蟲時，可以設置訪問密鑰，限制未授權的訪問">訪問密鑰：</a></td>
+				<td  class="td_border" >
+				<input style="width:200px;" id="system.property.rpcAuth" type="text" name="system.property.rpcAuth" value="" />
+				</td>
+		  	 </tr>
+			 <tr>
+		        <td width="120" align="right" nowrap class="label"><a class="tooltip" href="javascript:void(0);" title="采集器使用異步的方式調用爬蟲采集，所以系統需要設定壹個間隔時間不斷的檢測爬蟲是否回調，當超過間隔時間沒有返回結果時會重新采集網址">回調檢測時間：</a></td>
+		        <td class="td_border">
+					<div style="float:left;width:200px;padding-top:5px;"><div id="callbackTimeSlider" ></div></div>
+					<div style="float:left;width:40px;margin-left: 10px;"><input id="callbackTime" type="text" name="callbackTime" value="" style="border: 0; color: #f6931f; font-weight: bold;" readonly="readonly"/></div>
+					<span style="width: 80px;line-height: 23px;">分鐘</span>
+		        </td>
+		      </tr>
+			 <tr>
+				<td width="120" align="right" class="label"><a class="tooltip" href="javascript:void(0);" title="全局的網址抓取插件，優先級高於采集站點中配置的網址抓取插件，需要在 '設置' > '插件管理' 中定義">網址抓取插件：</a></td>
+				<td  class="td_border" >
+				<select id="urlfetchPluginId" name="urlfetchPluginId" style="width:160px;">
+	          			<option value=""></option>
+	       		</select>
+	       		<span class="configBox" lang="PluginManage.html">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>	
+				</td>
+		  	 </tr>
+			 <tr>
+				<td width="120" align="right" class="label">計劃任務控制：</td>
+				<td  class="td_border">
+				<table><tr>
+				<td>停止</td><td> <input id="system.property.cron" type="radio" name="system.property.cron" value="stop" /></td>
+				<td width="10"> </td>
+				<td>運行</td><td> <input id="system.property.cron" type="radio" name="system.property.cron" value="run" checked/></td>
+				</tr></table>
+				</td>
+		  	</tr>
+		  	<tr>
+				<td width="120" align="right" class="label"><a class="tooltip" href="javascript:void(0);" title="當不知道APP管理郵箱時，請使用默認值。">APP管理郵箱：</a></td>
+				<td  class="td_border" >
+				<div class="inputOver">
+				<input style="width:100%;" id="system.property.email" type="text" name="system.property.email" value="" />
+				</div>
+				</td>
+		  	</tr>
+		  	<tr>
+				<td width="120" align="right" class="label"><a class="tooltip" href="javascript:void(0);" title="授權用戶訪問當前應用，多個用戶用 換行 '回車' 分隔，可以使用 '*' 來表示允許所有用戶訪問。">授權用戶：</a></td>
+				<td  class="td_border" >
+				<textarea id="system.property.users" name="system.property.users" rows="5" style="width: 100%;border: 1px solid #999;" ></textarea>
+				</td>
+		  	</tr>
+		  	<tr>
+        	<td colspan="2" style="font-weight: bold;padding: 0px;" height="5px"><hr /></td>           
+    		</tr>
+		  	
+		  	<tr>
+				<td width="120" align="right" class="label"></td>
+				<td  class="td_border">
+					<select onchange="systemConfig.fn.changeEmail(this.value)">
+						<option value="custom">自定義</option>
+						<option value="gmail">gmail.com</option>
+						<option value="qq">qq.com</option>
+						<option value="163">163.com</option>
+					</select>
+				</td>
+		  	</tr>
+		  	<tr>
+				<td width="120" align="right" class="label"><a class="tooltip" href="javascript:void(0);" title="SSL">SSL：</a></td>
+				<td  class="td_border" >
+				<input name="system.property.smtpSSL" id="system.property.smtpSSL" type="checkbox" value="true" />
+				</td>
+		  	</tr>
+		  	<tr>
+				<td width="120" align="right" class="label"><a class="tooltip" href="javascript:void(0);" title="SMTP主機：">SMTP主機：</a></td>
+				<td  class="td_border" >
+				<div class="inputOver">
+				<input id="system.property.smtpHost" name="system.property.smtpHost" type="text" class="input" value="" />
+				</div>
+				</td>
+		  	</tr>
+		  	<tr>
+				<td width="120" align="right" class="label"><a class="tooltip" href="javascript:void(0);" title="SMTP端口：">SMTP端口：</a></td>
+				<td  class="td_border" >
+				<div class="inputOver">
+				<input id="system.property.smtpPort" name="system.property.smtpPort" type="text" class="input" value="465" />
+				</div>
+				</td>
+		  	</tr>
+		  	<tr>
+				<td width="120" align="right" class="label"><a class="tooltip" href="javascript:void(0);" title="郵箱地址：">郵箱地址：</a></td>
+				<td  class="td_border" >
+				<div class="inputOver">
+				<input id="system.property.smtpUsername" name="system.property.smtpUsername" type="text" class="input" value="" />
+				</div>
+				</td>
+		  	</tr>
+		  	<tr>
+				<td width="120" align="right" class="label"><a class="tooltip" href="javascript:void(0);" title="郵箱密碼：">郵箱密碼：</a></td>
+				<td  class="td_border" >
+				<div class="inputOver">
+				<input name="system.property.smtpPassword" id="system.property.smtpPassword" type="password" class="input" value="" />
+				</div>
+				</td>
+		  	</tr>
+		  	<tr>
+        	<td colspan="2" style="font-weight: bold;padding: 0px;" height="5px"><hr /></td>           
+    		</tr>
+			<tr>
+		        <td>&nbsp;</td>
+		        <td class="td_border"><input type="button" value="保存" onClick="systemConfig.fn.save()" ></td>
+			</tr>
+		</table>
+		</form>
+	   </td>
+	  </tr>
+	  
+	  <tr>
+        <td colspan="2" class="label"><span class="STYLE4">采集器緩存清除</span></td>        
+      </tr>
+	  <tr>
+	  <td colspan="2">
+	  	<form id="cacheClearForm">
+		<table width="100%" height="100%" class="table_border2">
+			<tr>
+        <td width="120">&nbsp;</td>
+        <td class="td_border">
+          <input type="button" value="緩存清除" onClick="cacheClear.fn.clear()"></td>
+			</tr>
+		</table>
+		</form>
+	  </td>
+	  </tr>
+
+	   <tr>
+        <td colspan="2" class="label"><span class="STYLE4">采集器數據清除</span></td>        
+      </tr>
+	  <tr>
+	  <td colspan="2">
+	  <form id="dataClearForm">
+		<table width="100%" height="100%" class="table_border2">
+			<tr>
+				<td width="120" align="right" class="label">
+				站點：
+				</td>
+				<td  class="td_border">
+				   	<select id="siteList" name="siteList" style="width:160px;">
+		        	</select>
+	        	</td>
+		    </tr>
+			<tr>
+				<td width="120" align="right" class="label">所有數據：</td>
+				<td  class="td_border">
+			   <input name="tables" type="checkbox" id="tables" value="SiteTable" onclick="dataClear.fn.disabledAll(this,'tables')" ></td>
+		    </tr>
+			<tr>
+				<td width="120" align="right" class="label">采集網址表：</td>
+				<td  class="td_border">
+			   <input name="tables" type="checkbox" id="tables" value="CrawlUrlTable" ></td>
+		    </tr>
+	  		<tr>
+				<td width="120" align="right" class="label">采集到的數據表：</td>
+				<td class="td_border">
+			   <input name="tables" type="checkbox" id="tables" value="CrawlDataTable" ></td>
+		    </tr>
+			  <tr>
+				<td width="120" align="right" class="label">采集規則緩存表：</td>
+				<td class="td_border">
+			   <input name="tables" type="checkbox" id="tables" value="CrawlCacheTable" ></td>
+			  </tr>
+			  <tr>
+				<td width="120" align="right" class="label">采集規則表：</td>
+				<td class="td_border">
+			   <input name="tables" type="checkbox" id="tables" value="DataRulesTable" ></td>
+			  </tr>
+			  <tr>
+				<td width="120" align="right" class="label">數據發布規則表：</td>
+				<td class="td_border">
+			   <input name="tables" type="checkbox" id="tables" value="DeployTable" ></td>
+			  </tr>
+			<tr>
+        <td>&nbsp;</td>
+        <td class="td_border">
+          <input type="button" value="數據清除" onClick="dataClear.fn.clear()"></td>
+			</tr>
+		</table>
+		</form>
+	   </td>
+	  </tr>
+	  
+	  
+  </table>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			var initFun = function() {
+				systemConfig.v.webCrawlerId = webCrawlerId;
+				systemConfig.fn.query();
+				
+				queueManage.fn.init();
+				fillSite(dataClear.v.formId, "siteList");
+				systemConfig.fn.init();
+				
+				$('.tooltip').poshytip();
+			};
+
+			var initLoading=setInterval(function(){
+				if(typeof systemConfig != 'undefined'){
+					clearInterval(initLoading);
+					initFun();
+				}
+			},500);
+		});
+	</script>
+</body>
+</html>

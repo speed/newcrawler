@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>登录 &rsaquo; 鸟巢采集器</title>
+<meta http-equiv="keywords"
+	content="New Crawler is a web crawler that browses the World Wide Web in a methodical, automated manner or in an orderly fashion." />
+<meta http-equiv="description"
+	content="New Crawler is a web crawler that browses the World Wide Web in a methodical, automated manner or in an orderly fashion." />
+
+<style type="text/css">
+html,body {
+	position: absolute;
+	height: 100%;
+	min-width: 100%;
+}
+
+html,body,div,ol,ul,li,table,tr,td,form {
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+
+html {
+	font: 81.25% arial, helvetica, sans-serif;
+	background: #fff;
+	color: #333;
+	line-height: 1;
+	direction: ltr;
+}
+
+a {
+	color: #15c;
+	text-decoration: none;
+}
+
+a:active {
+	color: #d14836;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+p {
+	line-height: 17px;
+	margin: 0 0 1em;
+}
+
+ol,ul {
+	list-style: none;
+	line-height: 17px;
+	margin: 0 0 1em;
+}
+
+li {
+	margin: 0 0 .5em;
+}
+
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+img{
+	border:0;
+}
+
+strong {
+	color: #222;
+}
+
+.wrapper {
+	background-image: url(../static/images/grid-masked.png);
+	background-repeat: repeat-x;
+	background-position: 0 40px;
+	text-align: center;
+	position: relative;
+	min-height:100%;height:auto !important;height:100%;
+}
+
+.wrapper+style+iframe {
+	display: none;
+}
+
+.content {
+	padding: 0 44px;
+}
+
+.nc-header-bar {
+	background: #222;
+	background: -moz-linear-gradient(#252525, #0A0A0A);
+	background: -o-linear-gradient(#252525, #0A0A0A);
+	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#252525),
+		to(#0A0A0A) );
+	background: -webkit-linear-gradient(#252525, #0A0A0A);
+	-webkit-box-shadow: rgba(0, 0, 0, 0.4) 0px 1px 2px;
+	-moz-box-shadow: rgba(0, 0, 0, 0.4) 0px 1px 2px;
+	box-shadow: rgba(0, 0, 0, 0.4) 0px 1px 2px;
+	clear: both;
+	display: block;
+	margin: 0 auto 6px;
+	width: 100%;
+	height: 45px;
+}
+
+.header .signin,.header .signup {
+	margin: 28px 0 0;
+	float: right;
+	font-weight: bold;
+}
+
+.header .signin-button,.header .signup-button {
+	margin: 22px 0 0;
+	float: right;
+}
+
+.header .signin-button a {
+	font-size: 13px;
+	font-weight: normal;
+}
+
+.header .signup-button a {
+	position: relative;
+	top: -1px;
+	margin: 0 0 0 1em;
+}
+
+.main {
+	margin: 0 auto;
+	text-align:center;
+	width: 365px;
+	padding-top: 120px;
+	padding-bottom: 70px;
+}
+.main form{
+	text-align:left;
+}
+.main h1:first-child {
+	margin: 0 0 .92em;
+}
+
+.nc-footer-bar {
+	position: absolute;
+	bottom: 0;
+	height: 33px;
+	width: 100%;
+	border-top: 1px solid #ebebeb;
+	overflow: hidden;
+	background-color: white;
+}
+
+.footer {
+	padding-top: 7px;
+	font-size: 12px;
+	white-space: nowrap;
+	line-height: 0;
+	background-color: white;
+}
+
+.footer ul {
+	color: #999;
+	float: left;
+	max-width: 80%;
+}
+
+.footer ul li {
+	display: inline;
+	padding: 0 1.5em 0 0;
+}
+
+.footer a {
+	color: #333;
+}
+
+.footer form {
+	text-align: right;
+}
+
+.footer form .lang-chooser {
+	max-width: 20%;
+}
+
+.redtext {
+	color: #dd4b39;
+}
+
+.greytext {
+	color: #555;
+}
+
+.secondary {
+	font-size: 11px;
+	color: #666;
+}
+
+.source {
+	color: #093;
+}
+
+.hidden {
+	display: none;
+}
+
+.errormsg {
+	margin: .5em 0 0;
+	display: block;
+	color: #DD4B39;
+	line-height: 17px;
+}
+
+input[type=password],input[type=text] {
+	display: inline-block;
+	height: 29px;
+	margin: 0;
+	padding: 0 8px;
+	border: 1px solid #d9d9d9;
+	border-top: 1px solid #c0c0c0;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	-webkit-border-radius: 1px;
+	-moz-border-radius: 1px;
+	border-radius: 1px;
+}
+
+input[type=password]:hover,input[type=text]:hover {
+	border: 1px solid #b9b9b9;
+	border-top: 1px solid #a0a0a0;
+	-webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+	-moz-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+	box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+input[type=password]:focus,input[type=text]:focus {
+	outline: none;
+	border: 1px solid #4d90fe;
+	-webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.3);
+	-moz-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.3);
+	box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+input[type=password][disabled=disabled],input[type=text][disabled=disabled]
+	{
+	border: 1px solid #e5e5e5;
+}
+
+input[type=password][disabled=disabled]:hover,input[type=text][disabled=disabled]:hover
+	{
+	-webkit-box-shadow: none;
+	-moz-box-shadow: none;
+	box-shadow: none;
+}
+
+input[type=password][readonly=readonly],input[type=text][readonly=readonly]
+	{
+	border: 1px solid #d9d9d9;
+}
+
+input[type=password][readonly=readonly]:hover,input[type=text][readonly=readonly]:hover,input[type=password][readonly=readonly]:focus,input[type=text][readonly=readonly]:focus
+	{
+	-webkit-box-shadow: none;
+	-moz-box-shadow: none;
+	box-shadow: none;
+}
+
+input[type=checkbox].form-error,input[type=password].form-error,input[type=text].form-error
+	{
+	border: 1px solid #dd4b39;
+}
+
+.g-button {
+	display: inline-block;
+	min-width: 46px;
+	text-align: center;
+	color: #444;
+	font-size: 11px;
+	font-weight: bold;
+	height: 27px;
+	padding: 0 8px;
+	line-height: 27px;
+	cursor: default;
+}
+
+.g-button-button {
+	border: 1px solid #3079ed;
+	color: #fff;
+	text-shadow: 0 1px rgba(0, 0, 0, 0.1);
+	background-color: #4d90fe;
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#4d90fe),
+		to(#4787ed) );
+	background-image: -webkit-linear-gradient(top, #4d90fe, #4787ed);
+	background-image: -moz-linear-gradient(top, #4d90fe, #4787ed);
+	background-image: -ms-linear-gradient(top, #4d90fe, #4787ed);
+	background-image: -o-linear-gradient(top, #4d90fe, #4787ed);
+	background-image: linear-gradient(top, #4d90fe, #4787ed);
+}
+
+.g-button-red {
+	border: 1px solid transparent;
+	color: #fff;
+	text-shadow: 0 1px rgba(0, 0, 0, 0.1);
+	text-transform: uppercase;
+	background-color: #d14836;
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#dd4b39),
+		to(#d14836) );
+	background-image: -webkit-linear-gradient(top, #dd4b39, #d14836);
+	background-image: -moz-linear-gradient(top, #dd4b39, #d14836);
+	background-image: -ms-linear-gradient(top, #dd4b39, #d14836);
+	background-image: -o-linear-gradient(top, #dd4b39, #d14836);
+	background-image: linear-gradient(top, #dd4b39, #d14836);
+}
+
+.sign-in {
+	width: 365px;
+	-webkit-border-radius: 6px;
+	-moz-border-radius: 6px;
+	border-radius: 6px;
+}
+
+.signin-box,.accountchooser-box {
+	margin: 0 0 0;
+	padding: 20px 25px 15px;
+	background: #f1f1f1;
+	border: 1px solid #e5e5e5;
+}
+
+.signin-box h2 {
+	text-align: right;
+	margin: 5px 0 30px 0;
+	font-size: 16px;
+}
+
+.signin-box h2 span {
+	font-size: 12px;
+	color: #B1B0B0;
+}
+
+.signin-box .demo-div{
+	margin: 0 0 1em;
+	color: rgb(211, 211, 211);
+	font-size: 12px;
+}
+.signin-box .username-div{
+	margin: 0 0 1.5em;
+}
+.signin-box .password-div{
+	margin: 0 0 1.5em;
+}
+.signin-box .captcha-DIV{
+	margin: 0 0 1em;
+}
+.signin-box label {
+	display: block;
+}
+
+.signin-box input[type=email],.signin-box input[type=text],.signin-box input[type=password]
+	{
+	width: 100%;
+	height: 32px;
+	font-size: 15px;
+	direction: ltr;
+}
+
+.remember  input[type=checkbox] {
+	margin: 0;
+	vertical-align: bottom;
+}
+
+.signin-box .email-label,.signin-box .passwd-label {
+	font-weight: bold;
+	margin: 0 0 .5em;
+	display: block;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	user-select: none;
+}
+
+.signin-box .reauth {
+	display: inline-block;
+	font-size: 15px;
+	height: 29px;
+	line-height: 29px;
+	margin: 0;
+}
+
+.signin-box label.remember {
+	display: inline-block;
+	vertical-align: top;
+	margin: 9px 0 0;
+	float: right;
+}
+
+.signin-box .remember-label {
+	font-weight: normal;
+	color: #666;
+	line-height: 0;
+	padding: 0 0 0 .4em;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	user-select: none;
+}
+
+.signin-box input[type=button] {
+	margin: 0 1.5em 1.2em 0;
+	height: 32px;
+	font-size: 13px;
+}
+
+.signin-box input[type=button] {
+	margin: 0 1.5em 1.2em 0;
+	height: 32px;
+	font-size: 13px;
+}
+
+.signin-box ul {
+	margin: 0;
+	text-align: right;
+}
+
+.signin-box .training-msg {
+	padding: .5em 8px;
+	background: #f9edbe;
+}
+
+.signin-box .training-msg p {
+	margin: 0 0 .5em;
+}
+
+.loginEmail {
+	background: #FBFBFB url(../static/images/loginEmail.png) no-repeat 285px 9px;
+}
+
+.loginPassword {
+	background: #FBFBFB url(../static/images/loginLock.png) no-repeat 285px 9px;
+}
+
+
+#logo {
+	font: 23px/1 georgia, times new roman, times, serif;
+	color: #999;
+	position: absolute;
+	top: 7px;
+	left: 50px;
+	width:210px;
+	height:35px;
+	background:url(../static/images/newcrawler-logo-ch-210x35.png) no-repeat;
+ 	/*以下为IE6设置PNG透明代码*/
+ 	_background:none;
+ 	_filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src="../static/images/newcrawler-logo-ch-210x35.png");
+}
+</style>
+</head>
+<body>
+	<div class="wrapper">
+		<div class="nc-header-bar">
+			<div class="header">
+				<a href="//www.newcrawler.com/"><div id="logo"></div></a>
+				<span class="signup-button"> </span>
+			</div>
+		</div>
+		<div class="main">
+			<div class="sign-in">
+				<div class="signin-box">
+					<h2>
+						<span>New Crawler™</span>
+					</h2>
+					<form id="loginform" action="" method="post">
+						<div class="demo-div">
+							© 2012 - 2015 New Crawler.
+						</div>
+						<div class="username-div">
+							<input name="username" id="username" class="loginEmail"
+								type="text" placeholder="账号" spellcheck="false" style="width:313px;height:28px;line-height:28px" maxlength="30">
+						</div>
+						<div class="password-div">
+							<input name="password" id="password" class="loginPassword"
+								type="password" placeholder="密码" style="width:313px;height:28px;line-height:28px" maxlength="30"> <span class="errormsg"
+								id="errormsg" style="display: none;"></span>
+						</div>
+						
+						<div id="captcha-DIV" style="display:none;">
+							<input name="uresponse" id="uresponse" class=""
+								type="text" placeholder="验证码" style="width:313px;height:28px;line-height:28px" maxlength="30">
+							<img id="opencaptcha"   alt="验证码图片"/>
+							<a href="javascript:void(0);" style="cursor: pointer;" onclick="reloadOpencaptcha()">看不清？换一张</a>
+						</div>
+						
+						<div  style="height: 45px;"><br/>
+						<div id="loading" style="display:none;background-image: url(../static/images/loadding-blue.gif);width: 32px;height: 32px;float:left;"></div>
+						<input type="button" class="g-button g-button-button"
+							name="signIn" id="signIn" value="登录" onClick="login();" style="float: left;" >
+							
+						<label class="remember" onClick=""> <input type="checkbox"
+							name="PersistentCookie" id="PersistentCookie" value="yes"
+							checked="checked" disabled> <strong class="remember-label">
+								保持登录状态 </strong>
+						</label> <input type="hidden" name="rmShown" value="1">
+						</div>
+					</form>
+					<ul>
+						<li>
+						<a id="link-forgot-passwd" href="javascript:void(0);" onclick="gotoUrl('password.html')"> 忘记密码？ </a>
+						<a id="link-forgot-passwd" href="javascript:void(0);" onclick="gotoUrl('signup.html')"> 创建账户？ </a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="nc-footer-bar">
+			<div class="footer content clearfix">
+				<ul>
+					<li>2012~2015 © New Crawler</li>
+					<li><a href="http://wiki.newcrawler.com/" target="_blank">帮助</a></li>
+				</ul>
+				<form>
+					<select id="lang-chooser" class="lang-chooser" style="" onchange="langChooser(this)">
+						<option value="en" title="en">English</option>
+						<option value="zh-cn" title="zh_CN">中文（简体）</option>
+						<option value="zh-tw" title="zh_TW">中文（繁體）</option>
+					</select>
+				</form>
+			</div>
+		</div>
+		<script type="text/javascript" src="../static/js/jsonrpc-min.js"></script>
+		<script>
+			function gotoUrl(url){
+				var language=getcookie("NC_LANG");
+				var host="www.newcrawler.com";
+				if(language==null || language==""){
+					language="zh-cn";
+				}else{
+					var obj=document.getElementById('lang-chooser');
+					var objLen = obj.options.length;  
+					for(var i=0;i<objLen;i++){     
+					    if(obj.options[i].title==language){
+					    	language=obj.options[i].value;
+					    	break;
+					    }
+					}  
+				}
+				var indexUrl="//"+host+"/"+language+"/"+url;
+				window.location.replace(indexUrl);
+			}
+			function handlerException(errorObject){
+				var msg = errorObject['msg']+"";
+		  		if(msg==null || msg=="" || msg == undefined || msg == "undefined" ){
+		  			msg="系统错误，请刷新重试。";
+			  	}
+		  		msg ="<span style='color:red;'>"+msg+"</span> ";
+		  		message('fade', msg, 2000);
+		  		
+		  		document.getElementById('loading').style.display="none";
+				document.getElementById('signIn').style.display="block";
+				throw new JSONRpcClient.Exception (errorObject);
+			}
+		
+			var jsonrpc;
+			window.onload = function() {
+				jsonrpc = new JSONRpcClient("../JSON-RPC/GUEST");
+				
+				document.getElementById('lang-chooser').value="zh-cn";
+				langChecker();
+				
+				var reCaptchaCookie=getcookie("NC_RECAPTCHA");
+				if(reCaptchaCookie!=null && reCaptchaCookie=="true"){
+					jsonrpc.loginService.getOpencaptcha(function(result,exception,profile){
+						var data=eval("("+result+")");
+						if (data["code"]=="1") {
+							document.getElementById("captcha-DIV").style.display="block";
+							document.getElementById("opencaptcha").src="//global.newcrawler.com/captcha/gen/"+data["image"];
+							
+							return;
+						}
+					});
+				}
+				document.onkeydown=function(event){
+					e = event ? event :(window.event ? window.event : null);
+					if(e.keyCode==13){
+						login();
+					}
+				}
+
+				var _hmt = _hmt || [];
+				(function() {
+				  var hm = document.createElement("script");
+				  hm.src = "//hm.baidu.com/hm.js?e1ceaa53d6a8ad5f49c70e7196d99281";
+				  var s = document.getElementsByTagName("script")[0]; 
+				  s.parentNode.insertBefore(hm, s);
+				})();
+			}
+			function reloadOpencaptcha(){
+				jsonrpc.loginService.getOpencaptcha(function(result,exception,profile){
+					var data=eval("("+result+")");
+					if (data["code"]=="1") {
+						document.getElementById("opencaptcha").src="//global.newcrawler.com/captcha/gen/"+data["image"];
+						return;
+					}
+				});
+			}
+			
+			function getcookie(name){
+				var arr = document.cookie.match(new RegExp("(^| )"+name+"=([^;]*)(;|$)"));
+			    if(arr != null) 
+			        return unescape(arr[2]); 
+			    return null;
+			}
+			function langChecker(){
+				var obj=document.getElementById('lang-chooser');
+				var language=obj.options[obj.selectedIndex].title;
+				var languageCookie=getcookie("NC_LANG");
+				
+				if(languageCookie!=null && languageCookie!="" && language!=languageCookie){
+					jsonrpc.languageService.choose(language);
+				}
+			}
+			function langChooser(obj){
+				var lang=obj.options[obj.selectedIndex].value;
+				if(lang==null || lang==""){
+					return;
+				}
+				var language=obj.options[obj.selectedIndex].title;
+				jsonrpc.languageService.choose(language);
+				var loginUrl="../"+lang+"/login.html";
+				window.location.replace(loginUrl);
+			}
+			
+			function login() {
+				var username = document.getElementById('username').value;
+				var password = document.getElementById('password').value;
+				
+				if(username==null || username==""){
+					document.getElementById('username').focus();
+					return;
+				}
+				if(password==null || password==""){
+					document.getElementById('password').focus();
+					return;
+				}
+				var challenge=null;
+				var uresponse=null;
+				if(document.getElementById("captcha-DIV").style.display=="block"){
+					uresponse=document.getElementById("uresponse").value;
+					
+					if(uresponse==null || uresponse==""){
+						document.getElementById('uresponse').focus();
+						return;
+					}
+				}
+				
+				document.getElementById('loading').style.display="block";
+				document.getElementById('signIn').style.display="none";
+				var obj=document.getElementById('lang-chooser');
+				var language=obj.options[obj.selectedIndex].title;
+				jsonrpc.loginService.login(function(result,exception,profile){
+					var data=eval("("+result+")");
+					if (data["code"]=="1") {
+						var location=data["location"];
+						var indexUrl="../"+data["language"]+"/member/index.html";
+						var host=document.location.host
+						if(host.indexOf("newcrawler.com")!=-1 && location!=null && location!=""){
+							host=location+".newcrawler.com";
+							indexUrl="//"+host+"/"+data["language"]+"/member/index.html";
+						}
+						window.location.replace(indexUrl);
+						return;
+					}
+					
+					if (data["code"]=="5") {
+						document.getElementById('loading').style.display="none";
+						document.getElementById('signIn').style.display="block";
+						
+						document.getElementById("captcha-DIV").style.display="block";
+						document.getElementById("opencaptcha").src="//global.newcrawler.com/captcha/gen/"+data["image"];
+						return;
+					}
+					if (data["code"]=="3" || data["code"]=="4") {
+						document.getElementById("opencaptcha").src="//global.newcrawler.com/captcha/gen/"+data["image"];
+					}
+					message("fade", data["message"], 2000);
+					document.getElementById('loading').style.display="none";
+					document.getElementById('signIn').style.display="block";
+				}, username, password, challenge, uresponse);
+			}
+			
+			function message(action, message, time) {
+				var msgBox = document.getElementById('errormsg');
+				if (action == 'show') {
+					msgBox.innerHTML = message;
+					msgBox.style.display = 'block';
+				} else if (action == 'fade') {
+					msgBox.innerHTML = message;
+					msgBox.style.display = 'block';
+					setTimeout("message('hide')", time);
+				} else if (action == 'hide') {
+					msgBox.innerHTML = '';
+					msgBox.style.display = 'none';
+				}
+			}
+		</script>
+	</div>
+
+</body>
+</html>

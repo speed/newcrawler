@@ -1,0 +1,104 @@
+
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>JS dependency analysis</title>
+
+</head>
+
+<body>
+	<table id="jsDependMainTable" width="100%" class="table_border">
+	      <tr>
+		  <td colspan="2" width="100%" >
+		  <form id="jsDependForm" name="jsDependForm" >
+			<input id="id" name="id" type="hidden">
+			<table id="jsDependTables" width="100%" height="100%" class="table_border2">
+			  	<tr>
+					<td nowrap align="right" class="label" style="width:150px;">Crawler:</td>
+					<td class="td_border" style="width:250px;">
+						<select id="webCrawlerId" name="webCrawlerId" style="width:100%;" onchange="jsDepend.fn.onChangeWebCrawler(this.value)">
+							<option value=""></option>
+						</select>
+					</td>
+					<td nowrap align="right" class="label" style="width:150px;">Task:</td>
+					<td class="td_border">
+						<select id="siteId" name="siteId" style="width:250px;">
+							<option value=""></option>
+						</select>
+					</td>
+				</tr>	
+				<tr>
+					<td nowrap align="right" class="label" style="width:150px;">Analysis URL:</td>
+					<td class="td_border" colspan="3">
+					<input id="crawlUrl" name="crawlUrl" style="width:100%;" type="text" value=""/>
+					</td>
+				</tr>	
+				<tr>
+			        <td >
+					</td>
+			        <td class="td_border" colspan="3">
+			        	<input type="button" value="Analysis" onclick="jsDepend.fn.analysisJavascript()">
+			        </td>
+				</tr>
+				
+				<tr>
+					<td colspan="5">
+						<div id="crawlDataPreviewDiv" style="display:block;">
+						<table width="100%" align="center" class="table_border2 tableList" style="border:1px solid #CCCCCC;border-collapse:collapse;background-color: #FFFFFF;">
+							<tr>
+								<td width="50%" nowrap bgcolor="whiteSmoke">Data matched the first time</td>
+								<td width="50%" nowrap bgcolor="whiteSmoke" id="crawlTimes">Data matched the N time</td>
+							</tr>
+							<tr>
+								<td><textarea rows="3" id="crawlData1" name="crawlData1" style="word-break:break-all;overflow-y:visible;height:200px;width:100%;padding: 0px;margin: 0px"></textarea></td>
+								<td>
+								<div style="padding-right:5px;">
+								<textarea rows="3" id="crawlDataN"  name="crawlDataN" style="word-break:break-all;overflow-y:visible;height:200px;width:100%;padding: 0px;margin: 0px"></textarea>
+								</div>
+								</td>
+							</tr>
+						</table>
+						</div>
+						<div id="analysisResultDiv" style="display:none;">
+						<table width="100%" align="center" class="table_border2 tableList" style="border:1px solid #CCCCCC;border-collapse:collapse;background-color: #FFFFFF;">
+							<tr>
+								<td width="50%" nowrap bgcolor="whiteSmoke">Include</td>
+								<td width="50%" nowrap bgcolor="whiteSmoke">Exclude</td>
+							</tr>
+							<tr>
+								<td><textarea rows="3" id="analysisResultByInclude" name="analysisResultByInclude" style="word-break:break-all;overflow-y:visible;height:200px;width:100%;padding: 0px;margin: 0px"></textarea></td>
+								<td>
+								<div style="padding-right:5px;">
+								<textarea rows="3" id="analysisResultByExclude"  name="analysisResultByExclude" style="word-break:break-all;overflow-y:visible;height:200px;width:100%;padding: 0px;margin: 0px"></textarea>
+								</div>
+								</td>
+							</tr>
+						</table>
+						</div>
+					</td>
+				</tr>
+				
+				<tr>
+					<td colspan="5">
+						<table id="jsDependListTable" width="100%" align="center" class="table_border2 tableList" style="border:1px solid #CCCCCC;border-collapse:collapse;background-color: #FFFFFF;">
+							<tr>
+								<td width="5%" nowrap bgcolor="whiteSmoke">&nbsp;Index</td>
+								<td width="10%" nowrap bgcolor="whiteSmoke">&nbsp;Status</td>
+								<td width="85%" nowrap bgcolor="whiteSmoke">&nbsp;Depend</td>
+							</tr>
+						</table>
+						
+					</td>
+				</tr>
+			</table>
+			</form>
+		   </td>
+		  </tr>
+	</table>
+	<script type="text/javascript">
+	$(document).ready(function() {
+		jsDepend.fn.init();
+	}); 
+	</script>
+</body>
+</html>

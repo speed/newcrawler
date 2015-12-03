@@ -1,0 +1,707 @@
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>数据采集规则</title>
+
+  </head>
+
+  <body>
+	
+    <table id="crawlRulesTable" width="100%" class="table_border">
+	   <tr>
+        <td width="60%" valign="top" >
+		<form id="crawlRulesForm" name="crawlRulesForm" method="post">
+		<input name="id" type="hidden" id="id" >
+		<input name="labelType" type="hidden" id="labelType" value="1" />
+		
+		<table width="100%" class="table_border2">
+
+		
+	  <tr>
+        <td nowrap align="right" ><a class="tooltip" title="采集规则的名称，在创建发布规则时需要通过此名称来匹配发布的数据。" href="javascript:void(0);">标签名：</a></td>
+        <td colspan="4" class="td_border">
+        <div class="inputOver">
+        <input name="name" type="text" id="name" value="" style="width:100%;" /> 
+        </div>
+               </td>
+      </tr>
+      
+	  <tr>
+        <td nowrap align="right" class="label">选项：</td>
+        <td colspan="4"  class="td_border">
+        <div id="optionsDiv" style="float:left;width:100%;height:100%;border-bottom:1px dashed #ccc;">
+        <ul>
+        <li>
+        <input name="isHtmlPreprocess" type="checkbox" id="isHtmlPreprocess" value="true" onclick="crawlRules.fn.changeHtmlPreprocess(this.checked, true)">
+        <a class="tooltip" style="font-weight:normal;" title="预处理HTML可以减少源码匹配范围，减少匹配耗时。" href="javascript:void(0);">HTML预处理</a>
+        </li>
+        <li>
+        <input name="isOffset" type="checkbox" id="isOffset" value="true" onclick="crawlRules.fn.changeOffset(this.checked, true)">
+        <a class="tooltip" style="font-weight:normal;" title="只是用来偏移当前位置，不返回采集数据。" href="javascript:void(0);">采集偏移</a>
+        </li>
+        <li>
+        <input name="isStartPosition" type="checkbox" id="isStartPosition" value="true" >
+        <a class="tooltip" style="font-weight:normal;" title="勾选表示从文本的起始位置开始匹配，且不会记录规则匹配后的位置信息，不勾选表示从上一次匹配的结束位置开始。"  href="javascript:void(0);">起始位置</a> 
+	    </li>	
+        <li>
+        <input name="isPublic" type="checkbox" id="isPublic" value="true" >
+        <a class="tooltip" style="font-weight:normal;" title="公共标签只被采集一次，作为公共数据，附加到每条记录的开始处" href="javascript:void(0);">公共标签</a>
+        </li>
+        <li>
+        <input name="isTemp" type="checkbox" id="isTemp" value="true" >
+        <a class="tooltip" style="font-weight:normal;" title="临时标签不会返回采集数据。通常用来为'标签取值'服务。"  href="javascript:void(0);">临时标签</a>
+        </li>
+        
+        <li>
+        <input name="isDataOrigin" type="checkbox" id="isDataOrigin" value="true" onclick="crawlRules.fn.changeOption(this)" >
+		<a class="tooltip" style="font-weight:normal;" title="从指定的数据来源采集目标数据，不选择将从网址正文采集目标数据。"  href="javascript:void(0);">数据来源</a>
+		</li>
+		
+        <li>
+        <input name="isCantNull" type="checkbox" id="isCantNull" value="true" >
+        <a class="tooltip" style="font-weight:normal;" title="当此规则的采集结果为空时，就废弃当前采集到的这条记录。"  href="javascript:void(0);">不能为空</a>
+        </li>
+        </ul>
+        </div>
+        <table id="optionTable" style="width:100%;">
+        	
+        	<tr id="isDataOrigin_option" style="display:none;width:100%;">
+	        	<td nowrap="nowrap"  width="100"  align="right" >
+	        	<a class="tooltip" style="font-weight:normal;" title="从指定的数据来源采集目标数据。"  href="javascript:void(0);">选择来源</a>
+	        	</td>
+	        	<td  style="width:100%;"   align="left" colspan="3" nowrap>
+	        	<select id="dataOrigin" name="dataOrigin" onchange="crawlRules.fn.changeDataOrigin(this.value)">
+	        		<option value="#DATAORIGIN_URL">采集网址</option>
+	        		<option value="#DATAORIGIN_COOKIE">Cookie</option>
+	        		<option value="#DATAORIGIN_HEADER">Header</option>
+	        		<option value="#DATAORIGIN_LABEL">其它标签</option>
+	        	</select>
+	        	<a class="tooltip" style="font-weight:normal;" title="是否循环匹配，直到没有匹配为止，循环匹配到的数据默认用换行符分隔。"  href="javascript:void(0);">循环匹配 ：</a> <input name="isLoop" type="checkbox" id="isLoop" value="true" >
+	        	<a class="tooltip" style="font-weight:normal;" title="循环匹配到的数据默认使用换行符分隔，也可以自定义分隔符如','。"  href="javascript:void(0);">分隔符 ：</a> <input style="width:50px;" id="loopSplit" type="text" name="loopSplit" value="" /> 
+	        	
+	        	</td>
+        	</tr>
+        	<tr id="valueFromLabelOption" style="display:none;width:100%;">
+	        	<td nowrap="nowrap"  width="100"  align="right" >
+	        	<a class="tooltip label" style="font-weight:normal;display:none;" title="读取指定标签的值。"  href="javascript:void(0);">标签名：</a>
+	        	<a class="tooltip header" style="font-weight:normal;display:none;" title="获取指定属性的Header值，如属性名称:Status Code、User-Agent、Host、Cookie等 。"  href="javascript:void(0);">属性名：</a>
+	        	</td>
+	        	<td  style="width:100%;"   align="left" colspan="3" nowrap>
+	        	<div class="inputOver">
+	        	<input style="width:270px;" id="valueFromLabel" type="text" name="valueFromLabel" value="" /> 
+	        	</div>
+	        	</td>
+        	</tr>
+        	
+        </table>
+        </td>
+      </tr>
+      <tr>
+      <td nowrap align="right" class="label" valign="middle">匹配规则：</td>
+      <td colspan="4" class="td_border">
+      	<table style="width:100%;"><tr>
+      	<td style="padding-bottom: 5px;" width="100%" >
+      	<input name="searchMode" type="radio" id="searchMode" value="string"  onclick="crawlRules.fn.changeSearchMode()" checked="checked">
+        <a class="tooltip" style="font-weight:normal;" title="不支持正则，默认懒惰匹配，如：当存在两个相同的结束字符串时，系统只会匹配最近的一个。" href="javascript:void(0);">开始结束字符串</a>
+        <input name="searchMode" type="radio" id="searchMode" value="regex"  onclick="crawlRules.fn.changeSearchMode()">
+        <a class="tooltip" style="font-weight:normal;" title="1.当正则表达式有括号时，返回正则中第一个分组的内容，否则返回所有匹配的内容<br/>2.当匹配的是HTML标签时系统自动嵌套匹配<br/>3.正则表达式元字符 ^ $ ( ) * + ? . [ \ { | 加 \ 转义将作为字符串匹配<br/>4.聚焦输入框，按Ctrl+F自动转义正则元字符<br/>5.不区分大小写匹配，可以通过内嵌标志表达式'(?i)'来启用，从内嵌位置开始不区分大小写<br/>6.不捕获到组，可以通过内嵌标志表达式'(?:)'来启用，如：'(?:src|data-lazyload)'" href="javascript:void(0);">正则表达式</a>
+        
+        
+        <input name="searchMode" type="radio" id="searchMode" value="xpath"  onclick="crawlRules.fn.changeSearchMode()">
+        <a class="tooltip" style="font-weight:normal;" href="javascript:void(0);" title="XPath匹配匹配，考虑速度请优先使用正则匹配。<br/>XPath格式： //*[@id=&quot;comment-123&quot;]/div[1]/div[1]/div[2]/p[1]">XPath</a>
+        
+        <input name="searchMode" type="radio" id="searchMode" value="csspath"  onclick="crawlRules.fn.changeSearchMode()">
+        <a class="tooltip" style="font-weight:normal;" href="javascript:void(0);" title="CSSPath匹配，考虑速度请优先使用正则匹配。注意循环匹配的站点中使用CSSPath不会循环匹配。<br/>CSSPath格式 ：#comment-123 div div div p">CSSPath</a>
+        
+        <input name="searchMode" type="radio" id="searchMode" value="label"  onclick="crawlRules.fn.changeSearchMode()">
+        <a class="tooltip" style="font-weight:normal;" title="标签组合，格式：‘${标签名}其它字符${标签名}’ <br/> 使用${SYSTEM-TIME} 可以获取系统时间戳， 格式：1400595057890" href="javascript:void(0);">标签组合</a>
+        
+      	</td>
+      	</tr></table>
+      	<div  id="stringLabel" style="display:block;">
+      		<div style="height:20px;color: rgb(102, 102, 102);">开始字符串(不支持正则)：</div>
+      		<div style="padding-right:8px;"><textarea name="startString"  rows="4" id="startString" style="width:100%" ></textarea></div>
+      		<div style="height:20px;color: rgb(102, 102, 102);">结束字符串(不支持正则)：</div>
+      		<div style="padding-right:8px;"><textarea name="endString"  rows="4" id="endString" style="width:100%" ></textarea></div>
+      	</div>
+      	<div  id="regexLabel" style="display:none;">
+      		<div style="padding-right:8px;"><textarea name="searchRegex"  rows="4" id="searchRegex" style="width:100%" class="regex"></textarea></div>
+      	</div>
+      	<div  id="selectLabel" style="display:none;">
+      		<div style="padding-left: 3px;">
+      			<div style="padding:3px;float: right;" id="xpath_tools"></div>
+      			<div style="padding-top: 12px;height: 22px;">
+      				<input name="selectType" type="radio" id="selectType" value="outerHTML" >outerHTML
+      				<input name="selectType" type="radio" id="selectType" value="innerHTML"  checked="checked">innerHTML
+      				<input name="selectType" type="radio" id="selectType" value="innerTEXT">innerTEXT
+      				<input name="selectType" type="radio" id="selectType" value="@ATTR">@Attribute
+      			</div>
+      		</div>
+      		<div style="padding-right:8px;"><textarea name="selectExpress" rows="4" id="selectExpress" style="width:100%"  onkeypress="if(event.keyCode==13) return false;"></textarea></div>
+      	</div>
+      	
+      	<div  id="labelLabel" style="display:none;">
+      		<div style="padding-right:8px;"><textarea name="labelCombination" rows="4" id="labelCombination" style="width:100%" ></textarea></div>
+      	</div>
+      </td>
+      </tr>
+      
+	  <tr class="mergeRules" style="display:none;">
+        <td nowrap align="right" ><a class="tooltip" title="只有为站点选择了循环匹配与合并记录时，这个规则才会生效。 <br/>格式：<br/>1.C1，表示两条记录的字段在合并时直接取第一条记录的字段 <br/>2.C1分隔符C2 ，表示 &quot;分隔符&quot;将作为两个字段合并时的连接字符串" href="javascript:void(0);">字段合并：</a></td>
+        <td colspan="4" class="td_border" >
+        <div style="padding-right:8px;">
+        <textarea name="mergeRules" rows="3" id="mergeRules"  style="width:100%" ></textarea>
+        </div>
+        </td>
+	  </tr>
+	  
+	  <tr>
+        <td nowrap align="right" ><a class="tooltip" title="按从上到下的顺序进行过滤，通过右侧的移动指针可以调整过滤顺序。" href="javascript:void(0);">内容过滤：</a></td>
+        <td colspan="4" class="td_border">
+        <table width="100%" border="0">
+        	<tr>
+	          <td align="right" width="100%"><a onclick="crawlRules.fn.initTable();" href="javascript:void(0);" title="排序重置">排序重置</a></td>
+	        </tr>
+	    </table>
+        <table width="100%" border="0" id="sort_table">
+        	        <tbody>
+        	<tr class="simplehighlight">
+            <td>
+				<input type="hidden" name="tdIndex" value="0" />
+				<input type="hidden" name="sortIndex" value="0" />
+			</td>
+			<td align="right" nowrap style="width: 114px;"><a class="tooltip" style="font-weight:normal;" title="多站点嵌套采集，以当前标签匹配到的数据做二次匹配，标签内容可以是网址也可以是文本，网址会抓取到文本后再匹配。"  href="javascript:void(0);">嵌套采集：</a></td>
+            <td width="100%">
+           		<div class="filterDiv">
+					<ul class="crawl-rules-lable">
+					<li style="line-height: 25px;"> <input name="isNested" type="checkbox" id="isNested" value="true" onclick="crawlRules.fn.changeOption(this)" ></li>
+					</ul>
+					<ul class="crawl-rules-lable" id="isNested_option" style="display:none;">
+					<li  style="line-height: 20px;">
+						<a class="tooltip" style="font-weight:normal;" title="调用指定站点的规则进行采集，站点规则中的'每次返回记录数'将无效"  href="javascript:void(0);">嵌套站点：</a>
+						<select id="nestedSiteId" name="nestedSiteId" style="width:160px;"></select>
+					</li>
+					<li  style="margin-top: 3px;">
+						<a class="tooltip" style="font-weight:normal;" title="勾选此项系统会将当前标签匹配到的内容当作一个网址，并调用指定站点的规则进行采集，如果网址格式错误时返回空。"  href="javascript:void(0);">是网址</a> 
+				        <input name="isURL" type="checkbox" id="isURL" value="true" >
+					</li>
+					</ul>
+				</div>
+			</td>
+			<td align="right" nowrap><div class="ui-state-default move"><span class="ui-icon ui-icon-arrow-4" title="Move"></span></div></td>
+          </tr>
+          
+          <tr class="simplehighlight">
+            <td>
+				<input type="hidden" name="tdIndex" value="1" />
+				<input type="hidden" name="sortIndex" value="1" />
+			</td>
+			<td align="right" nowrap style="width: 114px;"><a class="tooltip" style="font-weight:normal;" href="javascript:void(0);" title="编码转换如：'\uxxxx','&#xxxxx;'">编码转换：</a></td>
+            <td width="100%">
+           		<div class="filterDiv">
+					<ul class="crawl-rules-lable">
+					<li><input name="isConvertEncoding" type="checkbox" id="isConvertEncoding" value="true" onclick="crawlRules.fn.changeOption(this)"></li>
+					</ul>
+					<ul class="crawl-rules-lable" id="isConvertEncoding_option" style="display:none;">
+					<li>
+					<a class="tooltip" style="font-weight:normal;" title="Unicode编码格式：\uxxxx\uxxxx"  href="javascript:void(0);">UNICODE</a><input name="convertEncode" type="checkbox" id="convertEncode" value="unicode" >
+					</li>
+					<li>
+					<a class="tooltip" style="font-weight:normal;" title="ASCII编码格式： &#xxxxx;"  href="javascript:void(0);">ASCII</a><input name="convertEncode" type="checkbox" id="convertEncode" value="ascii" > 
+					</li>
+					
+					<li>
+					<a class="tooltip" style="font-weight:normal;" title="URLEncoder编码格式：%22%22"  href="javascript:void(0);">URLEncoder</a><input name="convertEncode" type="checkbox" id="convertEncode" value="urlEncoder" > 
+					</li>
+					<li>
+					<a class="tooltip" style="font-weight:normal;" title="URLEncoder编码格式：%22%22"  href="javascript:void(0);">URLDecoder</a><input name="convertEncode" type="checkbox" id="convertEncode" value="urlDecoder" > 
+					</li>
+					</ul>
+				</div>
+			</td>
+			<td align="right" nowrap><div class="ui-state-default move"><span class="ui-icon ui-icon-arrow-4" title="Move"></span></div></td>
+          </tr>
+          
+			<tr class="simplehighlight">
+				<td>
+				<input type="hidden" name="tdIndex" value="2" />
+				<input type="hidden" name="sortIndex" value="2" />
+				</td>
+				<td align="right" nowrap style="width: 114px;"><a class="tooltip" style="font-weight:normal;" title="HTML标签排除不区分大小写，在标签后带上'+'表示排除标签内的文本，不带'+'的表示只排除标签保留标签内的文本。" href="javascript:void(0);">Html排除：</a></td>
+	            <td width="100%">
+			        <div id="excludeHtmlTagsDiv">
+						<ul>
+							<li><input name="excludeHtmlTags" type="checkbox" id="excludeHtmlTags" value="a" >&lt;a&gt;</li>
+							<li><input name="excludeHtmlTags" type="checkbox" id="excludeHtmlTags" value="a+" >&lt;a&gt;+</li>
+							<li><input name="excludeHtmlTags" type="checkbox" id="excludeHtmlTags" value="div" >&lt;div&gt;</li>
+							<li><input name="excludeHtmlTags" type="checkbox" id="excludeHtmlTags" value="div+" >&lt;div&gt;+</li>
+							<li><input name="excludeHtmlTags" type="checkbox" id="excludeHtmlTags" value="span" >&lt;span&gt;</li>
+							<li><input name="excludeHtmlTags" type="checkbox" id="excludeHtmlTags" value="span+" >&lt;span&gt;+</li>
+							<li><input name="excludeHtmlTags" type="checkbox" id="excludeHtmlTags" value="b" >&lt;b&gt;</li>
+							<li><input name="excludeHtmlTags" type="checkbox" id="excludeHtmlTags" value="b+" >&lt;b&gt;+</li>
+							<li><input name="excludeHtmlTags" type="checkbox" id="excludeHtmlTags" value="p" >&lt;p&gt;</li>
+							<li><input name="excludeHtmlTags" type="checkbox" id="excludeHtmlTags" value="p+" >&lt;p&gt;+</li>
+							
+							<li><input name="excludeHtmlTags" type="checkbox" id="excludeHtmlTags" value="script+" >&lt;script&gt;+</li>
+							<li><input name="excludeHtmlTags" type="checkbox" id="excludeHtmlTags" value="br" >&lt;br&gt;</li>
+							<li><input name="excludeHtmlTags" type="checkbox" id="excludeHtmlTags" value="img" >&lt;img&gt;</li>
+							<li><input name="excludeHtmlTags" type="checkbox" id="excludeHtmlTags" value="enter" >Enter</li>
+							<li><input name="excludeHtmlTags" type="checkbox" id="excludeHtmlTags" value="space" >Space</li>
+							<li><input name="excludeHtmlTags" type="checkbox" id="excludeHtmlTags" value="tab" >Tab</li>
+							<li><input name="excludeHtmlTags" type="checkbox" id="excludeHtmlTags" value="nbsp" >&amp;nbsp;</li>
+						</ul>
+						<div class="addLabel">
+							<a id="excludeHtmlTagsAddBox" href="javascript:void(0);" onclick="crawlRules.fn.excludeHtmlTagsAddBox()">+</a>
+						</div>
+					</div>		        	
+		        </td>
+		        <td align="right" nowrap><div class="ui-state-default move"><span class="ui-icon ui-icon-arrow-4" title="Move"></span></div></td>
+			</tr>
+			
+			<tr class="simplehighlight">
+            <td>
+				<input type="hidden" name="tdIndex" value="3" />
+				<input type="hidden" name="sortIndex" value="3" />
+			</td>
+			<td align="right" nowrap style="width: 114px;"><a class="tooltip" style="font-weight:normal;" href="javascript:void(0);" title="通过文本组合可以生成新的文本，格式：'新字符${this}新字符'，要使此规则生效必须包含'${this}'，'${this}'表示当前规则匹配到的数据。">文本组合：</a></td>
+            <td width="100%">
+            <div class="dataFilterDiv">
+            <input name="textComposition" type="text" id="textComposition" style="width:100%;vertical-align: middle;" class="regex">
+            </div>
+            </td>
+            <td align="right" nowrap><div class="ui-state-default move"><span class="ui-icon ui-icon-arrow-4" title="Move"></span></div></td>
+          </tr>
+          
+          <tr class="simplehighlight">
+            <td>
+				<input type="hidden" name="tdIndex" value="4" />
+				<input type="hidden" name="sortIndex" value="4" />
+			</td>
+			<td align="right" nowrap style="width: 114px;"><a class="tooltip" style="font-weight:normal;" href="javascript:void(0);" title="1.如：'(\d*)'返回正则中第一个分组的内容，无法匹配时返回NULL，默认是多次匹配用回车分隔  <br/>2.当正则表达式有括号时，返回正则中第一个分组的内容，否则返回所有匹配的内容<br/>3.支持正则，正则表达式元字符 ^ $ ( ) * + ? . [ \ { | 加 \ 转义将作为字符串匹配<br/>4.聚焦输入框，按Ctrl+F自动转义正则元字符<br/>5.不区分大小写匹配，可以通过内嵌标志表达式'(?i)'来启用，从内嵌位置开始不区分大小写">正则过滤：</a></td>
+			
+            <td width="100%">
+           		<div class="filterDiv">
+           			<div style="height: 22px;width: 85px;float: left;padding: 8px 0 0 5px;">
+           			<a class="tooltip" style="font-weight:normal;display: inline-block;" title="默认是匹配多次并使用换行符'\r\n'分隔，勾选表示只返回第一次匹配到的结果。"  href="javascript:void(0);">匹配一次</a><input name="isSingleMatch" type="checkbox" id="isSingleMatch" value="true">
+           			</div>
+           			<div style="margin: 0 0px 0 90px;padding: 5px 5px 0;">
+           			<input name="regexFilter" type="text" id="regexFilter" style="width:100%;vertical-align: middle;" class="regex">
+           			</div>
+				</div>
+			</td>
+			
+            <td align="right" nowrap><div class="ui-state-default move"><span class="ui-icon ui-icon-arrow-4" title="Move"></span></div></td>
+          </tr>
+          
+          <tr class="simplehighlight">
+            <td>
+				<input type="hidden" name="tdIndex" value="5" />
+				<input type="hidden" name="sortIndex" value="5" />
+			</td>
+			<td align="right" nowrap style="width: 114px;"><a class="tooltip" style="font-weight:normal;" href="javascript:void(0);" title="使用此过滤规则可以提取出json对象的值，但标签匹配到的数据必须是正确的JavaScript。">JavaScript过滤：</a></td>
+            <td width="100%">
+            <div class="dataFilterDiv">
+            <input name="javascriptFilter" type="text" id="javascriptFilter" style="width:100%;vertical-align: middle;" class="regex">
+            </div>
+            </td>
+            <td align="right" nowrap><div class="ui-state-default move"><span class="ui-icon ui-icon-arrow-4" title="Move"></span></div></td>
+          </tr>
+          
+          <tr class="simplehighlight">
+            <td>
+				<input type="hidden" name="tdIndex" value="6" />
+				<input type="hidden" name="sortIndex" value="6" />
+			</td>
+			<td align="right" nowrap style="width: 114px;"><a class="tooltip" style="font-weight:normal;" href="javascript:void(0);" title="如：<br/>1.compareDate(sysDate.add(dd-2),this) 表示采集两天以内的数据 <br/>this 表示当前规则所匹配到的日期类型的值 <br/>sysDate.add(dd-2) 表示当前时间减去2天 <br/>2.数学计算表达式如：'ceil(${this}/${标签名}),###.##' <br/>'${this}' 获取当前标签的值，'${标签名}' 只能获取前面标签的值。<br/>'###.##' 表示对计算结果做格式化。<br/>更多支持的函数与操作符请看:http://www.objecthunter.net/exp4j/apidocs/index.html">方法表达式：</a></td>
+            <td width="100%">
+            <div class="dataFilterDiv">
+            <input name="functionExpression" type="text" id="functionExpression" style="width:100%;vertical-align: middle;">
+            </div>
+            </td>
+            <td align="right" nowrap><div class="ui-state-default move"><span class="ui-icon ui-icon-arrow-4" title="Move"></span></div></td>
+          </tr>
+		  <tr class="simplehighlight">
+            <td>
+				<input type="hidden" name="tdIndex" value="7" />
+				<input type="hidden" name="sortIndex" value="7" />
+			</td>
+			<td align="right" nowrap style="width: 114px;"><a class="tooltip" style="font-weight:normal;" href="javascript:void(0);" title="如：&gt;10 或  &lt;10，规则匹配到的数据必须超过(不超过)10个汉字或字母或其它字符">字符长度：</a></td>
+            <td width="100%">
+            <div class="dataFilterDiv">
+            <input name="textLen" type="text" id="textLen" style="width:100%;vertical-align: middle;">
+            </div>
+            </td>
+            <td align="right" nowrap><div class="ui-state-default move"><span class="ui-icon ui-icon-arrow-4" title="Move"></span></div></td>
+          </tr>
+          <tr class="simplehighlight">
+            <td>
+				<input type="hidden" name="tdIndex" value="8" />
+				<input type="hidden" name="sortIndex" value="8" />
+			</td>
+			<td align="right"  nowrap style="width: 114px;"><a class="tooltip" style="font-weight:normal;" href="javascript:void(0);" title="1.如：'R1C1(.*)'，表示第1条 记录索引为1的字段的值，只能获取前面记录的值<br/>2.支持正则，正则表达式元字符 ^ $ ( ) * + ? . [ \ { | 加 \ 转义将作为字符串匹配<br/>3.聚焦输入框，按Ctrl+F自动转义正则元字符<br/>4.不区分大小写匹配，可以通过内嵌标志表达式'(?i)'来启用，从内嵌位置开始不区分大小写">必须包含：</a></td>
+            <td width="100%" id="sortDiv">
+           		<div id="mustContainTextDiv">
+					<ul class="crawl-rules-lable sortable"><li class="notRemove" style="border: 1px solid #FFFFFF">开启正则<input name="isRegexMustContainText" type="checkbox" id="isRegexMustContainText" value="true" ></li></ul>
+					<div class="addLabel">
+					<a href="javascript:void(0);" id="mustContainTextAddBox" onclick="crawlRules.fn.mustContainTextAddBox()">+</a>
+					</div>
+				</div>
+			</td>
+			<td align="right" nowrap><div class="ui-state-default move"><span class="ui-icon ui-icon-arrow-4" title="Move"></span></div></td>
+          </tr>
+          <tr class="simplehighlight">
+            <td>
+				<input type="hidden" name="tdIndex" value="9" />
+				<input type="hidden" name="sortIndex" value="9" />
+			</td>
+			<td align="right" nowrap style="width: 114px;"><a class="tooltip" style="font-weight:normal;" href="javascript:void(0);" title="1.支持正则，正则表达式元字符 ^ $ ( ) * + ? . [ \ { | 加 \ 转义将作为字符串匹配<br/>2.聚焦输入框，按Ctrl+F自动转义正则元字符<br/>3.不区分大小写匹配，可以通过内嵌标志表达式'(?i)'来启用，从内嵌位置开始不区分大小写">不能包含：</a></td>
+             <td width="100%" id="sortDiv">
+           		<div id="cantContainTextDiv">
+					<ul class="crawl-rules-lable sortable"><li class="notRemove" style="border: 1px solid #FFFFFF">开启正则<input name="isRegexCantContainText" type="checkbox" id="isRegexCantContainText" value="true" ></li></ul>
+					<div class="addLabel">
+					<a href="javascript:void(0);" id="cantContainTextAddBox" onclick="crawlRules.fn.cantContainTextAddBox()">+</a>
+					</div>
+				</div>
+			</td>
+			<td align="right" nowrap><div class="ui-state-default move"><span class="ui-icon ui-icon-arrow-4" title="Move"></span></div></td>
+          </tr>
+		  <tr class="simplehighlight">
+            <td>
+				<input type="hidden" name="tdIndex" value="10" />
+				<input type="hidden" name="sortIndex" value="10" />
+			</td>
+			<td align="right" nowrap style="width: 114px;"><a class="tooltip" style="font-weight:normal;" href="javascript:void(0);" title="1.支持正则，正则表达式元字符 ^ $ ( ) * + ? . [ \ { | 加 \ 转义将作为字符串匹配<br/>2.聚焦输入框，按Ctrl+F自动转义正则元字符<br/>3.当匹配的是HTML标签时系统自动嵌套匹配<br/>4.不区分大小写匹配，可以通过内嵌标志表达式'(?i)'来启用，从内嵌位置开始不区分大小写">文本排除：</a></td>
+            <td width="100%" id="sortDiv">
+           		<div id="excludeTextDiv">
+					<ul class="crawl-rules-lable sortable"><li class="notRemove" style="border: 1px solid #FFFFFF">开启正则<input name="isRegexExcludeText" type="checkbox" id="isRegexExcludeText" value="true" ></li></ul>
+					<div class="addLabel">
+					<a href="javascript:void(0);" id="excludeTextAddBox" onclick="crawlRules.fn.excludeTextAddBox()">+</a>
+					</div>
+				</div>
+			</td>
+			<td align="right" nowrap><div class="ui-state-default move"><span class="ui-icon ui-icon-arrow-4" title="Move"></span></div></td>
+          </tr>
+          
+          <tr class="simplehighlight">
+            <td>
+				<input type="hidden" name="tdIndex" value="11" />
+				<input type="hidden" name="sortIndex" value="11" />
+			</td>
+			<td align="right" nowrap style="width: 114px;"><a class="tooltip" style="font-weight:normal;" href="javascript:void(0);" title="1.旧文本是必须项 <br/> 2.支持正则，正则表达式元字符 ^ $ ( ) * + ? . [ \ { | 加 \ 转义将作为字符串匹配<br/> 3.聚焦输入框，按Ctrl+F自动转义正则元字符<br/>4.当匹配的是HTML标签时系统自动嵌套匹配<br/>5.不区分大小写匹配，可以通过内嵌标志表达式'(?i)'来启用，从内嵌位置开始不区分大小写">文本替换：</a></td>
+            <td width="100%" id="sortDiv">
+           		<div id="replaceTextDiv">
+					<ul class="crawl-rules-lable sortable"><li class="notRemove" style="border: 1px solid #FFFFFF">开启正则<input name="isRegexReplaceText" type="checkbox" id="isRegexReplaceText" value="true" ></li></ul>
+					<div class="addLabel">
+					<a href="javascript:void(0);" id="replaceTextAddBox" onclick="crawlRules.fn.replaceTextAddBox()">+</a>
+					</div>
+				</div>
+			</td>
+			<td align="right" nowrap><div class="ui-state-default move"><span class="ui-icon ui-icon-arrow-4" title="Move"></span></div></td>
+          </tr>
+          
+          <tr class="simplehighlight">
+            <td>
+				<input type="hidden" name="tdIndex" value="12" />
+				<input type="hidden" name="sortIndex" value="12" />
+			</td>
+			<td align="right" nowrap style="width: 114px;"><a class="tooltip" style="font-weight:normal;" href="javascript:void(0);" title="当采集到的数据包含 (src=，herf=)这样的HTML标签时，自动匹配标签内的URL地址转为绝对地址。不包含时将自动验证整个采集到的数据是不是一个合法的URL地址，合法将转为绝对地址。">绝对地址：</a></td>
+            <td width="100%">
+           		<div class="filterDiv">
+           			<div style="height: 25px;width: 30px;float: left;padding: 8px 0 0 5px;">
+           			<input name="isAbsolute" type="checkbox" id="isAbsolute" value="true" onclick="crawlRules.fn.changeOption(this)">
+           			</div>
+           			<div style="margin: 0 0px 0 30px;padding: 5px 5px 0;display:none;" id="isAbsolute_option">
+	           			<div style="height: 25px;width: 240px;float: left;">
+	           			<a class="tooltip" style="font-weight:normal;" title="如： BASE URL：'http：//www.newcrawler.com/' 相对地址： 'static/pic.jpg' <br/> 绝对地址是：'http：//www.newcrawler.com/static/pic.jpg <br/> 留空表示使用当前采集网址作为BASE URL'"  href="javascript:void(0);">BASE URL：</a>
+	           			<input style="width:160px;" id="absoluteUrlBase" type="text" name="absoluteUrlBase" />
+	           			</div>
+	           			<div style="margin: 0 0px 0 245px;">
+	           			<div style="height: 25px;width: 90px;float: left;padding-top: 5px;">
+	           			<a class="tooltip" style="font-weight:normal;display: inline-block;" title="正则匹配取第一个分组的值作为网址进行绝对地址转换，如：(.*)。 <br/> 留空则将整个字符串当作一个网址进行绝对地址转换。"  href="javascript:void(0);">正则匹配网址：</a>
+	           			</div>
+	           			<div style="margin: 0 0px 0 95px;">
+	           			<input style="width:100%;" id="absoluteUrlRegex" type="text" name="absoluteUrlRegex" /> 
+	           			</div>
+	           			</div>
+           			</div>
+				</div>
+			</td>
+			<td align="right" nowrap><div class="ui-state-default move"><span class="ui-icon ui-icon-arrow-4" title="Move"></span></div></td>
+          </tr>
+          
+           <tr class="simplehighlight">
+            <td>
+				<input type="hidden" name="tdIndex" value="13" />
+				<input type="hidden" name="sortIndex" value="13" />
+			</td>
+			<td align="right" nowrap style="width: 114px;"><a class="tooltip" style="font-weight:normal;" href="javascript:void(0);" title="使用默认值作为采集到的数据。">默认值：</a></td>
+            <td width="100%">
+           		<div class="filterDiv">
+           			<div style="height: 25px;width: 30px;float: left;padding: 8px 0 0 5px;">
+           			<input name="isDefaultValue" type="checkbox" id="isDefaultValue" value="true" onclick="crawlRules.fn.changeOption(this)">
+           			</div>
+           			<div style="margin: 0 0px 0 30px;padding: 5px 5px 0;display:none;" id="isDefaultValue_option">
+           				<div style="height: 25px;width: 170px;float: left;">
+	           			<select id="defaultValueSel" name="defaultValueSel" style="width:160px;" onchange="crawlRules.fn.defaultValueSel(this.value)">
+		          			<option value="" selected>自定义</option>
+		          			<option value="${SYSTEM-TIME(yyyy-MM-dd HH:mm:ss)}">当前系统时间</option>
+		          			<option value="${UUID}">唯一标识符</option>
+		       			</select>
+	           			</div>
+	           			<div style="margin: 0 0px 0 175px;">
+	           			<input style="width:100%;" id="defaultValue" type="text" name="defaultValue" value="" /> 
+	           			</div>
+           			</div>
+				</div>
+			</td>
+			<td align="right" nowrap><div class="ui-state-default move"><span class="ui-icon ui-icon-arrow-4" title="Move"></span></div></td>
+          </tr>
+          
+          <tr class="simplehighlight">
+            <td>
+				<input type="hidden" name="tdIndex" value="14" />
+				<input type="hidden" name="sortIndex" value="14" />
+			</td>
+			<td align="right" nowrap style="width: 114px;"><a class="tooltip" style="font-weight:normal;" href="javascript:void(0);" title="数据过滤接口，需要在 '设置' > 'HTTP接口'中定义，系统将规则匹配到的数据赋值给参数'content'并用Post的请求方式发送给自定义过滤接口进行处理。">过滤接口：</a></td>
+            <td width="100%">
+            <div class="dataFilterDiv">
+           			<select id="filterInter" name="filterInter" style="width:160px;">
+           			<option value=""></option>
+        			</select>
+        			<span class="configBox" lang="HttpInterManage.html">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+            </div>
+            </td>
+            <td align="right" nowrap><div class="ui-state-default move"><span class="ui-icon ui-icon-arrow-4" title="Move"></span></div></td>
+          </tr>
+          
+          <tr class="simplehighlight">
+            <td>
+				<input type="hidden" name="tdIndex" value="15" />
+				<input type="hidden" name="sortIndex" value="15" />
+			</td>
+			<td align="right" nowrap style="width: 114px;">
+			<a class="tooltip" style="font-weight:normal;" href="javascript:void(0);" title="数据过滤插件，需要在 '设置' > '插件管理' 中定义，采集器将匹配到的数据传递给自定义过滤插件进行处理">过滤插件：</a>
+			</td>
+            <td width="100%">
+            <div class="dataFilterDiv">
+           			<select id="filterPlugin" name="filterPlugin" style="width:160px;">
+          				<option value=""></option>
+       				</select>
+       				<span class="configBox" lang="PluginManage.html">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+            </div>
+            </td>
+            <td align="right" nowrap><div class="ui-state-default move"><span class="ui-icon ui-icon-arrow-4" title="Move"></span></div></td>
+          </tr>
+          </tbody>  
+        </table>        
+        </td>
+      </tr>
+	  
+      <tr>
+        <td nowrap align="right" ></td>
+        <td colspan="4" class="td_border" >
+        	<input name="isDownload" type="checkbox" id="isDownload" value="true" onclick="crawlRules.fn.changeOption(this)"><a class="tooltip" style="font-weight:normal;" title="文件下载，可以选择插件将文件保存到云存储，FTP等。"  href="javascript:void(0);">文件下载</a>
+        	<table id="isDownload_option" style="display:none;width:100%;">
+        	<tr>
+	        	<td nowrap="nowrap"   style="width: 114px;" align="right">
+	        	<a class="tooltip" style="font-weight:normal;" title="文件保存插件，需要在 '设置' > '插件管理' 中定义"  href="javascript:void(0);">文件保存插件：</a>
+	        	</td>
+	        	<td  style="width:190px;"  align="left" nowrap>
+		        	<select id="fileSavePluginId" name="fileSavePluginId" style="width:160px;">
+		          			<option value=""></option>
+		       		</select>
+		       		<span class="configBox" lang="PluginManage.html">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+		       	</td>
+		       	<td  style="width:100%;"  align="left" colspan="2"  nowrap>	
+		       		<div style="width:100%;padding-bottom: 2px;">
+		       			<div style="width: 115px;float: left;padding: 8px 0 0 5px;">
+		       			<a class="tooltip" style="font-weight:normal;" title="通过正则匹配需要下载文件的网址，返回正则中第一个分组的内容。<br/>常用正则: <br/>  1. ([^\r\n]+)不包含换行符的任意字符，通常用来匹配一整行。<br/>  2. &lt;\s*img[^&lt;]+src=[&quot;'](.*?)[&quot;'][^&lt;]*?&gt; 匹配img标签中的图片文件"  href="javascript:void(0);">匹配文件（正则）：</a>
+	           			</div>
+	           			<div style="margin: 0 0px 0 115px;padding: 5px 5px 0;">
+	           			<input style="width:100%;" id="fileSavePluginRegex" type="text" name="fileSavePluginRegex"/> 
+	           			</div>
+		       		</div>
+		       		<div style="width:100%;">
+		       			<div style="width: 115px;float: left;padding: 8px 0 0 5px;">
+		       			<a class="tooltip" style="font-weight:normal;" title="可以使用${sysDate}获取系统日期，日期格式：yyyyMMdd。可以使用'${标签名}'的格式来读取采集规则匹配到的数据。留空则不指定子目录。"  href="javascript:void(0);">文件存放子目录：</a>
+	        			</div>
+	        			<div style="margin: 0 0px 0 115px;padding: 5px 5px 0;">
+	           			<input style="width:100%;" id="fileSaveSubDir" type="text" name="fileSaveSubDir"/>
+	           			</div> 
+		       		</div>
+	        	</td>
+        	</tr>
+        	</table>
+        </td>
+	  </tr>
+	  
+		</table>
+		 </form>
+		</td>
+		<td width="40%" valign="top">
+		<table width="100%" height="100%" align="center" class="table_border2">
+		 <tr>
+			<td colspan="7" width="100%" style="padding-right:7px;">
+			<textarea rows="14" name="crawlUrl" id="crawlUrl" style="width:100%"></textarea>
+			</td>
+			</tr>
+			<tr>
+			<td colspan="7" class="td_border" >
+			<input type="button" value="导入规则" onClick="crawlRules.fn.importRules();">
+			<input type="button" value="导出规则" onClick="crawlRules.fn.exportRules();">
+			<input type="button" value="查看源码" onClick="crawlRules.fn.viewCode();">  
+			<input type="button" value="XPath可视化配置" onClick="crawlRules.fn.readXPath();">  
+			</td>
+			</tr>
+		<tr>
+		<td colspan="5" width="100%" height="100%">
+	<!-- rules start -->
+	<div>
+	
+	<div class="rules_right">
+	        <div id="rulesVersion" style="padding-top: 32px;">
+			  <ul id="sortable"></ul>
+			  <input type="button" value="添加" onClick="crawlRules.fn.rulesVersionAddBox(null, '');" style="margin: 0;padding: 0px 20px 0px 5px;border-left: 0;background-color: rgb(255, 255, 255);background-image: none;">  
+			</div>
+        </div>
+        
+	<div class="rules_left">
+		<div id="accordion">
+		<h3 style="margin: 0; padding: 0;"><a href="javascript:void(0);">1.采集规则</a></h3>
+		<div width="100%" height="100%">
+		<table id="crawlLabelTabel"  width="100%" height="100%">
+          <tr>
+		    <td>
+		    <div>
+		    <div><input type="checkbox" name="all" id="all" onclick="crawlRules.fn.selectAll(this,'crawlLabelTabel','rules')" />选择所有</div>
+		    
+		    <ul id="sortable" style="max-height: 489px;overflow: scroll;overflow-x: hidden;padding-right: 5px;">
+		    </ul>
+		    </div>
+			</td>
+          </tr>
+          <tr>
+			<td colspan="7" class="td_border">
+			<input type="button" value="添加" onClick="crawlRules.fn.create();">
+			<input type="button" value="删除" onClick="crawlRules.fn.removeAll();">
+			<input type="button" value="更新" onClick="crawlRules.fn.update();">
+			<input type="button" value="采集测试" onClick="crawlRules.fn.testRules();"> 
+			</td>
+			</tr>
+        </table>
+        </div>
+        
+        <h3><a href="javascript:void(0);">2.分页规则</a></h3>
+		<div>
+			<table id="pageLabelTabel"  width="100%" height="100%">
+	          <tr>
+			    <td>
+			    <div><input type="checkbox" name="all" id="all" onclick="crawlRules.fn.selectAll(this,'pageLabelTabel','rules')" />选择所有</div>
+			    <ul id="sortable"  style="max-height: 262px;overflow: scroll;overflow-x: hidden;padding-right: 5px;">
+			    </ul>
+				</td>
+	          </tr>
+	          <tr>
+				<td colspan="7" class="td_border">
+				<input type="button" value="添加" onClick="crawlRules.fn.create();">
+				<input type="button" value="删除" onClick="crawlRules.fn.removeAll();">
+				<input type="button" value="更新" onClick="crawlRules.fn.update();">
+				<input type="button" value="采集测试" onClick="pageRules.fn.nextLink();">
+				</td>
+				</tr>
+	        </table>
+	        
+	        <form id="pageForm" name="pageForm">
+	        <table  width="100%" height="100%">
+	          <tr>
+	            <td class="td_border">
+	            <table style="width:100%;" class="table_border2">
+		            <tr><td  style="padding: 5px 5px 5px 5px">分页设置</td></tr>
+		            <tr><td  style="padding: 5px 5px 5px 5px">
+		             <table style="width:100%;">
+		             	<tr>
+		             	<td nowrap="nowrap" width="95px"><a class="tooltip" title="1.使用  '${标签名}' 的方式来读取标签值 <br/> 格式：http：//${标签名}?pageNo=${标签名}&amp;PARAM1=${标签名} ... <br/> 2.可以使用分页方法'${page(初始页,分页增长步长)}'，需要同分页次数限制一起使用，否则将不会停止分页采集。 <br/> 格式：http：//${标签名}?pageNo=${page(1,1)}&amp;PARAM1=${3} ... <br/> 3.可以使用分页方法'${page(当前页,分页增长步长,分页总数)}' <br/> 格式：http：//${标签名}?pageNo=${page(1,1,8)}&amp;PARAM1=${3} ..." href="javascript:void(0);">下一页表达式：</a></td>
+		             	
+		             	<td class="td_border">
+		             	<div style="padding-right:2px;">
+						<textarea rows="4" id="nextLinkExpress" 
+							name="nextLinkExpress" style="word-break:break-all;overflow-y:visible;height:60px;width:100%;padding: 0px;margin: 0px"></textarea>
+						</div>
+		             	</td>
+		             	</tr>
+		             	<tr>
+		             	<td nowrap="nowrap" width="95px"><a class="tooltip" title="1.当只需要抓取前面几页时可以使用分页次数限制。<br/> 2.可使用  '${标签名}' 的方式来读取标签值。 <br/> 3.可直接使用数字来限制分页次数，0或留空则表示不限制。" href="javascript:void(0);">分页次数限制：</a></td>
+		             	<td class="td_border">
+		             	<div class="inputOver">
+		             	<input name="nextPageMaxTimes" type="text" id="nextPageMaxTimes" value="" style="width:100%;"/>
+		             	</div>
+		             	</td>
+		             	</tr>
+		             	
+		             	<tr>
+		             	<td nowrap="nowrap" width="95px"><a class="tooltip" title="当分页模板与第一页模板不同时，可以设置此参数调用其它站点的规则进行采集。" href="javascript:void(0);">分页匹配规则：</a></td>
+		             	<td class="td_border">
+		             	<select id="nextLinkMatchRules" name="nextLinkMatchRules" style="width:160px;"></select>
+		             	</td>
+		             	</tr>
+		             	
+		             	<tr>
+		             	<td></td>
+		             	<td class="td_border"><input type="button" value="保存" onClick="pageRules.fn.save();"></td>
+		             	</tr>
+		             </table>
+		            </td></tr>
+	            </table>
+	            </td>
+	          </tr>
+	        </table>
+	        </form>
+		</div>
+        </div> </div>
+        
+        </div>
+     <!-- rules end -->   
+		</td>
+		</tr>
+		</table>
+		</td>
+      </tr>
+      <tr>
+      <td colspan="9" >
+      <table width="100%" class="table_border2">
+      	<tr>
+      		<td width="82">采集结果：</td>
+      	</tr>
+      	<tr>
+      		<td style="padding-right:7px;">
+     	 		<textarea  name="crawlResult" id="crawlResult" style="width:100%; height:300px; overflow-x:hidden; overflow-y:auto;" readonly="readonly"></textarea>
+      		</td>
+      	</tr>
+      </table>
+      </td>
+      </tr>
+  </table>
+  
+<script type="text/javascript">
+
+$(document).ready(function(){
+	var initFun= function(){
+		pageRules.v.siteJson=siteJsonData;
+		pageRules.v.webCrawlerId=webCrawlerId;
+		pageRules.v.siteId=siteId;
+		
+		crawlRules.v.siteJson=siteJsonData;
+		crawlRules.fn.init();
+	  };
+	
+	var initLoading=setInterval(function(){
+		if(typeof crawlRules != 'undefined'){
+			clearInterval(initLoading);
+			initFun();
+		}
+	},500);
+	
+});
+</script>
+</body>
+</html>

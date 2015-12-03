@@ -1,0 +1,150 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>xhEditor初始化代码生成向导 for xhEditor v1.1.14</title>
+<script type="text/javascript" src="jquery/jquery-1.4.4.min.js"></script>
+<script type="text/javascript" src="xheditor-1.1.14-zh-cn.min.js"></script>
+<script type="text/javascript">
+$(pageInit);
+function pageInit()
+{
+	$('#editorMode').change(updateAll);
+	$('#update').click(updateAll);
+	$('#varSetup').find('input,select').focus(function(){$(this).select();}).keypress(function(ev){if(ev.which==13)updateAll();});
+	$('#source').focus(function(){$(this).select();});
+	$('#frmSetup').submit(function(){return false;}).bind('reset',function(){setTimeout(updateAll,10);});
+	updateAll();
+}
+function toggleDisplay(id){$('#'+id).toggle(100);}
+function updateAll()
+{
+	var arrVar=[],sVar,sJSInit,sInit,textareaID=$('input[name=id]').val();
+	$('#varSetup fieldset').find('input,select').each(function(){
+		var name=this.name,elem=$(this),value=elem.val();
+		if(name!='id'&&value!=''&&!elem.find('option:selected').text().match(/(default)/i))
+		{
+			if(elem.attr('class')=='text')value="'"+value+"'";
+			arrVar.push(name+':'+value);
+		}
+	});
+	sVar=arrVar.join(',');
+	var editor=$('textarea[name=preview]')[0].editor;
+	if(editor)editor.getSource();
+	$('textarea[name=preview]').attr('id',textareaID).xheditor(false);
+	sJSInit="$('#"+textareaID+"').xheditor("+(sVar?'{'+sVar+'}':'')+');';
+	if($('#editorMode').val()==1)
+	{
+		sInit=' class="xheditor'+(sVar?' {'+sVar+'}':'')+'"';
+		sInit=sInit.replace(/(.+?xheditor)(.+?)tools:'(simple|mini)',?(.+?)/i,'$1-$3$2$4');
+	}
+	else sInit=sJSInit;
+	$('link[id^=xheCSS]').remove();
+	try{eval(sJSInit);}catch(e){}
+	$('#source').val(sInit);
+}
+</script>
+<style type="text/css">
+body{
+	font-size:12px;
+	margin:0;padding:0 20px;
+}
+.top{border:1px solid #ccc;padding:10px;}
+.section{padding:5px 30px;}
+#varSetup fieldset{border:0 none;border-top:2px solid #999999;padding:5px;}
+#varSetup fieldset legend{padding:0 5px;font-size:13px;}
+#varSetup fieldset p{margin:5px;}
+#varSetup fieldset label{display:inline-block;width:120px;}
+#varSetup fieldset input,#varSetup fieldset select{width:300px;border-width:1px;border:1px #ABADB3 solid;padding:2px;}
+#varSetup span{color:#666;}
+#varSetup input[type=button],#varSetup input[type=reset]{border-width:1px;padding:3px 8px;}
+#source{border-width:1px;border:1px #ABADB3 solid;padding:2px;}
+#note{margin:20px 0;border:1px solid #ccc;padding:10px;color:#666;}
+</style>
+</head>
+<body>
+	<h1 class="top">xhEditor初始化代码生成向导 for xhEditor v1.1.14</h1>
+	<h2>1: 选择编辑器初始化模式</h2>
+	<div class="section"><select id="editorMode"><option value="1" selected="selected">Class初始化</option><option value="2">Javascript初始化</option></select></div>
+	<h2>2: 更改初始化参数</h2>
+	<div id="varSetup" class="section">
+		<form id="frmSetup">
+			<fieldset>
+				<legend><a href="javascript:toggleDisplay('group1')">基本参数</a></legend>
+				<div id="group1">
+					<p><label><acronym title="需要初始化的textarea ID">textareaID</acronym></label><input type="text" class="text" value="elem1" name="id"> <span>需要初始化为编辑器的textarea的id值</span></p>
+					<p><label><acronym title="按钮自定义选择，留空默认full按钮组">tools</acronym></label><input type="text" class="text" value="" name="tools"> <span>工具栏组：full,mfull,simple,mini，或者自定义每个按钮，<a href="http://xheditor.com/manual/2#chapter2" target="_blank">点击查看完整按钮表</a></span></p>
+					<p><label><acronym title="皮肤风格选择">skin</acronym></label><select name="skin" class="text"><option value="default" selected="selected">默认 (default)</option><option value="o2007blue">Office 2007 蓝色</option><option value="o2007silver">Office 2007 银色</option><option value="vista">Vista</option><option value="nostyle">NoStyle</option></select> <span>皮肤选择，留空默认default皮肤</span></p>
+					<p><label><acronym title="编辑器宽度，留空默认读取textarea的宽度">width</acronym></label><input type="text" class="text" value="" name="width"> <span>编辑器宽度，留空读取textarea宽度</span></p>
+					<p><label><acronym title="编辑器高度，留空默认读取textarea的高度">height</acronym></label><input type="text" class="text" value="" name="height"> <span>编辑器高度，留空读取textarea高度</span></p>
+					<p><label><acronym title="悬停自动执行延迟的时间">hoverExecDelay</acronym></label><input type="text" value="" name="hoverExecDelay"> <span>悬停自动执行延迟的时间，数值(单位毫秒)，默认为100，设置为-1关闭此功能</span></p>
+					<p><label><acronym title="阴影的深度(按钮面板和模式窗口的背景阴影)">layerShadow</acronym></label><input type="text" value="" name="layerShadow"> <span>按钮面板和模式窗口的背景阴影，参数：0(不显示),大于0(显示阴影并设置阴影深度)</span></p>
+					<p><label><acronym title="点击任意位置取消按钮面板功能">clickCancelDialog</acronym></label><select name="clickCancelDialog"><option value="" selected="selected">开启 (default)</option><option value="false">关闭</option></select> <span>点击任意位置取消按钮面板功能</span></p>
+					<p><label><acronym title="强制P标签">forcePtag</acronym></label><select name="forcePtag"><option value="" selected="selected">强制P标签 (default)</option><option value="false">使用BR标签</option></select> <span>强制P标签</span></p>
+					<p><label><acronym title="禁用编辑区的右键菜单">disableContextmenu</acronym></label><select name="disableContextmenu"><option value="true">禁用</option><option value="false" selected="selected">不禁用 (default)</option></select> <span>禁用编辑区的右键菜单</span></p>
+					<p><label><acronym title="编辑器背景">background</acronym></label><input type="text" class="text" value="" name="background"> <span>设置编辑器背景，格式同CSS同名参数一致。建议直接设置textarea的css背景</span></p>
+					<p><label><acronym title="编辑器JS所在的根路径">editorRoot</acronym></label><input type="text" class="text" value="" name="editorRoot"> <span>编辑器JS文件所在的根路径，用在某些特殊情况下定位编辑器的根路径</span></p>
+					<p><label><acronym title="是否清理粘贴内容">cleanPaste</acronym></label><select name="cleanPaste"><option value="0">不清理</option><option value="1">简单清理Word</option><option value="2" selected="selected">深入清理Word (default)</option><option value="3">强制转文本</option></select> <span>是否清理粘贴HTML代码，清理Word或强制转文本</span></p>
+					<p><label><acronym title="提交按钮的ID">submitID</acronym></label><input type="text" class="text" value="" name="submitID"> <span>非标准submit提交时指定提交按钮的ID值，以触发编辑值同步</span></p>
+				</div>
+			</fieldset>
+			<fieldset>
+				<legend><a href="javascript:toggleDisplay('group2')">初始状态参数</a></legend>
+				<div id="group2" style="display: none;">
+					<p><label><acronym title="初始为源代码模式">sourceMode</acronym></label><select name="sourceMode"><option value="" selected="selected">标准 (default)</option><option value="true">源代码模式</option></select> <span>初始化时直接设置为源代码模式</span></p>
+					<p><label><acronym title="初始为全屏模式">fullscreen</acronym></label><select name="fullscreen"><option value="" selected="selected">标准 (default)</option><option>全屏模式</option></select> <span>初始化时直接设置为全屏状态</span></p>
+				</div>
+			</fieldset>
+			<fieldset>
+				<legend><a href="javascript:toggleDisplay('group3')">HTML代码控制参数</a></legend>
+				<div id="group3" style="display: none;">
+					<p><label><acronym title="是否禁用内部样式 &lt;style&gt;&lt;/style&gt;">internalStyle</acronym></label><select name="internalStyle"><option value="true" selected="selected">允许 (default)</option><option value="false">禁止</option></select> <span>是否禁用内部样式 &lt;style&gt;&lt;/style&gt;</span></p>
+					<p><label><acronym title="是否禁用内联样式 style=&quot;&quot; class=&quot;&quot;">inlineStyle</acronym></label><select name="inlineStyle"><option value="true" selected="selected">允许 (default)</option><option value="false">禁止</option></select> <span>是否禁用内联样式 style=&quot;&quot; class=&quot;&quot;</span></p>
+					<p><label><acronym title="是否禁用内部脚本 &lt;script&gt;&lt;/script&gt;">internalScript</acronym></label><select name="internalScript"><option value="true">允许</option><option value="false" selected="selected">禁止 (default)</option></select> <span>是否禁用内部脚本 &lt;script&gt;&lt;/script&gt;</span></p>
+					<p><label><acronym title="是否禁用内联脚本 onclick=&quot;&quot;">inlineScript</acronym></label><select name="inlineScript"><option value="true">允许</option><option value="false" selected="selected">禁止 (default)</option></select> <span>是否禁用内联脚本 onclick=&quot;&quot;</span></p>
+					<p><label><acronym title="是否禁用link标签 &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;&quot; /&gt;">linkTag</acronym></label><select name="linkTag"><option value="true">允许</option><option value="false" selected="selected">禁止 (default)</option></select> <span>是否禁用link标签 &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;&quot; /&gt;</span></p>
+					<p><label><acronym title="本地URL的根路径">urlBase</acronym></label><input type="text" class="text" value="" name="urlBase"> <span>设置本地URL的根路径，用在前后台相对根路径不同的情况</span></p>
+					<p><label><acronym title="本地URL转换方案">urlType</acronym></label><select name="urlType" class="text"><option value="" selected="selected">不处理 (default)</option><option value="abs">abs (转绝对路径)</option><option value="root">root (转根路径)</option><option value="rel">rel (转相对路径)</option></select> <span>本地URL的转换方案选择</span></p>
+					<p><label><acronym title="是否显示块标记">showBlocktag</acronym></label><select name="showBlocktag"><option value="true">显示</option><option value="" selected="selected">不显示 (default)</option></select> <span>是否显示块标记</span></p>
+					<p><label><acronym title="加载外部CSS">loadCSS</acronym></label><input type="text" class="text" value="" name="loadCSS"> <span>加载外部CSS文件到iframe编辑区域中</span></p>
+				</div>
+			</fieldset>
+			<fieldset>
+				<legend><a href="javascript:toggleDisplay('group4')">上传相关参数</a></legend>
+				<div id="group4" style="display: none;">
+					<p><label><acronym title="上传按钮的文字">upBtnText</acronym></label><input type="text" class="text" value="" name="upBtnText"> <span>上传按钮的文本，可以定义为任意文字，默认：“上传”</span></p>
+					<p><label><acronym title="是否开启HTML5上传支持">html5Upload</acronym></label><select name="html5Upload"><option value="" selected="selected">开启 (default)</option><option value="false">关闭</option></select> <span>是否开启HTML5上传支持，默认：允许，此选项需要浏览器支持HTML5上传功能</span></p>
+					<p><label><acronym title="允许一次上传多少个文件">upMultiple</acronym></label><input type="text" value="" name="upMultiple"> <span>允许一次上传多少文件，默认：99，设置为1关闭，需支持HTML5上传</span></p>
+					<p><label><acronym title="超链接文件上传接收URL">upLinkUrl</acronym></label><input type="text" class="text" value="" name="upLinkUrl"> <span>超链接文件上传接收URL，例：upload.php，可使用内置变量{editorRoot}</span></p>
+					<p><label><acronym title="超链接上传前限制本地文件扩展名">upLinkExt</acronym></label><input type="text" class="text" value="" name="upLinkExt"> <span>超链接上传前限制本地文件扩展名，默认：zip,rar,txt</span></p>
+					<p><label><acronym title="图片文件上传接收URL">upImgUrl</acronym></label><input type="text" class="text" value="" name="upImgUrl"> <span>图片文件上传接收URL，例：upload.php，可使用内置变量{editorRoot}</span></p>
+					<p><label><acronym title="图片上传前限制本地文件扩展名">upImgExt</acronym></label><input type="text" class="text" value="" name="upImgExt"> <span>图片上传前限制本地文件扩展名，默认：jpg,jpeg,gif,png</span></p>
+					<p><label><acronym title="FLASH动画上传接收URL">upFlashUrl</acronym></label><input type="text" class="text" value="" name="upFlashUrl"> <span>FLASH动画文件上传接收URL，例：upload.php，可使用内置变量{editorRoot}</span></p>
+					<p><label><acronym title="FLASH动画上传前限制本地文件扩展名">upFlashExt</acronym></label><input type="text" class="text" value="" name="upFlashExt"> <span>FLASH动画上传前限制本地文件扩展名，默认：swf</span></p>
+					<p><label><acronym title="多媒体文件上传接收URL">upMediaUrl</acronym></label><input type="text" class="text" value="" name="upMediaUrl"> <span>多媒体文件上传接收URL，例：upload.php，可使用内置变量{editorRoot}</span></p>
+					<p><label><acronym title="多媒体上传前限制本地文件扩展名">upMediaExt</acronym></label><input type="text" class="text" value="" name="upMediaExt"> <span>多媒体上传前限制本地文件扩展名，默认：wmv,avi,wma,mp3,mid</span></p>
+				</div>
+			</fieldset>
+			<fieldset>
+				<legend><a href="javascript:toggleDisplay('group5')">其它参数</a></legend>
+				<div id="group5" style="display: none;">
+					<p><label><acronym title="超链接的默认文字">defLinkText</acronym></label><input type="text" class="text" value="" name="defLinkText"> <span>超链接的默认文字，默认值：点击打开链接</span></p>
+					<p><label><acronym title="自定义表情根路径">emotPath</acronym></label><input type="text" class="text" value="" name="emotPath"> <span>自定义表情图片的根路径</span></p>
+					<p><label><acronym title="添加自定义表情">emots</acronym></label><input type="text" value="" name="emots"> <span>自定义表情，可以是一定格式的JSON格式，<a href="http://xheditor.com/manual/2#chapter2" target="_blank">点击查看表情数据定义格式</a></span></p>
+					<p><label><acronym title="是否在表情img标签上标注emot属性">emotMark</acronym></label><select name="emotMark"><option value="" selected="selected">不标注 (default)</option><option value="true">标注</option></select> <span>是否在表情img标签上标注emot属性</span></p>
+					<p><label><acronym title="showModal弹出窗口的默认宽度">modalWidth</acronym></label><input type="text" class="text" value="" name="modalWidth"> <span>showModal弹出窗口的默认宽度，例如：600</span></p>
+					<p><label><acronym title="showModal弹出窗口的默认高度">modalHeight</acronym></label><input type="text" class="text" value="" name="modalHeight"> <span>showModal弹出窗口的默认高度，例如：400</span></p>
+					<p><label><acronym title="showModal弹出窗口是否显示上方的标题栏">modalTitle</acronym></label><select name="modalTitle"><option value="" selected="selected">显示 (default)</option><option value="false">不显示</option></select> <span>showModal弹出窗口是否显示上方的标题栏</span></p>
+					<p><label><acronym title="无障碍读屏提示">readTip</acronym></label><input type="text" class="text" value="" name="readTip"> <span>无障碍读屏软件提示文字，可用来为残疾人士提示快捷键等信息</span></p>
+				</div>
+			</fieldset>
+			<br /><input type="button" id="update" value="更新预览和源代码"> <input type="reset" value="重置所有参数" />
+		</form>
+	</div>
+	<h2>3: 预览编辑器</h2>
+	<div class="section"><textarea id="preview" name="preview" rows="8" cols="120"></textarea></div>
+	<h2>4: 复制源代码</h2>
+	<div class="section"><textarea id="source" name="source" rows="4" cols="80"></textarea></div>
+	<div id="note">备注：本向导不包括plugins、onUpload、onPaste和shortcuts几个参数，请自行添加。更多参数说明和API指南，请访问<a href="http://xheditor.com/manual/2" target="_blank">xhEditor进阶使用</a></div>
+</body>
+</html>

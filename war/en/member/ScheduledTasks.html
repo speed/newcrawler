@@ -1,0 +1,168 @@
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>Scheduled task management</title>
+</head>
+  <body>
+  <form  id="scheduleForm" name="scheduleForm" method="post">
+    <table width="100%" class="table_border">
+      <tr>
+	  <td valign="top" style="width:450px">
+	  
+	  <input type="hidden" id="id" name="id">
+	  <table width="100%" height="100%" class="table_border2">
+	  <tr>
+	  	 <td nowrap class="label" width="120" style="text-align: right;">Task Status:</td>
+	  	 <td class="td_border">
+	  	 	<input id="status" type="radio" name="status" value="run" checked="checked"/>Run
+        	<input id="status" type="radio" name="status" value="stop" />Stop
+	  	 </td>
+	  </tr>
+	  <tr>
+        <td nowrap class="label" width="120" style="text-align: right;">Task Name:</td>
+        <td class="td_border">
+        	<select name="taskName" size="13" multiple id="taskName" style="width:100%;height: 150px;" >
+        		<option value="CRAWL">Data Crawling</option>
+        		<option value="DEPOLY">Data Publish</option>
+        		<option value="REMOVE_DATA">Data Clear</option>
+        		<option value="UPDATE_URL">URL Forbidding</option>
+            </select>
+        </td>
+      </tr>
+      <tr>
+        <td nowrap class="label" width="120" style="text-align: right;"><a class="tooltip" title="Format: <br/> 1.every N (hours|mins|minutes) [from HH:mm to HH:mm] <br/>    e.g.: every 2 hours from 12:00 to 18:00 <br/> 2.every Sunday,Monday,Tuesday,Wednesday,Thursday,Friday,Saturday HH:mm <br/>    e.g.: every Sunday,Monday 18:00 <br/> 3.every (Day|Sunday|Monday|Tuesday|Wednesday|Thursday|Friday|Saturday) HH:mm <br/>    e.g.: every Day 18:00 <br/> ">Execution Time</a></td>
+        <td class="td_border" >
+        <div class="inputOver">
+        	<select name="runMode" id="runMode">
+        		<option value="1">Repeat</option>
+        		<option value="2">Timing</option>
+            </select>
+            
+          <input name="scheduleTime"  type="text" id="scheduleTime"  style="width:208px; vertical-align: middle;" value="every 2 minutes"/>
+          </div>
+		 </td>
+      </tr>
+      <tr>
+        <td ></td>
+        <td class="td_border">
+        <input type="button" value="Create" onClick="scheduledTask.fn.create();">
+		<input type="button" value="Remove" onClick="scheduledTask.fn.remove();">
+		<input type="button" value="Update" onClick="scheduledTask.fn.update();">
+		<input type="button" value="Execute" onClick="scheduledTask.fn.execute();">
+        </td>
+      </tr>
+      
+	  </table>
+	   
+	  </td>
+	  <td valign="top">
+	  <div id="Searchresult">
+	  	
+	  </div>
+	  </td>
+	  </tr>
+	  
+	  <!-- 进度 -->
+	  <tr>
+        <td colspan="2" class="label"><span class="STYLE4">Crawl Logs</span></td>        
+      </tr>
+      <tr>
+	  <td colspan="2" width="100%"  id="scheduledTaskLogTable"> 
+			
+	  <div style="padding:0px 2px 2px 2px;">
+	  	<table id="scheduledTaskLogList" width="100%" align="center" class="table_border2 tableList" style="table-layout:fixed; border:1px solid #CCCCCC;border-collapse:collapse;background-color: #FFFFFF;">
+			<tr>
+				<td width="15" nowrap bgcolor="whiteSmoke"></td>
+				<td width="150" nowrap bgcolor="whiteSmoke">Crawling Task</td>
+				<td width="100" nowrap bgcolor="whiteSmoke">Task Name</td>
+				<td width="65" nowrap bgcolor="whiteSmoke">Rate</td>
+				<td width="120" nowrap bgcolor="whiteSmoke">Create Time</td>
+				<td width="120" nowrap bgcolor="whiteSmoke">Finishing Time</td>
+				<td width="120" nowrap bgcolor="whiteSmoke">Cost Time</td>
+				<td width="65" nowrap bgcolor="whiteSmoke">Pre-Crawl QTY</td>
+				<td width="65" nowrap bgcolor="whiteSmoke">Crawled QTY</td>
+				<td width="65" nowrap bgcolor="whiteSmoke">Crawling</td>
+				<td width="65" nowrap bgcolor="whiteSmoke">URL Exception QTY</td>
+				<td width="65" nowrap bgcolor="whiteSmoke">Rules Error QTY</td>
+				<td width="65" nowrap bgcolor="whiteSmoke">New Data Total</td>
+				<td width="65" nowrap bgcolor="whiteSmoke">Published QTY</td>
+				<td width="80" nowrap bgcolor="whiteSmoke">Status</td>
+				<td width="150" nowrap bgcolor="whiteSmoke">Process</td>
+				
+				<td width="80" nowrap bgcolor="whiteSmoke">Action</td>
+			</tr>
+		</table>
+		
+		<div id="line" style="height:5px;"></div>
+		<div id="hiddenresult" style="display:none;">
+        
+        </div>
+		<div id="Pagination"></div>
+	  	</div>
+	  
+	  	<div>
+	  	The total number (<label id="URL_COUNT" style="color:red;">0</label>)  <label style="color: rgb(34, 102, 187);cursor: pointer;" class="re_statistic">Recount</label>
+	  	</div>
+
+	   </td>
+	  </tr>
+  </table>
+  </form>
+  <script type="text/javascript">
+  $(document).ready(function() { 
+	  var initFun= function(){
+		  scheduledTask.v.webCrawlerId=webCrawlerId;
+			scheduledTask.v.siteId=siteId;
+			scheduledTask.v.jsonData=null;
+			scheduledTask.fn.query();
+			
+			var option={
+					tableId:"scheduledTaskLogTable",
+					listTableId:"scheduledTaskLogList",
+					PER_PAGE_ITEMS:10,
+					ITEMS_COUNT:0,
+					cur_page:0,
+					webCrawlerId:webCrawlerId,
+					siteId:siteId
+			}
+			var scheduledTaskLog=new crawlDataLog(option);
+			scheduledTaskLog.init();
+			
+			$('#scheduleForm .re_statistic').click(function(){
+				scheduledTaskLog.statistic();
+		  	});
+			
+			scheduledTask.v.scheduledTaskLog=scheduledTaskLog;
+			$('.tooltip').poshytip();
+			
+			
+			$("#"+scheduledTask.v.formId).find('#runMode').change(function(){
+				var runMode=$(this).val();
+				if("2"==runMode){
+					var scheduleTimeObj=$("#"+scheduledTask.v.formId).find('#scheduleTime');
+					if( !scheduleTimeObj.data('xdsoft_datetimepicker') ){
+						scheduleTimeObj.datetimepicker({
+							format:'Y-m-d H:i',
+							lang:'en'
+						});
+					}
+				}else{
+					//重复
+					var scheduleTimeObj=$("#"+scheduledTask.v.formId).find('#scheduleTime');
+					if( scheduleTimeObj.data('xdsoft_datetimepicker') ){
+						scheduleTimeObj.datetimepicker('destroy');
+					}
+				}
+			});
+		};
+	  
+		var initLoading=setInterval(function(){
+			if(typeof scheduledTask != 'undefined'){
+				clearInterval(initLoading);
+				initFun();
+			}
+		},500);
+	});
+  </script>
+  </body>
+</html>

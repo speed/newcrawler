@@ -1,0 +1,302 @@
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>More setting</title>
+</head>
+  <body>
+    <table id="webCrawlerConfig" width="100%" class="table_border">
+      <tr class="queueConfig" style="display:none;">
+        <td colspan="2" class="label" height="30px" valign="bottom"><span class="STYLE4">Queue Config</span></td>        
+      </tr>
+      <tr  class="queueConfig" style="display:none;">
+	  <td colspan="2" width="100%" valign="top">
+	  <form  id="queueForm" name="queueForm" method="post">
+	  <input type="hidden" id="id" name="id">
+	  <table width="100%" height="100%" class="table_border2">
+	  <tr>
+        <td width="120" align="right" nowrap class="label">Name:</td>
+        <td class="td_border">
+        <div class="inputOver" >
+        <input type="text" id="name" name="name" style="width:100%" />
+        </div>
+        </td>
+      </tr>
+       <tr>
+        <td width="120" align="right" nowrap class="label">Rate:</td>
+        <td class="td_border">
+        <div class="inputOver" style="padding-left: 8px;">
+	        <div style="float:left;width:200px;padding-top:5px;"><div id="rateSlider" ></div></div>
+			<div style="float:left;width:40px;margin-left: 10px;"><input id="rate" type="text" name="rate" value="" style="border: 0; color: #f6931f; font-weight: bold;" readonly="readonly"/></div>
+	        <select name="rateUnit" id="rateUnit" style="width: 80px;">
+				<option value="s">/s(second)</option>
+				<option value="m">/m(minute)</option>
+				<option value="h">/h(hour)</option>
+			</select>
+        </div>
+        </td>
+      </tr>
+      <tr>
+        <td width="120" align="right" nowrap class="label">Max Concurrent:</td>
+        <td class="td_border">
+         	<div class="inputOver" style="padding-left: 8px;">
+        	<div style="float:left;width:200px;padding-top:5px;"><div id="maxConcurrentSlider" ></div></div>
+			<div style="float:left;width:40px;margin-left: 10px;"><input id="maxConcurrent" type="text" name="maxConcurrent" value="" style="border: 0; color: #f6931f; font-weight: bold;" readonly="readonly"/></div>
+			</div>
+        </td>
+      </tr>
+
+      <tr>
+        <td ></td>
+        <td class="td_border">
+        <input type="button" value="Create" onClick="queueManage.fn.create();">
+        <input type="button" value="Remove" onClick="queueManage.fn.remove();">
+        <input type="button" value="Update" onClick="queueManage.fn.update();">
+		</td>
+      </tr>
+      
+      <tr>
+			<td colspan="5">
+				<table id="queueTable" width="100%" align="center" class="table_border2 tableList" style="border:1px solid #CCCCCC;border-collapse:collapse;background-color: #FFFFFF;">
+					<tr>
+						<td width="5%" nowrap bgcolor="whiteSmoke">&nbsp;Select</td>
+						<td width="10%" nowrap bgcolor="whiteSmoke">名称</td>
+						<td width="50%" nowrap bgcolor="whiteSmoke">速率</td>
+						<td width="10%" nowrap bgcolor="whiteSmoke">最大并发</td>
+						<td width="10%" nowrap bgcolor="whiteSmoke">建立时间</td>
+						<td width="10%" nowrap bgcolor="whiteSmoke">更新时间</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+      
+	  </table>
+	   </form>	  
+	   </td>
+      </tr>
+    
+    
+      <tr>
+        <td colspan="2" class="label"><span class="STYLE4">Other</span></td>        
+      </tr>
+      <tr>
+	  <td colspan="2" width="100%" >
+	  <form id="systemConfigForm" name="systemConfigForm" >
+		<input id="id" name="id" type="hidden">
+		<table width="100%" height="100%" class="table_border2">
+			<tr>
+				<td width="120" align="right" class="label"><a class="tooltip" href="javascript:void(0);" title="Crawling Rate, default R3.">Crawling Rate：</a></td>
+				<td  class="td_border" >
+	       		<select class="queueSelect" id="queueName" name="queueName" style="width:160px;">
+       			</select>
+				</td>
+		  	 </tr>
+		  	 <tr>
+				<td width="120" align="right" class="label"><a class="tooltip" href="javascript:void(0);" title="RPC authenticate code.">RPC AUTH Code：</a></td>
+				<td  class="td_border" >
+				<input style="width:200px;" id="system.property.rpcAuth" type="text" name="system.property.rpcAuth" value="" />
+				</td>
+		  	 </tr>
+			 <tr>
+		        <td width="120" align="right" nowrap class="label"><a class="tooltip" href="javascript:void(0);" title="Callback Time">Callback Time:</a></td>
+		        <td class="td_border">
+					<div style="float:left;width:200px;padding-top:5px;"><div id="callbackTimeSlider" ></div></div>
+					<div style="float:left;width:40px;margin-left: 10px;"><input id="callbackTime" type="text" name="callbackTime" value="" style="border: 0; color: #f6931f; font-weight: bold;" readonly="readonly"/></div>
+					<span style="width: 80px;line-height: 23px;">Minutes</span>
+		        </td>
+		      </tr>
+			 <tr>
+				<td width="120" align="right" class="label"><a class="tooltip" href="javascript:void(0);" title="URL fetching plug-in, needing to be defined in ‘setting’>’plug-in management’">Fetching Plug-in</a></td>
+				<td  class="td_border" >
+				<select id="urlfetchPluginId" name="urlfetchPluginId" style="width:160px;">
+	          			<option value=""></option>
+	       		</select>
+	       		<span class="configBox" lang="PluginManage.html">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>	
+				</td>
+		  	 </tr>
+			 <tr>
+				<td width="120" align="right" class="label">Schedule Control:</td>
+				<td  class="td_border">
+				<table><tr>
+				<td>Stop</td><td> <input id="system.property.cron" type="radio" name="system.property.cron" value="stop" /></td>
+				<td width="10"> </td>
+				<td>Run</td><td> <input id="system.property.cron" type="radio" name="system.property.cron" value="run" checked/></td>
+				</tr></table>
+				</td>
+		  	</tr>
+		  	<tr>
+				<td width="120" align="right" class="label"><a class="tooltip" href="javascript:void(0);" title="Use the default value if APP management email is unknown.">APP Email:</a></td>
+				<td  class="td_border" >
+				<div class="inputOver">
+				<input style="width:100%;" id="system.property.email" type="text" name="system.property.email" value="" />
+				</div>
+				</td>
+		  	</tr>
+		  	<tr>
+				<td width="120" align="right" class="label"><a class="tooltip" href="javascript:void(0);" title="Authorized users can visit the current application, different users can be split by 'Enter'; use '*' to indicate that all users are allowed to visit.">Authorized User:</a></td>
+				<td  class="td_border" >
+				<textarea id="system.property.users" name="system.property.users" rows="5" style="width: 100%;border: 1px solid #999;" ></textarea>
+				</td>
+		  	</tr>
+		  	<tr>
+        	<td colspan="2" style="font-weight: bold;padding: 0px;" height="5px"><hr /></td>           
+    		</tr>
+		  	
+		  	<tr>
+				<td width="120" align="right" class="label"></td>
+				<td  class="td_border">
+					<select onchange="systemConfig.fn.changeEmail(this.value)">
+						<option value="custom">Custom</option>
+						<option value="gmail">gmail.com</option>
+						<option value="qq">qq.com</option>
+						<option value="163">163.com</option>
+					</select>
+				</td>
+		  	</tr>
+		  	<tr>
+				<td width="120" align="right" class="label"><a class="tooltip" href="javascript:void(0);" title="SSL">SSL：</a></td>
+				<td  class="td_border" >
+				<input name="system.property.smtpSSL" id="system.property.smtpSSL" type="checkbox" value="true" />
+				</td>
+		  	</tr>
+		  	<tr>
+				<td width="120" align="right" class="label"><a class="tooltip" href="javascript:void(0);" title="SMTP Host">SMTP Host</a></td>
+				<td  class="td_border" >
+				<div class="inputOver">
+				<input id="system.property.smtpHost" name="system.property.smtpHost" type="text" class="input" value="" />
+				</div>
+				</td>
+		  	</tr>
+		  	<tr>
+				<td width="120" align="right" class="label"><a class="tooltip" href="javascript:void(0);" title="SMTP Port:">SMTP Port:</a></td>
+				<td  class="td_border" >
+				<div class="inputOver">
+				<input id="system.property.smtpPort" name="system.property.smtpPort" type="text" class="input" value="465" />
+				</div>
+				</td>
+		  	</tr>
+		  	<tr>
+				<td width="120" align="right" class="label"><a class="tooltip" href="javascript:void(0);" title="Email:">Email:</a></td>
+				<td  class="td_border" >
+				<div class="inputOver">
+				<input id="system.property.smtpUsername" name="system.property.smtpUsername" type="text" class="input" value="" />
+				</div>
+				</td>
+		  	</tr>
+		  	<tr>
+				<td width="120" align="right" class="label"><a class="tooltip" href="javascript:void(0);" title="Email Password:">Email Password:</a></td>
+				<td  class="td_border" >
+				<div class="inputOver">
+				<input name="system.property.smtpPassword" id="system.property.smtpPassword" type="password" class="input" value="" />
+				</div>
+				</td>
+		  	</tr>
+		  	<tr>
+        	<td colspan="2" style="font-weight: bold;padding: 0px;" height="5px"><hr /></td>           
+    		</tr>
+			<tr>
+		        <td>&nbsp;</td>
+		        <td class="td_border"><input type="button" value="Save" onClick="systemConfig.fn.save()" ></td>
+			</tr>
+		</table>
+		</form>
+	   </td>
+	  </tr>
+	  
+	  <tr>
+        <td colspan="2" class="label"><span class="STYLE4">Cache Clearing</span></td>        
+      </tr>
+	  <tr>
+	  <td colspan="2">
+	  	<form id="cacheClearForm">
+		<table width="100%" height="100%" class="table_border2">
+			<tr>
+        <td width="120">&nbsp;</td>
+        <td class="td_border">
+          <input type="button" value="Cache Clear" onClick="cacheClear.fn.clear()"></td>
+			</tr>
+		</table>
+		</form>
+	  </td>
+	  </tr>
+
+	   <tr>
+        <td colspan="2" class="label"><span class="STYLE4">Data Clearing</span></td>        
+      </tr>
+	  <tr>
+	  <td colspan="2">
+	  <form id="dataClearForm">
+		<table width="100%" height="100%" class="table_border2">
+			<tr>
+				<td width="120" align="right" class="label">
+				Task
+				</td>
+				<td  class="td_border">
+				   	<select id="siteList" name="siteList" style="width:160px;">
+		        	</select>
+	        	</td>
+		    </tr>
+			<tr>
+				<td width="120" align="right" class="label">All:</td>
+				<td  class="td_border">
+			   <input name="tables" type="checkbox" id="tables" value="SiteTable" onclick="dataClear.fn.disabledAll(this,'tables')" ></td>
+		    </tr>
+			<tr>
+				<td width="120" align="right" class="label">URL List:</td>
+				<td  class="td_border">
+			   <input name="tables" type="checkbox" id="tables" value="CrawlUrlTable" ></td>
+		    </tr>
+	  		<tr>
+				<td width="120" align="right" class="label">Data List:</td>
+				<td class="td_border">
+			   <input name="tables" type="checkbox" id="tables" value="CrawlDataTable" ></td>
+		    </tr>
+			  <tr>
+				<td width="120" align="right" class="label">Rules Cache:</td>
+				<td class="td_border">
+			   <input name="tables" type="checkbox" id="tables" value="CrawlCacheTable" ></td>
+			  </tr>
+			  <tr>
+				<td width="120" align="right" class="label">Crawl Rules:</td>
+				<td class="td_border">
+			   <input name="tables" type="checkbox" id="tables" value="DataRulesTable" ></td>
+			  </tr>
+			  <tr>
+				<td width="120" align="right" class="label">Publish Rules</td>
+				<td class="td_border">
+			   <input name="tables" type="checkbox" id="tables" value="DeployTable" ></td>
+			  </tr>
+			<tr>
+        <td>&nbsp;</td>
+        <td class="td_border">
+          <input type="button" value="Data Clear" onClick="dataClear.fn.clear()"></td>
+			</tr>
+		</table>
+		</form>
+	   </td>
+	  </tr>
+	  
+	  
+  </table>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			var initFun = function() {
+				systemConfig.v.webCrawlerId = webCrawlerId;
+				systemConfig.fn.query();
+				
+				queueManage.fn.init();
+				fillSite(dataClear.v.formId, "siteList");
+				systemConfig.fn.init();
+				
+				$('.tooltip').poshytip();
+			};
+
+			var initLoading=setInterval(function(){
+				if(typeof systemConfig != 'undefined'){
+					clearInterval(initLoading);
+					initFun();
+				}
+			},500);
+		});
+	</script>
+</body>
+</html>

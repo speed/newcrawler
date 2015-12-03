@@ -1,0 +1,307 @@
+::-webkit-scrollbar-thumb:hover{background-color:rgb(147, 170, 211);}  
+::-webkit-scrollbar-thumb:active{background-color:rgb(147, 170, 211);}  
+::-webkit-scrollbar {width: 6px;height: 6px;}
+::-webkit-scrollbar-thumb {height: 50px;background-color: rgba(170, 170, 170, .3);-webkit-border-radius: 3px;}
+::-webkit-scrollbar-track-piece {width: 8px;background-color: white;}
+
+.ncx_curlCover{top:0;left:0;position:absolute;overflow:hidden;}
+
+.ncx_edit_tpl_tool{-webkit-box-sizing: content-box;box-sizing: content-box;}
+.ncx_edit_tpl_tool .ncx_et_bar{overflow:hidden;cursor:pointer;padding:0;list-style: none;margin:0; padding:0;font-size:12px; font: 12px/1.5 '宋体',Arial,sans-serif;}
+.ncx_edit_tpl_tool .ncx_et_bar.ncx_shape1{width:400px;height:31px;line-height:31px;background-color: rgb(118, 144, 190);}
+.ncx_edit_tpl_tool .ncx_et_bar li{float:left;overflow:hidden;text-align:center;-webkit-box-sizing: content-box;box-sizing: content-box;}
+.ncx_edit_tpl_tool .ncx_et_bar li.ncx_col1{width:40px; height:15px; padding:8px 10px;}
+
+.ncx_edit_tpl_tool .ncx_et_bar.ncx_shape1 li.ncx_col2{width:66px; padding:0px 8px;}
+.ncx_edit_tpl_tool .ncx_et_bar.ncx_shape1 li.ncx_col3{width:66px; padding:0px 8px;}
+.ncx_edit_tpl_tool .ncx_et_bar.ncx_shape1 li.ncx_col4{width:83px; padding:0px 5px 0px 11px}
+
+.ncx_edit_tpl_tool .ncx_et_bar li .ncx_bar_button_tilte{color:#fff;}
+.ncx_edit_tpl_tool .ncx_et_bar li .ncx_bar_button_tilte.ncx_onhover{color:#fde498;}
+.ncx_edit_tpl_tool .ncx_et_bar li .ncx_bar_button_tilte.ncx_on{font-weight:bold;color: #09090A;background-color: rgb(242, 242, 242);padding: 10px 15px 10px 15px;font-weight: bold;}
+.ncx_larger{float:left;height:15px; width:15px;background:url(et_tool.png) no-repeat -32px -431px;}
+.ncx_larger.ncx_on{background:url(et_tool.png) no-repeat -17px -431px}
+.ncx_smaller{float:left;margin-left:10px;display:inline-block;height:15px; width:15px;background:url(et_tool.png) no-repeat -48px -431px}
+.ncx_smaller.ncx_on{background:url(et_tool.png) no-repeat 0px -431px}
+
+
+.ncx_et_content{clear:left;display:none;}
+.ncx_et_content_footer{display:none;}
+.ncx_et_content .ncx_et_content_inner{padding:12px 10px;font-size:12px; font: 12px/1.5 '宋体',Arial,sans-serif;}
+.ncx_et_content .ncx_et_content_inner .ncx_xpath{padding: 3px;color:#A80C0C; font-size: 14px;line-height:20px;background-color: white;border: solid 1px #B2B2B2;text-align: left;word-break:break-all;overflow:auto;}
+.ncx_et_content .ncx_et_content_inner .ncx_csspath{padding: 3px;color:#A80C0C; font-size: 14px;line-height:20px;background-color: white;border: solid 1px #B2B2B2;text-align: left;word-break:break-all;overflow:auto;}
+.ncx_et_content .ncx_et_content_inner .ncx_content{max-height: 400px;min-height: 150px;cursor: default;color:#333; line-height:20px;background-color: white;border: solid 1px #B2B2B2;text-align: left;word-break:break-all;overflow:auto;}
+.ncx_et_content .ncx_et_content_inner .ncx_button{margin-left:18px;margin-top:8px;}
+.ncx_et_content .ncx_et_content_inner .ncx_tips{margin-top:8px; color:#B1846A;}
+
+.ncx_et_content.ncx_shape1{display:block;width:400px;background-color: rgb(231, 231, 231);}
+.ncx_et_content_footer.ncx_shape1{display:block;width:241px; height:8px;}
+
+.ncx_et_content .ncx_xpath_copy{width:115px; height:28px;background:url(et_tool.png) no-repeat 0px 0px;margin-right:10px;color:white;float:left;}
+.ncx_et_content .ncx_csspath_copy{width:115px; height:28px;background:url(et_tool.png) no-repeat 0px 0px;margin-right:10px;color:white;float:left;}
+.ncx_et_content button{cursor:pointer; border:none;padding:0;}
+.ncx_et_content .ncx_et_del_from_phone{width:115px; height:28px;background:url(et_tool.png) no-repeat 0px -58px;margin-right:10px;}
+.ncx_et_content .ncx_et_cancel{width:55px; height:28px;background:url(et_tool.png) no-repeat 0px -87px; }
+.ncx_et_content .ncx_et_save{width:80px; height:28px;background:url(et_tool.png) no-repeat 0px -29px;margin-right:10px;}
+.ncx_et_content .ncx_et_create{width:55px; height:28px;background:url(et_tool.png) no-repeat -58px -87px; margin-left: 10px;}
+
+.ncx_et_content .ncx_et_content_inner .ncx_td{margin-left:5px}
+.ncx_et_content .ncx_et_content_inner .ncx_th{color:#333;font-weight:bold;}
+.ncx_et_content .ncx_et_content_inner .ncx_tab_link{margin-top:5px;}
+.ncx_et_content input{margin:0;padding:0px;position: relative;bottom: 0;}
+.ncx_et_content .ncx_et_content_inner .ncx_tab_title input{width:138px;color:#666;}
+.ncx_et_content .ncx_et_content_inner .ncx_tab_link input{width:138px;color:#666;}
+
+
+
+.ncx_curlCover .ncx-highlight-button {
+    display: inline-block;
+  cursor: pointer!important;
+  height: 12px;
+  width: 12px;
+  opacity: .4;
+  position: absolute;
+  margin-top: 1px;
+}
+.ncx_curlCover .ncx_selector{
+  position: absolute;
+  height: 15px;
+  width: 35px;
+  background-color: rgb(252, 241, 121);
+}
+.ncx_curlCover .ncx_selector .ncx-accept-highlight {
+  background: url('/static/xpath/v2/icon-highlight-accept.svg') no-repeat 50% 50%;
+  background-size: 10px 10px;
+  right: 0px;
+  padding-right: 10px;
+}
+
+.ncx_curlCover .ncx_selector .ncx-reject-highlight {
+  background: url('/static/xpath/v2/icon-highlight-reject.svg') no-repeat 50% 50%;
+  background-size: 10px 10px;
+  right: 15px;
+  padding-right: 10px;
+}
+
+#ncx_toolbar {
+	line-height: 28px;
+	padding: 8px 10px 4px;
+	text-align: left;
+	background-color: #FFFFFF;
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 2147483499;
+	min-width: 100%;
+	height: 45px;
+	border-bottom: 1px solid #efefef;
+	display: inline-table;
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box
+}
+
+#ncx_toolbar .ncx_toolbar_logo {
+	display: inline-block;
+	  width: 200px;
+}
+
+#ncx_toolbar .ncx-toolbar-section {
+	display: inline-block;
+	width: auto;
+	padding: 0 8px;
+	margin: 0;
+	height: auto
+}
+
+#ncx_toolbar .ncx-toolbar-section.first {
+	padding-left: 0;
+	border-left: 0
+}
+
+#ncx_toolbar .ncx-toolbar-section h1, #ncx_toolbar .ncx-toolbar-section h1 a
+	{
+	text-shadow: none;
+	position: relative;
+	bottom: 1px
+}
+
+#ncx_toolbar .ncx-datatypes {
+	border: none;
+	padding: 0;
+	margin-left: -8px
+}
+
+
+#ncx_toolbar .ncx-data-dot {
+	display: inline-block;
+	height: 25px;
+	width: 25px;
+	line-height: 30px;
+	border-radius: 25px;
+	margin: 5px 5px 5px 0;
+	vertical-align: middle;
+	text-align: center;
+	opacity: .5;
+	font-weight: 400;
+	-webkit-transition: opacity .2s cubic-bezier(0, 0, .3, 1);
+	transition: opacity .2s cubic-bezier(0, 0, .3, 1);
+	text-decoration: none;
+	position: relative
+	
+}
+
+#ncx_toolbar .ncx-data-dot:hover {
+	opacity: .8;
+	text-decoration: none
+}
+
+#ncx_toolbar .ncx-data-dot.active {
+	opacity: 1
+}
+
+#ncx_toolbar .ncx-data-dot span {
+	display: block;
+	text-align: center;
+	margin-top: -2px;
+	margin-left: 2px;
+	font-family: 'Futura', sans-serif;
+	font-size: 14px;
+	text-align: center !important;
+	font-weight: 400;
+	color: #333
+}
+
+#ncx_toolbar .ncx-data-dot span.ncx-dot-md {
+	font-size: 12px
+}
+
+#ncx_toolbar .ncx-data-dot span.ncx-dot-sm {
+	font-size: 9px
+}
+
+#ncx_toolbar .ncx-data-dot span.ncx-dot-xs {
+	font-size: 6px
+}
+
+#ncx_toolbar .ncx-new-datatype {
+	display: inline-block;
+	height: 25px;
+	width: 25px;
+	line-height: 30px;
+	border-radius: 25px;
+	margin: 5px 5px 5px 0;
+	vertical-align: middle;
+	background-color: #f2f2f2;
+	-webkit-transition: background-color .2s cubic-bezier(0, 0, .3, 1);
+	transition: background-color .2s cubic-bezier(0, 0, .3, 1);
+	position: relative
+}
+
+#ncx_toolbar .ncx-new-datatype {
+	background: #f2f2f2 url('/static/xpath/v2/icon-plus.svg') no-repeat 50% 50%;
+	background-size: 11px 11px
+}
+#ncx_toolbar .ncx-new-datatype:hover {
+	background-color: #e9e9e9
+}
+#ncx_toolbar .ncx-yellow {
+  background-color: #f2ea00!important;
+}
+#ncx_toolbar .ncx-blue {
+  background-color: #4ab0ff!important;
+}
+
+#ncx_toolbar .ncx-button, .ncx.ncx-button.ncx-advanced-button {
+	-webkit-appearance: none;
+	border: 1px solid #ddd;
+	border-bottom: 1px solid #ddd;
+	border-radius: 20px;
+	padding: 5px 15px 5px;
+	font-size: 14px;
+	font-weight: 400;
+	font-family: sans-serif;
+	line-height: normal;
+	font-weight: 400;
+	text-transform: none;
+	-webkit-box-shadow: none;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	height: 29px;
+	color: #333;
+	text-shadow: none;
+	box-shadow: none;
+	background: #fefefe;
+	min-width: 66px;
+	cursor: pointer;
+	transition: background-color .2s cubic-bezier(0, 0, .3, 1);
+	outline: none;
+	text-indent: 0
+}
+
+#ncx_toolbar .ncx-button.ncx-advanced-button {
+	transition: opacity .2s cubic-bezier(0, 0, .3, 1), background-color .2s
+		cubic-bezier(0, 0, .3, 1)
+}
+
+#ncx_toolbar .ncx-button:hover, #ncx_toolbar .ncx-button.ncx-advanced-button:hover {
+	background: #f6f6f6;
+	cursor: pointer
+}
+
+#ncx_toolbar .ncx-button:disabled, #ncx_toolbar .ncx-button:disabled {
+	opacity: .5
+}
+
+#ncx_toolbar .ncx-button:disabled:hover, #ncx_toolbar .ncx-button:disabled:hover {
+	background: #fefefe;
+	cursor: default
+}
+
+#ncx_toolbar .ncx-toolbar-button.ncx-pagination {
+	border-radius: 25px;
+	border: 0;
+	outline: none;
+	width: 25px;
+	height: 25px;
+	background: #a6b2c8 url('/static/xpath/v2/icon-pagination.svg') no-repeat 50% 52%;
+	background-size: 13px 13px;
+	margin: 0 3px 2px 0;
+	opacity: .4
+}
+
+#ncx_toolbar .ncx-toolbar-button.ncx-pagination.check {
+	background: #a6b2c8 url('/static/xpath/v2/icon-pagination-check.svg') no-repeat
+		50% 52%
+}
+
+#ncx_toolbar .ncx-toolbar-button.ncx-pagination:hover, #ncx_toolbar .ncx-toolbar-button.ncx-pagination.active {
+	opacity: .8;
+}
+
+#ncx_toolbar .loading {width: 31px;height: 8px;background: url('/static/xpath/v2/loading.gif') 50% 52%;}
+
+#ncx_toolbar .ncx-data-dot .ncx-delete-datatype {
+	display: none;
+	position: absolute;
+	height: 13px;
+	width: 13px;
+	border-radius: 15px;
+	top: -6px;
+	opacity: 0;
+	right: -6px;
+	background: red url('/static/xpath/v2/icon-highlight-reject-white.svg') no-repeat
+		50% 50%;
+	background-size: 7px 7px;
+	cursor: pointer;
+	transition: opacity .2s ease-in
+}
+
+#ncx_toolbar .ncx-data-dot .ncx-delete-datatype.visible {
+	opacity: .4
+}
+
+#ncx_toolbar .ncx-data-dot .ncx-delete-datatype.visible:hover {
+	opacity: 1
+}

@@ -1,0 +1,187 @@
+<input type="hidden" id="id" name="id">
+<input type="hidden" value="0" id="sync_count"/>
+<table width="100%" height="100%" class="table_border2">
+	<tr>
+		<td align="right" nowrap class="label" >名称：</td>
+		<td colspan="3" class="td_border">
+		<div class="inputOver">
+			<input id="name" type="text" name="name" value="" style="width: 100%"></input>
+			</div>
+		</td>
+	</tr>
+	
+	<tr>
+		<td align="right" nowrap class="label">站点网址：</td>
+		<td colspan="3" class="td_border">
+		<div class="inputOver">
+			<input type="text" id="url" name="url" value="http://" style="width: 100%" />
+			</div>
+		</td>
+	</tr>
+	<tr>
+		<td align="right" nowrap class="label">站点描述：</td>
+		<td colspan="3" class="td_border"><div style="padding-right:3px;"><textarea id="desc" name="desc" cols="80" rows="2" style="word-break:break-all;overflow-y:visible;height:40px;width:100%;padding: 0px;margin: 0px"></textarea></div></td>
+	</tr>
+	
+	<tr>
+		<td align="right" nowrap style="width:150px;"><a class="tooltip" href="javascript:void(0);" title="1.自动采集+数据自动采集(在计划任务管理中设置)，实现定时采集状态为'0'的网址。<br/> 2.自动采集+数据自动采集(在计划任务管理中设置)+重复采集，实现定时采集状态不为'-44'的网址。<br/> 3.自动采集+入库采集，实现在网址入库时就对网址进行一次采集。">自动采集：</a></td>
+		<td class="td_border" style="width:250px;">
+			<input id="isAuto" type="checkbox" name="isAuto" value="Y" checked="checked"/>
+		</td>
+		
+		<td align="right" nowrap style="width:150px;" ><a class="tooltip" href="javascript:void(0);" title="自动采集+入库采集，实现在网址入库时就对网址进行一次采集。">入库采集：</a></td>
+		<td class="td_border">
+			<input id="isRealtimeCrawl" type="checkbox" name="isRealtimeCrawl" value="Y" />
+		</td>
+		
+	</tr>
+	
+	<tr>
+		<td align="right" nowrap class="label" ><a class="tooltip" href="javascript:void(0);" title="更新方式有增量更新或全量更新">更新方式：</a></td>
+		<td class="td_border" >
+		<select name="updateMode" id="updateMode">
+			<option value="" selected="selected"></option>
+			<option value="1">增量更新</option>
+			<option value="2">全量更新</option>
+		</select>
+		</td>
+		<td colspan="2"></td>
+	</tr>
+
+	<tr>
+        <td colspan="4" style="font-weight: bold;padding: 0px;" height="5px"><hr style="border-color: white;"/></td>           
+    </tr>
+    <tr>
+		<td align="right" nowrap class="label" ><a class="tooltip" href="javascript:void(0);" title="网址抓取插件，需要在 '设置' > '插件管理' 中定义">网址抓取插件：</a></td>
+		<td class="td_border">
+			<select id="urlfetchPluginId" name="urlfetchPluginId" style="width:160px;">
+          			<option value=""></option>
+       		</select>
+       		<span class="configBox" lang="PluginManage.html">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+		</td>
+		
+		<td align="right" nowrap class="label" style="width:150px;"><a class="tooltip" href="javascript:void(0);" title="需要在'设置' > 'HTTP请求'中定义">HTTP请求：</a></td>
+		<td class="td_border">
+			<select id="httpRequestId" name="httpRequestId" style="width:160px;">
+          			<option value=""></option>
+       		</select>
+       		<span class="configBox" lang="HttpRequest.html">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+		</td>
+	</tr>
+	
+	<tr class="advanced-settings">
+        <td colspan="4" style="font-weight: bold;padding: 0px;" height="5px"><hr style="border-color: white;"/></td>           
+    </tr>
+    
+    <tr class="advanced-settings">
+		<td align="right" nowrap ><a class="tooltip" href="javascript:void(0);" title="可以通过修改任务队列参数来控制采集速率。">采集速率：</a></td>
+		<td class="td_border">
+			<select class="queueSelect" id="queueName" name="queueName" style="width:160px;">
+       		</select>
+		</td>
+		<td align="right" nowrap style="width:150px;"><a class="tooltip" href="javascript:void(0);" title="可以通过修改任务队列参数来控制发布速率。">发布速率：</a></td>
+		<td class="td_border">
+			<select class="queueSelect" id="deployQueueName" name="deployQueueName" style="width:160px;">
+       		</select>
+		</td>
+	</tr>
+	
+	<tr class="advanced-settings">
+		<td align="right" nowrap ><a class="tooltip" href="javascript:void(0);" title="循环匹配+合并记录+字段合并(在数据采集规则中设置)，实现将循环匹配到的多条记录合并成一条记录。">合并记录：</a></td>
+		<td class="td_border">
+			<input id="isMerge" type="checkbox" name="isMerge" value="Y" />
+		</td>
+		
+		<td align="right" nowrap style="width:150px;"><a class="tooltip" href="javascript:void(0);" title="循环匹配+倒序返回，实现倒序采集，往往最后一条记录才时最新的。">倒序返回：</a></td>
+		<td class="td_border" >
+			<input id="isReverse" type="checkbox" name="isReverse" value="Y" />
+		</td>
+	</tr>
+	
+	<tr class="advanced-settings">
+		<td align="right" nowrap  style="width:150px;"><a class="tooltip" href="javascript:void(0);" title="自动采集+数据自动采集(在计划任务管理中设置)+重复采集，实现定时重复采集被缓存的网址，<br/>只有在重复采集时才会使用网址缓存。">重复采集：</a></td>
+		<td class="td_border">
+			<input id="isRepeat" type="checkbox" name="isRepeat" value="Y" />
+		</td>
+		<td align="right" nowrap style="width:150px;"><a class="tooltip" href="javascript:void(0);" title="当采集的页面上有多条记录需要匹配时，像列表页。">循环匹配：</a></td>
+		<td class="td_border">
+			<input id="isLoop" type="checkbox" name="isLoop" value="Y" />
+		</td>
+	</tr>
+	
+	<tr class="advanced-settings">
+		<td align="right" nowrap ><a class="tooltip" href="javascript:void(0);" title="默认不允许采集到的数据重复，循环匹配时，当采集到的数据在数据库中已经存在时，将停止对网址剩余部份的采集，从而实现增量更新。">允许数据重复：</a></td>
+		<td class="td_border">
+			<input id="isRepeatData" type="checkbox" name="isRepeatData" value="Y" />
+		</td>
+		<td align="right" nowrap style="width:150px;"><a class="tooltip" href="javascript:void(0);" title="当采集到的数据是重复数据，将直接丢弃，不保存不发布。">不保存重复数据：</a></td>
+		<td class="td_border">
+			<input id="isNotSaveRepeatData" type="checkbox" name="isNotSaveRepeatData" value="Y" />
+		</td>
+	</tr>
+	
+	<tr class="advanced-settings">
+		<td align="right" nowrap ><a class="tooltip" href="javascript:void(0);" title="当采集的数据量比较大时不推荐用采集器来管理采集到的数据，不保存采集的数据可以有效减少数据库读写操作，提高采集性能。">不保存数据：</a></td>
+		<td class="td_border">
+			<input id="isNotSaveData" type="checkbox" name="isNotSaveData" value="Y" />
+		</td>
+		
+		<td align="right" nowrap style="width:150px;"><a class="tooltip" href="javascript:void(0);" title="循环匹配时，单个页面匹配到的记录数过多时，可以配置此参数使结果集分多次返回。<br/>当检测到重复数据并且站点设置不允许数据重复时，会结束剩余结果集的返回。">每次返回记录数：</a></td>
+		<td class="td_border" >
+			<input type="text" id="maxSize" name="maxSize" size="90" value="0" style="width: 80px" onkeypress="return event.keyCode>=48&&event.keyCode<=57" onblur="this.value=this.value.replace(/[^0-9]/g,'')"/>
+		</td>
+	</tr>
+	
+	<tr class="advanced-settings">
+		<td align="right" nowrap  ><a class="tooltip" href="javascript:void(0);" title="为空或小于1时不限制。计划任务在执行 '数据自动采集' 时会检测当前站点未完成的采集队列数，超过限制时将不开启本次采集任务。这样可以避免开启过多的采集队列而耗尽系统资源。">最大采集队列数：</a></td>
+		<td class="td_border" >
+			<input type="text" id="maxCrawlQueueLimit" name="maxCrawlQueueLimit" size="90" value="0" style="width: 80px" onkeypress="return event.keyCode>=48&&event.keyCode<=57" onblur="this.value=this.value.replace(/[^0-9]/g,'')"/>
+		</td>
+		
+		<td align="right" nowrap  style="width:150px;"><a class="tooltip" href="javascript:void(0);" title="计划任务执行'数据自动采集'时最大采集的网址数，限制每次采集网址数量可以有效控制采集频率，0不限制。<br/>如：网址库网址总数为100，每次采集网址数为10，表示计划任务必须执行10次才能采集完所有网址。">每次采集网址数：</a></td>
+		<td class="td_border" >
+			<input type="text" id="crawlNumLimit" name="crawlNumLimit" size="90" value="0" style="width: 80px" onkeypress="return event.keyCode>=48&&event.keyCode<=57" onblur="this.value=this.value.replace(/[^0-9]/g,'')"/>
+		</td>
+	</tr >
+	
+	<tr class="advanced-settings">
+        <td colspan="4" style="font-weight: bold;padding: 0px;" height="5px"><hr style="border-color: white;"/></td>           
+    </tr>
+	<tr  class="advanced-settings">
+		<td align="right" nowrap ><a class="tooltip" href="javascript:void(0);" title="1.网址必须包含的文本，可以有效的限制无用的网址入库，留空则不检查<br/> 2.支持正则，正则表达式元字符 ^ $ ( ) * + ? . [ \ { | 加 \ 转义将作为字符串匹配<br/> 3.聚焦输入框，按Ctrl+F自动转义正则元字符<br/> 4.不区分大小写匹配，可以通过内嵌标志表达式'(?i)'来启用，从内嵌位置开始不区分大小写">网址入库检查：</a></td>
+		<td class="td_border" colspan="3" >
+		<div class="inputOver">
+			<input id="urlCheckRegex" type="text" name="urlCheckRegex" value="" style="width:100%"  class="regex"/>
+			</div>
+		</td>
+	</tr>
+	<tr class="advanced-settings">
+		
+		<td align="right" nowrap ><a class="tooltip" href="javascript:void(0);" title="使用其它站点的采集网址列表，采集完成后不会更新网址状态。">网址库来源：</a></td>
+		<td class="td_border">
+		<select id="urlOriginSiteId" name="urlOriginSiteId" style="width:160px;"></select>
+		</td>
+		
+		<td align="right" nowrap style="width:150px;"><a class="tooltip" href="javascript:void(0);" title="当网址超过N天都没有采集到数据时，将网址状态改为：-44(网址过期，不再采集)，系统默认是7天">网址过期天数：</a></td>
+		<td class="td_border">
+			<input type="text" id="expiredDaysUrl" name="expiredDaysUrl" size="90" value="0" style="width: 80px" onkeypress="return event.keyCode>=48&&event.keyCode<=57" onblur="this.value=this.value.replace(/[^0-9]/g,'')"/>
+		</td>
+	</tr>
+    
+	<tr  class="advanced-settings">
+		<td align="right" nowrap class="label">网页内容检测：</td>
+		<td class="td_border">
+		<select id="urlCheckId" name="urlCheckId" style="width:160px;"></select>
+		<span class="configBox" lang="UrlCheck.html">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+		</td>
+		
+		<td colspan="2"></td>
+	</tr>
+	
+	<tr>
+		<td align="right" nowrap ></td>
+        <td colspan="3" style="height: 25px;">
+        	<input type="button" id="advanced-settings-expander" class="link-button">
+        </td>           
+    </tr>
+</table>

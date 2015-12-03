@@ -1,0 +1,124 @@
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>采集到的數據</title>
+</head>
+
+  <body>
+  <div id="log-box-data" style="padding: 5px 20px 5px 20px;background-color:#474747;color: white;display: none;"><pre id="log"></pre></div>
+  
+    <table id="crawlDataListTable" width="100%" class="table_border">
+      <tr>
+	  <td width="100%" valign="top">
+	  <table width="100%">
+	  	<tr>
+        <td width="100%" class="td_border" >
+			<input name="remove" type="button" id="remove" onClick="crawlDataList.fn.remove();" value="刪除">
+			<input name="removeAll" type="button" id="removeAll" onClick="crawlDataList.fn.removeAll();" value="刪除所有">
+			<input name="deploy" type="button" id="deploy" onClick="crawlDataList.fn.deploy();" value="發布">
+			<input name="refresh" type="button" id="refresh" onClick="crawlDataList.fn.refresh();" value="刷新">
+			<input name="refresh" type="button" id="refresh" onClick="crawlDataList.fn.filedownload(this);" value="文件下載列表">
+			<input name="search" type="button" id="search" onClick="crawlDataList.fn.search();" value="查詢">
+			<input name="dataExport" type="button" id="dataExport" lang="CrawlDataExport.html" value="數據導出">
+		</td>
+        </tr>
+        <tr>
+        <td width="100%" class="td_border" style="padding:5px 5px 5px 5px;">
+        	<table width="100%">
+        		<tr>
+        			<td align="right" nowrap style="width: 100px;">入庫時間從：</td>
+        			<td style="width: 100px;">
+        			<div class="inputOver">
+        			<input type="text" id="search_starttime" name="search_starttime">
+        			</div>
+        			</td>
+        			<td align="right" nowrap style="width: 100px;">顯示數量：</td>
+        			<td width="250px">
+					<div style="float:left;width:200px;padding-top:5px;"><div id="pageSizeSlider" ></div></div>
+					<div style="float:left;width:40px;margin-left: 10px;"><input id="pageSize" type="text" name="pageSize" value="" style="border: 0; color: #f6931f; font-weight: bold;" readonly="readonly"/></div>
+					</td>
+				
+        			<td align="right" nowrap style="width: 100px;display:none;">入庫時間到：</td>
+        			<td  style="width: 100px;display:none;">
+        			<div class="inputOver">
+        			<input type="text" id="search_endtime" name="search_endtime">
+        			</div>
+        			</td>
+        			
+        			<td></td>
+        		</tr>
+        		
+        	</table>
+        </td>
+        </tr>
+	  </table>
+	  <div style="padding:0px 2px 2px 2px;">
+	  	<table id="crawlDataList" width="100%" align="center" class="table_border2 tableList" style="border:1px solid #CCCCCC;border-collapse:collapse;background-color: #FFFFFF;">
+			<tr>
+				<td width="1%" nowrap bgcolor="whiteSmoke"></td>
+				<td width="1%" nowrap bgcolor="whiteSmoke"><input type='checkbox' name='all' id='all' onclick="crawlDataList.fn.selectAll(this,'crawlDataList','id')" /></td>
+				<td width="80%" nowrap bgcolor="whiteSmoke">內容</td>
+				<td width="40" nowrap bgcolor="whiteSmoke">入庫時間</td>
+				<td width="150" nowrap bgcolor="whiteSmoke">發布日誌</td>
+				<td width="1%" nowrap bgcolor="whiteSmoke">狀態</td>
+			</tr>
+		</table>
+		
+		<div id="line" style="height:5px;"></div>
+		<div id="hiddenresult" style="display:none;">
+        
+        </div>
+		<div id="Pagination"></div>
+	  </div>
+	  </td>
+	  </tr>
+	  <tr>
+	  <td align="left" style="padding:5px 5px 0px 5px;" >
+	  	 記錄總數(<label id="ITEM_COUNT" style="color:red;">0</label>) <label style="color: rgb(34, 102, 187);cursor: pointer;" onClick="crawlDataList.fn.statistic();">重新統計</label>
+	  </td>
+	  </tr>
+  </table>
+  
+	<script type="text/javascript">
+		$( "#log-box-data" ).dialog({ 
+			title: "日誌",
+			autoOpen: false,
+			buttons: {
+				"關閉": function() { $( this ).dialog( "close" ); crawlDataList.fn.refresh();}
+			},
+			height: 400,
+			maxHeight: 500,
+			width: 750,
+			maxWidth: 850,
+			modal: true,
+			resizable: true
+		});
+		
+		$(document).ready(function(){
+			var initFun= function(){
+				crawlDataList.v.webCrawlerId=webCrawlerId;
+				crawlDataList.v.siteId=siteId;
+				crawlDataList.v.deployMap=getDataDeployMap();
+				crawlDataList.fn.init();
+				
+				$("#"+crawlDataList.v.formId).find('#search_starttime').datetimepicker({
+					format:'Y-m-d H:i:s',
+					lang: 'ch'
+				});
+				
+				$("#"+crawlDataList.v.formId).find('#search_endtime').datetimepicker({
+					format:'Y-m-d H:i:s',
+					lang: 'ch'
+				});
+			  };
+			
+			var initLoading=setInterval(function(){
+				if(typeof crawlDataList != 'undefined'){
+					clearInterval(initLoading);
+					initFun();
+				}
+			},500);
+		});
+	</script>
+  </body>
+</html>

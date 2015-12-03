@@ -1,0 +1,113 @@
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>站點備份與恢復</title>
+</head>
+
+<body>
+	<table id="backupAndRestoreBySiteTable" width="100%" class="table_border">
+		<tr>
+			<td colspan="2" class="label"><br/><span class="STYLE4">恢復數據</span>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<form  method="POST" enctype="multipart/form-data" name="restoreForm" id="restoreForm" >
+					<input type="hidden" id="u" name="u" >
+					<table width="100%" class="table_border2">
+						<tr>
+							<td width="120">
+								<img id="loading" src="../../static/images/loader.gif" style="display: none;"> 
+								<button class="button" type="submit">恢復</button>
+							</td>
+							<td width="320"><input id="fileToUpload" type="file" size="50" name="fileToUpload" class="input"></td>
+							<td><div id="msgOutput"></div></td>
+						</tr>
+					</table>
+			  	</form>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2" class="label"  height="30px" valign="bottom"><span class="STYLE4">備份數據</span>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<table width="100%" class="table_border2">
+					<tr>
+						<td width="100%">
+						<input name="備份" type="button" value="備份" onClick="backupAndRestoreBySite.fn.backup()">
+						<span style="color:red;" >系統不會備份'采集網址列表'與'采集到的數據'中的內容。</span>
+						</td>
+					</tr>
+					<tr>
+			<td colspan="2">
+				<table id="backupAndRestoreBySiteListTable" width="100%" align="center" class="table_border2 tableList" style="border:1px solid #CCCCCC;border-collapse:collapse;background-color: #FFFFFF;">
+						<tr>
+							<td width="20%" nowrap bgcolor="whiteSmoke">備份時間</td>
+							<td width="50%" nowrap bgcolor="whiteSmoke">文件路徑</td>
+							<td width="10%" nowrap bgcolor="whiteSmoke">備註</td>
+							<td width="10%" nowrap bgcolor="whiteSmoke">狀態</td>
+							<td width="20%" nowrap bgcolor="whiteSmoke">操作</td>
+						</tr>
+				</table>
+				<input type="hidden" name="proxyUrl" id="proxyUrl" size="40" >
+				<iframe id="proxyFrame" name="proxyFrame" src="" width=100% height=2px frameborder="0" scrolling="no" ></iframe> 
+				</td>
+		</tr>
+				</table></td>
+		</tr>
+		
+		
+	</table>
+	
+<script type="text/javascript">
+$(document).ready(function() { 
+	
+	
+	var initFun = function(){
+
+		var webCrawlerUrl=getWebCrawlerUrl();
+		backupAndRestoreBySite.v.webCrawlerId=webCrawlerId;
+		backupAndRestoreBySite.v.siteId=siteId;
+		backupAndRestoreBySite.v.webCrawlerUrl=webCrawlerUrl;
+		
+		$('.tooltip').poshytip();
+		backupAndRestoreBySite.fn.init();
+		backupAndRestoreBySite.fn.query();
+		
+		var baseUrl= webCrawlerUrl;
+		if(baseUrl==null || baseUrl==undefined){
+			baseUrl="../../";
+		}
+		var actionUrl = baseUrl + "upload";
+		
+		var proxyUrl="../../member/file/proxyupload";
+		var host=window.location.host;
+		if(isLocalSpider){
+			proxyUrl=actionUrl;
+		}
+		$("#"+backupAndRestoreBySite.v.tableId).find('#u').val(BASE64.encode(actionUrl));
+		$("#"+backupAndRestoreBySite.v.tableId).find('#restoreForm').attr("action", proxyUrl);
+		
+		var options = {
+				beforeSubmit:  	backupAndRestoreBySite.fn.showRequest,
+				success:    	backupAndRestoreBySite.fn.showResponse,
+				clearForm: 		true,
+				resetForm: 		true,
+				dataType:		'json'
+		};
+		$("#"+backupAndRestoreBySite.v.tableId).find('#restoreForm').ajaxForm(options); 
+		
+	  };
+	
+	var initLoading=setInterval(function(){
+		if(typeof backupAndRestoreBySite != 'undefined'){
+			clearInterval(initLoading);
+			initFun();
+		}
+	},500);
+}); 
+</script>
+</body>
+</html>

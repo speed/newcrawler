@@ -1,0 +1,122 @@
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>采集网址列表</title>
+</head>
+
+  <body>
+	<div id="log-box-url" style="padding: 5px 20px 5px 20px;background-color:#474747;color: white;display: none;"><pre id="log"></pre></div>
+	
+    <table id="crawlUrlListTable" width="100%" class="table_border">
+      <tr>
+	  <td width="100%" valign="top">
+	  <table width="100%">
+	  	<tr>
+        <td width="100%" class="td_border">
+        	<input name="addUrl" type="button" id="addUrl"  lang="CrawlUrlImport.html" value="添加网址">
+			<input name="delete" type="button" id="delete" onClick="crawlUrlList.fn.remove();" value="删除">
+			<input name="delete" type="button" id="delete" onClick="crawlUrlList.fn.removeAll();" value="删除所有">
+			<input name="resetStatus" type="button" id="resetStatus" onClick="crawlUrlList.fn.resetStatus();" value="重置状态" >
+			<input name="search" type="button" id="search" onClick="crawlUrlList.fn.search();" value="查询">
+			<input name="crawl" type="button" id="crawl" onClick="crawlUrlList.fn.crawl();" value="采集网址">
+		</td>
+        </tr>
+        <tr>
+        <td width="100%" class="td_border" style="padding:5px 5px 5px 5px;">
+        	<table width="100%">
+        		<tr>
+        			<td align="right" nowrap style="width: 50px;">状态：</td>
+        			<td style="width: 100px;">
+        			<div class="inputOver">
+        			<input type="text" id="status" name="status" style="width:100%"/>
+        			</div>
+        			</td>
+        			
+        			<td align="right" nowrap style="width: 60px;">网址：</td>
+        			<td>
+        			<div class="inputOver">
+        			<input type="text" id="url" name="url" style="width:100%"/>
+        			</div>
+        			</td>
+        			
+        		</tr>
+        	</table>
+        </td>
+        </tr>
+        
+		<tr>
+        <td width="100%">
+		
+		</td>
+        </tr>
+        
+		
+	  </table>
+	  <div style="padding:0px 2px 2px 2px;">
+	  	<table id="crawlUrlList" width="100%" align="center" class="table_border2 tableList" style="table-layout:fixed; border:1px solid #CCCCCC;border-collapse:collapse;background-color: #FFFFFF;">
+			<tr>
+				<td width="50" nowrap bgcolor="whiteSmoke"></td>
+				<td width="50" nowrap bgcolor="whiteSmoke"><input type='checkbox' name='all' id='all' onclick="crawlUrlList.fn.selectAll(this,'crawlUrlList','id')" /></td>
+				<td width="80%" nowrap bgcolor="whiteSmoke">网址</td>
+				<td width="160" nowrap bgcolor="whiteSmoke">入库时间</td>
+				<td width="160" nowrap bgcolor="whiteSmoke">更新时间</td>
+				<td width="100" nowrap bgcolor="whiteSmoke"><a class="tooltip" href="javascript:void(0);" title="状态说明：1.采集成功; -1.网址抓取IOException; -2.网址没有抓取到内容; -3.采集规则没有匹配到数据; -44网址无效不再采集;">状态</a></td>
+			</tr>
+		</table>
+		
+		<div id="line" style="height:5px;"></div>
+		<div id="hiddenresult" style="display:none;">
+        
+        </div>
+		<div id="Pagination"></div>
+	  </div>
+	  </td>
+	  
+	  </tr>
+	  <tr>
+	  <td align="left" style="padding:5px 5px 0px 5px;" >
+	  	 记录总数(<label id="URL_COUNT" style="color:red;">0</label>)  <label style="color: rgb(34, 102, 187);cursor: pointer;" onClick="crawlUrlList.fn.statistic();">重新统计</label>
+	  </td>
+	  </tr>
+	  <tr>
+	  <td align="left" style="padding:0px 5px 5px 5px;color:red;" >
+	  	注意： 不需要重复采集的站点只会采集状态为0的网址，重复采集的站点只会采集状态不等于-44的网址。
+	  </td>
+	  </tr>
+  </table>
+  
+  <script type="text/javascript">
+		$( "#log-box-url" ).dialog({ 
+			title: "日志",
+			autoOpen: false,
+			buttons: {
+				"关闭": function() { $( this ).dialog( "close" ); crawlUrlList.fn.init();}
+			},
+			height: 400,
+			maxHeight: 500,
+			width: 750,
+			maxWidth: 850,
+			modal: true,
+			resizable: true
+		});
+		
+		$(document).ready(function(){
+			var initFun= function(){
+				crawlUrlList.v.webCrawlerId=webCrawlerId;
+				crawlUrlList.v.siteId=siteId;
+				
+				crawlUrlList.fn.init();
+				$('.tooltip').poshytip();
+			  };
+			
+			
+			var initLoading=setInterval(function(){
+				if(typeof crawlUrlList != 'undefined'){
+					clearInterval(initLoading);
+					initFun();
+				}
+			},500);
+		});
+	</script>
+  </body>
+</html>

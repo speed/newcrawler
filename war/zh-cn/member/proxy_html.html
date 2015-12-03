@@ -1,0 +1,31 @@
+<html>
+<head>
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+	<title>Proxy</title>
+	<script type="text/javascript" src="../../static/js/base64.js"></script>
+	<script>
+		window.onload=function(){
+			parent.callbackProxy();
+		}
+		function reqProxy(url){
+			if(url==null||url==""){
+				alert("Url is invalid。");
+				return;
+			}
+			url=BASE64.encode(url);
+			document.getElementById("input").value=url;
+			var actionUrl="http://proxy.02ta.com/proxy";
+			document.getElementById("proxyForm").action=actionUrl;
+			document.getElementById("proxyForm").submit();
+		}
+	</script>
+</head>
+<body>
+	<div style="display:none">
+		<form  id="proxyForm" action="/proxy" method="post" class="form">
+			<input type="hidden" name="u" id="input" size="40">
+			<input type="checkbox" name="encodeURL" id="encodeURL" checked="checked">
+		</form>
+	</div>
+</body>
+</html>

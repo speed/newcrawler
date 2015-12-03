@@ -1,0 +1,145 @@
+<html>
+<head>
+<title>正則測試</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+<body>
+<table id="regexTest" width="100%" style="padding:10px;">
+		<tr>
+			<td colspan="2" class="label">
+<div id='hello'>
+<div >
+<h1>Regex Test</h1>
+</div>
+</div>
+<div>
+<div style="width: 100%;">源文本： 
+<textarea id="srcText" name="srcText" rows="15" style="width: 100%;border: 1px solid #999;" onblur="savecookie('srcText');"></textarea>
+</div>
+
+<div style="width: 100%;height: 200px;">
+<div style="height: 45px;">
+<span style="float:left;padding-top:4px;padding-bottom:4px;width: 100%;">
+正則：
+<button id="RUN" onclick="regex();">RUN</button>
+</span>
+
+<div style="float:left;width: 100%;color: #999;">
+<span style="float:left;width: 90%;">
+正則表達式元字符 ^ $ ( ) * + ? . [ \ { | 加  \ 轉義將作為字符串匹配，按Ctrl+F自動轉義正則元字符
+</span>
+<a style="float:right;padding-top:5px;width: 10%;text-align: right;" href="http://www.read1h.com/blog/java/regex-30-minute" target="_blank">Regex docs</a>
+</div>
+
+</div>
+<div style="width: 100%;">
+<textarea id="regex" name="regex" rows="8" style="width: 100%;border: 1px solid #999;" onblur="savecookie('regex');" class="regex"></textarea>
+</div>
+</div>
+
+
+<div style="width: 100%;height: 200px;">
+<div style="height: 45px;">
+<span style="float:left;padding-top:4px;padding-bottom:4px;width: 100%;">
+開始結束字符串(支持正則)：
+<button id="RUN" onclick="regexStr();">RUN</button>
+</span>
+</div>
+<div style="float:left;width: 49%;color: #999;">
+開始字符串
+</div>
+<div style="float:right;width: 49%;color: #999;">
+結束字符串
+</div>
+
+<div style="float:left;width: 49%;">
+<textarea id="startString"  rows="8" style="width: 100%;border: 1px solid #999;" onblur="savecookie('startString');" class="regex"></textarea>
+</div>
+<div style="float:right;width: 49%;">
+<textarea id="endString" rows="8" style="width: 100%;border: 1px solid #999;" onblur="savecookie('endString');" class="regex"></textarea>
+</div>
+</div>
+
+<div style="float:left; padding-top:15px;height:45px;width: 100%;">
+<span style="padding-top:4px;width: 100%;">
+結果： 
+</span>
+<pre id="result" style="width: 100%;border: 1px solid #999;padding: 0px;;margin:0px;">Regular expression matching result.</pre>
+</div>
+</div>
+			</td>
+		</tr>
+</table>
+
+<script type="text/javascript">
+
+$(document).ready(function(){
+	var srctext=getcookie("srctext");
+	var regex=getcookie("regex")
+	$("#srcText").val(srctext);
+	$("#regex").val();
+	removeLoading($("#regexTest"));
+});
+
+function savecookie(name){
+	var value=$("#"+name).val();
+	setcookie(name, value, 3, "/", window.location.host, true);
+}
+
+function getcookie(name){
+	var arr = document.cookie.match(new RegExp("(^| )"+name+"=([^;]*)(;|$)"));
+    if(arr != null) 
+        return unescape(arr[2]); 
+    return null;
+}
+/**
+ * 
+ * @param cookieName
+ * @param cookieValue
+ * @param expires days
+ * @param path	
+ * @param domain
+ * @param secure
+ */
+function setcookie(cookieName, cookieValue, expires, path, domain, secure) {
+	var today = new Date();
+    today.setTime( today.getTime() );
+    if (expires){
+    	expires = expires * 1000 * 60 * 60 * 24;
+    }
+    var expires_date = new Date( today.getTime() + (expires) );
+     
+	var cookie = escape(cookieName) + '=' + escape(cookieValue) 
+		+ (expires? ';expires=' + expires_date.toGMTString(): '')
+		+ (path   ? ';path=' 	+ path 						: '')
+		+ (domain ? ';domain=' 	+ domain 					: '')
+		+ (secure ? ';secure' 								: '');
+	document.cookie = cookie;
+}
+
+function regex(){
+	document.getElementById("result").innerText="正在匹配...";
+	$.ajax({
+		url: '../../member/regextest',
+	  	data: {type:"1", srcText: $("#srcText").val(), regex: $("#regex").val() },
+	  	type: "POST",
+	  	success: function(data) {
+	    	document.getElementById("result").innerText=data;
+	  	}
+	});
+}
+function regexStr(){
+	document.getElementById("result").innerText="正在匹配...";
+	$.ajax({
+		url: 'regextest',
+	  	data: {type:"2", srcText: $("#srcText").val(), startString: $("#startString").val(), endString: $("#endString").val() },
+	  	type: "POST",
+	  	success: function(data) {
+	    	document.getElementById("result").innerText=data;
+	  	}
+	});
+}
+
+</script>
+</body>
+</html>

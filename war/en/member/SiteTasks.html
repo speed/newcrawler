@@ -1,0 +1,187 @@
+<input type="hidden" id="id" name="id">
+<input type="hidden" value="0" id="sync_count"/>
+<table width="100%" height="100%" class="table_border2">
+	<tr>
+		<td align="right" nowrap class="label" >Name</td>
+		<td colspan="3" class="td_border">
+		<div class="inputOver">
+			<input id="name" type="text" name="name" value="" style="width: 100%"></input>
+			</div>
+		</td>
+	</tr>
+	
+	<tr>
+		<td align="right" nowrap class="label">URL:</td>
+		<td colspan="3" class="td_border">
+		<div class="inputOver">
+			<input type="text" id="url" name="url" value="http://" style="width: 100%" />
+			</div>
+		</td>
+	</tr>
+	<tr>
+		<td align="right" nowrap class="label">Description:</td>
+		<td colspan="3" class="td_border"><div style="padding-right:3px;"><textarea id="desc" name="desc" cols="80" rows="2" style="word-break:break-all;overflow-y:visible;height:40px;width:100%;padding: 0px;margin: 0px"></textarea></div></td>
+	</tr>
+	
+	<tr>
+		<td align="right" nowrap style="width:150px;"><a class="tooltip" href="javascript:void(0);" title="1. Automatic + Data crawling (set in planed task management), realizing timing crawling for URL with the status of ‘0’. <br/> 2. Automatic + Data crawling (set in planed task management) + Repeated, realizing timing crawling for URL with the status other than ‘-44’. <br/> 3. Automatic + Import Crawling, conduct URL crawling during URL import. ">Automatic</a></td>
+		<td class="td_border" style="width:250px;">
+			<input id="isAuto" type="checkbox" name="isAuto" value="Y" checked="checked"/>
+		</td>
+		
+		<td align="right" nowrap style="width:150px;" ><a class="tooltip" href="javascript:void(0);" title="Automatic + Import Crawling, conduct URL crawling during URL import.">Import Crawling:</a></td>
+		<td class="td_border">
+			<input id="isRealtimeCrawl" type="checkbox" name="isRealtimeCrawl" value="Y" />
+		</td>
+		
+	</tr>
+	
+	<tr>
+		<td align="right" nowrap class="label" ><a class="tooltip" href="javascript:void(0);" title="The updating mode includes incremental updating and full updating">Mode:</a></td>
+		<td class="td_border" >
+		<select name="updateMode" id="updateMode">
+			<option value="" selected="selected"></option>
+			<option value="1">Increase</option>
+			<option value="2">Full</option>
+		</select>
+		</td>
+		<td colspan="2"></td>
+	</tr>
+
+	<tr>
+        <td colspan="4" style="font-weight: bold;padding: 0px;" height="5px"><hr style="border-color: white;"/></td>           
+    </tr>
+    <tr>
+		<td align="right" nowrap class="label" ><a class="tooltip" href="javascript:void(0);" title="URL fetching plug-in, needing to be defined in ‘setting’>’plug-in management’">Fetching Plug-in</a></td>
+		<td class="td_border">
+			<select id="urlfetchPluginId" name="urlfetchPluginId" style="width:160px;">
+          			<option value=""></option>
+       		</select>
+       		<span class="configBox" lang="PluginManage.html">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+		</td>
+		
+		<td align="right" nowrap class="label" style="width:150px;"><a class="tooltip" href="javascript:void(0);" title="Need to be defined in ‘setting’>’HTTP request’">HTTP Request:</a></td>
+		<td class="td_border">
+			<select id="httpRequestId" name="httpRequestId" style="width:160px;">
+          			<option value=""></option>
+       		</select>
+       		<span class="configBox" lang="HttpRequest.html">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+		</td>
+	</tr>
+	
+	<tr class="advanced-settings">
+        <td colspan="4" style="font-weight: bold;padding: 0px;" height="5px"><hr style="border-color: white;"/></td>           
+    </tr>
+    
+    <tr class="advanced-settings">
+		<td align="right" nowrap ><a class="tooltip" href="javascript:void(0);" title="It is allowed to control crawling rate by changing task queue parameter.">Crawling Rate:</a></td>
+		<td class="td_border">
+			<select class="queueSelect" id="queueName" name="queueName" style="width:160px;">
+       		</select>
+		</td>
+		<td align="right" nowrap style="width:150px;"><a class="tooltip" href="javascript:void(0);" title="It is allowed to control publish rate by changing task queue parameter.">Publish Rate:</a></td>
+		<td class="td_border">
+			<select class="queueSelect" id="deployQueueName" name="deployQueueName" style="width:160px;">
+       		</select>
+		</td>
+	</tr>
+	
+	<tr class="advanced-settings">
+		<td align="right" nowrap ><a class="tooltip" href="javascript:void(0);" title="Loop + Merge + Field Merge (set in data crawling rules), realizing the merging of various records matched in loop matching into one. ">Merge:</a></td>
+		<td class="td_border">
+			<input id="isMerge" type="checkbox" name="isMerge" value="Y" />
+		</td>
+		
+		<td align="right" nowrap style="width:150px;"><a class="tooltip" href="javascript:void(0);" title="Loop + Reverse, realizing reverse crawling; usually the last record is the latest one. ">Reverse:</a></td>
+		<td class="td_border" >
+			<input id="isReverse" type="checkbox" name="isReverse" value="Y" />
+		</td>
+	</tr>
+	
+	<tr class="advanced-settings">
+		<td align="right" nowrap  style="width:150px;"><a class="tooltip" href="javascript:void(0);" title="Automatic + Data crawling (set in planed task management) + Repeated, realizing timing repeated crawling for cache URL, <br/> URL cache is used only in repeated crawling. ">Repeated：</a></td>
+		<td class="td_border">
+			<input id="isRepeat" type="checkbox" name="isRepeat" value="Y" />
+		</td>
+		<td align="right" nowrap style="width:150px;"><a class="tooltip" href="javascript:void(0);" title="When the crawling URL has many records to be matched, just like the list page. ">Loop:</a></td>
+		<td class="td_border">
+			<input id="isLoop" type="checkbox" name="isLoop" value="Y" />
+		</td>
+	</tr>
+	
+	<tr class="advanced-settings">
+		<td align="right" nowrap ><a class="tooltip" href="javascript:void(0);" title="The repeating of data not allowed to be crawled in default status; in loop matching, when data crawled has existed in database, stop the crawling for the resting part of the URL so as to realize incremental updating.">Allow Repeated Data:</a></td>
+		<td class="td_border">
+			<input id="isRepeatData" type="checkbox" name="isRepeatData" value="Y" />
+		</td>
+		<td align="right" nowrap style="width:150px;"><a class="tooltip" href="javascript:void(0);" title="When data crawled is repeated data, discard that directly and do not store or publish. ">Not Save Repeated Data:</a></td>
+		<td class="td_border">
+			<input id="isNotSaveRepeatData" type="checkbox" name="isNotSaveRepeatData" value="Y" />
+		</td>
+	</tr>
+	
+	<tr class="advanced-settings">
+		<td align="right" nowrap ><a class="tooltip" href="javascript:void(0);" title="When the quantity of data crawled is comparably large, it is not recommendable to use crawler to manage data crawled; not saving data crawled can effectively reduce the reading and writing operation of database and enhance crawling performance.">Not Save Data:</a></td>
+		<td class="td_border">
+			<input id="isNotSaveData" type="checkbox" name="isNotSaveData" value="Y" />
+		</td>
+		
+		<td align="right" nowrap style="width:150px;"><a class="tooltip" href="javascript:void(0);" title="In loop matching, if the records matched in one single page are too many, this config can be adopted to return the result set in several times. <br/> When repeated data is found and it is not allowed in the config of the task, the return of the remaining result set will be stopped.">Record Return Limit:</a></td>
+		<td class="td_border" >
+			<input type="text" id="maxSize" name="maxSize" size="90" value="0" style="width: 80px" onkeypress="return event.keyCode>=48&&event.keyCode<=57" onblur="this.value=this.value.replace(/[^0-9]/g,'')"/>
+		</td>
+	</tr>
+	
+	<tr class="advanced-settings">
+		<td align="right" nowrap  ><a class="tooltip" href="javascript:void(0);" title="When it is null or smaller than 1, it is not limited. In the process of executing ‘automatic data crawling’, the planed task will check the uncompleted crawling queue number of the current task; if it exceeds the limit, the crawling task this time won’t be opened. It can avoids exhausting system materials by opening too many crawling queues. ">Queue Limit: </a></td>
+		<td class="td_border" >
+			<input type="text" id="maxCrawlQueueLimit" name="maxCrawlQueueLimit" size="90" value="0" style="width: 80px" onkeypress="return event.keyCode>=48&&event.keyCode<=57" onblur="this.value=this.value.replace(/[^0-9]/g,'')"/>
+		</td>
+		
+		<td align="right" nowrap  style="width:150px;"><a class="tooltip" href="javascript:void(0);" title="The maximum number of URL crawled when ‘automatic data crawling’ is executed in the planed task; the limitation of the number of URL crawled every time can effectively control crawling frequency and 0 means there’s  no limitation. <br/> e.g.: if the total URL number in the URL base is 100 and the number of URL crawled every time is 10, it means the planed task has to be executed for ten times before crawling all URL.">URL Crawling Limit:</a></td>
+		<td class="td_border" >
+			<input type="text" id="crawlNumLimit" name="crawlNumLimit" size="90" value="0" style="width: 80px" onkeypress="return event.keyCode>=48&&event.keyCode<=57" onblur="this.value=this.value.replace(/[^0-9]/g,'')"/>
+		</td>
+	</tr >
+	
+	<tr class="advanced-settings">
+        <td colspan="4" style="font-weight: bold;padding: 0px;" height="5px"><hr style="border-color: white;"/></td>           
+    </tr>
+	<tr  class="advanced-settings">
+		<td align="right" nowrap ><a class="tooltip" href="javascript:void(0);" title="1. URL must contain text to effectively limit the import of useless URL, and space means no examination is performed <br/> 2. Support regular expression, when metacharacters in regular expressions such as ^ $ ( ) * + ? . [ \ { | are escaped by adding  \ , they will be matched as character strings <br/>3. When focusing on input box, pressing Ctrl+F will automatically escape regular expression metacharacters <br/>4. Case insensitive matching can be started by embedded label expression '(?i)' and case insensitiveness starts from the embedded position">URL Examination:</a></td>
+		<td class="td_border" colspan="3" >
+		<div class="inputOver">
+			<input id="urlCheckRegex" type="text" name="urlCheckRegex" value="" style="width:100%"  class="regex"/>
+			</div>
+		</td>
+	</tr>
+	<tr class="advanced-settings">
+		
+		<td align="right" nowrap ><a class="tooltip" href="javascript:void(0);" title="Adopt other task URL List as the crawling origin.">URL Origin:</a></td>
+		<td class="td_border">
+		<select id="urlOriginSiteId" name="urlOriginSiteId" style="width:160px;"></select>
+		</td>
+		
+		<td align="right" nowrap style="width:150px;"><a class="tooltip" href="javascript:void(0);" title="When there’s no data crawled in the URL for N days, change the URL status into -44 (the URL has expired and stop crawling), and the default days of the system is 7 days.">Expired Days Of URL:</a></td>
+		<td class="td_border">
+			<input type="text" id="expiredDaysUrl" name="expiredDaysUrl" size="90" value="0" style="width: 80px" onkeypress="return event.keyCode>=48&&event.keyCode<=57" onblur="this.value=this.value.replace(/[^0-9]/g,'')"/>
+		</td>
+	</tr>
+    
+	<tr  class="advanced-settings">
+		<td align="right" nowrap class="label">URL Check:</td>
+		<td class="td_border">
+		<select id="urlCheckId" name="urlCheckId" style="width:160px;"></select>
+		<span class="configBox" lang="UrlCheck.html">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+		</td>
+		
+		<td colspan="2"></td>
+	</tr>
+	
+	<tr>
+		<td align="right" nowrap ></td>
+        <td colspan="3" style="height: 25px;">
+        	<input type="button" id="advanced-settings-expander" class="link-button">
+        </td>           
+    </tr>
+</table>

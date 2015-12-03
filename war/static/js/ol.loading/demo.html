@@ -1,0 +1,93 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="UTF-8">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Language" content="UTF-8" />
+<title>ol.loading</title>
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+<script src="http://open-lib.googlecode.com/svn/trunk/jquery-1.3.2.min.js" type="text/javascript" charset='utf-8'></script>
+<script src="http://open-lib.googlecode.com/svn/trunk/jquery.bgiframe.min.js" type="text/javascript" charset='utf-8'></script>
+<script type="text/javascript" src="loading-min.js" charset="UTF-8"></script>
+<link href="loading.css" type="text/css" rel="stylesheet">
+<script type="text/javascript">
+//<![CDATA[
+var loading;
+$(document).ready(function()
+{
+	loading=new ol.loading({id:"table1"});
+	loading.show();
+
+	loading2=new ol.loading({id:"div1"});
+	loading2.show();
+	//alert(loading.init);
+});
+function show()
+{
+	loading.show();
+	loading2.show();
+}
+function hide()
+{
+	loading.hide();
+	loading2.hide();
+}
+//]]>
+</script>
+<style>
+body{background:#fff;font-size:9pt;}
+#center{
+    margin-top: 50px;
+}
+table tr{line-height:25px;}
+table td{border: 1px solid #000080;}
+</style>
+</head>
+<body>
+<div id="center" align="center">
+<h1>ol.loading v1.0</h1>
+<h2>详情：<a href="http://www.open-lib.com/Forum/Read_42_1.action" target="_blank">项目交流</a></h2>
+<br><br><br>
+<a href='javascript:show();'>显示</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href='javascript:hide();'>隐藏</a>
+<br><br><br>
+<table border="1" width="50%" id="table1" border="1">
+	<tr>
+		<td>1</td>
+		<td><select size="1" name="D1">
+			<option>555</option>
+			<option>3</option>
+			</select></td>
+		<td>3</td>
+		<td>4</td>
+		<td>5</td>
+	</tr>
+	<tr>
+		<td>1</td>
+		<td><select size="1" name="D1">
+			<option>555</option>
+			<option>3</option>
+			</select></td>
+		<td>3</td>
+		<td>4</td>
+		<td>5</td>
+	</tr>
+	<tr>
+		<td>1</td>
+		<td>2</td>
+		<td>3</td>
+		<td>4</td>
+		<td>5</td>
+	</tr>
+	<tr>
+		<td>1</td>
+		<td>2</td>
+		<td>3</td>
+		<td>4</td>
+		<td>5</td>
+	</tr>
+</table>
+</div>
+<br><br><br>
+
+<div id="div1" style="position:absolute;right:0px;bottom:100px;width:200px;height:100px;background:blue;">div1<div>
+</body>
+</html>

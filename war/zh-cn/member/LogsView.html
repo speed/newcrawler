@@ -1,0 +1,85 @@
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>查看日志</title>
+    <style type="text/css">
+    
+    .ae-disabled, a.ae-disabled, a.ae-disabled:hover, a.ae-disabled:active {
+		color: #666!important;
+		text-decoration: none!important;
+		cursor: default!important;
+		opacity: .4!important;
+		-moz-opacity: .4!important;
+		filter: alpha(opacity=40)!important;
+	}
+	.ae-paginate strong {
+		margin: 0 .5em;
+	}
+	.ae-action {
+		color: #00c;
+		cursor: pointer;
+		text-decoration: underline;
+	}
+
+    </style>
+</head>
+  <body>
+  	<div id="log-box-file" style="padding: 5px 20px 5px 20px;background-color:#474747;color: white;display: none;"><pre id="log"></pre></div>
+    <table width="100%" class="table_border"  id="logsViewTable">
+      
+      <tr>
+	  <td colspan="2" width="100%" > 
+		
+		<div style="padding:0px 2px 2px 2px;">
+	  	<table id="logsViewList" width="100%" align="center" class="table_border2 tableList" style="table-layout:fixed; border:1px solid #CCCCCC;border-collapse:collapse;background-color: #FFFFFF;">
+			<tr>
+				<td width="15" nowrap bgcolor="whiteSmoke"></td>
+				<td width="70%" nowrap bgcolor="whiteSmoke" style="padding-left: 8px;">logs</td>
+				<td width="100" nowrap bgcolor="whiteSmoke" style="text-align: right;  padding-right: 35px;">length</td>
+				<td width="170" nowrap bgcolor="whiteSmoke" style="text-align: center;">lastModified</td>
+			</tr>
+		</table>
+		
+		<div id="line" style="height:5px;"></div>
+		<div id="hiddenresult" style="display:none;">
+        
+        </div>
+		<div id="Pagination" class="ae-paginate"></div>
+	  	</div>
+	  	
+	   </td>
+	  </tr>
+  </table>
+  <script type="text/javascript">
+  $( "#log-box-file" ).dialog({ 
+		title: "日志",
+		autoOpen: false,
+		buttons: {
+			"Next": function() { logsView.fn.readFileNext()},
+			"Close": function() { logsView.fn.closeLog(); $( this ).dialog( "close" );}
+		},
+		height: 400,
+		maxHeight: 500,
+		width: 750,
+		maxWidth: 850,
+		modal: true,
+		resizable: true
+	});
+  
+  $(document).ready(function(){
+	  var initFun= function(){
+		  logsView.v.webCrawlerId=webCrawlerId;
+		  logsView.fn.init();
+		  };
+	  
+		var initLoading=setInterval(function(){
+			if(typeof logsView != 'undefined'){
+				clearInterval(initLoading);
+				initFun();
+			}
+		},500);
+	  
+  });
+  </script>
+  </body>
+</html>

@@ -1,0 +1,115 @@
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>Statistic information</title>
+</head>
+  <body>
+    <table width="100%" class="table_border" id="statisticInfoTable">
+      <tr>
+	  <td colspan="2" width="100%" > 
+	<div style="padding: 5px;">
+<div id="statistic_tabs">
+  <ul>
+  	<li><a href="#tabs-1">Real Time Rate</a></li>
+    <li><a href="#tabs-2">New Data Total</a></li>
+    <li><a href="#tabs-3">New URL Total</a></li>
+    <li><a href="#tabs-4">Fetch URL Total</a></li>
+  </ul>
+  
+  <div id="tabs-1">
+  <div class="chartDiv" id="DAY_REAL_TIME"></div>
+  </div>
+  <div id="tabs-2">
+  <div class="chartDiv" id="DAY_NEW_DATA"></div>
+  </div>
+  <div id="tabs-3">
+  <div class="chartDiv" id="DAY_NEW_URL"></div>
+  </div>
+  <div id="tabs-4">
+  <div class="chartDiv" id="DAY_URL_FETCH"></div>
+  </div>
+</div></div>  
+
+	   </td>
+	  </tr>
+	  
+	  <tr>
+        <td colspan="2" class="label" ><span class="STYLE4">Crawl Logs</span></td>        
+      </tr>
+      <tr>
+	  <td colspan="2" width="100%"  id="crawlDataLogTable"> 
+			
+	  <div style="padding:0px 2px 2px 2px;">
+	  	<table id="crawlDataLogList" width="100%" align="center" class="table_border2 tableList" style="table-layout:fixed; border:1px solid #CCCCCC;border-collapse:collapse;background-color: #FFFFFF;">
+			<tr>
+				<td width="15" nowrap bgcolor="whiteSmoke"></td>
+				<td width="150" nowrap bgcolor="whiteSmoke">Crawling Task</td>
+				<td width="100" nowrap bgcolor="whiteSmoke">Task Name</td>
+				<td width="65" nowrap bgcolor="whiteSmoke">Rate</td>
+				<td width="120" nowrap bgcolor="whiteSmoke">Create Time</td>
+				<td width="120" nowrap bgcolor="whiteSmoke">Finishing Time</td>
+				<td width="120" nowrap bgcolor="whiteSmoke">Cost Time</td>
+				<td width="65" nowrap bgcolor="whiteSmoke">Pre-Crawl QTY</td>
+				<td width="65" nowrap bgcolor="whiteSmoke">Crawled QTY</td>
+				<td width="65" nowrap bgcolor="whiteSmoke">Crawling</td>
+				<td width="65" nowrap bgcolor="whiteSmoke">URL Exception QTY</td>
+				<td width="65" nowrap bgcolor="whiteSmoke">Rules Error QTY</td>
+				<td width="65" nowrap bgcolor="whiteSmoke">New Data Total</td>
+				<td width="65" nowrap bgcolor="whiteSmoke">Published QTY</td>
+				<td width="80" nowrap bgcolor="whiteSmoke">Status</td>
+				<td width="150" nowrap bgcolor="whiteSmoke">Process</td>
+				
+				<td width="80" nowrap bgcolor="whiteSmoke">Action</td>
+			</tr>
+		</table>
+		
+		<div id="line" style="height:5px;"></div>
+		<div id="hiddenresult" style="display:none;">
+        
+        </div>
+		<div id="Pagination"></div>
+	  	</div>
+	  
+	  	<div>
+	  	The total number (<label id="URL_COUNT" style="color:red;">0</label>)  <label style="color: rgb(34, 102, 187);cursor: pointer;" class="re_statistic">Recount</label>
+	  	</div>
+
+	   </td>
+	  </tr>
+  </table>
+  
+  <script type="text/javascript">
+  
+  $(document).ready(function() {
+	  
+	  var initFun= function(){
+		  statisticInfo.v.webCrawlerId=webCrawlerId;
+		  statisticInfo.fn.init();
+		  
+		  var option={
+				  	tableId:"crawlDataLogTable",
+					listTableId:"crawlDataLogList",
+					PER_PAGE_ITEMS:10,
+					ITEMS_COUNT:0,
+					cur_page:0,
+					webCrawlerId:webCrawlerId,
+					siteId:null
+			}
+			var statisticInfoLog=new crawlDataLog(option);
+		  	statisticInfoLog.init();
+		  	
+		  	$('#statisticInfoTable .re_statistic').click(function(){
+		  		statisticInfoLog.statistic();
+		  	});
+	  };
+		
+		var initLoading=setInterval(function(){
+			if(typeof statisticInfo != 'undefined'){
+				clearInterval(initLoading);
+				initFun();
+			}
+		},500);
+	}); 
+  </script>
+  </body>
+</html>

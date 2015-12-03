@@ -1,0 +1,127 @@
+<html>
+  <head>
+  	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>Email template</title>
+	</head>
+  <body>
+	
+    <table width="100%" class="table_border">     
+	  <tr>
+        <td colspan="2" class="label"  style="display: none;"><br/><span class="STYLE4" id="mainTitle">Email Template</span></td>        
+      </tr>
+      <tr>
+	  <td  valign="top" >
+	  <form  id="emailNoticeForm" name="emailNoticeForm" method="post">
+	   <input type="hidden" id="id" name="id" value=""></input>
+	  <table width="100%" height="100%" class="table_border2">
+	  <tr>
+        <td width="120"  align="right" class="label">Name:</td>
+        <td class="td_border">
+        <div class="inputOver">
+        <input name="name"  type="text" id="name" value=""  style="width:100%"/>
+        </div>
+        </td>
+      </tr>
+      
+	  <tr>
+        <td width="120"  align="right" class="label"><a class="tooltip" title="Email address used to receive message"  href="javascript:void(0);">Receiving Email:</a></td>
+        <td class="td_border">
+        <div class="inputOver">
+        <input name="toEmail"  type="text" id="toEmail" value=""  style="width:100%"/>
+        </div>
+        </td>
+      </tr>
+      <tr>
+        <td width="120"  align="right" class="label">Subject:</td>
+        <td class="td_border">
+        <div class="inputOver">
+        <input name="tempTitle"  type="text" id="tempTitle" value=""  style="width:100%"/>
+        </div>
+        </td>
+      </tr>
+      
+      <tr>
+        <td width="120"  align="right" class="label">Options:</td>
+        <td class="td_border">
+        	<input id="isAttachment" name="isAttachment" type="checkbox" value="Y">As Attachment
+        </td>
+      </tr>
+      
+      <tr>
+        <td width="120"  align="right" class="label">Body:</td>
+        <td style="background-color: #FFFFFF;">
+        <textarea  name="tempContent" id="tempContent"   style="width:100%;height:300px;background:url(../../static/js/xheditor-1.1.14/demobg.jpg) no-repeat right bottom fixed" ></textarea>
+        </td>
+      </tr>
+      
+      <tr>
+        <td ></td>
+        <td class="td_border" >
+       		<input type="button" value="Create" class="create">
+			<input type="button" value="Remove" class="remove">
+			<input type="button" value="Update" class="update">
+			<input type="button" value="Send Test" class="testEmail">
+			
+        </td>
+      </tr>
+      <tr>
+      <td ></td>
+      <td align="left" style="padding:0px 5px 5px 5px;color:red;" >
+      <br/>
+      	Note: when sending email notice, the format in the template will be adopted, the template supports HTML mark and the format '${label name}' is used to read data matched by the crawling rules.
+      </td>
+      </tr>
+       <tr>
+			<td colspan="2">
+				<table id="emailNoticeTable" width="100%" align="center" class="table_border2 tableList" style="border:1px solid #CCCCCC;border-collapse:collapse;background-color: #FFFFFF;">
+					<tr>
+						<td width="5%" nowrap bgcolor="whiteSmoke">&nbsp;Select</td>
+						<td width="10%" nowrap bgcolor="whiteSmoke">&nbsp;&nbsp;&nbsp;Name</td>
+						<td width="75%" nowrap bgcolor="whiteSmoke">Detail</td>
+						<td width="10%" nowrap bgcolor="whiteSmoke">Create Time</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+      
+	  </table>
+	   </form>
+	  </td>
+	  </tr>
+	  
+	 
+  </table>
+  <script type="text/javascript">
+  $(document).ready(function() { 
+	  var initFun = function(){
+		  var containId;
+		  if (!loadConfig) {
+			  containId=$(document).find("#emailNoticeTable").parents('.ui-tabs-panel').attr("id");
+		  }else{
+			  containId="config";
+		  }
+		  var formId=containId+' #emailNoticeForm';
+		  var tableId=containId+' #emailNoticeTable';
+		  var emailNotice=new emailNoticeFun({
+			  containId:containId,
+			  webCrawlerId:webCrawlerId,
+				jsonData:new Array(),
+				formId:formId,
+				tableId:tableId
+		  });
+		  emailNotice.fn.init();
+		  emailNotice.fn.query(function(){reConfigBoxSize();});
+		  $('.tooltip').poshytip();
+		  $("#"+emailNotice.v.formId).find("#tempContent").xheditor();
+	};
+	
+	var initLoading=setInterval(function(){
+		if(typeof emailNotice != 'undefined'){
+			clearInterval(initLoading);
+			initFun();
+		}
+	},500);
+});
+  </script>
+  </body>
+</html>

@@ -1,0 +1,277 @@
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>Plug-in Management</title>
+
+</head>
+
+<body>
+	<table id="pluginTable" width="100%" class="table_border">
+		<tr>
+			<td colspan="2" class="label"  style="display: none;"><br/><span class="STYLE4" id="mainTitle">Custom Plug-in Uploading</span>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<form  method="POST" enctype="multipart/form-data" name="pluginUploadForm" id="pluginUploadForm" >
+					<input type="hidden" id="command" name="command" value="plugin">
+					<input type="hidden" id="u" name="u" >
+					<table width="100%" class="table_border2">
+						<tr>
+							<td width="120">
+							</td>
+							<td><div id="msgOutput"></div></td>
+						</tr>
+						<tr>
+							<td width="120" align="right" class="label">Name：</td>
+							<td  class="td_border">
+							<div class="inputOver">
+								<input type="text" id="name" name="name" style="width:100%" />
+								</div>
+							</td>
+					  	</tr>
+					  	<tr>
+							<td width="120" align="right" class="label">Support Platform：</td>
+							<td  class="td_border">
+								<div id="platformDiv" style="float:left;width:100%;height:100%;">
+							        <ul>
+								        <li>
+									        <input name="platform" type="checkbox" id="platform" value="gae" title="Google App Engine">
+									        <a class="tooltip" style="font-weight:normal;" title="Google App Engine" href="javascript:void(0);">Google App Engine</a>
+								         </li>
+								         <li>
+									        <input name="platform" type="checkbox" id="platform" value="bae" title="Baidu App Engine" >
+									        <a class="tooltip" style="font-weight:normal;" title="Baidu App Engine" href="javascript:void(0);">Baidu App Engine</a>
+								         </li>
+								         <li>
+									        <input name="platform" type="checkbox" id="platform" value="sae" title="Sina App Engine">
+									        <a class="tooltip" style="font-weight:normal;" title="Sina App Engine" href="javascript:void(0);">Sina App Engine</a>
+								         </li>
+								         <li>
+									        <input name="platform" type="checkbox" id="platform" value="appfog" title="AppFog">
+									        <a class="tooltip" style="font-weight:normal;" title="AppFog" href="javascript:void(0);">AppFog</a>
+								         </li>
+								         <li>
+									        <input name="platform" type="checkbox" id="platform" value="other" title="Other(IAAS)" >
+									        <a class="tooltip" style="font-weight:normal;" title="AWS EC2, ALL IAAS" href="javascript:void(0);">Other(IAAS)</a>
+								        </li>
+							        </ul>
+							    </div>
+							</td>
+					  	</tr>
+					  	<tr>
+							<td width="120" align="right" class="label">Type：</td>
+							<td  class="td_border">
+								<select name="type" id="type">
+									<option value="1" selected="selected">URL Fetch</option>
+									<option value="2">Data Filter</option>
+									<option value="3">File Save</option>
+									<option value="4">Data Publish</option>
+								</select>
+							</td>
+					  	</tr>
+					  	<tr>
+							<td width="120"  align="right" class="label">File:</td>
+							<td class="td_border"><input id="fileToUpload" type="file" size="50" name="fileToUpload" class="input"></td>
+						</tr>
+						<tr>
+							<td width="120">
+							</td>
+							<td class="td_border">
+								<img id="loading" src="../../static/images/loader.gif" style="display: none;"> 
+								<button class="button" type="submit">Upload</button>
+								<button type="button" class="scanLocalPlugin">Local Plug-in Install</button>
+							</td>
+						</tr>
+						
+						<tr>
+			<td colspan="2">
+				<table id="pluginList" width="100%" align="center" class="table_border2 tableList" style="border:1px solid #CCCCCC;border-collapse:collapse;background-color: #FFFFFF;">
+					<tbody id="pluginListTable">
+					<tr>
+						<td width="10%" nowrap bgcolor="whiteSmoke">&nbsp;&nbsp;&nbsp;Name</td>
+						<td width="10%" nowrap bgcolor="whiteSmoke">Type</td>
+						<td width="10%" nowrap bgcolor="whiteSmoke">Support Platform</td>
+						<td width="5%" nowrap bgcolor="whiteSmoke">Status</td>
+						<td width="10%" nowrap bgcolor="whiteSmoke">Create Time</td>
+						<td width="10%" nowrap bgcolor="whiteSmoke"  style="text-align:center">Action</td>
+					</tr>
+					</tbody>
+				</table>
+				<input type="hidden" name="proxyUrl" id="proxyUrl" size="40" >
+				<iframe id="proxyFrame" name="proxyFrame" src="" width=100% height=2px frameborder="0" scrolling="no" ></iframe> 
+				</td>
+		</tr>
+					</table>
+			  	</form>
+			</td>
+		</tr>
+		
+		
+		<tr>
+			<td colspan="2" class="label"><br/><span class="STYLE4">Plug-in Config</span>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<table id="pluginConfigList" width="100%" align="center" class="table_border2 tableList" style="border:1px solid #CCCCCC;border-collapse:collapse;background-color: #FFFFFF;">
+					<tbody id="pluginConfigTable">
+					<tr>
+						<td width="15%" nowrap bgcolor="whiteSmoke">&nbsp;&nbsp;&nbsp;Name</td>
+						<td width="15%" nowrap bgcolor="whiteSmoke">Type / Name</td>
+						
+						<td width="10%" nowrap bgcolor="whiteSmoke">Update Time</td>
+						<td width="10%" nowrap bgcolor="whiteSmoke" style="text-align:center">Action</td>
+					</tr>
+					</tbody>
+				</table>
+			</td>
+		</tr>
+
+	</table>
+	
+<div id="pluginConfigDialogWrapper" style="padding:0px 0px 0px 0px;display:none;" >
+    
+<form  method="POST" name="pluginConfigForm" id="pluginConfigForm" >
+	<input type="hidden" id="id" name="id">
+	<input type="hidden" id="pluginId" name="pluginId">
+	<input type="hidden" id="cmd" name="cmd">
+	<input type="hidden" id="type" name="type">
+	
+	<table width="100%" height="100%" class="table_border2">
+		<tr>
+			<td width="120" align="right" class="label">Name：</td>
+			<td  class="td_border">
+			<div class="inputOver">
+				<input type="text" id="name" name="name" style="width:100%" />
+				</div>
+			</td>
+	  	</tr>
+	  	<tr>
+			<td width="120" align="right" class="label">Plug-in URL：</td>
+			<td  class="td_border">
+			<div class="inputOver">
+				<input type="text" id="pluginUrl" name="pluginUrl" style="width:100%" />
+				</div>
+			</td>
+	  	</tr>
+	  	<tr>
+			<td width="120" align="right" class="label">Parameter Config：</td>
+			<td  class="td_border">
+				<textarea id="properties" name="properties" style="word-break:break-all;overflow-y:visible;height:238px;width:100%;padding: 0px;margin: 0px"></textarea>
+			</td>
+	  	</tr>
+	</table>
+</form>
+
+</div>
+
+<div id="localPluginDialogWrapper" style="padding:0px 0px 0px 0px;display:none;" >
+    
+<table id="localPluginListTable" width="100%" align="center" class="table_border2 tableList" style="border:1px solid #CCCCCC;border-collapse:collapse;background-color: #FFFFFF;">
+	<tr>
+		<td width="2%" nowrap bgcolor="whiteSmoke"><input type='checkbox' name='all' id='all' onclick="pluginManage.fn.selectAll(this,'localPluginListTable','key')" /></td>
+		<td width="20%" nowrap bgcolor="whiteSmoke">Type</td>
+		<td width="38%" nowrap bgcolor="whiteSmoke">&nbsp;&nbsp;&nbsp;Name</td>
+		<td width="5%" nowrap bgcolor="whiteSmoke"><a class="tooltip" style="font-weight:normal;" title="When plug-in depends on third party JAR, copy the JAR pack depended to the lib catalog of the application manually; if the plug-in is related to the spider and there’s crawler in the spider, copy the JAR pack depended to the lib catalog of crawler application at the same time." href="javascript:void(0);">Copy JAR</a></td>
+		<td width="5%" nowrap bgcolor="whiteSmoke">Spider Related</td>
+		<td width="30%" nowrap bgcolor="whiteSmoke">Support Platform</td>
+	</tr>
+</table>
+
+</div>
+
+<script type="text/javascript">
+
+$(document).ready(function() { 
+	var initFun= function(){
+		  var containId;
+		  if (!loadConfig) {
+			  var id=$(document).find("#pluginUploadForm").parents('.ui-tabs-panel').attr("id");
+			  containId=id;
+		  }else{
+			  containId="config";
+		  }
+		  var pluginManage=new pluginManageFun({
+			  formId:containId+" #pluginUploadForm",
+			  tableId:containId+" #pluginTable",
+			  containId:containId,
+			  jsonData:new Array(),
+			  webCrawlerId:webCrawlerId,
+			  webCrawlerUrl:null
+		  });
+		  pluginManage.pluginConfigManage.v={
+					tableId:"pluginTable",
+					formId:"pluginConfigForm",
+					jsonData:{}
+		 }
+		pluginManage.v.webCrawlerUrl=getWebCrawlerUrl();
+		
+		pluginManage.fn.init(function(obj){
+			(function (obj) {
+			$( "#"+obj.v.containId+" #pluginConfigDialogWrapper" ).dialog({ 
+				title: nc.i18n("res.pluginConfig"),
+				autoOpen: false,
+				buttons: { 
+					"okButton" : {
+				         text: "Confirm",
+				         id: "pluginConfigSave",
+				         click: function(){
+				        	 $( this ).dialog( "close" );
+				         } 
+				      },
+				      "cancleButton" : {
+					         text: "Cancel",
+					         click: function(){
+					        	 $( this ).dialog( "close" ); 
+					         }   
+					      }
+				},
+				height: 400,
+				maxHeight: 400,
+				width: 600,
+				maxWidth: 700,
+				modal: true,
+				resizable: false
+			});
+			
+			$( "#"+obj.v.containId+" #localPluginDialogWrapper" ).dialog({ 
+				title: nc.i18n("res.localplugin.install"),
+				autoOpen: false,
+				buttons: { 
+					"okButton" : {
+				         text: "Confirm",
+				         id: "installLocalPlugin",
+				         click: function(){
+				        	 $( this ).dialog( "close" );
+				         } 
+				      },
+				      "cancleButton" : {
+					         text: "Cancel",
+					         click: function(){
+					        	 $( this ).dialog( "close" ); 
+					         }   
+					      }
+				},
+				height: 350,
+				maxHeight: 500,
+				width: 700,
+				maxWidth: 700,
+				modal: true,
+				resizable: false
+			});
+			})(obj);
+		});	
+		$('.tooltip').poshytip();
+	};
+	
+	var initLoading=setInterval(function(){
+		if(typeof pluginManage != 'undefined'){
+			clearInterval(initLoading);
+			initFun();
+		}
+	},500);
+}); 
+</script>
+</body>
+</html>

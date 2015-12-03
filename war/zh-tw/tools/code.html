@@ -1,0 +1,133 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>源碼查看</title>
+    <link rel="stylesheet" href="../../static/js/codemirror/codemirror.css">
+    <style type="text/css">
+    	body {
+			margin: 0;
+			font-size: 13px;
+			line-height: 0.6;
+		}
+    	.CodeMirror {
+    		border-top: 1px solid black; 
+    		border-bottom: 1px solid black;
+    		height: 100%;
+  			width: 100%;
+			font-family: monospace;
+    	}
+    	.CodeMirror-scroll {
+		  height: 100%;
+		  width: 100%;
+		}
+		.activeline {background: #e8f2ff !important;}
+		.loading-logo-wp-cot {
+			position: absolute;
+			z-index: 100;
+			top: 0;
+			width: 100%;
+			background: white;
+			height: 100%;
+		}
+		.loading-logo-wp {
+			text-align: center;
+			padding: 50px 0;
+			color: #BBB;
+		}
+		.loading-logo {
+			display: block;
+			width: 73px;
+			height: 68px;
+			margin: 0 auto 15px;
+			background-size: 73px 68px;
+		}
+		.loading-s-bg {
+			display: inline-block;
+			vertical-align: middle;
+			height: 30px;
+			width: 30px;
+			background: url(../../static/images/loading.gif);
+			background-size: 30px 30px;
+		}
+    </style>
+    
+    <script type="text/javascript" src="../../static/js/codemirror.js"></script>
+    <script type="text/javascript" src="../../static/js/jxs-min.js"></script>
+  </head>
+  <body>
+	<div id="loading" class="loading-logo-wp-cot" style="display: block; overflow: hidden; visibility: visible;">
+		<div class="loading-logo-wp">
+			<div class="loading-s-bg"></div>
+			<p>正在加載</p>
+		</div>
+	</div>
+	
+	<div id="load_failed" class="loading-logo-wp-cot" style="display: none; overflow: hidden; visibility: visible;">
+		<div class="loading-logo-wp">
+			<span class="loading-logo"></span>
+			<a href="javascript:window.opener=null;window.close();" class="btn btn-fix mt-10">關閉</a>
+			<span style="width:5px;"></span>
+			<a href="javascript:location.reload();" class="btn btn-fix mt-10">重試</a>
+			
+			<p><pre id="errorlog" style="text-align:center; width:900px; line-height: 16px; margin-left: auto; margin-right: auto;overflow: auto;overflow-x:hidden"></pre></p>
+			
+		</div>
+	</div>
+		
+	<div id="viewcode"  style="display:none;">
+	<form><textarea id="code" name="code" style="width:100%;height:100%;"></textarea></form>
+	</div>
+    <script>
+    function getURLParameter(name) {
+        return decodeURI(
+            (RegExp(name + '=' + '(.+?)(&|$)').exec(location.search)||[,null])[1]
+        );
+    }
+    function viewcode(data){
+    	document.getElementById("code").value=data;
+		document.getElementById("loading").style.display="none";
+		document.getElementById("viewcode").style.display="block";
+		
+		var editor = CodeMirror.fromTextArea(document.getElementById("code"), {
+            mode: "application/x-ejs",
+            readOnly:true,
+            lineNumbers: true,
+            lineWrapping: true,
+            /*
+            indentUnit: 4,
+            indentWithTabs: true,
+            matchBrackets: true,
+            enterMode: "keep",
+            tabMode: "shift",
+            onCursorActivity: function() {
+            	editor.setLineClass(hlLine, null, null);
+              	hlLine = editor.setLineClass(editor.getCursor().line, null, "activeline");
+            }*/
+        });
+  		var hlLine = editor.setLineClass(0, "activeline");
+    }
+    window.onload=function(){
+    	var webCrawlerId=getURLParameter('webCrawlerId');
+    	var siteId=getURLParameter('siteId');
+    	var u=getURLParameter('u');
+    	var url="../../member/viewcode?webCrawlerId="+webCrawlerId+"&siteId="+siteId+"&u="+u;
+    	var opt={
+   			error:function(result){
+   				
+   				document.getElementById("loading").style.display="none";
+   				document.getElementById("load_failed").style.display="block";
+   				if(result!=null && result.length>30){
+   					document.getElementById("errorlog").style.textAlign="left";
+   					document.getElementById("errorlog").style.height="500px";
+   				}
+   				document.getElementById("errorlog").innerText=result;
+   			}
+    	};
+    	jx.load(url, function(data){viewcode(data);}, null, "POST", opt);
+    }
+    </script>
+    
+    
+  </body>
+</html>

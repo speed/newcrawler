@@ -1,0 +1,72 @@
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>application installation </title>
+</head>
+<body>
+	<table id="appInstall" width="100%" class="table_border">
+		<tr>
+			<td colspan="2" class="label" ><br/><span class="STYLE4">Google App Engine line installation </span></td>
+		</tr>
+		<tr>
+			<td colspan="2" width="100%">
+				<form id="passwordForm" name="passwordForm">
+					<table width="100%" height="100%" class="table_border2">
+						<tr>
+							<td width="150" align="right" class="label">App ID :</td>
+							<td class="td_border">
+								<div class="inputOver">
+								<input style="width:100%;" id="appid" type="text" name="appid" value="" />
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td width="150" align="right" class="label">GAE account :</td>
+							<td class="td_border">
+								<div class="inputOver">
+								<input style="width:100%;" id="email" type="text" name="email" value="" />
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td width="150" align="right" class="label">account password :</td>
+							<td class="td_border">
+								<div class="inputOver">
+								<input style="width:100%;" id="password" type="text" name="password" value="" />
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+							<td class="td_border">
+								<input type="button" value="installation " onClick="install.fn.execute()">
+							</td>
+						</tr>
+					</table>
+				</form>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2">
+			<pre id="Log">
+			
+			</pre>
+			</td>
+		</tr>
+	</table>
+	<script type="text/javascript">
+	$(document).ready(function() {
+		var initFun=function(){
+			removeLoading($("#"+install.v.tableId));
+		  };
+		
+		var initLoading=setInterval(function(){
+			if(typeof install != 'undefined'){
+				clearInterval(initLoading);
+				initFun();
+			}
+		},500);
+	}); 
+	</script>
+</body>
+</html>

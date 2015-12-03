@@ -1,0 +1,255 @@
+<html>
+  <head>
+    <meta content="text/html; charset=utf-8" http-equiv="content-type" />
+    <title>网址内容检测</title>
+    <style type="text/css">
+    .definitionErrorRules{
+    	height:31px;
+    }
+    </style>
+	</head>
+  <body>
+	 <form  id="urlCheckForm" name="urlCheckForm" method="post">
+	  <input type="hidden" id="id" name="id" value=""></input>
+    <table width="100%" class="table_border">   
+    <tr>
+        <td colspan="2" class="label"  style="display: none;"><br/><span class="STYLE4" id="mainTitle">网址内容检测</span></td>        
+      </tr>  
+      <tr>
+	  <td  valign="top" >
+	  <table width="100%" height="100%" class="table_border2">
+	  <tr>
+        <td width="120"  align="right" class="label">名称:</td>
+        <td class="td_border">
+        <div class="inputOver">
+        	<input name="name"  type="text" id="name" value=""  style="width:100%"/>
+        	</div>
+        </td>
+      </tr>
+      <tr>
+        <td width="120"  align="right" class="label">检测方式:</td>
+        <td class="td_border">
+	    <div id="optionsDiv" style="float:left;width:100%;height:100%;border-bottom:1px dashed #ccc;">
+        <ul>
+        <li>
+        <input class="typeInput" id="type" type="radio" name="type" value="ping" checked="checked"/>
+        <a class="tooltip type_ping" style="font-weight:normal;" title="使用HTTP请求读取响应码，当不选择HTTP请求配置时将不带任何属性请求。"  href="javascript:void(0);">Ping</a>
+        </li>
+        <li>
+        <input class="typeInput" id="type" type="radio" name="type" value="source"/>
+        <a class="tooltip type_source" style="font-weight:normal;" title="抓取到网页内容后检测是否包含异常文本（如反爬虫验证码输入提示）"  href="javascript:void(0);">网页内容</a>
+        </li>
+        <li style="width:120px;">
+        <input class="typeInput" id="type" type="radio" name="type" value="rules"/>
+        <a class="tooltip type_rules" style="font-weight:normal;" title="使用采集规则去匹配网页内容，当不选择HTTP请求配置时会默认使用站点的HTTP请求配置。"  href="javascript:void(0);">采集规则检测</a>
+        </li>
+        </ul>
+        </div>
+        
+        <table id="optionTable" style="width:100%;">
+        	<tr style="width:100%;">
+	        	<td nowrap="nowrap"  width="100"  align="right" >
+	        	</td>
+	        	<td  style="width:100%;"   align="left" colspan="3" nowrap>
+	        	错误的定义
+	        	</td>
+        	</tr>
+        	<tr class="pingOption" style="width:100%;">
+	        	<td nowrap="nowrap"  width="100"  align="right" >
+	        	<a class="tooltip" href="javascript:void(0);" title="HTTP请求返回的响应码为指定值时（如：404）表示检测到错误" style="font-weight:normal;">响应码：</a>
+	        	</td>
+	        	<td  style="width:100%;"   align="left" colspan="3" nowrap>
+	        	<input name="definitionErrorResponseCode"  type="text" id="definitionErrorResponseCode" value="404"  style="width:200px"/>
+	        	</td>
+        	</tr>
+        	<tr class="sourceOption" style="display:none;width:100%;">
+	        	<td nowrap="nowrap"  width="100"  align="right" >
+	        	<a class="tooltip" href="javascript:void(0);" title="抓取到网页内容后检测是否包含异常文本（如反爬虫验证码输入提示）" style="font-weight:normal;">网页内容：</a>
+	        	</td>
+	        	<td  style="width:100%;"   align="left" colspan="3" nowrap>
+	        	<div>
+	        		<div style="width: 690px;">
+	        			<div>
+		       			<select name="sourceContain" id="sourceContain" >
+							<option value="true">包含</option>
+							<option value="false">不包含</option>
+						</select>
+						开启正则<input name="sourceContainIsRegex" type="checkbox" id="sourceContainIsRegex" value="true" >
+		       		 	<input name="sourceContainText"  type="text" id="sourceContainText" value=""  style="width:200px"/>
+		       		 	</div>
+	        		</div>
+				</div>
+	        	</td>
+        	</tr>
+        	<tr class="rulesOption" style="display:none;width:100%;">
+	        	<td nowrap="nowrap"  width="100"  align="right" >
+	        	<a class="tooltip" href="javascript:void(0);" title="网址匹配到的记录条数小于指定值时表示检测到错误" style="font-weight:normal;">记录数小于：</a>
+	        	</td>
+	        	<td  style="width:100%;"   align="left" colspan="3" nowrap>
+	        	<input name="definitionErrorCount"  type="text" id="definitionErrorCount" value="1"  style="width:200px"/>
+	        	</td>
+        	</tr>
+        	<tr class="rulesOption" style="display:none;width:100%;">
+	        	<td nowrap="nowrap"  width="100"  align="right" >
+	        	<a class="tooltip" href="javascript:void(0);" title="指定需要检测的采集规则版本，验证标签匹配到的数据是否满足条件，不满足条件时表示检测到错误" style="font-weight:normal;">采集规则版本：</a>
+	        	</td>
+	        	<td  style="width:100%;"   align="left" colspan="3" nowrap>
+	        	<select id="crawlRulesVerId" name="crawlRulesVerId" style="width:160px;">
+		          	<option value=""></option>
+		       	</select>
+	        	</td>
+        	</tr>
+        	<tr class="rulesOption" style="display:none;width:100%;">
+	        	<td nowrap="nowrap"  width="100"  align="right" >
+	        	匹配规则：
+	        	</td>
+	        	<td  style="width:100%;"   align="left" colspan="3" nowrap>
+	        	<div class="definitionErrorRulesDiv">
+	        		<div id="definitionErrorRulesDiv1" class="definitionErrorRules" style="width: 690px;">
+	        			<div class="definitionErrorRulesCondition" style="height: 25px; margin-top: 6px;float: left;width: 100px;">
+	        			<input type="radio" name="cus_condition1" value="or" disabled="disabled">OR <input type="radio" name="cus_condition1" value="and" checked="checked"  disabled="disabled">AND
+	        			</div>
+	        			<div class="definitionErrorRulesLeft">
+	        			<select id="cus_label" name="cus_label" style="width:160px;">
+		          			<option value="" selected>选择标签</option>
+		       			</select>
+		       			<select name="cus_contain" id="cus_contain" >
+							<option value="Y">包含</option>
+							<option value="N">不包含</option>
+						</select>
+						开启正则<input name="cus_regex" type="checkbox" id="cus_regex" value="true" >
+		       		 	<input name="cus_data"  type="text" id="cus_data" value=""  style="width:200px"/>
+		       		 	</div>
+		       		 	
+		       		 	<div class="addLabel" style="margin-top: 3px;">
+						<a class="addLabelDiv" href="javascript:void(0);">+</a>
+						</div>
+	        		</div>
+		        	
+				</div>
+	        	</td>
+	        	
+        	</tr>
+        </table>
+        
+        </td>
+      </tr>
+	  
+      <tr>
+        <td width="120"  align="right" class="label"><a class="tooltip" href="javascript:void(0);" title="当超过允许的错误次数时才会调用发布规则。" >允许的错误次数:</a></td>
+        <td class="td_border">
+        <input name="errorTimesAllowed" type="text" id="errorTimesAllowed" value="0" width="100">
+        </td>
+      </tr>
+      <tr>
+        <td width="120"  align="right" class="label">错误处理:</td>
+        <td class="td_border">
+	     	<input class="optionInput" name="isDeploy" type="checkbox" id="isDeploy" value="true">
+			<a class="tooltip" style="font-weight:normal;" title="调用发布规则，可以在发布规则中通过 '${ERROR_REPORT}' 来读取错误报告"  href="javascript:void(0);">调用发布规则</a>
+	        
+	        <input  class="optionInput" name="isChangeUrlStatus" type="checkbox" id="isChangeUrlStatus" value="true" >
+        	<a class="tooltip" style="font-weight:normal;" title="当检测的网址发现错误时，改变网址状态。如改变网址状态为-44会停止网址的采集。"  href="javascript:void(0);">更新网址状态</a>
+        	
+        	<input name="isTriggerException" type="checkbox" id="isTriggerException" value="true">
+        	<a class="tooltip" style="font-weight:normal;" title="当检测到网页内容错误时，对当前网页进行重试抓取。"  href="javascript:void(0);">触发抓取异常</a>
+        	
+        	<input id="isSave" type="checkbox" name="isSave" value="true"/>保存检测结果
+        	
+	        <table >
+	        	<tr id="isDeploy_option" style="display:none;width:100%;">
+		        	<td nowrap="nowrap"  width="100"  align="right" >
+		        	发布规则：
+		        	</td>
+		        	<td  style="width:100%;"   align="left" colspan="3" nowrap>
+		        	<select id="deployId" name="deployId" style="width:160px;"></select>
+		        	</td>
+	        	</tr>
+	        	<tr id="isChangeUrlStatus_option" style="display:none;width:100%;">
+			       	<td nowrap="nowrap"  width="100"  align="right" >
+	       		 	网址状态：
+	       		 	</td>
+			        <td  style="width:100%;"   align="left" colspan="3" nowrap>
+	       		 	<input name="changeUrlStatus"  type="text" id="changeUrlStatus" value="-44"  style="width:60px"/>
+		        	</td>
+        		</tr>
+	        </table>
+        </td>
+      </tr>
+      <tr>
+        <td ></td>
+        <td class="td_border">
+       	 	<input class="createBtn" type="button" value="添加">
+			<input class="removeBtn" type="button" value="删除">
+			<input class="updateBtn" type="button" value="更新">
+        </td>
+      </tr>
+      <tr>
+      <td ></td>
+      <td align="left" style="padding:0px 5px 5px 5px;color:red;" >
+      <br/>
+      </td>
+      </tr>
+       <tr>
+			<td colspan="2">
+				<table id="urlCheckTable"  width="100%" align="center" class="table_border2 tableList" style="border:1px solid #CCCCCC;border-collapse:collapse;background-color: #FFFFFF;">
+					<tr>
+						<td width="5%" nowrap bgcolor="whiteSmoke">&nbsp;选择</td>
+						<td width="10%" nowrap bgcolor="whiteSmoke">&nbsp;&nbsp;&nbsp;名称</td>
+						<td width="10%" nowrap bgcolor="whiteSmoke">检测方式</td>
+						<td width="5%" nowrap bgcolor="whiteSmoke">保存检测结果</td>
+						<td width="5%" nowrap bgcolor="whiteSmoke">错误处理</td>
+						<td width="10%" nowrap bgcolor="whiteSmoke">更新时间</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+	  </table>
+	  
+	  </td>
+	  </tr>
+	  
+  </table>
+  		 </form>
+  <script type="text/javascript">
+  $(document).ready(function() { 
+	  var initFun=function(){
+		  var formId;
+		  var tableId;
+		  if (!loadConfig) {
+			  var id=$(document).find("#urlCheckForm").parents('.ui-tabs-panel').attr("id");
+			  formId=id+" #urlCheckForm";
+			  tableId=id+" #urlCheckTable";
+		  }else{
+				formId="config #urlCheckForm";
+				tableId="config #urlCheckTable";
+		  }
+		  
+			  var urlcheck=new urlcheckFun({
+				  formId:formId,
+				  tableId:tableId,
+				  index:1,
+				  webCrawlerId:webCrawlerId,
+				  siteId:siteId,
+				  jsonData:new Array(),
+				  definitionErrorRules:null
+			  });
+			
+			fillDeploy(urlcheck.v.formId, "deployId", false)
+			fillRulesVer(urlcheck.v.formId, "crawlRulesVerId", true);
+			
+			urlcheck.fn.init();
+			urlcheck.fn.query();
+			
+			$('.tooltip').poshytip();
+		};
+	  
+		var initLoading=setInterval(function(){
+			if(typeof urlcheck != 'undefined'){
+				clearInterval(initLoading);
+				initFun();
+			}
+		},500);
+	});
+  </script>
+  </body>
+</html>

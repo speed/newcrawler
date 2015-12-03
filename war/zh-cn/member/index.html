@@ -1,0 +1,207 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+
+<head>
+
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+	<title>鸟巢采集器</title>
+	  
+	
+	<link type="text/css" rel="stylesheet" href="../../static/js/poshytip-1.1/tip-yellow/tip-yellow.css" />
+	<link type="text/css" rel="stylesheet" href="../../static/css/header.css"/>
+	<link type="text/css" rel="stylesheet" href="../../static/js/datetimepicker-master/jquery.datetimepicker.css" />
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?e1ceaa53d6a8ad5f49c70e7196d99281";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+	
+	<style type="">
+	.ui-state-active .ui-state-hover{
+		background: none;
+	}
+	</style>
+</head>
+
+<body>
+<div id="message-box"  class="message-box" style="background: #FFD76E; border: 1px solid #E1BA53; border-radius: 2px;padding: 5px 15px; font-size: 12px; font-color: #333; font-weight: bold; position: absolute; top: 10px; left: 50%; z-index: 999999999; display: none;"></div>
+<div id="trace-box" class="message-box" style="padding: 5px 20px 5px 20px;background-color:#474747;color: white;display: none;"><pre id="trace"></pre></div>
+<div id="log-box" style="padding: 5px 20px 5px 20px;background-color:#474747;color: white;display: none;"><pre id="log"></pre></div>
+
+<div id="config-box" style="padding: 0px;display: none;"><div id="config"></div></div>
+
+<div id="loading" class="loading-logo-wp-cot" style="display: block; overflow: hidden; visibility: visible;">
+	<div class="loading-logo-wp">
+		<div class="loading-s-bg"><img src="../../static/images/loading.gif" alt="loading" /></div>
+		<p>正在加载</p>
+	</div>
+</div>
+
+<DIV id="optional-container" style="display:none;">
+
+	<DIV class="ui-layout-west" style="width:265px;">
+		<DIV style="padding: 0px 0px 5px 0px; text-align: left;font-size:12px;border-bottom: 1px solid #D8D8D8;width:217px;position: relative;">
+			<a href="//www.newcrawler.com/" style="width:170px;"><IMG alt="New Crawler" src="../../static/images/newcrawler-logo2.png" width="170"/></a>
+			<div class="locationdiv" ><div id="loaction"><span class="select_title"></span></div>
+				<ul class="locationdrop">
+					<li class="usa" title="美国节点，适合非中国地区访问，中国地区访问需翻墙" lang="usa"><a href="javascript:void(0);"><span></span></a></li>
+					<li class="china" title="中国节点，适合中国地区访问，但不能访问被墙的采集器应用" lang="china"><a href="javascript:void(0);"><span></span></a></li>
+					<li class="hk" title="海外节点，适合所有地区访问" lang="hk"><a href="javascript:void(0);"><span></span></a></li>
+					<li class="www" title="自动选择节点" lang="www"><a href="javascript:void(0);"><span></span></a></li>
+				</ul>
+			</div>
+		</DIV>
+		<DIV id="ui-layout-treeview" style="text-align: left;padding-top: 5px;">
+			
+		</DIV>
+	</DIV>
+	<DIV id="tabsview"  class="ui-layout-center" >
+		<UL>
+			<LI class="ui-default-tab" style="background:#f6f6f6 url(/static/css/images/ui-bg_highlight-soft_100_f6f6f6_1x100.png) 50% 50% repeat-x;border: 1px solid #ddd;"><A href="#tab_1"><SPAN>鸟巢采集器</SPAN></A></LI>
+		</UL>
+		<DIV class="ui-layout-content ui-widget-content ui-corner-bottom" >
+			<DIV id="tab_1" >
+					<iframe src="https://www.newcrawler.com/zh-cn/home.html" width="100%" height="100%" frameborder="0"></iframe>
+			</DIV>
+		</DIV>
+
+		<DIV class="logsViewConsoleWindow">
+			<div class="logs">
+				<div class="fr rbox">
+				<div class="selectdiv"><span class="select_title">选择采集器</span><i class="icon-caret-down"></i>
+					<ul class="selectdrop" style="display: none;">
+					</ul>
+				</div>
+				<div class="console_button">
+				<a class="clear_icon" title="清空日志" style="cursor: pointer" onclick="logsViewConsole.fn.clean();"></a>
+				<a class="min" lang="min" style="cursor: pointer"></a>
+				<a class="max" lang="max" style="cursor: pointer"></a>
+				</div>
+				</div>
+				
+				
+				<table style="table-layout: fixed;width:100%;border: 0;border-collapse: collapse;"><tbody>
+				<tr><td width="90"></td><td width="80"></td><td width="80"></td><td style="max-width:50%;"></td><td style="max-width:20%;"></td></tr>
+				</tbody></table>
+			</div>
+		</DIV>
+		<DIV class="ui-corner-all" style="padding: 3px 5px 5px; border: 1px solid #D8D8D8;text-align: right; margin-top: 7px; height:30px;">
+			<div style="float:left;">
+			<a href="../../member/Logout" title="登出"><img src="../../static/images/sign-out.png" alt="登出"  title="登出"/></a>
+			<a href="javascript:void(0);" title="显示日志" class="logsViewConsole"><img src="../../static/images/logviewer.jpg" style="width:30px;height:30px;"  alt="显示日志"  title="显示日志"/></a>
+			
+			</div>
+			<div style="float:right;">
+			<a href="http://code.google.com/p/newcrawler/issues/list" title="问题提交" target="_blank"><img src="../../static/images/code.png" alt="问题提交"  title="问题提交"/></a>
+			<a href="https://appengine.google.com/" title="Google App Engine" target="_blank"><img src="../../static/images/gae.png" alt="Google App Engine"  title="Google App Engine"/></a>
+			</div>
+		</DIV>
+	</DIV>
+</DIV>
+
+
+
+
+<script type="text/javascript" src="../../static/js/jquery-1.7.min.js"></script>
+<script type="text/javascript" src="../../static/js/jquery-ui.min.js"></script>
+<script type="text/javascript" src="../../i18n"></script>
+
+<script type="text/javascript" src="../../static/js/header.js"></script>
+<script type="text/javascript" src="../../static/js/Highcharts-4.1.9/js/highcharts.js"></script>
+<script type="text/javascript" src="../../static/js/Highcharts-4.1.9/js/modules/exporting.js"></script>
+<script type="text/javascript" src="../../static/js/jquery.pagination-min.js"></script>
+<script type="text/javascript" src="../../static/js/easydialog-min.js"></script>
+<script type="text/javascript" src="../../static/js/poshytip-1.1/jquery.poshytip-min.js"></script>
+
+<script type="text/javascript" src="../../static/js/main.member-min.js"></script>
+<script type="text/javascript" src="../../static/js/main.sitetasks-min.js"></script>
+<script type="text/javascript" src="../../static/js/main.logsview.console-min.js"></script>
+
+
+<script type="text/javascript" src="../../static/js/datetimepicker-master/jquery.datetimepicker.js"></script>
+
+<script type="text/javascript">
+		$( "#trace-box" ).dialog({ 
+			title: "错误日志",
+			autoOpen: false,
+			buttons: {
+				"发送错误报告": function() { 
+					var log=$("#trace-box #trace").html();
+					var msg=jsonrpc.errorReportJsonRPCService.create(log);
+					if(msg){
+						showInfo(nc.i18n("res.error.report.send.success"));
+					}else{
+						showInfo(nc.i18n("res.error.report.send.failure"));
+					}
+				},
+				"关闭": function() { $( this ).dialog( "close" ); }
+			},
+			height: 400,
+			maxHeight: 500,
+			width: 750,
+			maxWidth: 850,
+			modal: true,
+			resizable: true
+		});
+		
+		$( "#config-box" ).dialog({ 
+			title: "Config",
+			autoOpen: false,
+			buttons: {"关闭": function() { $( this ).dialog( "close" ); }},
+			minHeight: 450,
+			maxHeight: 600,
+			minWidth: 950,
+			maxWidth: 1100,
+			modal: true,
+			resizable: true
+		});
+		
+		function init(){
+			loadJs("../../static/js/base64-min.js");
+			loadJs("../../static/js/jquery.form-min.js");
+			loadJs("../../static/js/xheditor-1.1.14/xheditor-1.1.14-zh-cn.min.js");
+			
+			loadJs("../../static/js/main.account-min.js?v2.1");
+			loadJs("../../static/js/jxs-min.js?v2.1");
+			loadJs("../../static/js/main.install-min.js?v2.1");
+			loadJs("../../static/js/main.backup.and.restore-min.js?v2.1");
+			loadJs("../../static/js/main.backup.and.restore.bysite-min.js?v2.1");
+			loadJs("../../static/js/main.crawl.data.list-min.js?v2.1");
+			loadJs("../../static/js/main.crawl.rules-min.js?v2.1");
+			loadJs("../../static/js/main.crawl.url.import-min.js?v2.1");
+			loadJs("../../static/js/main.crawl.url.list-min.js?v2.1");
+			loadJs("../../static/js/main.data.deploy-min.js?v2.1");
+			loadJs("../../static/js/main.email.notice-min.js?v2.1");
+			loadJs("../../static/js/main.file.download.list-min.js?v2.1");
+			loadJs("../../static/js/main.httpinter-min.js?v2.1");
+			loadJs("../../static/js/main.httprequest-min.js?v2.1");
+			loadJs("../../static/js/main.plugin-min.js?v2.1");
+			loadJs("../../static/js/main.scheduled.tasks-min.js?v2.1");
+			loadJs("../../static/js/main.share-min.js?v2.1");
+			loadJs("../../static/js/main.statistic.info-min.js?v2.1");
+			loadJs("../../static/js/main.system.reset-min.js?v2.1");
+			loadJs("../../static/js/main.urlcheck-min.js?v2.1");
+			loadJs("../../static/js/main.web.crawler.config-min.js?v2.1");
+			loadJs("../../static/js/main.web.crawler.manage-min.js?v2.1");
+			loadJs("../../static/js/main.crawldata.log-min.js?v2.1");
+			loadJs("../../static/js/main.crawl.data.export-min.js?v2.1");
+			loadJs("../../static/js/main.logsview-min.js?v2.1");
+			loadJs("../../static/js/main.js.depend-min.js?v2.1");
+			loadJs("../../static/js/main.spider.manage-min.js?v2.1");
+			loadJs("../../static/js/main.crawl.exceptionurl.list-min.js?v2.1");
+		}
+		
+		$(document).ready(function(){
+			setTimeout("init()",10);
+		 });
+		
+</script>
+
+</body>
+</html>

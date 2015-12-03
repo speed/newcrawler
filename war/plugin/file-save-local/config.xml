@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<plugin>
+	<name>Storage to localhost</name>
+	<file>plugin-filesave-1.0.0.jar</file>
+	<type>3</type><!-- 1,网址抓取插件  2,数据过滤插件   3,文件保存插件  4,数据发布插件  -->
+	<depend>no</depend><!-- 是否依赖第三方JAR -->
+	<platforms>
+		<platform>other</platform>
+	</platforms>
+</plugin>

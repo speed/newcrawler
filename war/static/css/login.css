@@ -1,0 +1,55 @@
+* {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-FAMILY: "trebuchet ms", trebuchet, verdana, arial, helvetica, sans-serif; PADDING-TOP: 0px
+}
+HTML {
+	HEIGHT: 100%
+}
+BODY {
+	TEXT-ALIGN: center; BACKGROUND-COLOR: #212121; WIDTH: 100%; HEIGHT: 100%
+}
+.new_button_flat {
+	BORDER-BOTTOM: 0px; POSITION: relative; BORDER-LEFT: 0px; PADDING-BOTTOM: 5px; WIDTH: 90px; HEIGHT: 21px; FONT-SIZE: 14px; BORDER-TOP: 0px; TOP: 0px; FONT-WEIGHT: bold; BORDER-RIGHT: 0px; LEFT: 90px
+}
+.login_button {
+	BACKGROUND-IMAGE: url(/static/images/login.gif); BORDER-BOTTOM: 0px; POSITION: relative; BORDER-LEFT: 0px; PADDING-BOTTOM: 2px; BACKGROUND-COLOR: transparent; WIDTH: 90px; BACKGROUND-REPEAT: no-repeat; FONT-FAMILY: tahoma; HEIGHT: 32px; FONT-SIZE: 12px; BORDER-TOP: 0px; TOP: -20px; BORDER-RIGHT: 0px
+}
+.new_button {
+	BACKGROUND-IMAGE: url(/static/images/bouton.png); BORDER-BOTTOM: 0px; BORDER-LEFT: 0px; PADDING-BOTTOM: 2px; WIDTH: 90px; BACKGROUND-REPEAT: no-repeat; FONT-FAMILY: arial; HEIGHT: 21px; FONT-SIZE: 12px; BORDER-TOP: 0px; BORDER-RIGHT: 0px
+}
+.new_button_large {
+	BACKGROUND-IMAGE: url(/static/images/boutton_large.png); BORDER-BOTTOM: 0px; BORDER-LEFT: 0px; PADDING-BOTTOM: 2px; WIDTH: 90px; BACKGROUND-REPEAT: no-repeat; FONT-FAMILY: arial; HEIGHT: 21px; FONT-SIZE: 12px; BORDER-TOP: 0px; BORDER-RIGHT: 0px
+}
+.cute_button_large {
+	BACKGROUND-IMAGE: url(/static/images/btn-long.png); BORDER-BOTTOM: 0px; BORDER-LEFT: 0px; PADDING-BOTTOM: 2px; BACKGROUND-COLOR: transparent; WIDTH: 170px; BACKGROUND-REPEAT: no-repeat; FONT-FAMILY: tahoma; HEIGHT: 32px; FONT-SIZE: 11px; BORDER-TOP: 0px; FONT-WEIGHT: bold; BORDER-RIGHT: 0px
+}
+.new_button:hover {
+	BACKGROUND-IMAGE: url(/static/images/boutton_over.png); COLOR: #dddddd
+}
+.new_button_large:hover {
+	BACKGROUND-IMAGE: url(/static/images/bouton_large_over.png); COLOR: #dddddd
+}
+.labels {
+	WIDTH: 70px; COLOR: #747474; FONT-SIZE: 12px; FONT-WEIGHT: bold
+}
+.login_body {
+	POSITION: relative; MARGIN: 0px auto; WIDTH: 379px; HEIGHT: 100%
+}
+#me_box {
+	POSITION: absolute; TEXT-ALIGN: center; WIDTH: 285px; FONT-SIZE: 14px; TOP: -15px
+}
+#error_box {
+	LIST-STYLE-TYPE: none; COLOR: #900
+}
+#error_box LI {
+	COLOR: #800; 
+	font-size:12px;
+}
+#message_box {
+	LIST-STYLE-TYPE: none; COLOR: #090
+}
+#message_box LI {
+	COLOR: #080; FONT-WEIGHT: bold
+}
+.usertext {
+	BORDER-BOTTOM: #a9a9a9 1px solid; BORDER-LEFT: #a9a9a9 1px solid; PADDING-BOTTOM: 0px; BACKGROUND-COLOR: #ffffff; PADDING-LEFT: 5px; WIDTH: 170px; PADDING-RIGHT: 5px; HEIGHT: 20px; COLOR: #000; FONT-SIZE: 12px; BORDER-TOP: #a9a9a9 1px solid; BORDER-RIGHT: #a9a9a9 1px solid; PADDING-TOP: 0px
+}

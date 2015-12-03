@@ -1,0 +1,241 @@
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>HTTP請求</title>
+</head>
+  <body>
+    <table width="100%" class="table_border">
+      
+	   <tr>
+        <td colspan="2" class="label"  style="display: none;"><br/><span class="STYLE4" id="mainTitle">HTTP請求配置</span></td>        
+      </tr>
+      	
+      <tr>
+	  <td colspan="2" width="100%" >
+	  <form id="httpRequestForm" name="httpRequestForm" >
+		<input id="id" name="id" type="hidden">
+		<table width="100%" height="100%" class="table_border2">
+			<tr>
+				<td width="120"  align="right" nowrap class="label">名稱：</td>
+				<td width="100%" class="td_border" colspan="4">
+					<input id="name" type="text" name="name" value="HTTP請求配置" style="width: 150px" />
+				</td>
+			</tr>	
+			 <tr>
+				<td width="120"  align="right" nowrap class="label">請求方式：</td>
+				<td width="100%" class="td_border" colspan="4">
+					<input id="method" type="radio" name="method" value="GET" checked="checked"/>GET
+					<input id="method" type="radio" name="method" value="POST" />POST
+				</td>
+			</tr>
+			<tr>
+				<td width="120"  align="right" nowrap class="label">請求編碼：</td>
+				<td width="100%" class="td_border" colspan="4">
+					<input id="encoding" type="text" name="encoding" value="UTF-8" style="width: 150px" />
+				</td>
+			</tr>	
+			<tr>
+				<td width="120"  align="right" nowrap class="label">請求超時(秒)：</td>
+				<td width="100%" class="td_border" colspan="4" style="height:26px;">
+					<div style="float:left;width:200px;padding-top:5px;"><div id="timeoutSlider" ></div></div>
+					<div style="float:left;width:40px;margin-left: 10px;"><input id="timeout" type="text" name="timeout" value="" style="border: 0; color: #f6931f; font-weight: bold;" readonly="readonly"/></div>
+				</td>
+			</tr>
+			<tr>
+				<td width="120" align="right" nowrap class="label"><a class="tooltip" title="Google App Engine會附加默認的userAgent信息">UserAgent：</a></td>
+				<td class="td_border" colspan="1" width="90">
+				<select class="changeUserAgent">
+					<option value="">自定義</option>
+					<option value="Mozilla/5.0+(compatible;+Baiduspider/2.0;++http://www.baidu.com/search/spider.html)">Baidu spider</option>
+					<option value="Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)">Google spider</option>
+					<option value="Mozilla/5.0 (compatible; Yahoo! Slurp; http://help.yahoo.com/help/us/ysearch/slurp )">Yahoo spider</option>
+					<option value="Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 5.1; Trident/4.0; .NET CLR 1.1.4322; .NET CLR 2.0.50727; .NET CLR 3.0.04506.30; .NET CLR 3.0.04506.648; .NET CLR 3.5.21022; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729; .NET4.0C; .NET4.0E)">XP with IE 8</option>
+					<option value="Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64; Trident/5.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Center PC 6.0; Zune 4.0; InfoPath.3; MS-RTC LM 8; .NET4.0C; .NET4.0E)">Windows 7 with IE 9</option>
+					<option value="Opera/9.80 (Windows NT 5.1; U; en) Presto/2.9.168 Version/11.52">XP with Opera Browser</option>
+					<option value="Opera/9.80 (Windows NT 6.1; U; en) Presto/2.9.168 Version/11.52">Windows 7 with Opera Browser</option>
+					<option value="Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US) AppleWebKit/533.20.25 (KHTML, like Gecko) Version/5.0.4 Safari/533.20.27">Windows 7 with Safari</option>
+					<option value="Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/535.7 (KHTML, like Gecko) Chrome/16.0.912.36 Safari/535.7">Windows 7 with Chrome</option>
+					<option value="Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:8.0) Gecko/20100101 Firefox/8.0">XP with Firefox 8</option>
+					<option value="Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US; rv:8.0) Gecko/20100101 Firefox/8.0">Windows 7 with Firefox 8</option>
+					<option value="Mozilla/5.0 (X11; Linux i686; rv:8.0) Gecko/20100101 Firefox/8.0">Linux X11 with Firefox 8</option>
+					<option value="Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_6_8; en-US) AppleWebKit/533.21.1 (KHTML, like Gecko) Version/5.0.5 Safari/533.21.1">Mac OS X 10.6 with Safari</option>
+					<option value="Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10.6.8; en-US; rv:8.0) Gecko/20100101 Firefox/8.0">Mac OS X 10.6 with Firefox 8</option>
+					<option value="Opera/9.80 (Macintosh; Intel Mac OS X 10.6.8; U; en) Presto/2.9.168 Version/11.52">Mac OS X 10.6 with Opera Browser</option>
+					<option value="Mozilla/5.0 (iPad; U; CPU OS 3_2 like Mac OS X; en-us) AppleWebKit/531.21.10 (KHTML, like Gecko) Version/4.0.4 Mobile/7B334b Safari/531.21.10">iPad</option>
+					<option value="Mozilla/5.0 (iPhone; U; CPU iPhone OS 3_2 like Mac OS X; en-us) AppleWebKit/531.21.20 (KHTML, like Gecko) Mobile/7B298g">iPhone</option>
+					<option value="Mozilla/5.0 (compatible; MSIE 9.0; Windows Phone OS 7.5; Trident/5.0; IEMobile/9.0)">Windows Phone OS 7.5 and IE 9</option>
+					<option value="Mozilla/5.0 (Linux; U; Android 2.3.5; en-us; HTC Vision Build/GRI40) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1">Android 2.3.5</option>
+					<option value="Mozilla/5.0 (BlackBerry; U; BlackBerry 9850; en-US) AppleWebKit/534.11+ (KHTML, like Gecko) Version/7.0.0.115 Mobile Safari/534.11+">Blackberry</option>
+					<option value="Opera/9.80 (J2ME/MIDP; Opera Mini/9.80 (S60; SymbOS; Opera Mobi/23.348; U; en) Presto/2.5.25 Version/10.54">Symbian with Opera Mini</option>
+				</select>
+				</td>
+				<td width="100%" class="td_border" colspan="3">
+				<div class="inputOver">
+				<input id="userAgent" type="text" name="userAgent" value="" style="width: 100%" />
+				</div>
+				</td>
+			</tr>
+			<tr>
+				<td width="120" align="right" valign="top" nowrap><a class="tooltip" title="請求Header，多個按'回車(Enter)'鍵分隔 <br/> 格式：  <br/>&nbsp;&nbsp;Referer： http：//www.newcrawler.com/cn/nc/index.html <br/>&nbsp;&nbsp;Host： www.newcrawler.com <br/>&nbsp;&nbsp;UserAgent： ">Header：</a></td>
+				<td width="100%" class="td_border" colspan="4">
+				<div style="padding-right:8px;">
+					<textarea id="headers" name="headers" style="word-break:break-all;overflow-y:visible;height:60px;width:100%;padding: 0px;margin: 0px"></textarea>
+				</div>
+				</td>
+			</tr>
+			<tr>
+				<td width="120" align="right" valign="top" nowrap><a class="tooltip" title="綁定COOKIE可以采集需要登錄的站點">Cookie：</a></td>
+				<td width="100%" class="td_border" colspan="4">
+				<select id="cookieGetMethod" name="cookieGetMethod" class="changeCookie">
+					<option value="1" selected>自定義</option>
+					<option value="2">登錄後獲取</option>
+				</select>
+				<div id="cookie1" style="padding-top: 5px;padding-right:8px;display:block;">
+					<textarea id="cookie" name="cookie" style="word-break:break-all;overflow-y:visible;height:60px;width:100%;padding: 0px;margin: 0px"></textarea>
+				</div>
+				<div id="cookie2" style="padding-top: 5px;padding-right:8px;display:none;">
+					<table id="loginTable" width="100%" height="100%" style="color: #666;" align="left">
+						<tr>
+							<td width="120" align="right" nowrap></td>
+							<td colspan="2" >
+								<div id="message"></div>
+							</td>
+						</tr>
+						
+						<tr>
+							<td width="120" align="right" nowrap>請求方式：</td>
+							<td colspan="2" >
+								<input id="loginMethod" type="radio" name="loginMethod" value="GET" />GET
+								<input id="loginMethod" type="radio" name="loginMethod" value="POST" checked="checked"/>POST
+							</td>
+						</tr>
+						
+						<tr>
+							<td width="120"  align="right" nowrap>請求編碼：</td>
+							<td colspan="2">
+								<input id="loginEncoding" type="text" name="loginEncoding" value="UTF-8" style="width: 200px" />
+							</td>
+						</tr>
+						
+			        	<tr>
+					 		<td width="120" align="right" nowrap ><a class="tooltip" style="font-weight: normal;" title="以GET方式獲取網址的HTML內容，通過匹配特征碼來驗證登錄狀態，當網址沒有匹配到特征碼時，才會重新登錄並獲取新的COOKIE。" >特征碼所在網址</a>：</td>
+						 	<td colspan="2">
+						 	<div class="inputOver">
+							 	<input id="loginCodeURL" type="text" name="loginCodeURL" value="" style="width: 100%"/>
+							 	</div>
+				        	</td>
+			        	</tr>
+			        	
+			        	<tr>
+						 	<td width="120" align="right" nowrap>登錄特征碼：</td>
+						 	<td width="200" >
+							 	<input id="loginCode" type="text" name="loginCode" value="" style="width: 200px" />
+				        	</td>
+				        	<td>
+							 	<input id="loginCheck" name="loginCheck" type="checkbox" value="Y"/><a class="tooltip" style="font-weight: normal;" title="勾選表示每次請求都驗證登錄狀態" >每次請求都驗證登錄狀態</a>
+				        	</td>
+			        	</tr>
+			        		
+						<tr>
+					 		<td width="120" align="right" nowrap><a class="tooltip" style="font-weight: normal;" title="不支持需要驗證碼登錄的網址，登錄網址格式：http：//localhost/login" >登錄網址：</a></td>
+						 	<td colspan="2">
+						 	<div class="inputOver">
+							 	<input id="loginURL" type="text" name="loginURL" value="" style="width: 100%"/>
+							 	</div>
+				        	</td>
+			        	</tr>
+			        	<tr>
+					 		<td width="120" align="right" nowrap><a class="tooltip" style="font-weight: normal;" title="參數格式：username=admin&password=admin&params=...">登錄參數：</a></td>
+						 	<td colspan="2">
+						 	<div class="inputOver">
+							 	<input id="loginURLParams" type="text" name="loginURLParams" value="" style="width: 100%"/>
+							 	</div>
+				        	</td>
+			        	</tr>
+			        	
+			        	<tr>
+							<td width="120" align="right" nowrap><a class="tooltip" style="font-weight: normal;" title="登錄網址Header，多個按'回車(Enter)'鍵分隔 <br/> 格式：  <br/>&nbsp;&nbsp;Referer： http：//www.newcrawler.com/cn/nc/index.html <br/>&nbsp;&nbsp;Host： www.newcrawler.com <br/>&nbsp;&nbsp;UserAgent： ">登錄網址Header：</a></td>
+							<td colspan="2">
+							<div style="padding-right:8px;">
+								<textarea id="loginHeaders" name="loginHeaders" style="word-break:break-all;overflow-y:visible;height:60px;width:100%;padding: 0px;margin: 0px"></textarea>
+							</div>
+							</td>
+						</tr>
+						<tr>
+							<td width="120" align="right" nowrap></td>
+							<td colspan="2">
+								<input type="button" value="測試模擬登錄" class="loginTest">
+			        			<input type="button" value="讀取登錄Cookie" class="loginCookie">
+							</td>
+						</tr>
+		        	</table>
+				</div>
+				</td>
+			</tr>
+			
+			<tr>
+		        <td>&nbsp;</td>
+		        <td class="td_border"  colspan="4">
+		        	<input type="button" value="添加" class="create">
+			        <input type="button" value="刪除" class="remove">
+			        <input type="button" value="更新" class="update">
+		        </td>
+			</tr>
+			
+			<tr>
+			<td colspan="5">
+				<table id="httpRequestTable" width="100%" align="center" class="table_border2 tableList" style="border:1px solid #CCCCCC;border-collapse:collapse;background-color: #FFFFFF;">
+					<tr>
+						<td width="5%" nowrap bgcolor="whiteSmoke">&nbsp;選擇</td>
+						<td width="10%" nowrap bgcolor="whiteSmoke">&nbsp;&nbsp;&nbsp;名稱</td>
+						<td width="10%" nowrap bgcolor="whiteSmoke">請求方式</td>
+						<td width="10%" nowrap bgcolor="whiteSmoke">請求編碼</td>
+						<td width="10%" nowrap bgcolor="whiteSmoke">請求超時(秒)</td>
+						<td width="10%" nowrap bgcolor="whiteSmoke">建立時間</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+		</table>
+		</form>
+	   </td>
+	  </tr>
+	   
+	   
+  </table>
+  <script type="text/javascript">
+$(document).ready(function(){
+	  
+	  var initFun = function(){
+		  var formId;
+		  var tableId;
+		  if (!loadConfig) {
+			  var id=$(document).find("#httpRequestForm").parents('.ui-tabs-panel').attr("id");
+			  formId=id+" #httpRequestForm";
+			  tableId=id+" #httpRequestTable";
+			}else{
+				formId="config #httpRequestForm";
+				tableId="config #httpRequestTable";
+		  }
+		  var httpRequest=new httpRequestFun({
+			  formId:formId,
+			  tableId:tableId,
+			  jsonData:new Array(),
+			  webCrawlerId:webCrawlerId
+		  });
+		  httpRequest.fn.init();
+	      httpRequest.fn.query(function(){reConfigBoxSize();});
+		  httpRequest.fn.initSlider(6);
+		  $('.tooltip').poshytip();
+	  };
+	  
+	  var initLoading=setInterval(function(){
+		  if(typeof httpRequest != 'undefined'){
+			 clearInterval(initLoading);
+			 initFun();
+		  }
+	  },500);
+	});
+  </script>
+  </body>
+</html>

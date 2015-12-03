@@ -1,0 +1,176 @@
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>Backup and restore</title>
+
+</head>
+
+<body>
+	<table id="backupAndRestoreTable" width="100%" class="table_border">
+		<tr>
+			<td colspan="2" class="label"><br/><span class="STYLE4">Restore Data</span>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<form  method="POST" enctype="multipart/form-data" name="restoreForm" id="restoreForm"  >
+					<input type="hidden" id="siteId" name="siteId">
+					<input type="hidden" id="u" name="u" >
+					<table width="100%" class="table_border2">
+						<tr>
+							<td width="120">
+								<img id="loading" src="../../static/images/loader.gif" style="display: none;"> 
+								<button class="button" type="submit">Restore</button>
+							</td>
+							<td width="320"><input id="fileToUpload" type="file" size="50" name="fileToUpload" class="input"></td>
+							<td><div id="msgOutput"></div></td>
+						</tr>
+					</table>
+			  </form>
+			</td>
+		</tr>
+		
+		<tr>
+			<td colspan="2" class="label"  height="30px" valign="bottom"><span class="STYLE4">Backup Data</span>
+			</td>
+		</tr>
+		<tr>
+			<td>
+			<form id="backupForm" name="backupForm">
+				<table width="100%" class="table_border2">
+					
+					
+					<tr>
+						<td width="120" align="right" class="label">System Config：</td>
+						<td class="td_border" >
+							All<input type="checkbox" name="allBackModules" id="allBackModules" onclick="backupAndRestore.fn.selectAll(this,'backupForm','backModules')" />
+								<div class="checkboxListDiv" >
+									<ul>
+										<li><input id="backModules" type="checkbox" name="backModules" value="1"/>1. Spider Manager &gt; Spider Config</li>
+										<li><input id="backModules" type="checkbox" name="backModules" value="2"/>2. More Setting &gt; Other</li>
+										<li><input id="backModules" type="checkbox" name="backModules" value="3"/>3. Email template</li>
+										<li><input id="backModules" type="checkbox" name="backModules" value="4"/>4. HTTP Request</li>
+										<li><input id="backModules" type="checkbox" name="backModules" value="5"/>5. HTTP Interface</li>
+										<li><input id="backModules" type="checkbox" name="backModules" value="6"/>6. Plug-in Manager</li>
+									</ul>
+								</div>
+						</td>
+					</tr>
+					
+					<tr>
+						<td width="120" align="right" class="label"><a class="tooltip" title="Data backed up includes: task rules, crawling rules, publishing rules, task inspection and scheduled task" href="javascript:void(0);">Task：</a></td>
+						<td class="td_border" >
+						All<input type="checkbox" name="allSites" id="allSites" onclick="backupAndRestore.fn.selectAll(this,'backupForm','siteId')" />
+							<div id="siteCheckboxListDiv" class="checkboxListDiv" >
+							
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td width="120" align="right" class="label">Option：</td>
+						<td class="td_border" >
+							<div class="checkboxListDiv">
+								<ul>
+									<li>
+									<input id="backPrivate" type="checkbox" name="backPrivate" value="true"/>
+									<a class="tooltip" style="font-weight:normal;" title="Private data is as follows:  <br/> 1. More setting &gt; Spider Config <br/> 2. More setting  &gt; Other  <br/> 3. Email template  &gt; receiving email  <br/> 4.HTTP request  &gt; Cookie  <br/> 5.HTTP Interface &gt; interface address  <br/> 6. plug-in config &gt; plug-in URL / config template  <br/> 7. Publish Rules &gt; HTTP Interface  <br/> 7. URL check config &gt; URL" href="javascript:void(0);">Backup Private Data</a>
+									</li>
+								</ul>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td width="120" align="right" class="label">Remark：</td>
+						<td class="td_border" >
+							<div class="inputOver">
+							<input name="remark" type="text" id="remark" size="30" />
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td width="120"></td>
+						<td class="td_border">
+						<input name="Backup" type="button" value="Backup" onClick="backupAndRestore.fn.backup()"> 
+						</td>
+					</tr>
+					<tr>
+						<td width="120"></td>
+						<td>
+						<span style="color:red;" >Notice: The system won’t back up contents in 'URL List' and 'Data List'.</span>
+						</td>
+					</tr>
+					
+					<tr>
+			<td colspan="2">
+				<table id="backupAndRestoreListTable" width="100%" align="center" class="table_border2 tableList" style="border:1px solid #CCCCCC;border-collapse:collapse;background-color: #FFFFFF;">
+						<tr>
+							<td width="20%" nowrap bgcolor="whiteSmoke">Backup Time</td>
+							<td width="50%" nowrap bgcolor="whiteSmoke">File Path</td>
+							<td width="10%" nowrap bgcolor="whiteSmoke">Remark</td>
+							<td width="10%" nowrap bgcolor="whiteSmoke">Status</td>
+							<td width="20%" nowrap bgcolor="whiteSmoke">Action</td>
+						</tr>
+				</table>
+				
+				<input type="hidden" name="proxyUrl" id="proxyUrl" size="40" >
+				<iframe id="proxyFrame" name="proxyFrame" src="" width=100% height=2px frameborder="0" scrolling="no" ></iframe> 
+			</td>
+		</tr>
+		
+				</table>
+			</form>
+			</td>
+		</tr>
+		
+		
+
+		
+	</table>
+	<script type="text/javascript">
+	$(document).ready(function() { 
+		var initFun= function(){
+			var webCrawlerUrl=getWebCrawlerUrl();
+			backupAndRestore.v.webCrawlerId=webCrawlerId;
+			backupAndRestore.v.siteId=siteId;
+			backupAndRestore.v.webCrawlerUrl=webCrawlerUrl;
+			
+			$('.tooltip').poshytip();
+			backupAndRestore.fn.init();
+			backupAndRestore.fn.query();
+			
+			var baseUrl= webCrawlerUrl;
+			if(baseUrl==null || baseUrl==undefined){
+				baseUrl="../../";
+			}
+			var actionUrl = baseUrl + "upload";
+			var proxyUrl="../../member/file/proxyupload";
+			
+			var host=window.location.host;
+			if(isLocalSpider){
+				proxyUrl=actionUrl;
+			}
+			
+			$("#"+backupAndRestore.v.tableId).find('#u').val(BASE64.encode(actionUrl));
+			$("#"+backupAndRestore.v.tableId).find('#restoreForm').attr("action", proxyUrl);
+			
+			var options = { 
+					beforeSubmit:  	backupAndRestore.fn.showRequest,
+					success:    	backupAndRestore.fn.showResponse,
+					clearForm: 		true,
+					resetForm: 		true,
+					dataType:  		'json'
+			};
+			$("#"+backupAndRestore.v.tableId).find('#restoreForm').ajaxForm(options);
+		  };
+		
+		
+		var initLoading=setInterval(function(){
+			if(typeof backupAndRestore != 'undefined'){
+				clearInterval(initLoading);
+				initFun();
+			}
+		},500);
+	}); 
+	</script>
+</body>
+</html>

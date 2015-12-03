@@ -1,0 +1,122 @@
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>采集網址列表</title>
+</head>
+
+  <body>
+	<div id="log-box-url" style="padding: 5px 20px 5px 20px;background-color:#474747;color: white;display: none;"><pre id="log"></pre></div>
+	
+    <table id="crawlUrlListTable" width="100%" class="table_border">
+      <tr>
+	  <td width="100%" valign="top">
+	  <table width="100%">
+	  	<tr>
+        <td width="100%" class="td_border">
+        	<input name="addUrl" type="button" id="addUrl"  lang="CrawlUrlImport.html" value="添加網址">
+			<input name="delete" type="button" id="delete" onClick="crawlUrlList.fn.remove();" value="刪除">
+			<input name="delete" type="button" id="delete" onClick="crawlUrlList.fn.removeAll();" value="刪除所有">
+			<input name="resetStatus" type="button" id="resetStatus" onClick="crawlUrlList.fn.resetStatus();" value="重置狀態" >
+			<input name="search" type="button" id="search" onClick="crawlUrlList.fn.search();" value="查詢">
+			<input name="crawl" type="button" id="crawl" onClick="crawlUrlList.fn.crawl();" value="采集網址">
+		</td>
+        </tr>
+        <tr>
+        <td width="100%" class="td_border" style="padding:5px 5px 5px 5px;">
+        	<table width="100%">
+        		<tr>
+        			<td align="right" nowrap style="width: 50px;">狀態：</td>
+        			<td style="width: 100px;">
+        			<div class="inputOver">
+        			<input type="text" id="status" name="status" style="width:100%"/>
+        			</div>
+        			</td>
+        			
+        			<td align="right" nowrap style="width: 60px;">網址：</td>
+        			<td>
+        			<div class="inputOver">
+        			<input type="text" id="url" name="url" style="width:100%"/>
+        			</div>
+        			</td>
+        			
+        		</tr>
+        	</table>
+        </td>
+        </tr>
+        
+		<tr>
+        <td width="100%">
+		
+		</td>
+        </tr>
+        
+		
+	  </table>
+	  <div style="padding:0px 2px 2px 2px;">
+	  	<table id="crawlUrlList" width="100%" align="center" class="table_border2 tableList" style="table-layout:fixed; border:1px solid #CCCCCC;border-collapse:collapse;background-color: #FFFFFF;">
+			<tr>
+				<td width="50" nowrap bgcolor="whiteSmoke"></td>
+				<td width="50" nowrap bgcolor="whiteSmoke"><input type='checkbox' name='all' id='all' onclick="crawlUrlList.fn.selectAll(this,'crawlUrlList','id')" /></td>
+				<td width="80%" nowrap bgcolor="whiteSmoke">網址</td>
+				<td width="160" nowrap bgcolor="whiteSmoke">入庫時間</td>
+				<td width="160" nowrap bgcolor="whiteSmoke">更新時間</td>
+				<td width="100" nowrap bgcolor="whiteSmoke"><a class="tooltip" href="javascript:void(0);" title="狀態說明：1.采集成功; -1.網址抓取IOException; -2.網址沒有抓取到內容; -3.采集規則沒有匹配到數據; -44網址無效不再采集;">狀態</a></td>
+			</tr>
+		</table>
+		
+		<div id="line" style="height:5px;"></div>
+		<div id="hiddenresult" style="display:none;">
+        
+        </div>
+		<div id="Pagination"></div>
+	  </div>
+	  </td>
+	  
+	  </tr>
+	  <tr>
+	  <td align="left" style="padding:5px 5px 0px 5px;" >
+	  	 記錄總數(<label id="URL_COUNT" style="color:red;">0</label>)  <label style="color: rgb(34, 102, 187);cursor: pointer;" onClick="crawlUrlList.fn.statistic();">重新統計</label>
+	  </td>
+	  </tr>
+	  <tr>
+	  <td align="left" style="padding:0px 5px 5px 5px;color:red;" >
+	  	註意： 不需要重復采集的站點只會采集狀態為0的網址，重復采集的站點只會采集狀態不等於-44的網址。
+	  </td>
+	  </tr>
+  </table>
+  
+  <script type="text/javascript">
+		$( "#log-box-url" ).dialog({ 
+			title: "日誌",
+			autoOpen: false,
+			buttons: {
+				"關閉": function() { $( this ).dialog( "close" ); crawlUrlList.fn.init();}
+			},
+			height: 400,
+			maxHeight: 500,
+			width: 750,
+			maxWidth: 850,
+			modal: true,
+			resizable: true
+		});
+		
+		$(document).ready(function(){
+			var initFun= function(){
+				crawlUrlList.v.webCrawlerId=webCrawlerId;
+				crawlUrlList.v.siteId=siteId;
+				
+				crawlUrlList.fn.init();
+				$('.tooltip').poshytip();
+			  };
+			
+			
+			var initLoading=setInterval(function(){
+				if(typeof crawlUrlList != 'undefined'){
+					clearInterval(initLoading);
+					initFun();
+				}
+			},500);
+		});
+	</script>
+  </body>
+</html>

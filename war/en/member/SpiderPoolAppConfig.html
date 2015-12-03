@@ -1,0 +1,165 @@
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>reptile pool management </title>
+</head>
+  <body>
+    <table width="100%" class="table_border" id="spiderPoolAppConfigTable">
+     <tr>
+        <td colspan="2" class="label" height="30px" valign="bottom"><span class="STYLE4">reptile pool </span></td>        
+      </tr>
+      <tr>
+	  <td width="100%" valign="top">
+	  <form  id="spiderPoolAppForm" name="spiderPoolAppForm" method="post">
+	  <input type="hidden" id="id" name="id">
+	  <table width="100%" height="100%" class="table_border2">
+	   <tr>
+        <td width="120" align="right" nowrap class="label">name :</td>
+        <td class="td_border">
+        <div class="inputOver">
+        <input type="text" id="name" name="name" style="width:100%" />
+        </div>
+        </td>
+      </tr>
+      <tr>
+        <td nowrap align="right" class="label">URL:</td>
+        <td class="td_border">
+        <div class="inputOver">
+        <input type="text" id="url" name="url" style="width:100%" />
+        </div>
+        </td>
+      </tr>
+      <tr>
+        <td ></td>
+        <td class="td_border">
+        <input type="button" value="Create " onClick="spiderPoolApp.fn.create();">
+        <input type="button" value="Delete " onClick="spiderPoolApp.fn.remove();">
+        <input type="button" value="Update " onClick="spiderPoolApp.fn.update();">
+        <input type="button" value="Upgrade Version " onClick="spiderPoolApp.fn.upgrade();">
+        <input type="button" value="Clear Cache " onClick="spiderPoolApp.fn.clearCache();">
+        </td>
+      </tr>
+      
+      <tr>
+			<td colspan="5">
+				<table id="spiderPoolAppTable" width="100%" align="center" class="table_border2 tableList" style="border:1px solid #CCCCCC;border-collapse:collapse;background-color: #FFFFFF;">
+					<tr>
+						<td width="5%" nowrap bgcolor="whiteSmoke">&nbsp;Select </td>
+						<td width="15%" nowrap bgcolor="whiteSmoke">&nbsp;name </td>
+						<td width="50%" nowrap bgcolor="whiteSmoke">URL</td>
+						<td width="10%" nowrap bgcolor="whiteSmoke">version </td>
+						<td width="10%" nowrap bgcolor="whiteSmoke">setup time </td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+      
+	  </table>
+	   </form>
+	  </td>
+	  </tr>
+	  <tr>
+        <td colspan="2" class="label"><span class="STYLE4">reptile pool configuration  </span></td>        
+      </tr>
+      <tr>
+	  <td width="100%" valign="top">
+	  <form  method="post" id="spiderPoolAppConfigForm" name="spiderPoolAppConfigForm">
+	  <table width="100%" height="100%" class="table_border2">
+      <tr>
+        <td width="120" align="right" nowrap class="label">number of active reptiles :</td>
+        <td class="td_border">
+        <div class="inputOver">
+        <input type="text" id="system.property.pool.size" name="system.property.pool.size" style="width:100%" onkeypress="return event.keyCode>=48&&event.keyCode<=57" onblur="this.value=this.value.replace(/[^0-9]/g,'')"/>
+        </div>
+        </td>
+      </tr>
+      
+      <tr>
+        <td ></td>
+        <td class="td_border">
+        <input type="button" value="Save " onClick="spiderPoolAppConfig.fn.save();">
+        </td>
+      </tr>
+	  </table>
+	   </form>
+	  </td>
+	  </tr>
+      
+	  <tr>
+        <td colspan="2" class="label"><span class="STYLE4">crawler configuration </span></td>        
+      </tr>
+      
+	  <tr>
+	  
+	  <td width="100%" valign="top">
+	  <form  id="spiderAppForm" name="spiderAppForm" action="/pool?action=create" method="post">
+	  <input type="hidden" id="id" name="id">
+	  <table width="100%" height="100%" class="table_border2">
+
+	  <tr>
+        <td width="120" nowrap align="right" class="label">URL:</td>
+        <td class="td_border">
+        <div class="inputOver">
+        <input type="text" id="url" name="url" style="width:100%" />
+        </div>
+        </td>
+      </tr>
+	  <tr>
+        <td width="120" align="right" nowrap class="label">load rate :</td>
+        <td class="td_border">
+        	<select id="rate" name=rate >
+				<option value="R1" selected="selected">1beats / min </option>
+				<option value="R2">10beats / min </option>
+				<option value="R3">50beats / min </option>
+				<option value="R4">100beats / min </option>
+			</select>
+        </td>
+      </tr>
+      
+      <tr>
+        <td ></td>
+        <td class="td_border">
+        <input type="button" value="Create " onClick="spiderApp.fn.create();">
+        <input type="button" value="Delete " onClick="spiderApp.fn.remove();">
+        <input type="button" value="Update " onClick="spiderApp.fn.update();">
+        <input type="button" value="Upgrade Version " onClick="spiderApp.fn.upgrade();">
+        <input type="button" value="Clear Cache " onClick="spiderApp.fn.clearCache();">
+        <input type="button" value="Update Scheduled Tasks " onClick="spiderApp.fn.updateSchedule();">
+        <input type="button" value="Refresh List " onClick="spiderApp.fn.freshList();">
+        </td>
+      </tr>
+      
+      <tr>
+      <td colspan=10>
+       	<table id="spiderDetailList" width="100%" align="center" class="table_border2 tableList" style="border:1px solid #CCCCCC;border-collapse:collapse;background-color: #FFFFFF;">
+		<tbody id="spiderDetailTable">
+			<tr>
+				<td width="5%" nowrap bgcolor="whiteSmoke">&nbsp;Select </td>
+				<td width="45%" nowrap bgcolor="whiteSmoke">URL</td>
+				<td width="10%" nowrap bgcolor="whiteSmoke">version </td>
+				<td width="10%" nowrap bgcolor="whiteSmoke">load rate </td>
+				<td width="10%" nowrap bgcolor="whiteSmoke">crawl total flow / day </td>
+				<td width="10%" nowrap bgcolor="whiteSmoke">number of URLs crawled / day </td>
+				<td width="10%" nowrap bgcolor="whiteSmoke">Failed to fetch URLs Quantity / Day </td>
+			</tr>
+		</tbody>
+		</table>
+      </td>
+      </tr>
+      
+	  </table>
+	   </form>
+	  </td>
+	  </tr>
+	  
+	  
+	  
+  </table>
+  <script type="text/javascript">
+  $(document).ready(function(){
+	  spiderPoolApp.v.jsonData=new Array();
+	  spiderPoolApp.fn.query();
+  });
+  </script>
+  </body>
+</html>

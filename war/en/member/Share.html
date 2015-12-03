@@ -1,0 +1,249 @@
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>share </title>
+
+<style type="text/css">
+	#commentDiv ul{
+		margin:0px;padding: 0px;
+	}
+	#commentDiv ul li {
+		width: 120px;float: left;height: 16px;padding: 2px 0px 7px 5px;
+	}
+	.star {
+		float: left;
+		margin-top: 2px;
+		margin-right: 2px;
+	}
+	.sa1 {
+		background-position: -52px 0;
+	}
+	.sa2 {
+		background-position: -39px 0;
+	}
+	.sa3 {
+		background-position: -26px 0;
+	}
+	.sa4 {
+		background-position: -13px 0;
+	}
+	.sa5 {
+		background-position: 0 0;
+	}
+	.sa0, .sa1, .sa2, .sa3, .sa4, .sa5 {
+		width: 64px;
+		height: 12px;
+		background-image: url(//cdn.newcrawler.com/static/images/star.gif);
+		background-repeat: no-repeat;
+		overflow: hidden;
+		border:0px;
+	}
+	.score{
+		position:relative;
+		top:10%;
+	}
+
+</style>
+
+</head>
+
+<body>
+	<table id="shareTable" width="100%" class="table_border">
+		<tr>
+		  <td  valign="top" >
+			  <form  method="POST" enctype="multipart/form-data" name="shareForm" id="shareForm" action="../../member/file/upload" >
+			  	<input type="hidden" id="category" name="category" />
+				  <table width="100%" height="100%" class="table_border2">
+				  	   <tr>
+				        <td width="120"></td>
+				        <td colspan="2"><div id="msgOutput"></div></td>
+				      </tr>
+				      <tr>
+				        <td width="120"  align="right" class="label">Classification :</td>
+				        <td class="td_border" colspan="2">
+				        
+				        <div style="float:left;">
+					        <select id="type" name="type" onchange="share.fn.changeType(this.value)">
+					        	<option value="" selected></option>
+					        	<option value="plugin">plug </option>
+					        	<option value="rules">collection rules </option>
+					        </select>
+				        </div>
+				        
+				        <div id="categroy1-div" style="float:left;display:none;padding-left: 5px;">
+					        <select id="category1" name="category1">
+					        	<option value="" selected></option>
+					        	<option value="1">URLs crawled plug </option>
+								<option value="2">data filtering plug-in </option>
+								<option value="3">file saving plug </option>
+								<option value="4">data publishing plug-in </option>
+					        </select>
+				        </div>
+				        <div id="categroy2-div" style="float:left;display:none;padding-left: 5px;">
+					        <select id="category2" name="category2" >
+					        	<option value="" selected></option>
+					        	<option value="1">blog Station </option>
+					        	<option value="2">forum station </option>
+					        	<option value="3">news station </option>
+					        	<option value="4">fiction Station </option>
+					        	<option value="5">Image Station </option>
+					        	<option value="6">electricity supplier Station </option>
+					        	<option value="7">Other stations </option>
+					        </select>
+				        </div>
+				        </td>
+				      </tr>
+				      <tr>
+				        <td width="120"  align="right" class="label"><a class="tooltip" href="javascript:void(0);" title="Please fill in the appropriate name. ">name :</a></td>
+				        <td class="td_border" colspan="2">
+				        <div class="inputOver">
+				        <input name="name"  type="text" id="name" value=""  style="width:100%"/>
+				        </div>
+				        </td>
+				      </tr>
+				      <tr>
+						<td width="120"  align="right" class="label">file :</td>
+						<td class="td_border"><input id="fileToUpload" type="file" size="50" name="fileToUpload" class="input"></td>
+					  </tr>
+				      <tr>
+				        <td ></td>
+				        <td class="td_border" style="padding: 5px 5px 5px 5px" colspan="2">
+				        <button class="button" type="submit">share </button>
+				        </td>
+				      </tr>
+				  </table>
+			   </form>
+		  </td>
+	  	</tr>
+		<tr>
+			<td colspan="2" class="label"><br/><span class="STYLE4">my share </span>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<table id="userShareList" width="100%" align="center" class="table_border2 tableList" style="border:1px solid #CCCCCC;border-collapse:collapse;background-color: #FFFFFF;">
+					<tbody id="userShareTabel">
+						<tr>
+							<td width="20%" nowrap bgcolor="whiteSmoke">name </td>
+							<td width="15%" nowrap bgcolor="whiteSmoke">Classification </td>
+							<td width="15%" nowrap bgcolor="whiteSmoke">Share on </td>
+							<td width="30%" nowrap bgcolor="whiteSmoke">filename </td>
+							<td width="5%" nowrap bgcolor="whiteSmoke">downloads </td>
+							<td width="5%" nowrap bgcolor="whiteSmoke">Reviews </td>
+							<td width="10%" nowrap bgcolor="whiteSmoke">Operation </td>
+						</tr>
+					</tbody>
+				</table>
+			</td>
+		</tr>
+		
+		<tr>
+			<td colspan="2" class="label"><br/><span class="STYLE4">All Share </span>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<div style="padding:0px 2px 2px 2px;">
+			  	<div id="Searchresult">
+					<table id="allShareList" width="100%" align="center" class="table_border2 tableList" style="border:1px solid #CCCCCC;border-collapse:collapse;background-color: #FFFFFF;">
+						<tbody id="allShareTabel">
+							<tr>
+								<td width="20%" nowrap bgcolor="whiteSmoke">name </td>
+								<td width="15%" nowrap bgcolor="whiteSmoke">Classification </td>
+								<td width="15%" nowrap bgcolor="whiteSmoke">Share on </td>
+								<td width="30%" nowrap bgcolor="whiteSmoke">filename </td>
+								<td width="5%" nowrap bgcolor="whiteSmoke">downloads </td>
+								<td width="5%" nowrap bgcolor="whiteSmoke">Reviews </td>
+								<td width="10%" nowrap bgcolor="whiteSmoke">Operation </td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div id="line" style="height:5px;"></div>
+				<div id="hiddenresult" style="display:none;">
+		        
+		        </div>
+				<div id="Pagination"></div>
+			  </div>
+			</td>
+		</tr>
+		<tr>
+	  <td align="left" style="padding:5px 5px 0px 5px;" >
+	  	 Count:(<label id="ITEM_COUNT" style="color:red;">0</label>)
+	  </td>
+	  </tr>
+	</table>
+	
+<div id="commentDialogWrapper" style="padding:0px 0px 0px 0px;display:none;" >
+
+<form id="commentForm" name="commentForm"  method="post">
+<input type="hidden" id="id" name="id"/>
+<table width="100%" class="table_border2">
+<tr><td class="label">Ratings ：</td></tr>
+  <tr>
+   <td>
+	 <div id="commentDiv"><ul>
+		<li><div style="float:left;"><input id="score" name="score" type="radio" value="5"></div><div class="star sa5"></div><span class="score">(5分)</span></li>
+		<li><div style="float:left;"><input id="score" name="score" type="radio" value="4"></div><div class="star sa4"></div><span class="score">(4分)</span></li>
+		<li><div style="float:left;"><input id="score" name="score" type="radio" value="3"></div><div class="star sa3"></div><span class="score">(3分)</span></li>
+		<li><div style="float:left;"><input id="score" name="score" type="radio" value="2"></div><div class="star sa2"></div><span class="score">(2分)</span></li>
+		<li><div style="float:left;"><input id="score" name="score" type="radio" value="1"></div><div class="star sa1"></div><span class="score">(1分)</span></li>
+	</ul></div>
+ 	</td>
+  </tr>
+  <tr><td class="label">description ：</td></tr>
+  <tr><td><textarea id="description" name="description" style="word-break:break-all;overflow-y:visible;height:60px;width:100%;padding: 0px;margin: 0px"></textarea></td></tr>
+</table>
+</form>
+
+</div>
+
+<script type="text/javascript">
+$( "#commentDialogWrapper" ).dialog({ 
+	title: nc.i18n("res.comment.submit"),
+	autoOpen: false,
+	buttons: { 
+		"OK ": function() { 
+			var score=getRadio("commentForm", "score");
+    		var description=$("#commentForm #description").val();
+    		var id=$("#commentForm #id").val();
+    		if(score==null || score==""){
+    			showInfo(nc.i18n("res.score.invalid"));
+    			return;
+    		}
+    		if(description==null || description==""){
+    			showInfo(nc.i18n("res.desc.invalid"));
+    			return;
+    		}
+    		if(id==null || id==""){
+    			showInfo(nc.i18n("res.params.errors"));
+    			return;
+    		}
+    		share.fn.comment(id, score, description);
+    		$( this ).dialog( "close" );
+		},
+		"Cancel ": function() { $( this ).dialog( "close" ); }
+	},
+	height: 248,
+	maxHeight: 400,
+	width: 430,
+	maxWidth: 600,
+	modal: true,
+	resizable: false
+});
+$(document).ready(function() { 
+	var initFun= function(){
+		share.fn.init();
+	};
+	
+	var initLoading=setInterval(function(){
+		if(typeof share != 'undefined'){
+			clearInterval(initLoading);
+			initFun();
+		}
+	},500);
+}); 
+
+</script>
+</body>
+</html>

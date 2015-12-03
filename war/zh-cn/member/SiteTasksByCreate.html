@@ -1,0 +1,48 @@
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>采集站点管理</title>
+</head>
+
+  <body>
+    <table id="siteCreateTable" width="100%" class="table_border">
+      <tr>
+	  <td width="100%" valign="top">
+	  	<form id="siteCreateForm" name="siteCreateForm" method="post">
+	  	</form>
+	  </td>
+	  </tr>
+	  <tr>
+        <td class="td_border" style="padding: 0px 0px 0px 150px">
+        <input type="button" value="创建" onClick="siteTask.fn.create('siteCreateForm');" >
+		</td>
+      </tr>
+  </table>
+  </body>
+  <script type="text/javascript">
+	$(document).ready(function(){
+		var initFun= function(){
+			$.ajax({
+				type: "GET",
+				url: "SiteTasks.html",
+				async:true,
+				success: function(responseText){
+					$("#siteCreateForm").html(responseText);
+					$('.tooltip').poshytip();
+					
+					siteTask.fn.init("siteCreateForm");
+					removeLoading($("#siteCreateTable"));
+					initConfigBox();
+			  	}
+			});
+		};
+		
+		var initLoading=setInterval(function(){
+			if(typeof siteTask != 'undefined'){
+				clearInterval(initLoading);
+				initFun();
+			}
+		},500);
+	});
+	</script>
+</html>

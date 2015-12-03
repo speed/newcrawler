@@ -1,0 +1,103 @@
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>搜索数据</title>
+    
+  </head>
+
+  <body>
+	
+    <table width="100%" class="table_border">
+	   <tr>
+        <td valign="top">
+		<table width="100%"  align="center" class="table_border2">
+		 
+		<tr>
+		<td  height="100%">
+		<form id="searchKeywordForm" name="searchKeywordForm" method="post">
+		<input name="id" type="hidden" id="id" >
+		<table  width="100%" height="100%"  >
+			<tr>
+			<td width="10%" nowrap>名称:</td>
+			<td  class="td_border"><input id="name"  name="name"  type="text" style="width:97%"/></td>
+			</tr>
+			<tr>
+			<td nowrap>搜索相似度:</td>
+			<td  class="td_border"><input id="per"  name="per"  type="text" value="60" />%(百分比)</td>
+			</tr>
+			<tr>
+			<td nowrap>网址过滤:</td>
+			<td  class="td_border"><input id="regex"  name="regex"  type="text" value="&quot;(http:\/\/.*?)&quot;" style="width:60%"/>
+			(正则表达式)</td>
+			</tr>
+			<tr>
+			<td nowrap>返回记录数量:</td>
+			<td class="td_border"><input id="size"  name="size"  type="text" value="5" /></td>
+			</tr>
+	        <tr>
+			<td nowrap>回调接口:</td>
+			<td class="td_border">
+			<input id="returnUrl"  name="returnUrl"  type="text" style="width:97%" value=""/>(将搜索到的结果回调给此接口)</td>
+			</tr>
+			<tr>
+			<td nowrap></td>
+			<td class="td_border">
+			<input name="添加" type="button" id="添加" value="添加" onClick="addRules();">
+			<input name="更新" type="button" id="更新" value="更新" onClick="updateRules();">
+			<input name="删除" type="button" id="删除" value="删除" onClick="deleteRules();">
+			</td>
+			</tr>
+        </table>
+        </form>
+		</td>
+		<td width="45%" height="100%" valign="top">
+			<table width="100%" height="100%" align="center" class="table_border">
+			<tr>
+			<td height="100%" valign="top" colspan="2">
+			<table width="100%" height="100%">
+			<tbody id="rulesTabel"> 
+			<tr>
+			<td width="5%" nowrap>选择</td>
+		    <td nowrap>规则名称</td>
+          	</tr>
+			</tbody>
+			</table>
+			</td>
+			</tr>
+			<tr>
+			<td width="91%" class="td_border">
+			<input name="keyword" type="text" id="keyword" style="width:97%">   
+			</td>
+			<td width="9%" align="center" class="td_border">
+			<input name="搜索" type="button" id="搜索" value="搜索" onClick="searchData();" >
+			</td>
+			</tr>
+			</table>
+		</td>
+		</tr>
+		</table>
+		</td>
+      </tr>
+      <tr>
+      <td>
+			<table width="100%" align="center" class="table_border2">
+			<tbody id="searchDataTabel"> 
+			<tr>
+		    <td width='10%' nowrap>名称</td>
+		    <td width='25%' nowrap>搜索关键字</td>
+		    <td width='65%' nowrap>搜索结果</td>
+          	</tr>
+			</tbody>
+			</table>
+		</td>
+      </tr>
+  </table>
+  <script type="text/javascript" src="../../static/js/main.data.search-min.js"></script>
+   <script type="text/javascript">
+    var rulesJson;
+    var data=querySiteList();
+    queryRules();
+    querySearchData();
+    </script>
+  </body>
+</html>

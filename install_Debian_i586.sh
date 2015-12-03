@@ -19,10 +19,10 @@ mv jre1.8.0_66 jre
 
 #war
 apt-get -y install unzip
-wget --no-check-certificate https://github.com/speed/spider/archive/master.zip
+wget --no-check-certificate https://github.com/speed/newcrawler/archive/master.zip
 unzip -n master.zip
-mv spider-master/war war
-rm -R -f -v spider-master
+mv newcrawler-master/war war
+rm -R -f -v newcrawler-master
 
 #PhantomJs
 apt-get -y install bzip2

@@ -19,10 +19,10 @@ rm -R -f -v jdk1.8.0_66
 
 #war
 yum -y install unzip
-wget --no-check-certificate https://github.com/speed/spider/archive/master.zip
+wget --no-check-certificate https://github.com/speed/newcrawler/archive/master.zip
 unzip -n master.zip
-mv spider-master/war war
-rm -R -f -v spider-master
+mv newcrawler-master/war war
+rm -R -f -v newcrawler-master
 
 #PhantomJs
 yum -y install bzip2

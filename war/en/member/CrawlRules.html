@@ -1,0 +1,707 @@
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Data crawling rules</title>
+
+  </head>
+
+  <body>
+	
+    <table id="crawlRulesTable" width="100%" class="table_border">
+	   <tr>
+        <td width="60%" valign="top" >
+		<form id="crawlRulesForm" name="crawlRulesForm" method="post">
+		<input name="id" type="hidden" id="id" >
+		<input name="labelType" type="hidden" id="labelType" value="1" />
+		
+		<table width="100%" class="table_border2">
+
+		
+	  <tr>
+        <td nowrap align="right" ><a class="tooltip" title="Crawling rules name, this name is needed to match data published when creating publish rules ." href="javascript:void(0);">Name:</a></td>
+        <td colspan="4" class="td_border">
+        <div class="inputOver">
+        <input name="name" type="text" id="name" value="" style="width:100%;" /> 
+        </div>
+               </td>
+      </tr>
+      
+	  <tr>
+        <td nowrap align="right" class="label">Option:</td>
+        <td colspan="4"  class="td_border">
+        <div id="optionsDiv" style="float:left;width:100%;height:100%;border-bottom:1px dashed #ccc;">
+        <ul>
+        <li>
+        <input name="isHtmlPreprocess" type="checkbox" id="isHtmlPreprocess" value="true" onclick="crawlRules.fn.changeHtmlPreprocess(this.checked, true)">
+        <a class="tooltip" style="font-weight:normal;" title="HTML preprocessing can reduce the matching scope of source code and accelerate the matching." href="javascript:void(0);">Preprocess</a>
+        </li>
+        <li>
+        <input name="isOffset" type="checkbox" id="isOffset" value="true" onclick="crawlRules.fn.changeOffset(this.checked, true)">
+        <a class="tooltip" style="font-weight:normal;" title="Only used for current position offset, not to return crawling data." href="javascript:void(0);">Offset</a>
+        </li>
+        <li>
+        <input name="isStartPosition" type="checkbox" id="isStartPosition" value="true" >
+        <a class="tooltip" style="font-weight:normal;" title="If it is checked, it means to start matching from the start position of the text and the position information after rule matching won’t be recorded; if it is unchecked, it means to start from the end position in last matching."  href="javascript:void(0);">Start Position</a> 
+	    </li>	
+        <li>
+        <input name="isPublic" type="checkbox" id="isPublic" value="true" >
+        <a class="tooltip" style="font-weight:normal;" title="Public label is crawled only for one time as public data to be attached to the beginning of each record." href="javascript:void(0);">Public</a>
+        </li>
+        <li>
+        <input name="isTemp" type="checkbox" id="isTemp" value="true" >
+        <a class="tooltip" style="font-weight:normal;" title="Temporary label doesn’t return crawling data and is often used to serve 'label index'."  href="javascript:void(0);">Temp</a>
+        </li>
+        
+        <li>
+        <input name="isDataOrigin" type="checkbox" id="isDataOrigin" value="true" onclick="crawlRules.fn.changeOption(this)" >
+		<a class="tooltip" style="font-weight:normal;" title="Crawl target data from specific data source and if it is not selected, crawl target data from the URL text."  href="javascript:void(0);">Data Origin</a>
+		</li>
+		
+        <li>
+        <input name="isCantNull" type="checkbox" id="isCantNull" value="true" >
+        <a class="tooltip" style="font-weight:normal;" title="If the crawled data is null under this rule, discard the present record crawled."  href="javascript:void(0);">Can’t be null</a>
+        </li>
+        </ul>
+        </div>
+        <table id="optionTable" style="width:100%;">
+        	
+        	<tr id="isDataOrigin_option" style="display:none;width:100%;">
+	        	<td nowrap="nowrap"  width="100"  align="right" >
+	        	<a class="tooltip" style="font-weight:normal;" title="Crawl target data from specific data source."  href="javascript:void(0);">Select Origin</a>
+	        	</td>
+	        	<td  style="width:100%;"   align="left" colspan="3" nowrap>
+	        	<select id="dataOrigin" name="dataOrigin" onchange="crawlRules.fn.changeDataOrigin(this.value)">
+	        		<option value="#DATAORIGIN_URL">Crawling URL</option>
+	        		<option value="#DATAORIGIN_COOKIE">Cookie</option>
+	        		<option value="#DATAORIGIN_HEADER">Header</option>
+	        		<option value="#DATAORIGIN_LABEL">Other Labels</option>
+	        	</select>
+	        	<a class="tooltip" style="font-weight:normal;" title="To conduct loop matching or not; continue until no matching is found and data match in loop matching is separated with default line separator."  href="javascript:void(0);">Loop:</a> <input name="isLoop" type="checkbox" id="isLoop" value="true" >
+	        	<a class="tooltip" style="font-weight:normal;" title="Data matched in loop matching is split by the line break in default status, and custom split such as ',' can be defined. "  href="javascript:void(0);">Split:</a> <input style="width:50px;" id="loopSplit" type="text" name="loopSplit" value="" /> 
+	        	
+	        	</td>
+        	</tr>
+        	<tr id="valueFromLabelOption" style="display:none;width:100%;">
+	        	<td nowrap="nowrap"  width="100"  align="right" >
+	        	<a class="tooltip label" style="font-weight:normal;display:none;" title="Read the value of specific label."  href="javascript:void(0);">Label Name:</a>
+	        	<a class="tooltip header" style="font-weight:normal;display:none;" title="Acquire the Header value of specific property, such as property names of Status Code, User-Agent, Host, Cookie, etc."  href="javascript:void(0);">Property Name:</a>
+	        	</td>
+	        	<td  style="width:100%;"   align="left" colspan="3" nowrap>
+	        	<div class="inputOver">
+	        	<input style="width:270px;" id="valueFromLabel" type="text" name="valueFromLabel" value="" /> 
+	        	</div>
+	        	</td>
+        	</tr>
+        	
+        </table>
+        </td>
+      </tr>
+      <tr>
+      <td nowrap align="right" class="label" valign="middle">Matching Rules:</td>
+      <td colspan="4" class="td_border">
+      	<table style="width:100%;"><tr>
+      	<td style="padding-bottom: 5px;" width="100%" >
+      	<input name="searchMode" type="radio" id="searchMode" value="string"  onclick="crawlRules.fn.changeSearchMode()" checked="checked">
+        <a class="tooltip" style="font-weight:normal;" title="Regex unsupported, default lazy match, e.g. when two same character strings appear, the system only match the nearest one. " href="javascript:void(0);">Start And End Character</a>
+        <input name="searchMode" type="radio" id="searchMode" value="regex"  onclick="crawlRules.fn.changeSearchMode()">
+        <a class="tooltip" style="font-weight:normal;" title="1. If the regular expression has brackets, return the contents of the first group in the regular expression, or return all matched contents <br/>2. When HTML label is matched, the system conducts automatic nested match <br/>3. When metacharacters in regular expressions such as ^ $ ( ) * + ? . [ \ { | are escaped by adding  \ , they will be matched as character strings <br/>4. When focusing on input box, pressing Ctrl+F will automatically escape regular expression metacharacters <br/>5. Case insensitive matching can be started by embedded label expression '(?i)' and case insensitiveness starts from the embedded position <br/>6. Do not capture groups, it can be started by embedded label expression '(?i)', e.g. '(?:src|data-lazyload)' " href="javascript:void(0);">Regex</a>
+        
+        
+        <input name="searchMode" type="radio" id="searchMode" value="xpath"  onclick="crawlRules.fn.changeSearchMode()">
+        <a class="tooltip" style="font-weight:normal;" href="javascript:void(0);" title="XPath match, give priority to regular expression if speed is considered. <br/>XPath format: //*[@id=&quot;comment-123&quot;]/div[1]/div[1]/div[2]/p[1]  ">XPath</a>
+        
+        <input name="searchMode" type="radio" id="searchMode" value="csspath"  onclick="crawlRules.fn.changeSearchMode()">
+        <a class="tooltip" style="font-weight:normal;" href="javascript:void(0);" title="CSSPath match, give priority to regular expression match if speed is considered. Please noted that if CSSPath is applied in loop matching tasks, loop matching will not be performed. <br/>CSSPath format: #comment-123 div div div p  ">CSSPath</a>
+        
+        <input name="searchMode" type="radio" id="searchMode" value="label"  onclick="crawlRules.fn.changeSearchMode()">
+        <a class="tooltip" style="font-weight:normal;" title="Label combination, format: ‘${label name}other characters${label name}’ <br/> ${SYSTEM-TIME} could be used to capture system time stamp, format: 1400595057890" href="javascript:void(0);">Combination</a>
+        
+      	</td>
+      	</tr></table>
+      	<div  id="stringLabel" style="display:block;">
+      		<div style="height:20px;color: rgb(102, 102, 102);">Start Character (regex unsupported):</div>
+      		<div style="padding-right:8px;"><textarea name="startString"  rows="4" id="startString" style="width:100%" ></textarea></div>
+      		<div style="height:20px;color: rgb(102, 102, 102);">End Character (regex unsupported):</div>
+      		<div style="padding-right:8px;"><textarea name="endString"  rows="4" id="endString" style="width:100%" ></textarea></div>
+      	</div>
+      	<div  id="regexLabel" style="display:none;">
+      		<div style="padding-right:8px;"><textarea name="searchRegex"  rows="4" id="searchRegex" style="width:100%" class="regex"></textarea></div>
+      	</div>
+      	<div  id="selectLabel" style="display:none;">
+      		<div style="padding-left: 3px;">
+      			<div style="padding:3px;float: right;" id="xpath_tools"></div>
+      			<div style="padding-top: 12px;height: 22px;">
+      				<input name="selectType" type="radio" id="selectType" value="outerHTML" >outerHTML
+      				<input name="selectType" type="radio" id="selectType" value="innerHTML"  checked="checked">innerHTML
+      				<input name="selectType" type="radio" id="selectType" value="innerTEXT">innerTEXT
+      				<input name="selectType" type="radio" id="selectType" value="@ATTR">@Attribute
+      			</div>
+      		</div>
+      		<div style="padding-right:8px;"><textarea name="selectExpress" rows="4" id="selectExpress" style="width:100%"  onkeypress="if(event.keyCode==13) return false;"></textarea></div>
+      	</div>
+      	
+      	<div  id="labelLabel" style="display:none;">
+      		<div style="padding-right:8px;"><textarea name="labelCombination" rows="4" id="labelCombination" style="width:100%" ></textarea></div>
+      	</div>
+      </td>
+      </tr>
+      
+	  <tr class="mergeRules" style="display:none;">
+        <td nowrap align="right" ><a class="tooltip" title="This rule works only when loop matching and record merging is selected for tasks.  <br/>format: <br/>1.C1, it means when the fields of two records are merged, the field of the first record will be captured automatically <br/>2.C1 separator C2, it means &quot; separator &quot; will be used as the connection string when tow fields are merged." href="javascript:void(0);">Field Merge:</a></td>
+        <td colspan="4" class="td_border" >
+        <div style="padding-right:8px;">
+        <textarea name="mergeRules" rows="3" id="mergeRules"  style="width:100%" ></textarea>
+        </div>
+        </td>
+	  </tr>
+	  
+	  <tr>
+        <td nowrap align="right" ><a class="tooltip" title="Filter from upside down and adjust the filtering order with the mobile pointer on the right." href="javascript:void(0);">Content Filter:</a></td>
+        <td colspan="4" class="td_border">
+        <table width="100%" border="0">
+        	<tr>
+	          <td align="right" width="100%"><a onclick="crawlRules.fn.initTable();" href="javascript:void(0);" title="Sort and reset">Reset</a></td>
+	        </tr>
+	    </table>
+        <table width="100%" border="0" id="sort_table">
+        	        <tbody>
+        	<tr class="simplehighlight">
+            <td>
+				<input type="hidden" name="tdIndex" value="0" />
+				<input type="hidden" name="sortIndex" value="0" />
+			</td>
+			<td align="right" nowrap style="width: 114px;"><a class="tooltip" style="font-weight:normal;" title="In multi-task nested crawling, take the data matched in the present label for second matching; the label content can be URL or text and if it is URL, it will firstly capture the text and conduct second matching."  href="javascript:void(0);">Nested:</a></td>
+            <td width="100%">
+           		<div class="filterDiv">
+					<ul class="crawl-rules-lable">
+					<li style="line-height: 25px;"> <input name="isNested" type="checkbox" id="isNested" value="true" onclick="crawlRules.fn.changeOption(this)" ></li>
+					</ul>
+					<ul class="crawl-rules-lable" id="isNested_option" style="display:none;">
+					<li  style="line-height: 20px;">
+						<a class="tooltip" style="font-weight:normal;" title="Crawl with rules of specific tasks, the 'quantity of return records each time' is nullified"  href="javascript:void(0);">Nested:</a>
+						<select id="nestedSiteId" name="nestedSiteId" style="width:160px;"></select>
+					</li>
+					<li  style="margin-top: 3px;">
+						<a class="tooltip" style="font-weight:normal;" title="If it is checked, the content matched in the present label will be treated as a URL and the rules of specific tasks will be called for crawling."  href="javascript:void(0);">Is URL</a> 
+				        <input name="isURL" type="checkbox" id="isURL" value="true" >
+					</li>
+					</ul>
+				</div>
+			</td>
+			<td align="right" nowrap><div class="ui-state-default move"><span class="ui-icon ui-icon-arrow-4" title="Move"></span></div></td>
+          </tr>
+          
+          <tr class="simplehighlight">
+            <td>
+				<input type="hidden" name="tdIndex" value="1" />
+				<input type="hidden" name="sortIndex" value="1" />
+			</td>
+			<td align="right" nowrap style="width: 114px;"><a class="tooltip" style="font-weight:normal;" href="javascript:void(0);" title="Encode conversion'\uxxxx','&#xxxxx;'">Conversion:</a></td>
+            <td width="100%">
+           		<div class="filterDiv">
+					<ul class="crawl-rules-lable">
+					<li><input name="isConvertEncoding" type="checkbox" id="isConvertEncoding" value="true" onclick="crawlRules.fn.changeOption(this)"></li>
+					</ul>
+					<ul class="crawl-rules-lable" id="isConvertEncoding_option" style="display:none;">
+					<li>
+					<a class="tooltip" style="font-weight:normal;" title="Unicode coded format: \uxxxx\uxxxx"  href="javascript:void(0);">UNICODE</a><input name="convertEncode" type="checkbox" id="convertEncode" value="unicode" >
+					</li>
+					<li>
+					<a class="tooltip" style="font-weight:normal;" title="ASCII coded format:  &#xxxxx;"  href="javascript:void(0);">ASCII</a><input name="convertEncode" type="checkbox" id="convertEncode" value="ascii" > 
+					</li>
+					
+					<li>
+					<a class="tooltip" style="font-weight:normal;" title="URLEncoder coded format: %22%22"  href="javascript:void(0);">URLEncoder</a><input name="convertEncode" type="checkbox" id="convertEncode" value="urlEncoder" > 
+					</li>
+					<li>
+					<a class="tooltip" style="font-weight:normal;" title="URLEncoder coded format: %22%22"  href="javascript:void(0);">URLDecoder</a><input name="convertEncode" type="checkbox" id="convertEncode" value="urlDecoder" > 
+					</li>
+					</ul>
+				</div>
+			</td>
+			<td align="right" nowrap><div class="ui-state-default move"><span class="ui-icon ui-icon-arrow-4" title="Move"></span></div></td>
+          </tr>
+          
+			<tr class="simplehighlight">
+				<td>
+				<input type="hidden" name="tdIndex" value="2" />
+				<input type="hidden" name="sortIndex" value="2" />
+				</td>
+				<td align="right" nowrap style="width: 114px;"><a class="tooltip" style="font-weight:normal;" title="HTML label exclusion is case insensitive; the label followed by '+' refers to the exclusion of the text in the label and the one without '+' refers to exclude the label only and reserve the text in the label. " href="javascript:void(0);">Html Exclude:</a></td>
+	            <td width="100%">
+			        <div id="excludeHtmlTagsDiv">
+						<ul>
+							<li><input name="excludeHtmlTags" type="checkbox" id="excludeHtmlTags" value="a" >&lt;a&gt;</li>
+							<li><input name="excludeHtmlTags" type="checkbox" id="excludeHtmlTags" value="a+" >&lt;a&gt;+</li>
+							<li><input name="excludeHtmlTags" type="checkbox" id="excludeHtmlTags" value="div" >&lt;div&gt;</li>
+							<li><input name="excludeHtmlTags" type="checkbox" id="excludeHtmlTags" value="div+" >&lt;div&gt;+</li>
+							<li><input name="excludeHtmlTags" type="checkbox" id="excludeHtmlTags" value="span" >&lt;span&gt;</li>
+							<li><input name="excludeHtmlTags" type="checkbox" id="excludeHtmlTags" value="span+" >&lt;span&gt;+</li>
+							<li><input name="excludeHtmlTags" type="checkbox" id="excludeHtmlTags" value="b" >&lt;b&gt;</li>
+							<li><input name="excludeHtmlTags" type="checkbox" id="excludeHtmlTags" value="b+" >&lt;b&gt;+</li>
+							<li><input name="excludeHtmlTags" type="checkbox" id="excludeHtmlTags" value="p" >&lt;p&gt;</li>
+							<li><input name="excludeHtmlTags" type="checkbox" id="excludeHtmlTags" value="p+" >&lt;p&gt;+</li>
+							
+							<li><input name="excludeHtmlTags" type="checkbox" id="excludeHtmlTags" value="script+" >&lt;script&gt;+</li>
+							<li><input name="excludeHtmlTags" type="checkbox" id="excludeHtmlTags" value="br" >&lt;br&gt;</li>
+							<li><input name="excludeHtmlTags" type="checkbox" id="excludeHtmlTags" value="img" >&lt;img&gt;</li>
+							<li><input name="excludeHtmlTags" type="checkbox" id="excludeHtmlTags" value="enter" >Enter</li>
+							<li><input name="excludeHtmlTags" type="checkbox" id="excludeHtmlTags" value="space" >Space</li>
+							<li><input name="excludeHtmlTags" type="checkbox" id="excludeHtmlTags" value="tab" >Tab</li>
+							<li><input name="excludeHtmlTags" type="checkbox" id="excludeHtmlTags" value="nbsp" >&amp;nbsp;</li>
+						</ul>
+						<div class="addLabel">
+							<a id="excludeHtmlTagsAddBox" href="javascript:void(0);" onclick="crawlRules.fn.excludeHtmlTagsAddBox()">+</a>
+						</div>
+					</div>		        	
+		        </td>
+		        <td align="right" nowrap><div class="ui-state-default move"><span class="ui-icon ui-icon-arrow-4" title="Move"></span></div></td>
+			</tr>
+			
+			<tr class="simplehighlight">
+            <td>
+				<input type="hidden" name="tdIndex" value="3" />
+				<input type="hidden" name="sortIndex" value="3" />
+			</td>
+			<td align="right" nowrap style="width: 114px;"><a class="tooltip" style="font-weight:normal;" href="javascript:void(0);" title="Text composition can generate new text, format: 'new character${this}new character'; in order to validate this rule, '${this}' is needed which refers to data matched under the current rule.">Composition</a></td>
+            <td width="100%">
+            <div class="dataFilterDiv">
+            <input name="textComposition" type="text" id="textComposition" style="width:100%;vertical-align: middle;" class="regex">
+            </div>
+            </td>
+            <td align="right" nowrap><div class="ui-state-default move"><span class="ui-icon ui-icon-arrow-4" title="Move"></span></div></td>
+          </tr>
+          
+          <tr class="simplehighlight">
+            <td>
+				<input type="hidden" name="tdIndex" value="4" />
+				<input type="hidden" name="sortIndex" value="4" />
+			</td>
+			<td align="right" nowrap style="width: 114px;"><a class="tooltip" style="font-weight:normal;" href="javascript:void(0);" title="1. E.g.: '(\d*)' returns the contents of the first group in the regular expression; when it cannot be matched, return NULL; in the case of default multi-matching, separate with the carriage return <br/>2. If the regular expression has brackets, return the contents of the first group in the regular expression, or return all matched contents <br/>3. Support regular expression, when metacharacters in regular expressions such as ^ $ ( ) * + ? . [ \ { | are escaped by adding  \ , they will be matched as character strings <br/>4. When focusing on input box, pressing Ctrl+F will automatically escape regular expression metacharacters <br/>5. Case insensitive matching can be started by embedded label expression '(?i)' and case insensitiveness starts from the embedded position">Regex Filter:</a></td>
+			
+            <td width="100%">
+           		<div class="filterDiv">
+           			<div style="height: 22px;width: 85px;float: left;padding: 8px 0 0 5px;">
+           			<a class="tooltip" style="font-weight:normal;display: inline-block;" title="The default is multiple matching, use the line break '\r\n' to separate; if it is checked, it means to return the result matched at the first time."  href="javascript:void(0);">Single Match</a><input name="isSingleMatch" type="checkbox" id="isSingleMatch" value="true">
+           			</div>
+           			<div style="margin: 0 0px 0 90px;padding: 5px 5px 0;">
+           			<input name="regexFilter" type="text" id="regexFilter" style="width:100%;vertical-align: middle;" class="regex">
+           			</div>
+				</div>
+			</td>
+			
+            <td align="right" nowrap><div class="ui-state-default move"><span class="ui-icon ui-icon-arrow-4" title="Move"></span></div></td>
+          </tr>
+          
+          <tr class="simplehighlight">
+            <td>
+				<input type="hidden" name="tdIndex" value="5" />
+				<input type="hidden" name="sortIndex" value="5" />
+			</td>
+			<td align="right" nowrap style="width: 114px;"><a class="tooltip" style="font-weight:normal;" href="javascript:void(0);" title="This filter rule can capture json object value and data matched by the label shall be the correct JavaScript. ">JavaScript Filter:</a></td>
+            <td width="100%">
+            <div class="dataFilterDiv">
+            <input name="javascriptFilter" type="text" id="javascriptFilter" style="width:100%;vertical-align: middle;" class="regex">
+            </div>
+            </td>
+            <td align="right" nowrap><div class="ui-state-default move"><span class="ui-icon ui-icon-arrow-4" title="Move"></span></div></td>
+          </tr>
+          
+          <tr class="simplehighlight">
+            <td>
+				<input type="hidden" name="tdIndex" value="6" />
+				<input type="hidden" name="sortIndex" value="6" />
+			</td>
+			<td align="right" nowrap style="width: 114px;"><a class="tooltip" style="font-weight:normal;" href="javascript:void(0);" title="E.g.: <br/>1.compareDate(sysDate.add(dd-2),this) means to crawl data within two day, <br/>this refer to the data values matched under the present rule,  <br/>sysDate.add(dd-2)  means the present time minus two days  <br/>2. Mathematical calculation expressions such as 'ceil(${this}/${label name}),###.##' <br/>'${this}' capture the present label value, and '${label name}' only capture the previous label value. <br/>'###.##'  means to format the calculated result. For more functions supported in <br/> and corresponding operations, please refer to: http://www.objecthunter.net/exp4j/apidocs/index.html">Method Function:</a></td>
+            <td width="100%">
+            <div class="dataFilterDiv">
+            <input name="functionExpression" type="text" id="functionExpression" style="width:100%;vertical-align: middle;">
+            </div>
+            </td>
+            <td align="right" nowrap><div class="ui-state-default move"><span class="ui-icon ui-icon-arrow-4" title="Move"></span></div></td>
+          </tr>
+		  <tr class="simplehighlight">
+            <td>
+				<input type="hidden" name="tdIndex" value="7" />
+				<input type="hidden" name="sortIndex" value="7" />
+			</td>
+			<td align="right" nowrap style="width: 114px;"><a class="tooltip" style="font-weight:normal;" href="javascript:void(0);" title="E.g.: &gt;10 or &lt;10, data matched in the rule shall exceed (not exceed) 10 Chinese characters, letters or other texts.">Text Length</a></td>
+            <td width="100%">
+            <div class="dataFilterDiv">
+            <input name="textLen" type="text" id="textLen" style="width:100%;vertical-align: middle;">
+            </div>
+            </td>
+            <td align="right" nowrap><div class="ui-state-default move"><span class="ui-icon ui-icon-arrow-4" title="Move"></span></div></td>
+          </tr>
+          <tr class="simplehighlight">
+            <td>
+				<input type="hidden" name="tdIndex" value="8" />
+				<input type="hidden" name="sortIndex" value="8" />
+			</td>
+			<td align="right"  nowrap style="width: 114px;"><a class="tooltip" style="font-weight:normal;" href="javascript:void(0);" title="1. E.g. 'R1C1(.*)' refers to the first article, recording the value of the first reference field and it can only capture the value recorded previously <br/>2. Support regular expression, when metacharacters in regular expressions such as ^ $ ( ) * + ? . [ \ { | are escaped by adding  \ , they will be matched as character strings <br/>3. When focusing on input box, pressing Ctrl+F will automatically escape regular expression metacharacters <br/>4. Case insensitive matching can be started by embedded label expression '(?i)' and case insensitiveness starts from the embedded position">Must Contain:</a></td>
+            <td width="100%" id="sortDiv">
+           		<div id="mustContainTextDiv">
+					<ul class="crawl-rules-lable sortable"><li class="notRemove" style="border: 1px solid #FFFFFF">Enabled Regex<input name="isRegexMustContainText" type="checkbox" id="isRegexMustContainText" value="true" ></li></ul>
+					<div class="addLabel">
+					<a href="javascript:void(0);" id="mustContainTextAddBox" onclick="crawlRules.fn.mustContainTextAddBox()">+</a>
+					</div>
+				</div>
+			</td>
+			<td align="right" nowrap><div class="ui-state-default move"><span class="ui-icon ui-icon-arrow-4" title="Move"></span></div></td>
+          </tr>
+          <tr class="simplehighlight">
+            <td>
+				<input type="hidden" name="tdIndex" value="9" />
+				<input type="hidden" name="sortIndex" value="9" />
+			</td>
+			<td align="right" nowrap style="width: 114px;"><a class="tooltip" style="font-weight:normal;" href="javascript:void(0);" title="1. Support regular expression, when metacharacters in regular expressions such as ^ $ ( ) * + ? . [ \ { | are escaped by adding  \ , they will be matched as character strings <br/>2. When focusing on input box, pressing Ctrl+F will automatically escape regular expression metacharacters <br/>3. Case insensitive matching can be started by embedded label expression '(?i)' and case insensitiveness starts from the embedded position">Can’t Contain: </a></td>
+             <td width="100%" id="sortDiv">
+           		<div id="cantContainTextDiv">
+					<ul class="crawl-rules-lable sortable"><li class="notRemove" style="border: 1px solid #FFFFFF">Enabled Regex<input name="isRegexCantContainText" type="checkbox" id="isRegexCantContainText" value="true" ></li></ul>
+					<div class="addLabel">
+					<a href="javascript:void(0);" id="cantContainTextAddBox" onclick="crawlRules.fn.cantContainTextAddBox()">+</a>
+					</div>
+				</div>
+			</td>
+			<td align="right" nowrap><div class="ui-state-default move"><span class="ui-icon ui-icon-arrow-4" title="Move"></span></div></td>
+          </tr>
+		  <tr class="simplehighlight">
+            <td>
+				<input type="hidden" name="tdIndex" value="10" />
+				<input type="hidden" name="sortIndex" value="10" />
+			</td>
+			<td align="right" nowrap style="width: 114px;"><a class="tooltip" style="font-weight:normal;" href="javascript:void(0);" title="1. Support regular expression, when metacharacters in regular expressions such as ^ $ ( ) * + ? . [ \ { | are escaped by adding  \ , they will be matched as character strings <br/>2. When focusing on input box, pressing Ctrl+F will automatically escape regular expression metacharacters <br/>3.  When HTML label is matched, the system conducts automatic nested match <br/>4. Case insensitive matching can be started by embedded label expression '(?i)' and case insensitiveness starts from the embedded position">Exclude Text: </a></td>
+            <td width="100%" id="sortDiv">
+           		<div id="excludeTextDiv">
+					<ul class="crawl-rules-lable sortable"><li class="notRemove" style="border: 1px solid #FFFFFF">Enabled Regex<input name="isRegexExcludeText" type="checkbox" id="isRegexExcludeText" value="true" ></li></ul>
+					<div class="addLabel">
+					<a href="javascript:void(0);" id="excludeTextAddBox" onclick="crawlRules.fn.excludeTextAddBox()">+</a>
+					</div>
+				</div>
+			</td>
+			<td align="right" nowrap><div class="ui-state-default move"><span class="ui-icon ui-icon-arrow-4" title="Move"></span></div></td>
+          </tr>
+          
+          <tr class="simplehighlight">
+            <td>
+				<input type="hidden" name="tdIndex" value="11" />
+				<input type="hidden" name="sortIndex" value="11" />
+			</td>
+			<td align="right" nowrap style="width: 114px;"><a class="tooltip" style="font-weight:normal;" href="javascript:void(0);" title="1. The old text is a necessary item <br/>2. Support regular expression, when metacharacters in regular expressions such as ^ $ ( ) * + ? . [ \ { | are escaped by adding  \ , they will be matched as character strings <br/>3. When focusing on input box, pressing Ctrl+F will automatically escape regular expression metacharacters <br/>4.  When HTML label is matched, the system conducts automatic nested match <br/>5. Case insensitive matching can be started by embedded label expression '(?i)' and case insensitiveness starts from the embedded position">Replace Text</a></td>
+            <td width="100%" id="sortDiv">
+           		<div id="replaceTextDiv">
+					<ul class="crawl-rules-lable sortable"><li class="notRemove" style="border: 1px solid #FFFFFF">Enabled Regex<input name="isRegexReplaceText" type="checkbox" id="isRegexReplaceText" value="true" ></li></ul>
+					<div class="addLabel">
+					<a href="javascript:void(0);" id="replaceTextAddBox" onclick="crawlRules.fn.replaceTextAddBox()">+</a>
+					</div>
+				</div>
+			</td>
+			<td align="right" nowrap><div class="ui-state-default move"><span class="ui-icon ui-icon-arrow-4" title="Move"></span></div></td>
+          </tr>
+          
+          <tr class="simplehighlight">
+            <td>
+				<input type="hidden" name="tdIndex" value="12" />
+				<input type="hidden" name="sortIndex" value="12" />
+			</td>
+			<td align="right" nowrap style="width: 114px;"><a class="tooltip" style="font-weight:normal;" href="javascript:void(0);" title="When the crawled data contains HTML labels such as (src=，herf=), the automatic matching of the URL address in the label is switched into absolute address. When it doesn’t contain such labels ,automatically check whether data crawled is a legal URL address and if it is legal, it is switched into an absolute address. ">Absolute Path:</a></td>
+            <td width="100%">
+           		<div class="filterDiv">
+           			<div style="height: 25px;width: 30px;float: left;padding: 8px 0 0 5px;">
+           			<input name="isAbsolute" type="checkbox" id="isAbsolute" value="true" onclick="crawlRules.fn.changeOption(this)">
+           			</div>
+           			<div style="margin: 0 0px 0 30px;padding: 5px 5px 0;display:none;" id="isAbsolute_option">
+	           			<div style="height: 25px;width: 240px;float: left;">
+	           			<a class="tooltip" style="font-weight:normal;" title="E.g.: BASE URL：'http：//www.newcrawler.com/' relative address:： 'static/pic.jpg' <br/> absolute address: 'http：//www.newcrawler.com/static/pic.jpg <br/> Space refers to use the currently captured URL as the BASE URL’ 如： BASE URL：'http：//www.newcrawler.com/' 相对地址： 'static/pic.jpg' <br/> 绝对地址是：'http：//www.newcrawler.com/static/pic.jpg <br/> 留空表示使用当前采集网址作为BASE URL'"  href="javascript:void(0);">BASE URL：</a>
+	           			<input style="width:160px;" id="absoluteUrlBase" type="text" name="absoluteUrlBase" />
+	           			</div>
+	           			<div style="margin: 0 0px 0 245px;">
+	           			<div style="height: 25px;width: 90px;float: left;padding-top: 5px;">
+	           			<a class="tooltip" style="font-weight:normal;display: inline-block;" title="In regular expression matching, take the first group value as the URL to conduct absolute address switching, e.g. (.*)。 <br/> space refers to regard the total character string as a URL to conduct absolute address switching."  href="javascript:void(0);">URL(regex):</a>
+	           			</div>
+	           			<div style="margin: 0 0px 0 95px;">
+	           			<input style="width:100%;" id="absoluteUrlRegex" type="text" name="absoluteUrlRegex" /> 
+	           			</div>
+	           			</div>
+           			</div>
+				</div>
+			</td>
+			<td align="right" nowrap><div class="ui-state-default move"><span class="ui-icon ui-icon-arrow-4" title="Move"></span></div></td>
+          </tr>
+          
+           <tr class="simplehighlight">
+            <td>
+				<input type="hidden" name="tdIndex" value="13" />
+				<input type="hidden" name="sortIndex" value="13" />
+			</td>
+			<td align="right" nowrap style="width: 114px;"><a class="tooltip" style="font-weight:normal;" href="javascript:void(0);" title="Use the default value as data crawled.">Default Value:</a></td>
+            <td width="100%">
+           		<div class="filterDiv">
+           			<div style="height: 25px;width: 30px;float: left;padding: 8px 0 0 5px;">
+           			<input name="isDefaultValue" type="checkbox" id="isDefaultValue" value="true" onclick="crawlRules.fn.changeOption(this)">
+           			</div>
+           			<div style="margin: 0 0px 0 30px;padding: 5px 5px 0;display:none;" id="isDefaultValue_option">
+           				<div style="height: 25px;width: 170px;float: left;">
+	           			<select id="defaultValueSel" name="defaultValueSel" style="width:160px;" onchange="crawlRules.fn.defaultValueSel(this.value)">
+		          			<option value="" selected>Custom</option>
+		          			<option value="${SYSTEM-TIME(yyyy-MM-dd HH:mm:ss)}">System Time</option>
+		          			<option value="${UUID}">Unique ID</option>
+		       			</select>
+	           			</div>
+	           			<div style="margin: 0 0px 0 175px;">
+	           			<input style="width:100%;" id="defaultValue" type="text" name="defaultValue" value="" /> 
+	           			</div>
+           			</div>
+				</div>
+			</td>
+			<td align="right" nowrap><div class="ui-state-default move"><span class="ui-icon ui-icon-arrow-4" title="Move"></span></div></td>
+          </tr>
+          
+          <tr class="simplehighlight">
+            <td>
+				<input type="hidden" name="tdIndex" value="14" />
+				<input type="hidden" name="sortIndex" value="14" />
+			</td>
+			<td align="right" nowrap style="width: 114px;"><a class="tooltip" style="font-weight:normal;" href="javascript:void(0);" title="Data filter interface shall be defined in ‘setting’ > 'HTTP interface'; the system assigns data matched by the rules to the parameter 'content' and then sends it to the custom filter interface for disposal by Post request.">Filter API:</a></td>
+            <td width="100%">
+            <div class="dataFilterDiv">
+           			<select id="filterInter" name="filterInter" style="width:160px;">
+           			<option value=""></option>
+        			</select>
+        			<span class="configBox" lang="HttpInterManage.html">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+            </div>
+            </td>
+            <td align="right" nowrap><div class="ui-state-default move"><span class="ui-icon ui-icon-arrow-4" title="Move"></span></div></td>
+          </tr>
+          
+          <tr class="simplehighlight">
+            <td>
+				<input type="hidden" name="tdIndex" value="15" />
+				<input type="hidden" name="sortIndex" value="15" />
+			</td>
+			<td align="right" nowrap style="width: 114px;">
+			<a class="tooltip" style="font-weight:normal;" href="javascript:void(0);" title="Data filter plug-in shall be defined in ‘setting’>’plug-in management’ and the crawler transmits data crawled to the custom filter plug-in for disposal">Filter Plug-in:</a>
+			</td>
+            <td width="100%">
+            <div class="dataFilterDiv">
+           			<select id="filterPlugin" name="filterPlugin" style="width:160px;">
+          				<option value=""></option>
+       				</select>
+       				<span class="configBox" lang="PluginManage.html">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+            </div>
+            </td>
+            <td align="right" nowrap><div class="ui-state-default move"><span class="ui-icon ui-icon-arrow-4" title="Move"></span></div></td>
+          </tr>
+          </tbody>  
+        </table>        
+        </td>
+      </tr>
+	  
+      <tr>
+        <td nowrap align="right" ></td>
+        <td colspan="4" class="td_border" >
+        	<input name="isDownload" type="checkbox" id="isDownload" value="true" onclick="crawlRules.fn.changeOption(this)"><a class="tooltip" style="font-weight:normal;" title="File download; it is allowed to choose a plug-in to store the file on Cloud storage, FTP, etc."  href="javascript:void(0);">File Download</a>
+        	<table id="isDownload_option" style="display:none;width:100%;">
+        	<tr>
+	        	<td nowrap="nowrap"   style="width: 114px;" align="right">
+	        	<a class="tooltip" style="font-weight:normal;" title="File saving plug-in, defined in ‘setting’>’plug-in management’"  href="javascript:void(0);">File Save Plug-in:</a>
+	        	</td>
+	        	<td  style="width:190px;"  align="left" nowrap>
+		        	<select id="fileSavePluginId" name="fileSavePluginId" style="width:160px;">
+		          			<option value=""></option>
+		       		</select>
+		       		<span class="configBox" lang="PluginManage.html">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+		       	</td>
+		       	<td  style="width:100%;"  align="left" colspan="2"  nowrap>	
+		       		<div style="width:100%;padding-bottom: 2px;">
+		       			<div style="width: 115px;float: left;padding: 8px 0 0 5px;">
+		       			<a class="tooltip" style="font-weight:normal;" title="Regex matching need the URL of the file to be downloaded, return the contents of the first group in the regular expression. <br/>commonly used regular expression <br/> 1. ([^\r\n]+) any character other than the line break, is often used to match a full line. <br/>  2. &lt;\s*img[^&lt;]+src=[&quot;'](.*?)[&quot;'][^&lt;]*?&gt; is used to match image file in the label img. "  href="javascript:void(0);">File URL(regex):</a>
+	           			</div>
+	           			<div style="margin: 0 0px 0 115px;padding: 5px 5px 0;">
+	           			<input style="width:100%;" id="fileSavePluginRegex" type="text" name="fileSavePluginRegex"/> 
+	           			</div>
+		       		</div>
+		       		<div style="width:100%;">
+		       			<div style="width: 115px;float: left;padding: 8px 0 0 5px;">
+		       			<a class="tooltip" style="font-weight:normal;" title="It is allowed to use ${sysDate} to capture system date with a date format of yyyyMMdd. It is allowed to use the format of '${label name}' to read data matched by the crawling rules. Space means sub-directory is not assigned."  href="javascript:void(0);">Sub-directory</a>
+	        			</div>
+	        			<div style="margin: 0 0px 0 115px;padding: 5px 5px 0;">
+	           			<input style="width:100%;" id="fileSaveSubDir" type="text" name="fileSaveSubDir"/>
+	           			</div> 
+		       		</div>
+	        	</td>
+        	</tr>
+        	</table>
+        </td>
+	  </tr>
+	  
+		</table>
+		 </form>
+		</td>
+		<td width="40%" valign="top">
+		<table width="100%" height="100%" align="center" class="table_border2">
+		 <tr>
+			<td colspan="7" width="100%" style="padding-right:7px;">
+			<textarea rows="14" name="crawlUrl" id="crawlUrl" style="width:100%"></textarea>
+			</td>
+			</tr>
+			<tr>
+			<td colspan="7" class="td_border" >
+			<input type="button" value="Import Rules" onClick="crawlRules.fn.importRules();">
+			<input type="button" value="Export Rules " onClick="crawlRules.fn.exportRules();">
+			<input type="button" value="View Code" onClick="crawlRules.fn.viewCode();">  
+			<input type="button" value="XPath Visual" onClick="crawlRules.fn.readXPath();">  
+			</td>
+			</tr>
+		<tr>
+		<td colspan="5" width="100%" height="100%">
+	<!-- rules start -->
+	<div>
+	
+	<div class="rules_right">
+	        <div id="rulesVersion" style="padding-top: 32px;">
+			  <ul id="sortable"></ul>
+			  <input type="button" value="Create" onClick="crawlRules.fn.rulesVersionAddBox(null, '');" style="margin: 0;padding: 0px 20px 0px 5px;border-left: 0;background-color: rgb(255, 255, 255);background-image: none;">  
+			</div>
+        </div>
+        
+	<div class="rules_left">
+		<div id="accordion">
+		<h3 style="margin: 0; padding: 0;"><a href="javascript:void(0);">1.Crawl Rules</a></h3>
+		<div width="100%" height="100%">
+		<table id="crawlLabelTabel"  width="100%" height="100%">
+          <tr>
+		    <td>
+		    <div>
+		    <div><input type="checkbox" name="all" id="all" onclick="crawlRules.fn.selectAll(this,'crawlLabelTabel','rules')" />All</div>
+		    
+		    <ul id="sortable" style="max-height: 489px;overflow: scroll;overflow-x: hidden;padding-right: 5px;">
+		    </ul>
+		    </div>
+			</td>
+          </tr>
+          <tr>
+			<td colspan="7" class="td_border">
+			<input type="button" value="Create" onClick="crawlRules.fn.create();">
+			<input type="button" value="Remove" onClick="crawlRules.fn.removeAll();">
+			<input type="button" value="Update" onClick="crawlRules.fn.update();">
+			<input type="button" value="Test" onClick="crawlRules.fn.testRules();"> 
+			</td>
+			</tr>
+        </table>
+        </div>
+        
+        <h3><a href="javascript:void(0);">2.Page Rules</a></h3>
+		<div>
+			<table id="pageLabelTabel"  width="100%" height="100%">
+	          <tr>
+			    <td>
+			    <div><input type="checkbox" name="all" id="all" onclick="crawlRules.fn.selectAll(this,'pageLabelTabel','rules')" />All</div>
+			    <ul id="sortable"  style="max-height: 262px;overflow: scroll;overflow-x: hidden;padding-right: 5px;">
+			    </ul>
+				</td>
+	          </tr>
+	          <tr>
+				<td colspan="7" class="td_border">
+				<input type="button" value="Create" onClick="crawlRules.fn.create();">
+				<input type="button" value="Remove" onClick="crawlRules.fn.removeAll();">
+				<input type="button" value="Update" onClick="crawlRules.fn.update();">
+				<input type="button" value="Test" onClick="pageRules.fn.nextLink();">
+				</td>
+				</tr>
+	        </table>
+	        
+	        <form id="pageForm" name="pageForm">
+	        <table  width="100%" height="100%">
+	          <tr>
+	            <td class="td_border">
+	            <table style="width:100%;" class="table_border2">
+		            <tr><td  style="padding: 5px 5px 5px 5px">Page Setting</td></tr>
+		            <tr><td  style="padding: 5px 5px 5px 5px">
+		             <table style="width:100%;">
+		             	<tr>
+		             	<td nowrap="nowrap" width="95px"><a class="tooltip" title="1. Use  '${label name}' to read the label value  <br/> format: http：//${label name}?pageNo=${label name}&amp;PARAM1=${label name} ... <br/> 2. It is allowed to adopt the paging method '${page(initial page number, paging increasing step-length)}', it shall be applied in combination with the maximum size of next page, otherwise paging crawling won’t stop. <br/>format http：//${label name}?pageNo=${page(1,1)}&amp;PARAM1=${3} ... <br/> 3. It is allowed to adopt the paging method '${page(current page, paging increasing step-length, total pages)}' <br/>  format: http：//${label name}?pageNo=${page(1,1,8)}&amp;PARAM1=${3} ..." href="javascript:void(0);">Next Link:</a></td>
+		             	
+		             	<td class="td_border">
+		             	<div style="padding-right:2px;">
+						<textarea rows="4" id="nextLinkExpress" 
+							name="nextLinkExpress" style="word-break:break-all;overflow-y:visible;height:60px;width:100%;padding: 0px;margin: 0px"></textarea>
+						</div>
+		             	</td>
+		             	</tr>
+		             	<tr>
+		             	<td nowrap="nowrap" width="95px"><a class="tooltip" title="1. Maximum size of page can be adopted when only a couple of previous pages need to be captured. <br/> 2. It is allowed to adopt  '${label name}' to read the label value. <br/> 3. It is allowed to directly use number to limit page number, o or space referring to no limitation." href="javascript:void(0);">Page Size:</a></td>
+		             	<td class="td_border">
+		             	<div class="inputOver">
+		             	<input name="nextPageMaxTimes" type="text" id="nextPageMaxTimes" value="" style="width:100%;"/>
+		             	</div>
+		             	</td>
+		             	</tr>
+		             	
+		             	<tr>
+		             	<td nowrap="nowrap" width="95px"><a class="tooltip" title="When the next page template is different from that of the first page, set this parameter to call rules of other tasks for crawling. " href="javascript:void(0);">Next Link Task:</a></td>
+		             	<td class="td_border">
+		             	<select id="nextLinkMatchRules" name="nextLinkMatchRules" style="width:160px;"></select>
+		             	</td>
+		             	</tr>
+		             	
+		             	<tr>
+		             	<td></td>
+		             	<td class="td_border"><input type="button" value="Save" onClick="pageRules.fn.save();"></td>
+		             	</tr>
+		             </table>
+		            </td></tr>
+	            </table>
+	            </td>
+	          </tr>
+	        </table>
+	        </form>
+		</div>
+        </div> </div>
+        
+        </div>
+     <!-- rules end -->   
+		</td>
+		</tr>
+		</table>
+		</td>
+      </tr>
+      <tr>
+      <td colspan="9" >
+      <table width="100%" class="table_border2">
+      	<tr>
+      		<td width="82">Result:</td>
+      	</tr>
+      	<tr>
+      		<td style="padding-right:7px;">
+     	 		<textarea  name="crawlResult" id="crawlResult" style="width:100%; height:300px; overflow-x:hidden; overflow-y:auto;" readonly="readonly"></textarea>
+      		</td>
+      	</tr>
+      </table>
+      </td>
+      </tr>
+  </table>
+  
+<script type="text/javascript">
+
+$(document).ready(function(){
+	var initFun= function(){
+		pageRules.v.siteJson=siteJsonData;
+		pageRules.v.webCrawlerId=webCrawlerId;
+		pageRules.v.siteId=siteId;
+		
+		crawlRules.v.siteJson=siteJsonData;
+		crawlRules.fn.init();
+	  };
+	
+	var initLoading=setInterval(function(){
+		if(typeof crawlRules != 'undefined'){
+			clearInterval(initLoading);
+			initFun();
+		}
+	},500);
+	
+});
+</script>
+</body>
+</html>

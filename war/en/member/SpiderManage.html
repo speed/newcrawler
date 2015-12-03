@@ -1,0 +1,135 @@
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>More setting</title>
+</head>
+  <body>
+    <table width="100%" class="table_border">
+    <tr>
+        <td colspan="2" class="label"><br/><span class="STYLE4">Spider Pool </span></td>        
+      </tr>
+      <tr>
+	  <td width="100%" valign="top">
+	  <form  method="post" id="spiderConfigForm" name="spiderConfigForm">
+	  <table width="100%" height="100%" class="table_border2">
+      <tr>
+        <td width="120" align="right" nowrap class="label">Active Size:</td>
+        <td class="td_border">
+        <div class="inputOver">
+        <input type="text" id="system.property.pool.size" name="system.property.pool.size" style="width:100%" onkeypress="return event.keyCode>=48&&event.keyCode<=57" onblur="this.value=this.value.replace(/[^0-9]/g,'')"/>
+        </div>
+        </td>
+      </tr>
+      
+      <tr>
+        <td width="120" align="right" nowrap class="label">Load Balance:</td>
+        <td class="td_border">
+        <div class="inputOver">
+        	<select name="system.property.pool.lbs" id="system.property.pool.lbs">
+				<option value="1" selected="selected">Sequence</option>
+				<option value="2">Random</option>
+				<option value="3">Rate</option>
+			</select>
+        </div>
+        </td>
+      </tr>
+      
+      <tr>
+        <td ></td>
+        <td class="td_border">
+        <input type="button" value="Save" onClick="siteSpider.fn.saveSpiderConfig();">
+        </td>
+      </tr>
+	  </table>
+	   </form>
+	  </td>
+	  </tr>
+    
+     <tr>
+        <td colspan="2" class="label" height="30px" valign="bottom"><span class="STYLE4">Spider Config</span></td>        
+      </tr>
+      <tr>
+	  <td colspan="2" width="100%" valign="top">
+	  <form  id="spiderForm" name="spiderForm" method="post">
+	  <input type="hidden" id="id" name="id">
+	  <table width="100%" height="100%" class="table_border2">
+	  <tr>
+        <td width="120" align="right" nowrap class="label">APP URL：</td>
+        <td class="td_border">
+        <div class="inputOver">
+        <input type="text" id="url" name="url" style="width:100%" />
+        </div>
+        </td>
+      </tr>
+      
+      <tr>
+        <td width="120" align="right" nowrap class="label">RPC AUTH Code：</td>
+        <td class="td_border">
+        <div class="inputOver">
+        <input type="text" id="rpcAuth" name="rpcAuth" style="width:200px;" maxlength="20" />
+        </div>
+        </td>
+      </tr>
+      
+      <tr>
+        <td width="120" align="right" nowrap class="label">Rate:</td>
+        <td class="td_border">
+        	<div style="float:left;width:200px;padding-top:5px;"><div id="rateSlider" ></div></div>
+			<div style="float:left;width:40px;margin-left: 10px;"><input id="rate" type="text" name="rate" value="" style="border: 0; color: #f6931f; font-weight: bold;" readonly="readonly"/></div>
+        </td>
+      </tr>
+      <tr>
+        <td ></td>
+        <td class="td_border">
+        <input type="button" value="Create" onClick="siteSpider.fn.create();">
+        <input type="button" value="Remove" onClick="siteSpider.fn.remove();">
+        <input type="button" value="Update" onClick="siteSpider.fn.update();">
+		</td>
+      </tr>
+      
+      <tr>
+			<td colspan="5">
+				<table id="siteSpiderTable" width="100%" align="center" class="table_border2 tableList" style="border:1px solid #CCCCCC;border-collapse:collapse;background-color: #FFFFFF;">
+					<tr>
+						<td width="3%" nowrap bgcolor="whiteSmoke">&nbsp;Select</td>
+						<td width="5%" nowrap bgcolor="whiteSmoke">Status</td>
+						<td width="26%" nowrap bgcolor="whiteSmoke">APP URL</td>
+						<td width="8%" nowrap bgcolor="whiteSmoke">Version</td>
+						<td width="8%" nowrap bgcolor="whiteSmoke">RPC AUTH Code</td>
+						<td width="8%" nowrap bgcolor="whiteSmoke">Rate</td>
+						<td width="8%" nowrap bgcolor="whiteSmoke">Create Time</td>
+						<td width="8%" nowrap bgcolor="whiteSmoke">URL QTY</td>
+						<td width="8%" nowrap bgcolor="whiteSmoke">URL Total QTY</td>
+						<td width="8%" nowrap bgcolor="whiteSmoke">URL Fail Total QTY</td>
+						<td width="8%" nowrap bgcolor="whiteSmoke">File Download Fail Total QTY</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+      
+	  </table>
+	   </form>	  
+	   </td>
+      </tr>
+      
+  </table>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			var initFun = function() {
+				siteSpider.v.webCrawlerId = webCrawlerId;
+				siteSpider.v.spiderJson = new Array();
+
+				$('.tooltip').poshytip();
+				siteSpider.fn.init();
+			};
+
+			var initLoading=setInterval(function(){
+				if(typeof siteSpider != 'undefined'){
+					clearInterval(initLoading);
+					initFun();
+				}
+			},500);
+		});
+	</script>
+</body>
+</html>

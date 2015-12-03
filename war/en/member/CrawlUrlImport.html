@@ -1,0 +1,125 @@
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>Add URL</title>
+</head>
+
+  <body>
+    <table id="crawlUrlImportTable" width="100%" class="table_border">
+    	<tr>
+			<td colspan="2" class="label"><br/><span class="STYLE4" id="mainTitle" style="display:none;">Add URL</span>
+			</td>
+		</tr>
+	  <tr>
+	  <td>
+	  <table width="100%" height="50" class="table_border2">
+	  <tr>
+        <td width="120" align="right" class="label" style="height: 30px;"><a  class="tooltip STYLE4" title="Add URL to the current task by API, the interface supports GET and POST request, multiple URL are split with '|$|' and return the number of successfully imported URL." href="javascript:void(0);">Import API:</a></td>
+        <td class="td_border"><span id="apiImportUrl"></span></td>
+      </tr>
+      <tr>
+        <td width="120" align="right" class="label" style="height: 30px;"><a  class="tooltip STYLE4" title="Delete URL in the current task by API, the interface supports GET and POST request, multiple URL are split with '|$|' and return the number of successfully deleted URL." href="javascript:void(0);">Remove API:</a></td>
+        <td class="td_border"><span id="apiDeleteUrl"></span></td>
+      </tr>
+      <tr>
+        <td width="120" align="right" class="label" style="height: 30px;"><a  class="tooltip STYLE4" title="Adopt the crawling rules of the current task by API to capture specific URL, the interface supports GET and POST request and doesn’t support multiple URL, and return the crawled data with JSON format. " href="javascript:void(0);">Fetch API:</a></td>
+        <td class="td_border"><span id="apiFetchUrl"></span></td>
+      </tr>
+	  </table>
+	  </td>
+	  </tr>
+	  
+	  <tr>
+        <td colspan="2" class="label"><span class="STYLE4">Batch URL adding</span></td>        
+      </tr>
+	  <tr>
+	  <td>
+	  <form  id="addByBatchForm" name="addByBatchForm" method="post">
+	  <table style="width:100%;height:120px" class="table_border2">
+	  
+	  <tr>
+        <td width="120" align="right" class="label"><a  class="tooltip" title="Multiple URL can be written with one occupying one line or split by '|$|', with the format of 'http://www.newcrawler.com|$|http://www.newcrawler.com' " href="javascript:void(0);">URL:</a></td>
+        <td class="td_border" height="100%">
+        <div style="padding-right:3px;">
+				<textarea rows="3" id="urls" name="urls"
+					style="word-break:break-all;overflow-y:visible;height:120px;width:100%;padding: 0px;margin: 0px"></textarea>
+				</div>
+        </td>
+      </tr>
+      
+      <tr>
+        <td width="82"></td>
+        <td class="td_border">
+        	<input type="button" value="Add URL" onClick="crawlUrlImport.fn.addByBatch();">        </td>
+      </tr>
+	  </table>
+	   </form>
+	  </td>
+	  </tr>
+	  
+	  <tr>
+        <td colspan="2" class="label"><span class="STYLE4">Add By Page</span></td>        
+      </tr>
+	  <tr>
+	  <td>
+	  <form  id="addByPageForm" name="addByPageForm" method="post">
+	  <table width="100%" height="150" class="table_border2">
+	  
+	  <tr>
+        <td width="120" align="right" class="label"><a  class="tooltip" title="Replace the page number with '(*)'" href="javascript:void(0);">Start Address:</a></td>
+        <td class="td_border">
+         <div style="padding-right:3px;">
+				<textarea rows="3" id="url" name="url"
+					style="word-break:break-all;overflow-y:visible;height:40px;width:100%;padding: 0px;margin: 0px"></textarea>
+				</div>
+        </td>
+      </tr>
+      <tr>
+        <td width="120" align="right" class="label">Range:</td>
+        <td class="td_border">
+          <table width="100%" border="0">
+            <tr>
+              <td width="50">From</td>
+              <td width="50">To</td>
+              <td width="100%"></td>
+            </tr>
+            <tr>
+              <td><input name="from" type="text" id="from" value="1" size="10" onkeypress="return event.keyCode>=48&&event.keyCode<=57" onblur="this.value=this.value.replace(/[^0-9]/g,'')"/></td>
+              <td><input name="to" type="text" id="to" value="2" size="10" onkeypress="return event.keyCode>=48&&event.keyCode<=57" onblur="this.value=this.value.replace(/[^0-9]/g,'')"></td>
+              <td></td>
+            </tr>
+            
+          </table></td>
+      </tr>
+      
+      <tr>
+        <td width="82"></td>
+        <td class="td_border" >
+        	<input type="button" value="Add URL" onClick="crawlUrlImport.fn.addByPage();">        </td>
+      </tr>
+	  </table>
+	   </form>
+	  </td>
+	  </tr>
+
+  </table>
+  <script type="text/javascript">
+  $(document).ready(function() { 
+	  var initFun= function(){
+			crawlUrlImport.v.webCrawlerId=webCrawlerId;
+			crawlUrlImport.v.siteId=siteId;
+			
+			crawlUrlImport.fn.init();
+			$('.tooltip').poshytip();
+		  };
+		
+		var initLoading=setInterval(function(){
+			if(typeof crawlUrlImport != 'undefined'){
+				clearInterval(initLoading);
+				initFun();
+			}
+		},500);
+	});
+  </script>
+  </body>
+</html>
