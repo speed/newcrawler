@@ -7,7 +7,7 @@
 
   <body>
 	
-    <table id="crawlRulesTable" width="100%" class="table_border">
+    <table id="crawlRulesTable" width="100%">
 	   <tr>
         <td width="60%" valign="top" >
 		<form id="crawlRulesForm" name="crawlRulesForm" method="post">
@@ -567,7 +567,7 @@
         
 	<div class="rules_left">
 		<div id="accordion">
-		<h3 style="margin: 0; padding: 0;"><a href="javascript:void(0);">1.采集规则</a></h3>
+		<h3 style="border-bottom: 1px solid #FFFFFF;outline: none"><a href="javascript:void(0);">1.采集规则</a></h3>
 		<div width="100%" height="100%">
 		<table id="crawlLabelTabel"  width="100%" height="100%">
           <tr>
@@ -575,38 +575,38 @@
 		    <div>
 		    <div><input type="checkbox" name="all" id="all" onclick="crawlRules.fn.selectAll(this,'crawlLabelTabel','rules')" />选择所有</div>
 		    
-		    <ul id="sortable" style="max-height: 489px;overflow: scroll;overflow-x: hidden;padding-right: 5px;">
+		    <ul id="sortable" style="max-height: 489px; overflow-y: scroll; overflow-x: hidden; padding-right: 3px;">
 		    </ul>
 		    </div>
 			</td>
           </tr>
           <tr>
-			<td colspan="7" class="td_border">
-			<input type="button" value="添加" onClick="crawlRules.fn.create();">
-			<input type="button" value="删除" onClick="crawlRules.fn.removeAll();">
-			<input type="button" value="更新" onClick="crawlRules.fn.update();">
-			<input type="button" value="采集测试" onClick="crawlRules.fn.testRules();"> 
+			<td colspan="7">
+			<input style="margin-left: 0px; margin-right: 5px;" type="button" value="添加" onClick="crawlRules.fn.create();">
+			<input style="margin-left: 0px; margin-right: 5px;" type="button" value="删除" onClick="crawlRules.fn.removeAll();">
+			<input style="margin-left: 0px; margin-right: 5px;" type="button" value="更新" onClick="crawlRules.fn.update();">
+			<input style="margin-left: 0px; margin-right: 5px;" type="button" value="采集测试" onClick="crawlRules.fn.testRules();"> 
 			</td>
 			</tr>
         </table>
         </div>
         
-        <h3><a href="javascript:void(0);">2.分页规则</a></h3>
+        <h3  style="border-bottom: 1px solid #FFFFFF;outline: none"><a href="javascript:void(0);">2.分页规则</a></h3>
 		<div>
 			<table id="pageLabelTabel"  width="100%" height="100%">
 	          <tr>
 			    <td>
 			    <div><input type="checkbox" name="all" id="all" onclick="crawlRules.fn.selectAll(this,'pageLabelTabel','rules')" />选择所有</div>
-			    <ul id="sortable"  style="max-height: 262px;overflow: scroll;overflow-x: hidden;padding-right: 5px;">
+			    <ul id="sortable"  style="max-height: 262px;">
 			    </ul>
 				</td>
 	          </tr>
 	          <tr>
 				<td colspan="7" class="td_border">
-				<input type="button" value="添加" onClick="crawlRules.fn.create();">
-				<input type="button" value="删除" onClick="crawlRules.fn.removeAll();">
-				<input type="button" value="更新" onClick="crawlRules.fn.update();">
-				<input type="button" value="采集测试" onClick="pageRules.fn.nextLink();">
+				<input style="margin-left: 0px; margin-right: 5px;" type="button" value="添加" onClick="crawlRules.fn.create();">
+				<input style="margin-left: 0px; margin-right: 5px;" type="button" value="删除" onClick="crawlRules.fn.removeAll();">
+				<input style="margin-left: 0px; margin-right: 5px;" type="button" value="更新" onClick="crawlRules.fn.update();">
+				<input style="margin-left: 0px; margin-right: 5px;" type="button" value="采集测试" onClick="pageRules.fn.nextLink();">
 				</td>
 				</tr>
 	        </table>

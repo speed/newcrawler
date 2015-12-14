@@ -4,7 +4,7 @@
     <title>More setting</title>
 </head>
   <body>
-    <table id="webCrawlerConfig" width="100%" class="table_border">
+    <table id="webCrawlerConfig" width="100%">
       <tr class="queueConfig" style="display:none;">
         <td colspan="2" class="label" height="30px" valign="bottom"><span class="STYLE4">Queue Config</span></td>        
       </tr>
@@ -287,7 +287,7 @@
 				fillSite(dataClear.v.formId, "siteList");
 				systemConfig.fn.init();
 				
-				$('.tooltip').poshytip();
+				poshytip('.tooltip');
 			};
 
 			var initLoading=setInterval(function(){

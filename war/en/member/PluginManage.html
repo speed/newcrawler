@@ -6,7 +6,7 @@
 </head>
 
 <body>
-	<table id="pluginTable" width="100%" class="table_border">
+	<table id="pluginTable" width="100%">
 		<tr>
 			<td colspan="2" class="label"  style="display: none;"><br/><span class="STYLE4" id="mainTitle">Custom Plug-in Uploading</span>
 			</td>
@@ -81,6 +81,8 @@
 								<img id="loading" src="../../static/images/loader.gif" style="display: none;"> 
 								<button class="button" type="submit">Upload</button>
 								<button type="button" class="scanLocalPlugin">Local Plug-in Install</button>
+								
+								<button type="button" class="reLoadPlugin">ReFresh</button>
 							</td>
 						</tr>
 						
@@ -262,7 +264,7 @@ $(document).ready(function() {
 			});
 			})(obj);
 		});	
-		$('.tooltip').poshytip();
+		poshytip('.tooltip');
 	};
 	
 	var initLoading=setInterval(function(){

@@ -11,7 +11,7 @@
   <body>
 	 <form  id="urlCheckForm" name="urlCheckForm" method="post">
 	  <input type="hidden" id="id" name="id" value=""></input>
-    <table width="100%" class="table_border">   
+    <table width="100%">   
     <tr>
         <td colspan="2" class="label"  style="display: none;"><br/><span class="STYLE4" id="mainTitle">URL checking management</span></td>        
       </tr>  
@@ -240,7 +240,7 @@
 			urlcheck.fn.init();
 			urlcheck.fn.query();
 			
-			$('.tooltip').poshytip();
+			poshytip('.tooltip');
 		};
 	  
 		var initLoading=setInterval(function(){

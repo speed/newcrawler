@@ -6,7 +6,7 @@
 </head>
 
 <body>
-	<table id="remoteInterTable" width="100%" class="table_border">
+	<table id="remoteInterTable" width="100%">
 		<tr>
 	        <td colspan="2" class="label" style="display: none;"><br/><span class="STYLE4" id="mainTitle">接口配置</span></td>        
 	      </tr>
@@ -88,7 +88,7 @@
 		  });
 		  httpInter.fn.init();
 		  httpInter.fn.query();
-		  $('.tooltip').poshytip();
+		  poshytip('.tooltip');
 	};
 	
 	var initLoading=setInterval(function(){

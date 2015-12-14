@@ -7,7 +7,7 @@
   <body>
 	<div id="log-box-url" style="padding: 5px 20px 5px 20px;background-color:#474747;color: white;display: none;"><pre id="log"></pre></div>
 	
-    <table id="crawlUrlListTable" width="100%" class="table_border">
+    <table id="crawlUrlListTable" width="100%">
       <tr>
 	  <td width="100%" valign="top">
 	  <table width="100%">
@@ -106,7 +106,7 @@
 				crawlUrlList.v.siteId=siteId;
 				
 				crawlUrlList.fn.init();
-				$('.tooltip').poshytip();
+				poshytip('.tooltip');
 			  };
 			
 			

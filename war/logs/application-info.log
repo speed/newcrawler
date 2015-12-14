@@ -1,0 +1,26 @@
+2015-12-14 23:32:28,083--INFO --Logs path:C:\App\apache\tomcat-7.0.56-8280\wtpwebapps\soso-crawler
+2015-12-14 23:32:28,307--INFO --Proxool 0.9.1 (October 29 2013)
+2015-12-14 23:32:29,683--INFO --Object not cached, with key 'system.property.pool.lbs'.
+2015-12-14 23:32:30,151--INFO --Task queue init success.
+2015-12-14 23:32:30,250--INFO --Object not cached, with key 'system.property.queueName'.
+2015-12-14 23:32:30,265--INFO --Reading in results for query "SELECT FROM com.soso.common.jdo.model.SystemConfigTable WHERE name=='system.property.queueName' & project=='CRAWLER' ORDER BY id desc" since the connection used is closing
+2015-12-14 23:32:30,297--INFO --Object not cached, with key 'system.property.rpcAuth'.
+2015-12-14 23:32:30,300--INFO --Reading in results for query "SELECT FROM com.soso.common.jdo.model.SystemConfigTable WHERE name=='system.property.rpcAuth' & project=='CRAWLER' ORDER BY id desc" since the connection used is closing
+2015-12-14 23:32:30,303--INFO --Object not cached, with key 'system.property.timezone'.
+2015-12-14 23:32:30,306--INFO --Reading in results for query "SELECT FROM com.soso.common.jdo.model.SystemConfigTable WHERE name=='system.property.timezone' & project=='CRAWLER' ORDER BY id desc" since the connection used is closing
+2015-12-14 23:32:30,309--INFO --Object not cached, with key 'system.property.language'.
+2015-12-14 23:32:30,311--INFO --Reading in results for query "SELECT FROM com.soso.common.jdo.model.SystemConfigTable WHERE name=='system.property.language' & project=='CRAWLER' ORDER BY id desc" since the connection used is closing
+2015-12-14 23:32:30,315--INFO --Object not cached, with key 'system.property.publickey'.
+2015-12-14 23:32:30,317--INFO --Reading in results for query "SELECT FROM com.soso.common.jdo.model.SystemConfigTable WHERE name=='system.property.publickey' & project=='CRAWLER' ORDER BY id desc" since the connection used is closing
+2015-12-14 23:32:30,323--INFO --Reading in results for query "SELECT FROM com.soso.common.jdo.model.SystemConfigTable WHERE name=='system.property.id' & project=='CRAWLER' ORDER BY id desc" since the connection used is closing
+2015-12-14 23:32:30,328--INFO --Reading in results for query "SELECT FROM com.soso.common.jdo.model.SystemConfigTable WHERE name=='system.property.version' & project=='CRAWLER' ORDER BY id desc" since the connection used is closing
+2015-12-14 23:32:30,331--INFO --Object not cached, with key 'system.property.smtpPassword'.
+2015-12-14 23:32:30,334--INFO --Reading in results for query "SELECT FROM com.soso.common.jdo.model.SystemConfigTable WHERE name=='system.property.smtpPassword' & project=='CRAWLER' ORDER BY id desc" since the connection used is closing
+2015-12-14 23:32:30,483--INFO --Reading in results for query "SELECT FROM com.soso.crawler.model.Crawler_PluginTable ORDER BY createDate desc" since the connection used is closing
+2015-12-14 23:32:45,522--INFO --Shutting down system.
+2015-12-14 23:32:45,522--INFO --Shutting down task queue.
+2015-12-14 23:32:45,522--INFO --Shutting down statistic.
+2015-12-14 23:32:45,539--INFO --Shutting down 'datanucleus0' pool immediately [Shutdown Hook]
+2015-12-14 23:32:45,542--INFO --Shutting down 'datanucleus1' pool immediately [Shutdown Hook]
+2015-12-14 23:32:45,544--INFO --Stopping Prototyper thread
+2015-12-14 23:32:45,544--INFO --Stopping HouseKeeper thread

@@ -5,7 +5,7 @@
 </head>
 
 <body>
-	<table id="backupAndRestoreBySiteTable" width="100%" class="table_border">
+	<table id="backupAndRestoreBySiteTable" width="100%">
 		<tr>
 			<td colspan="2" class="label"><br/><span class="STYLE4">恢復數據</span>
 			</td>
@@ -72,7 +72,7 @@ $(document).ready(function() {
 		backupAndRestoreBySite.v.siteId=siteId;
 		backupAndRestoreBySite.v.webCrawlerUrl=webCrawlerUrl;
 		
-		$('.tooltip').poshytip();
+		poshytip('.tooltip');
 		backupAndRestoreBySite.fn.init();
 		backupAndRestoreBySite.fn.query();
 		

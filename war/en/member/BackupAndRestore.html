@@ -6,7 +6,7 @@
 </head>
 
 <body>
-	<table id="backupAndRestoreTable" width="100%" class="table_border">
+	<table id="backupAndRestoreTable" width="100%" >
 		<tr>
 			<td colspan="2" class="label"><br/><span class="STYLE4">Restore Data</span>
 			</td>
@@ -134,7 +134,7 @@
 			backupAndRestore.v.siteId=siteId;
 			backupAndRestore.v.webCrawlerUrl=webCrawlerUrl;
 			
-			$('.tooltip').poshytip();
+			poshytip('.tooltip');
 			backupAndRestore.fn.init();
 			backupAndRestore.fn.query();
 			

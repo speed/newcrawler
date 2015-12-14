@@ -5,7 +5,7 @@
 </head>
 
   <body>
-    <table id="siteCreateTable" width="100%" class="table_border">
+    <table id="siteCreateTable" width="100%">
       <tr>
 	  <td width="100%" valign="top">
 	  	<form id="siteCreateForm" name="siteCreateForm" method="post">
@@ -28,7 +28,7 @@
 				async:true,
 				success: function(responseText){
 					$("#siteCreateForm").html(responseText);
-					$('.tooltip').poshytip();
+					poshytip('.tooltip');
 					
 					siteTask.fn.init("siteCreateForm");
 					removeLoading($("#siteCreateTable"));

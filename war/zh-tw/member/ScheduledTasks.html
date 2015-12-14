@@ -5,7 +5,7 @@
 </head>
   <body>
   <form  id="scheduleForm" name="scheduleForm" method="post">
-    <table width="100%" class="table_border">
+    <table width="100%">
       <tr>
 	  <td valign="top" style="width:450px">
 	  
@@ -133,7 +133,7 @@
 		  	});
 			
 			scheduledTask.v.scheduledTaskLog=scheduledTaskLog;
-			$('.tooltip').poshytip();
+			poshytip('.tooltip');
 			
 			
 			$("#"+scheduledTask.v.formId).find('#runMode').change(function(){

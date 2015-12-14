@@ -4,7 +4,7 @@
 <title>Account management</title>
 </head>
 <body>
-	<table width="100%" class="table_border" id="accountManageTable">
+	<table width="100%" id="accountManageTable">
 		<tr>
 			<td colspan="2" width="100%">
 				<table width="100%" height="100%" class="table_border2">
@@ -1848,7 +1848,7 @@ Pacific/Kiritimati
 		
 		var initFun=function(){
 			account.fn.queryConfig();
-			$('.tooltip').poshytip();
+			poshytip('.tooltip');
 			var username=account.fn.getcookie("NC_USERNAME");
 			$("#"+account.v.tableId).find("#username").text(username);
 			var languageCookie=account.fn.getcookie("NC_LANG");

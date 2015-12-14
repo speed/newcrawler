@@ -5,7 +5,7 @@
 </head>
 
   <body>
-    <table id="crawlUrlImportTable" width="100%" class="table_border">
+    <table id="crawlUrlImportTable" width="100%">
     	<tr>
 			<td colspan="2" class="label"><br/><span class="STYLE4" id="mainTitle" style="display:none;">添加采集网址</span>
 			</td>
@@ -110,7 +110,7 @@
 			crawlUrlImport.v.siteId=siteId;
 			
 			crawlUrlImport.fn.init();
-			$('.tooltip').poshytip();
+			poshytip('.tooltip');
 		  };
 		
 		var initLoading=setInterval(function(){

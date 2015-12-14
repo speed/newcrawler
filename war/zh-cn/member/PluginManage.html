@@ -6,7 +6,7 @@
 </head>
 
 <body>
-	<table id="pluginTable" width="100%" class="table_border">
+	<table id="pluginTable" width="100%">
 		<tr>
 			<td colspan="2" class="label"  style="display: none;"><br/><span class="STYLE4" id="mainTitle">自定义插件上传</span>
 			</td>
@@ -81,6 +81,8 @@
 								<img id="loading" src="../../static/images/loader.gif" style="display: none;"> 
 								<button class="button" type="submit">上传</button>
 								<button type="button" class="scanLocalPlugin">本地插件安装</button>
+								
+								<button type="button" class="reLoadPlugin">ReFresh</button>
 							</td>
 						</tr>
 						
@@ -262,7 +264,7 @@ $(document).ready(function() {
 			});
 			})(obj);
 		});	
-		$('.tooltip').poshytip();
+		poshytip('.tooltip');
 	};
 	
 	var initLoading=setInterval(function(){

@@ -1,0 +1,65 @@
+/*tabs chrome*/
+
+li[role=tab] {
+  white-space: nowrap;margin: 1px .2em 0 0;padding: 0;overflow: hidden;max-width: 200px;font-size: 12px;display: flex;margin-right: 0 !important;outline: 0;
+}
+
+li[role=tab] a {font-size: 1em !important;}
+
+li[role=tab] .ui-tabs-anchor{flex: 1;overflow: hidden;outline: 0;}
+
+li.button {width: 0; max-width: 0;}
+
+#tabsview > ul.ui-tabs-nav{
+  margin: 0;
+  list-style-type : none;
+  line-height : 35px;
+  max-height: 35px;
+  overflow: hidden;
+  display: inline-block;
+  padding-right: 20px;
+  background: none;
+  background-image: none;
+  border: 0;
+  width: 100%;
+}
+
+#tabsview > ul.ui-tabs-nav > li.ui-tabs-active{z-index: 2;background: #F6F6F6;}
+
+#tabsview > ul.ui-tabs-nav > li.ui-tabs-active:before{border-color : transparent #efefef transparent transparent;}
+
+#tabsview > ul.ui-tabs-nav > li.ui-tabs-active:after{border-color : transparent transparent transparent #efefef;}
+
+#tabsview > ul.ui-tabs-nav > li{
+  margin : 5px -10px 0 !important;
+  border-top-right-radius: 25px 170px;
+  border-top-left-radius: 20px 90px;
+  padding : 0 30px 0 25px !important;
+  height: 170px;
+  background: #F6F6F6;
+  position : relative;
+  box-shadow: 0 10px 20px rgba(0,0,0,.5);
+  max-width : 200px;
+  line-height: 20px;
+  border: 1px solid #DDDDDD;
+}
+
+#tabsview > ul.ui-tabs-nav > .ui-state-hover a, #tabsview > ul.ui-tabs-nav > .ui-state-hover a:link, #tabsview > ul.ui-tabs-nav > .ui-state-hover a:visited {color: rgba(0, 115, 234, 0.74)}
+
+#tabsview > ul.ui-tabs-nav > li > a{display: inline-block;max-width:100%;overflow: hidden;text-decoration: none;}
+
+#tabsview > ul.ui-tabs-nav > li:before, #tabsview > ul.ui-tabs-nav > li:after{background : transparent;height: 20px;width: 20px;border-radius: 100%;border-width: 10px;top: 0px;border-style : solid;position : absolute;}
+
+#tabsview > ul.ui-tabs-nav > li:before{border-color : transparent #ddd transparent transparent;-webkit-transform : rotate(48deg);left: -23px;}
+
+#tabsview > ul.ui-tabs-nav > li:after{border-color : transparent transparent transparent #ddd;-webkit-transform : rotate(-48deg);right: -17px;}
+
+#tabsview > .ui-sortable-helper{height: 30px !important;}
+
+/* Clear Fix took for HTML 5 Boilerlate*/
+
+.clearfix:before, .clearfix:after { content: ""; display: table; }
+.clearfix:after { clear: both; }
+.clearfix { zoom: 1; }
+
+/*End of scrollable tabs css*/

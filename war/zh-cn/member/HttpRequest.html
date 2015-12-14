@@ -4,7 +4,7 @@
     <title>HTTP请求</title>
 </head>
   <body>
-    <table width="100%" class="table_border">
+    <table width="100%" >
       
 	   <tr>
         <td colspan="2" class="label"  style="display: none;"><br/><span class="STYLE4" id="mainTitle">HTTP请求配置</span></td>        
@@ -226,7 +226,7 @@ $(document).ready(function(){
 		  httpRequest.fn.init();
 	      httpRequest.fn.query(function(){reConfigBoxSize();});
 		  httpRequest.fn.initSlider(6);
-		  $('.tooltip').poshytip();
+		  poshytip('.tooltip');
 	  };
 	  
 	  var initLoading=setInterval(function(){

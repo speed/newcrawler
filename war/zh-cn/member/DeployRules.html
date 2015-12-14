@@ -1,0 +1,53 @@
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>数据发布规则</title>
+
+</head>
+
+<body>
+<table id="deployRulesTable" style="width:100%;">
+      <tr>
+	  <td colspan="2" > 
+	
+	<div id="deployRulesTabs" style="">
+		<div id="deployMenu">
+		<a class="active item" href="javascript:void(0);" title="CrawlDataExport.html">拉取数据(Pull)</a> 
+		<a class="item" href="javascript:void(0);" title="DataDeploy.html" >推送数据(Push)</a>
+		</div>
+		
+		<div id="deployRulesTabsHtml" style="padding-top: 3px;;">
+		
+		</div>
+	</div>  
+	
+	   </td>
+	  </tr>
+	 </table>  
+	<script type="text/javascript">
+		$(document).ready(function() {
+			var url="CrawlDataExport.html";
+			$("#deployRulesTabs #deployRulesTabsHtml").load(url, function(){
+				$("#deployRulesTabs #deployRulesTabsHtml").find(":button:not(.link-button):not(.ui-button)").addClass('jfk-button jfk-button-standard');
+				loadConfig=false;
+		        initConfigBox();
+				removeLoading($("#deployRulesTabs"));
+			});
+			
+			$("#deployRulesTabs #deployMenu .item").click(function(){
+				var url=$(this).attr("title");
+				$("#deployRulesTabs #deployMenu .item").removeClass("active");
+				$(this).addClass("active");
+				
+				showLoading($("#deployRulesTabs"));
+				$("#deployRulesTabs #deployRulesTabsHtml").load(url, function(){
+					$("#deployRulesTabs #deployRulesTabsHtml").find(":button:not(.link-button):not(.ui-button)").addClass('jfk-button jfk-button-standard');
+					loadConfig=false;
+			        initConfigBox();
+			        removeLoading($("#deployRulesTabs"));
+				});
+			});
+		});
+	</script>
+</body>
+</html>

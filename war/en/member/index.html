@@ -9,22 +9,35 @@
 	<title>New Crawler</title>
 	  
 	
-	<link type="text/css" rel="stylesheet" href="../../static/js/poshytip-1.1/tip-yellow/tip-yellow.css" />
+	<link type="text/css" rel="stylesheet" href="../../static/js/poshytip-1.2/tip-yellow/tip-yellow.css" />
+	<link type="text/css" rel="stylesheet" href="../../static/js/jquery-ui-1.11.4.custom/jquery-ui.css"/>
 	<link type="text/css" rel="stylesheet" href="../../static/css/header.css"/>
 	<link type="text/css" rel="stylesheet" href="../../static/js/datetimepicker-master/jquery.datetimepicker.css" />
-<script>
-var _hmt = _hmt || [];
-(function() {
-  var hm = document.createElement("script");
-  hm.src = "//hm.baidu.com/hm.js?e1ceaa53d6a8ad5f49c70e7196d99281";
-  var s = document.getElementsByTagName("script")[0]; 
-  s.parentNode.insertBefore(hm, s);
-})();
-</script>
+	
+	<script>
+	var _hmt = _hmt || [];
+	(function() {
+	  var hm = document.createElement("script");
+	  hm.src = "//hm.baidu.com/hm.js?e1ceaa53d6a8ad5f49c70e7196d99281";
+	  var s = document.getElementsByTagName("script")[0]; 
+	  s.parentNode.insertBefore(hm, s);
+	})();
+	</script>
 	
 	<style type="">
 	.ui-state-active .ui-state-hover{
 		background: none;
+	}
+	.ui-tabs .ui-tabs-panel{
+		display: block;
+	    border-width: 0;
+	    background: 0;
+	    overflow: auto;
+	    height: 100%;
+	    padding: 0em 0.1em;
+	}
+	.ui-accordion .ui-accordion-content{
+		padding: 3px;
 	}
 	</style>
 </head>
@@ -48,7 +61,7 @@ var _hmt = _hmt || [];
 	<DIV class="ui-layout-west" style="width:265px;">
 		<DIV style="padding: 0px 0px 5px 0px; text-align: left;font-size:12px;border-bottom: 1px solid #D8D8D8;width:217px;position: relative;">
 			<a href="//www.newcrawler.com/" style="width:170px;"><IMG alt="New Crawler" src="../../static/images/newcrawler-logo2.png" width="170"/></a>
-			<div class="locationdiv" ><div id="loaction"><span class="select_title"></span></div>
+			<div class="locationdiv" style="display:none;"><div id="loaction"><span class="select_title"></span></div>
 				<ul class="locationdrop">
 					<li class="usa" title="USA node, applied to non-Chinese visits, and visits from China are blocked" lang="usa"><a href="javascript:void(0);"><span></span></a></li>
 					<li class="china" title="China node, applied to Chinese visits, but not accessible to blocked crawlers" lang="china"><a href="javascript:void(0);"><span></span></a></li>
@@ -63,7 +76,7 @@ var _hmt = _hmt || [];
 	</DIV>
 	<DIV id="tabsview"  class="ui-layout-center" >
 		<UL>
-			<LI class="ui-default-tab" style="background:#f6f6f6 url(/static/css/images/ui-bg_highlight-soft_100_f6f6f6_1x100.png) 50% 50% repeat-x;border: 1px solid #ddd;"><A href="#tab_1"><SPAN>New Crawler</SPAN></A></LI>
+			<LI class="ui-default-tab" style="background:rgb(246, 246, 246);border: 1px solid #ddd;"><A href="#tab_1"><SPAN>New Crawler</SPAN></A></LI>
 		</UL>
 		<DIV class="ui-layout-content ui-widget-content ui-corner-bottom" >
 			<DIV id="tab_1" >
@@ -98,7 +111,7 @@ var _hmt = _hmt || [];
 			
 			</div>
 			<div style="float:right;">
-			<a href="http://code.google.com/p/newcrawler/issues/list" title="Issue Submit" target="_blank"><img src="../../static/images/code.png" alt="Issue Submit"  title="Issue Submit"/></a>
+			<a href="https://github.com/speed/newcrawler/issues" title="Issue Submit" target="_blank"><img style="top: -2px; position: relative; padding-right: 10px;" src="../../static/images/github-logo.png" alt="Issue Submit"  title="Issue Submit"/></a>
 			<a href="https://appengine.google.com/" title="Google App Engine" target="_blank"><img src="../../static/images/gae.png" alt="Google App Engine"  title="Google App Engine"/></a>
 			</div>
 		</DIV>
@@ -108,16 +121,18 @@ var _hmt = _hmt || [];
 
 
 
-<script type="text/javascript" src="../../static/js/jquery-1.7.min.js"></script>
-<script type="text/javascript" src="../../static/js/jquery-ui.min.js"></script>
+<script type="text/javascript" src="../../static/js/jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="../../static/js/jquery-ui-1.11.4.custom/jquery-ui.min.js"></script>
+  
 <script type="text/javascript" src="../../i18n"></script>
 
 <script type="text/javascript" src="../../static/js/header.js"></script>
 <script type="text/javascript" src="../../static/js/Highcharts-4.1.9/js/highcharts.js"></script>
 <script type="text/javascript" src="../../static/js/Highcharts-4.1.9/js/modules/exporting.js"></script>
+<!-- <script src="http://code.highcharts.com/maps/highmaps.js"></script> -->
 <script type="text/javascript" src="../../static/js/jquery.pagination-min.js"></script>
 <script type="text/javascript" src="../../static/js/easydialog-min.js"></script>
-<script type="text/javascript" src="../../static/js/poshytip-1.1/jquery.poshytip-min.js"></script>
+<script type="text/javascript" src="../../static/js/poshytip-1.2/jquery.poshytip.min.js"></script>
 
 <script type="text/javascript" src="../../static/js/main.member-min.js"></script>
 <script type="text/javascript" src="../../static/js/main.sitetasks-min.js"></script>
@@ -125,6 +140,7 @@ var _hmt = _hmt || [];
 
 
 <script type="text/javascript" src="../../static/js/datetimepicker-master/jquery.datetimepicker.js"></script>
+<script type="text/javascript" src="../../static/js/ui.tabs.overflowResize-min.js"></script>
 
 <script type="text/javascript">
 		$( "#trace-box" ).dialog({ 
@@ -165,7 +181,9 @@ var _hmt = _hmt || [];
 		function init(){
 			loadJs("../../static/js/base64-min.js");
 			loadJs("../../static/js/jquery.form-min.js");
-			loadJs("../../static/js/xheditor-1.1.14/xheditor-1.1.14-en.min.js");
+			loadJs("../../static/js/xheditor-1.2.2/xheditor-1.2.2.min.js", function(){
+				loadJs("../../static/js/xheditor-1.2.2/xheditor_lang/en.js");
+			});
 			
 			loadJs("../../static/js/main.account-min.js?v2.1");
 			loadJs("../../static/js/jxs-min.js?v2.1");

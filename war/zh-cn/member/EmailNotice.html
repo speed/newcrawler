@@ -5,7 +5,7 @@
 	</head>
   <body>
 	
-    <table width="100%" class="table_border">     
+    <table width="100%">     
 	  <tr>
         <td colspan="2" class="label"  style="display: none;"><br/><span class="STYLE4" id="mainTitle">邮件模板</span></td>        
       </tr>
@@ -111,7 +111,7 @@
 		  });
 		  emailNotice.fn.init();
 		  emailNotice.fn.query(function(){reConfigBoxSize();});
-		  $('.tooltip').poshytip();
+		  poshytip('.tooltip');
 		  $("#"+emailNotice.v.formId).find("#tempContent").xheditor();
 	};
 	
