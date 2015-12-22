@@ -1,10 +1,14 @@
 #upgrade
 
 cd newcrawler
-wget https://github.com/speed/spider/archive/master.zip
+rm -f -v master.zip
+wget https://github.com/speed/newcrawler/archive/master.zip
 unzip -n master.zip
-\cp -R spider-master/war/* war
-rm -R -f -v spider-master
+rm -R -f -v newcrawler-master/war/WEB-INF/classes
+rm -R -f -v war/WEB-INF/lib
+rm -R -f -v war/static
+\cp -R newcrawler-master/war/* war
+rm -R -f -v newcrawler-master
 rm -f -v master.zip
 sh stop.sh
 
