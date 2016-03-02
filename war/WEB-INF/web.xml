@@ -173,87 +173,96 @@
     
     <!-- WEB -->
     <servlet>
-		<servlet-name>lllllllllllllll.IlIllIIlIlllIIlII</servlet-name>
-		<servlet-class>lllllllllllllll.IlIllIIlIlllIIlII</servlet-class>
+		<servlet-name>lllllllllllllll.IlIlIIIIIIIIIllIl</servlet-name>
+		<servlet-class>lllllllllllllll.IlIlIIIIIIIIIllIl</servlet-class>
 		<init-param>
 			<param-name>gzip_threshold</param-name>
 			<param-value>200</param-value>
 		</init-param>
 	</servlet>
 	<servlet-mapping>
-		<servlet-name>lllllllllllllll.IlIllIIlIlllIIlII</servlet-name>
+		<servlet-name>lllllllllllllll.IlIlIIIIIIIIIllIl</servlet-name>
 		<url-pattern>/JSON-RPC/*</url-pattern>
 	</servlet-mapping>
 	
 	<servlet>
-		<servlet-name>lllllllllllllll.IlIllIllIIIlIlIII</servlet-name>
-		<servlet-class>lllllllllllllll.IlIllIllIIIlIlIII</servlet-class>
+		<servlet-name>lllllllllllllll.IlIlIllIllllllIll</servlet-name>
+		<servlet-class>lllllllllllllll.IlIlIllIllllllIll</servlet-class>
 	</servlet>
 	<servlet-mapping>
-		<servlet-name>lllllllllllllll.IlIllIllIIIlIlIII</servlet-name>
+		<servlet-name>lllllllllllllll.IlIlIllIllllllIll</servlet-name>
 		<url-pattern>/member/viewcode</url-pattern>
 	</servlet-mapping>
 
 	<servlet>
-		<servlet-name>lllllllllllllll.IlIlllIIIlIlllllI</servlet-name>
-		<servlet-class>lllllllllllllll.IlIlllIIIlIlllllI</servlet-class>
+		<servlet-name>lllllllllllllll.IlIllIllIIIllIlII</servlet-name>
+		<servlet-class>lllllllllllllll.IlIllIllIIIllIlII</servlet-class>
 	</servlet>
 	<servlet-mapping>
-		<servlet-name>lllllllllllllll.IlIlllIIIlIlllllI</servlet-name>
+		<servlet-name>lllllllllllllll.IlIllIllIIIllIlII</servlet-name>
 		<url-pattern>/member/regextest</url-pattern>
 	</servlet-mapping>
 
 	<servlet>
-		<servlet-name>lllllllllllllll.IlIllIlIIIIlIIIlI</servlet-name>
-		<servlet-class>lllllllllllllll.IlIllIlIIIIlIIIlI</servlet-class>
+		<servlet-name>lllllllllllllll.IlIlIlIlIlllIIIll</servlet-name>
+		<servlet-class>lllllllllllllll.IlIlIlIlIlllIIIll</servlet-class>
 	</servlet>
 	<servlet-mapping>
-		<servlet-name>lllllllllllllll.IlIllIlIIIIlIIIlI</servlet-name>
+		<servlet-name>lllllllllllllll.IlIlIlIlIlllIIIll</servlet-name>
 		<url-pattern>/member/readxpath</url-pattern>
 	</servlet-mapping>
 	
 	<servlet>
-		<servlet-name>lllllllllllllll.IlIlIIllIllIlIIlI</servlet-name>
-		<servlet-class>lllllllllllllll.IlIlIIllIllIlIIlI</servlet-class>
+		<servlet-name>lllllllllllllll.IlIlIllllllIIlIIl</servlet-name>
+		<servlet-class>lllllllllllllll.IlIlIllllllIIlIIl</servlet-class>
 	</servlet>
 	<servlet-mapping>
-		<servlet-name>lllllllllllllll.IlIlIIllIllIlIIlI</servlet-name>
+		<servlet-name>lllllllllllllll.IlIlIllllllIIlIIl</servlet-name>
+		<url-pattern>/member/newcrawlertools</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>lllllllllllllll.IlIllIIlIllllIIIl</servlet-name>
+		<servlet-class>lllllllllllllll.IlIllIIlIllllIIIl</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>lllllllllllllll.IlIllIIlIllllIIIl</servlet-name>
 		<url-pattern>/member/rules/query</url-pattern>
 	</servlet-mapping>
 	
 	<servlet>
-		<servlet-name>lllllllllllllll.IlIllIIIllllllllI</servlet-name>
-		<servlet-class>lllllllllllllll.IlIllIIIllllllllI</servlet-class>
+		<servlet-name>lllllllllllllll.IlIlIlllIIIlIIllI</servlet-name>
+		<servlet-class>lllllllllllllll.IlIlIlllIIIlIIllI</servlet-class>
 	</servlet>
 	<servlet-mapping>
-		<servlet-name>lllllllllllllll.IlIllIIIllllllllI</servlet-name>
+		<servlet-name>lllllllllllllll.IlIlIlllIIIlIIllI</servlet-name>
 		<url-pattern>/member/rules/save</url-pattern>
 	</servlet-mapping>
 	
 	<servlet>
-		<servlet-name>lllllllllllllll.IlIllllllllIIllll</servlet-name>
-		<servlet-class>lllllllllllllll.IlIllllllllIIllll</servlet-class>
+		<servlet-name>lllllllllllllll.IlIlIIIlIIlllIlII</servlet-name>
+		<servlet-class>lllllllllllllll.IlIlIIIlIIlllIlII</servlet-class>
 	</servlet>
 	<servlet-mapping>
-		<servlet-name>lllllllllllllll.IlIllllllllIIllll</servlet-name>
+		<servlet-name>lllllllllllllll.IlIlIIIlIIlllIlII</servlet-name>
 		<url-pattern>/i18n</url-pattern>
 	</servlet-mapping>
 	
 	<servlet>
-		<servlet-name>lllllllllllllll.IlIlIllIlIlIIIIlI</servlet-name>
-		<servlet-class>lllllllllllllll.IlIlIllIlIlIIIIlI</servlet-class>
+		<servlet-name>lllllllllllllll.IlIlllIlllllllIll</servlet-name>
+		<servlet-class>lllllllllllllll.IlIlllIlllllllIll</servlet-class>
 	</servlet>
 	<servlet-mapping>
-		<servlet-name>lllllllllllllll.IlIlIllIlIlIIIIlI</servlet-name>
+		<servlet-name>lllllllllllllll.IlIlllIlllllllIll</servlet-name>
 		<url-pattern>/language</url-pattern>
 	</servlet-mapping>
 	
 	<servlet>
-		<servlet-name>lllllllllllllll.IlIlIllllllllIlII</servlet-name>
-		<servlet-class>lllllllllllllll.IlIlIllllllllIlII</servlet-class>
+		<servlet-name>lllllllllllllll.IlIlIIIIIIlIlIlIl</servlet-name>
+		<servlet-class>lllllllllllllll.IlIlIIIIIIlIlIlIl</servlet-class>
 	</servlet>
 	<servlet-mapping>
-		<servlet-name>lllllllllllllll.IlIlIllllllllIlII</servlet-name>
+		<servlet-name>lllllllllllllll.IlIlIIIIIIlIlIlIl</servlet-name>
 		<url-pattern>/index.jhtml</url-pattern>
 	</servlet-mapping>
 	

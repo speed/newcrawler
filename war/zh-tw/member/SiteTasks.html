@@ -60,15 +60,35 @@
        		<span class="configBox" lang="PluginManage.html">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
 		</td>
 		
-		<td align="right" nowrap class="label" style="width:150px;"><a class="tooltip" href="javascript:void(0);" title="需要在'設置' > 'HTTP請求'中定義">HTTP請求：</a></td>
+		<td align="right" nowrap class="label" style="width:150px;">
+		<a class="tooltip" href="javascript:void(0);" title="需要在'設置' > 'HTTP請求'中定義">HTTP請求：</a></td>
 		<td class="td_border">
 			<select id="httpRequestId" name="httpRequestId" style="width:160px;">
           			<option value=""></option>
        		</select>
        		<span class="configBox" lang="HttpRequest.html">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
 		</td>
+		
 	</tr>
-	
+	<tr>
+		<td align="right" nowrap class="label" ><a class="tooltip" href="javascript:void(0);" title="會話管理">會話管理</a></td>
+		<td class="td_border">
+			<select id="sessionId" name="sessionId" style="width:160px;">
+          			<option value=""></option>
+       		</select>
+       		<span class="configBox" lang="SessionManager.html">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+		</td>
+		
+		<td align="right" nowrap class="label" style="width:150px;">
+		<a class="tooltip" href="javascript:void(0);" title="會話模式, 1.每頁面、2.每批次、3.壹直保持">會話模式</a></td>
+		<td class="td_border">
+			<select id="sessionMode" name="sessionMode" style="width:160px;">
+					<option value="3" selected>壹直保持</option>
+          			<option value="1">每頁面</option>
+          			<option value="2">每批次</option>
+       		</select>
+		</td>
+	</tr>
 	<tr class="advanced-settings">
         <td colspan="4" style="font-weight: bold;padding: 0px;" height="5px"><hr style="border-color: white;"/></td>           
     </tr>

@@ -60,15 +60,35 @@
        		<span class="configBox" lang="PluginManage.html">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
 		</td>
 		
-		<td align="right" nowrap class="label" style="width:150px;"><a class="tooltip" href="javascript:void(0);" title="Need to be defined in ‘setting’>’HTTP request’">HTTP Request:</a></td>
+		<td align="right" nowrap class="label" style="width:150px;">
+		<a class="tooltip" href="javascript:void(0);" title="Need to be defined in ‘setting’>’HTTP request’">HTTP Request:</a></td>
 		<td class="td_border">
 			<select id="httpRequestId" name="httpRequestId" style="width:160px;">
           			<option value=""></option>
        		</select>
        		<span class="configBox" lang="HttpRequest.html">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
 		</td>
+		
 	</tr>
-	
+	<tr>
+		<td align="right" nowrap class="label" ><a class="tooltip" href="javascript:void(0);" title="Session Manager">Session Manager</a></td>
+		<td class="td_border">
+			<select id="sessionId" name="sessionId" style="width:160px;">
+          			<option value=""></option>
+       		</select>
+       		<span class="configBox" lang="SessionManager.html">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+		</td>
+		
+		<td align="right" nowrap class="label" style="width:150px;">
+		<a class="tooltip" href="javascript:void(0);" title="Session mode, 1.Per page, 2.Per batch, 3.always">Session Mode</a></td>
+		<td class="td_border">
+			<select id="sessionMode" name="sessionMode" style="width:160px;">
+					<option value="3" selected>always</option>
+          			<option value="1">Per page</option>
+          			<option value="2">Per batch</option>
+       		</select>
+		</td>
+	</tr>
 	<tr class="advanced-settings">
         <td colspan="4" style="font-weight: bold;padding: 0px;" height="5px"><hr style="border-color: white;"/></td>           
     </tr>

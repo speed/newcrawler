@@ -25,8 +25,8 @@
 .ncx_smaller.ncx_on{background:url(et_tool.png) no-repeat 0px -431px}
 
 
-.ncx_et_content{clear:left;display:none;}
-.ncx_et_content_footer{display:none;}
+.ncx_et_content{clear:left;display:none;font-size: 13px; line-height: 19px; color: #111; font-family: "Hiragino Sans GB","Microsoft Yahei",Arial,sans-serif;}
+.ncx_et_content_footer{display:none;font-size: 13px; line-height: 19px; color: #111; font-family: "Hiragino Sans GB","Microsoft Yahei",Arial,sans-serif;}
 .ncx_et_content .ncx_et_content_inner{padding:12px 10px;font-size:12px; font: 12px/1.5 '宋体',Arial,sans-serif;}
 .ncx_et_content .ncx_et_content_inner .ncx_xpath{padding: 3px;color:#A80C0C; font-size: 14px;line-height:20px;background-color: white;border: solid 1px #B2B2B2;text-align: left;word-break:break-all;overflow:auto;}
 .ncx_et_content .ncx_et_content_inner .ncx_csspath{padding: 3px;color:#A80C0C; font-size: 14px;line-height:20px;background-color: white;border: solid 1px #B2B2B2;text-align: left;word-break:break-all;overflow:auto;}
@@ -98,7 +98,10 @@
 	display: inline-table;
 	box-sizing: border-box;
 	-webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box
+	-moz-box-sizing: border-box;
+	font-size: 13px;
+    color: #111;
+    font-family: "Hiragino Sans GB","Microsoft Yahei",Arial,sans-serif;
 }
 
 #ncx_toolbar .ncx_toolbar_logo {

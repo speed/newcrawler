@@ -1,0 +1,157 @@
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>Session Manager</title>
+</head>
+  <body>
+    <table width="100%" >
+	   <tr>
+        <td colspan="2" class="label"  style="display: none;"><br/><span class="STYLE4" id="mainTitle">Session Manager</span></td>        
+      </tr>
+      	
+      <tr>
+	  <td colspan="2" width="100%" >
+	  <form id="sessionManagerForm" name="sessionManagerForm" >
+		<input id="id" name="id" type="hidden">
+		<table width="100%" height="100%" class="table_border2">
+			<tr>
+				<td width="120" align="right" nowrap></td>
+				<td colspan="2" >
+					<div id="message"></div>
+				</td>
+			</tr>
+			
+			<tr>
+				<td width="150px"  align="right" nowrap class="label">Name</td>
+				<td width="100%" class="td_border" colspan="4">
+					<input id="name" type="text" name="name" value="" style="width: 150px" />
+				</td>
+			</tr>	
+			
+			<tr>
+				<td align="right" nowrap class="label" style="width:150px;"><a class="tooltip" href="javascript:void(0);" title="Session">Session</a></td>
+				<td class="td_border">
+					<div class="sessionRulesDiv">
+	        		<div id="sessionRulesDiv1" class="sessionRules" >
+	        			<div>
+	        			<input type="hidden" name="id" value="" style="width: 100%" />
+	        			<input type="hidden" name="sortIndex" value="0" style="width: 100%" />
+	        			<table width="100%">
+		        			<tr>
+								<td align="right" nowrap class="label" style="width:150px;"><a class="tooltip" style="font-weight: normal;" href="javascript:void(0);" title="Need to be defined in ‘Setting’>’HTTP request’">HTTP Request:</a></td>
+								<td class="td_border">
+									<select name="httpRequestId" style="width:160px;">
+						          			<option value=""></option>
+						       		</select>
+						       		<span class="configBox" lang="HttpRequest.html">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+								</td>
+							</tr>
+							
+							<tr>
+						 		<td width="150px" align="right" nowrap class="label"><a class="tooltip" style="font-weight: normal;" title="Get URL response cookies." >URL：</a></td>
+							 	<td colspan="2">
+							 	<div class="inputOver">
+								 	<input type="text" name="url" value="" style="width: 100%"/>
+								 	</div>
+					        	</td>
+				        	</tr>
+				        	
+				        	<tr>
+						 		<td width="150px" align="right" nowrap class="label"><a class="tooltip" style="font-weight: normal;" title="Params Formats：username=admin&password=admin&verify=...">Request Params：</a></td>
+							 	<td colspan="2">
+							 	<div class="inputOver">
+								 	<input type="text" name="params" value="" style="width: 100%"/>
+								 	</div>
+					        	</td>
+				        	</tr>
+	        			</table>
+	        			</div>
+				 		
+		       		 	<div class="addLabel" style="margin-top: 3px; float: left; padding-left: 160px;">
+						<a class="addLabelDiv" href="javascript:void(0);">+</a>
+						</div>
+	        		</div>
+					</div>
+					
+					<div>
+					<div>
+						<div class="inputOver" id="cookies" style="padding-left: 160px; padding-right: 7px; display:none;">
+			        	<textarea rows="5" style="width:100%;" ></textarea>
+				        </div>
+					</div>
+					</div>
+				</td>
+			</tr>
+			
+			<tr>
+		        <td style="width:150px;">&nbsp;</td>
+		        <td class="td_border"  colspan="4">
+		        	<div style=" padding-left: 100px;">
+		        	<input type="button" value="Create" class="create">
+			        <input type="button" value="Remove" class="remove">
+			        <input type="button" value="Update" class="update">
+			        <input type="button" value="Test" class="test">
+			        </div>
+		        </td>
+			</tr>
+			
+			<tr>
+			<td colspan="5">
+				<table id="sessionManagerTable" width="100%" align="center" class="table_border2 tableList" style="border:1px solid #CCCCCC;border-collapse:collapse;background-color: #FFFFFF;">
+					<tr>
+						<td width="5%" nowrap bgcolor="whiteSmoke">&nbsp;Select</td>
+						<td width="30%" nowrap bgcolor="whiteSmoke">&nbsp;&nbsp;&nbsp;Name</td>
+						<td width="65%" nowrap bgcolor="whiteSmoke">&nbsp;&nbsp;&nbsp;session</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+		</table>
+		</form>
+	   </td>
+	  </tr>
+	   
+	   
+  </table>
+  
+  <script type="text/javascript">
+$(document).ready(function(){
+	  
+	  var initFun = function(){
+		  var formId;
+		  var tableId;
+		  if (!loadConfig) {
+			  var id=$(document).find("#sessionManagerForm").parents('.ui-tabs-panel').attr("id");
+			  formId=id+" #sessionManagerForm";
+			  tableId=id+" #sessionManagerTable";
+			}else{
+				formId="config #sessionManagerForm";
+				tableId="config #sessionManagerTable";
+		  }
+		  
+		  var sessionManager=new sessionManagerFun({
+			  formId:formId,
+			  tableId:tableId,
+			  jsonData:new Array(),
+			  index:1,
+			  webCrawlerId:webCrawlerId
+		  });
+		  sessionManager.fn.init();
+		  if(isReConfigBoxSize){
+			  sessionManager.fn.query(function(){reConfigBoxSize();});
+		  }else{
+			  sessionManager.fn.query();
+		  }
+		  poshytip('.tooltip');
+	  };
+	  
+	  var initLoading=setInterval(function(){
+		  if(typeof sessionManager != 'undefined'){
+			 clearInterval(initLoading);
+			 initFun();
+		  }
+	  },500);
+	});
+  </script>
+  </body>
+</html>

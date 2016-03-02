@@ -79,96 +79,7 @@
 				<td width="120" align="right" valign="top" nowrap><a class="tooltip" title="請求Header，多個按'回車(Enter)'鍵分隔 <br/> 格式：  <br/>&nbsp;&nbsp;Referer： http：//www.newcrawler.com/cn/nc/index.html <br/>&nbsp;&nbsp;Host： www.newcrawler.com <br/>&nbsp;&nbsp;UserAgent： ">Header：</a></td>
 				<td width="100%" class="td_border" colspan="4">
 				<div style="padding-right:8px;">
-					<textarea id="headers" name="headers" style="word-break:break-all;overflow-y:visible;height:60px;width:100%;padding: 0px;margin: 0px"></textarea>
-				</div>
-				</td>
-			</tr>
-			<tr>
-				<td width="120" align="right" valign="top" nowrap><a class="tooltip" title="綁定COOKIE可以采集需要登錄的站點">Cookie：</a></td>
-				<td width="100%" class="td_border" colspan="4">
-				<select id="cookieGetMethod" name="cookieGetMethod" class="changeCookie">
-					<option value="1" selected>自定義</option>
-					<option value="2">登錄後獲取</option>
-				</select>
-				<div id="cookie1" style="padding-top: 5px;padding-right:8px;display:block;">
-					<textarea id="cookie" name="cookie" style="word-break:break-all;overflow-y:visible;height:60px;width:100%;padding: 0px;margin: 0px"></textarea>
-				</div>
-				<div id="cookie2" style="padding-top: 5px;padding-right:8px;display:none;">
-					<table id="loginTable" width="100%" height="100%" style="color: #666;" align="left">
-						<tr>
-							<td width="120" align="right" nowrap></td>
-							<td colspan="2" >
-								<div id="message"></div>
-							</td>
-						</tr>
-						
-						<tr>
-							<td width="120" align="right" nowrap>請求方式：</td>
-							<td colspan="2" >
-								<input id="loginMethod" type="radio" name="loginMethod" value="GET" />GET
-								<input id="loginMethod" type="radio" name="loginMethod" value="POST" checked="checked"/>POST
-							</td>
-						</tr>
-						
-						<tr>
-							<td width="120"  align="right" nowrap>請求編碼：</td>
-							<td colspan="2">
-								<input id="loginEncoding" type="text" name="loginEncoding" value="UTF-8" style="width: 200px" />
-							</td>
-						</tr>
-						
-			        	<tr>
-					 		<td width="120" align="right" nowrap ><a class="tooltip" style="font-weight: normal;" title="以GET方式獲取網址的HTML內容，通過匹配特征碼來驗證登錄狀態，當網址沒有匹配到特征碼時，才會重新登錄並獲取新的COOKIE。" >特征碼所在網址</a>：</td>
-						 	<td colspan="2">
-						 	<div class="inputOver">
-							 	<input id="loginCodeURL" type="text" name="loginCodeURL" value="" style="width: 100%"/>
-							 	</div>
-				        	</td>
-			        	</tr>
-			        	
-			        	<tr>
-						 	<td width="120" align="right" nowrap>登錄特征碼：</td>
-						 	<td width="200" >
-							 	<input id="loginCode" type="text" name="loginCode" value="" style="width: 200px" />
-				        	</td>
-				        	<td>
-							 	<input id="loginCheck" name="loginCheck" type="checkbox" value="Y"/><a class="tooltip" style="font-weight: normal;" title="勾選表示每次請求都驗證登錄狀態" >每次請求都驗證登錄狀態</a>
-				        	</td>
-			        	</tr>
-			        		
-						<tr>
-					 		<td width="120" align="right" nowrap><a class="tooltip" style="font-weight: normal;" title="不支持需要驗證碼登錄的網址，登錄網址格式：http：//localhost/login" >登錄網址：</a></td>
-						 	<td colspan="2">
-						 	<div class="inputOver">
-							 	<input id="loginURL" type="text" name="loginURL" value="" style="width: 100%"/>
-							 	</div>
-				        	</td>
-			        	</tr>
-			        	<tr>
-					 		<td width="120" align="right" nowrap><a class="tooltip" style="font-weight: normal;" title="參數格式：username=admin&password=admin&params=...">登錄參數：</a></td>
-						 	<td colspan="2">
-						 	<div class="inputOver">
-							 	<input id="loginURLParams" type="text" name="loginURLParams" value="" style="width: 100%"/>
-							 	</div>
-				        	</td>
-			        	</tr>
-			        	
-			        	<tr>
-							<td width="120" align="right" nowrap><a class="tooltip" style="font-weight: normal;" title="登錄網址Header，多個按'回車(Enter)'鍵分隔 <br/> 格式：  <br/>&nbsp;&nbsp;Referer： http：//www.newcrawler.com/cn/nc/index.html <br/>&nbsp;&nbsp;Host： www.newcrawler.com <br/>&nbsp;&nbsp;UserAgent： ">登錄網址Header：</a></td>
-							<td colspan="2">
-							<div style="padding-right:8px;">
-								<textarea id="loginHeaders" name="loginHeaders" style="word-break:break-all;overflow-y:visible;height:60px;width:100%;padding: 0px;margin: 0px"></textarea>
-							</div>
-							</td>
-						</tr>
-						<tr>
-							<td width="120" align="right" nowrap></td>
-							<td colspan="2">
-								<input type="button" value="測試模擬登錄" class="loginTest">
-			        			<input type="button" value="讀取登錄Cookie" class="loginCookie">
-							</td>
-						</tr>
-		        	</table>
+					<textarea id="headers" name="headers" style="word-break:break-all;overflow-y:visible;height:120px;width:100%;padding: 0px;margin: 0px"></textarea>
 				</div>
 				</td>
 			</tr>
@@ -181,7 +92,6 @@
 			        <input type="button" value="更新" class="update">
 		        </td>
 			</tr>
-			
 			<tr>
 			<td colspan="5">
 				<table id="httpRequestTable" width="100%" align="center" class="table_border2 tableList" style="border:1px solid #CCCCCC;border-collapse:collapse;background-color: #FFFFFF;">

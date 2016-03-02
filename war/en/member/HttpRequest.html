@@ -79,96 +79,7 @@
 				<td width="120" align="right" valign="top" nowrap><a class="tooltip" title="Request Header,  press 'Enter' button to split in the case of multiple ones,  <br/> format: <br/>&nbsp;&nbsp;Referer： http：//www.newcrawler.com/cn/nc/index.html <br/>&nbsp;&nbsp;Host： www.newcrawler.com <br/>&nbsp;&nbsp;UserAgent：">Header：</a></td>
 				<td width="100%" class="td_border" colspan="4">
 				<div style="padding-right:8px;">
-					<textarea id="headers" name="headers" style="word-break:break-all;overflow-y:visible;height:60px;width:100%;padding: 0px;margin: 0px"></textarea>
-				</div>
-				</td>
-			</tr>
-			<tr>
-				<td width="120" align="right" valign="top" nowrap><a class="tooltip" title="Binding COOKIE can crawl task which needs to be logged in">Cookie：</a></td>
-				<td width="100%" class="td_border" colspan="4">
-				<select id="cookieGetMethod" name="cookieGetMethod" class="changeCookie">
-					<option value="1" selected>Custom</option>
-					<option value="2">Login Get </option>
-				</select>
-				<div id="cookie1" style="padding-top: 5px;padding-right:8px;display:block;">
-					<textarea id="cookie" name="cookie" style="word-break:break-all;overflow-y:visible;height:60px;width:100%;padding: 0px;margin: 0px"></textarea>
-				</div>
-				<div id="cookie2" style="padding-top: 5px;padding-right:8px;display:none;">
-					<table id="loginTable" width="100%" height="100%" style="color: #666;" align="left">
-						<tr>
-							<td width="120" align="right" nowrap></td>
-							<td colspan="2" >
-								<div id="message"></div>
-							</td>
-						</tr>
-						
-						<tr>
-							<td width="120" align="right" nowrap>Request Method:</td>
-							<td colspan="2" >
-								<input id="loginMethod" type="radio" name="loginMethod" value="GET" />GET
-								<input id="loginMethod" type="radio" name="loginMethod" value="POST" checked="checked"/>POST
-							</td>
-						</tr>
-						
-						<tr>
-							<td width="120"  align="right" nowrap>Encoding:</td>
-							<td colspan="2">
-								<input id="loginEncoding" type="text" name="loginEncoding" value="UTF-8" style="width: 200px" />
-							</td>
-						</tr>
-						
-			        	<tr>
-					 		<td width="120" align="right" nowrap ><a class="tooltip" style="font-weight: normal;" title="Capture HTML contents by GET, verify the login status by check text matching; only when there’s no check text matched on the URL, login again and capture new COOKIE." >Check URL</a>：</td>
-						 	<td colspan="2">
-						 	<div class="inputOver">
-							 	<input id="loginCodeURL" type="text" name="loginCodeURL" value="" style="width: 100%"/>
-							 	</div>
-				        	</td>
-			        	</tr>
-			        	
-			        	<tr>
-						 	<td width="120" align="right" nowrap>Check Text：</td>
-						 	<td width="200" >
-							 	<input id="loginCode" type="text" name="loginCode" value="" style="width: 200px" />
-				        	</td>
-				        	<td>
-							 	<input id="loginCheck" name="loginCheck" type="checkbox" value="Y"/><a class="tooltip" style="font-weight: normal;" title="If it is checked, it means to verify the login status for every request" >Verify the login status for every time</a>
-				        	</td>
-			        	</tr>
-			        		
-						<tr>
-					 		<td width="120" align="right" nowrap><a class="tooltip" style="font-weight: normal;" title="Do not support URL needing login verification code, login format: http：//localhost/login" >Login URL：</a></td>
-						 	<td colspan="2">
-						 	<div class="inputOver">
-							 	<input id="loginURL" type="text" name="loginURL" value="" style="width: 100%"/>
-							 	</div>
-				        	</td>
-			        	</tr>
-			        	<tr>
-					 		<td width="120" align="right" nowrap><a class="tooltip" style="font-weight: normal;" title="Parameter format:username=admin&password=admin&params=...">Login Parameter：</a></td>
-						 	<td colspan="2">
-						 	<div class="inputOver">
-							 	<input id="loginURLParams" type="text" name="loginURLParams" value="" style="width: 100%"/>
-							 	</div>
-				        	</td>
-			        	</tr>
-			        	
-			        	<tr>
-							<td width="120" align="right" nowrap><a class="tooltip" style="font-weight: normal;" title="Login URL Header, press 'Enter' button to split in the case of multiple ones,  <br/> format: <br/>&nbsp;&nbsp;Referer： http：//www.newcrawler.com/cn/nc/index.html <br/>&nbsp;&nbsp;Host： www.newcrawler.com <br/>&nbsp;&nbsp;UserAgent：">Login Header：</a></td>
-							<td colspan="2">
-							<div style="padding-right:8px;">
-								<textarea id="loginHeaders" name="loginHeaders" style="word-break:break-all;overflow-y:visible;height:60px;width:100%;padding: 0px;margin: 0px"></textarea>
-							</div>
-							</td>
-						</tr>
-						<tr>
-							<td width="120" align="right" nowrap></td>
-							<td colspan="2">
-								<input type="button" value="Test Login" class="loginTest">
-			        			<input type="button" value="Read Login Cookie" class="loginCookie">
-							</td>
-						</tr>
-		        	</table>
+					<textarea id="headers" name="headers" style="word-break:break-all;overflow-y:visible;height:120px;width:100%;padding: 0px;margin: 0px"></textarea>
 				</div>
 				</td>
 			</tr>
@@ -181,7 +92,6 @@
 			        <input type="button" value="Update" class="update">
 		        </td>
 			</tr>
-			
 			<tr>
 			<td colspan="5">
 				<table id="httpRequestTable" width="100%" align="center" class="table_border2 tableList" style="border:1px solid #CCCCCC;border-collapse:collapse;background-color: #FFFFFF;">

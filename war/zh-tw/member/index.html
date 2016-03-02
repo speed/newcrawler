@@ -59,8 +59,9 @@
 <DIV id="optional-container" style="display:none;">
 
 	<DIV class="ui-layout-west" style="width:265px;">
-		<DIV style="padding: 0px 0px 5px 0px; text-align: left;font-size:12px;border-bottom: 1px solid #D8D8D8;width:217px;position: relative;">
-			<a href="//www.newcrawler.com/" style="width:170px;"><IMG alt="New Crawler" src="../../static/images/newcrawler-logo2.png" width="170"/></a>
+		<DIV style="padding: 0px 0px 5px 0px; text-align: left;font-size:12px;border-bottom: 1px solid #D8D8D8;position: relative;">
+			<a href="//www.newcrawler.com/" class="logo" style="width:170px;" title="NewCrawler"><IMG alt="New Crawler" src="../../static/images/newcrawler-logo2.png" width="170"/></a>
+			<a href="//www.newcrawler.com/" style="width:170px;" title="NewCrawler" target="_blank" ><div class="logoTitle" style="display:none;">NewCrawler</div></a>
 			<div class="locationdiv" style="display:none;"><div id="loaction"><span class="select_title"></span></div>
 				<ul class="locationdrop">
 					<li class="usa" title="美國節點，適合非中國地區訪問，中國地區訪問需翻墻" lang="usa"><a href="javascript:void(0);"><span></span></a></li>
@@ -108,11 +109,11 @@
 			<div style="float:left;">
 			<a href="../../member/Logout" title="登出"><img src="../../static/images/sign-out.png" alt="登出"  title="登出"/></a>
 			<a href="javascript:void(0);" title="顯示日誌" class="logsViewConsole"><img src="../../static/images/logviewer.jpg" style="width:30px;height:30px;"  alt="顯示日誌"  title="顯示日誌"/></a>
-			
 			</div>
 			<div style="float:right;">
 			<a href="https://github.com/speed/newcrawler/issues" title="問題提交" target="_blank"><img style="top: -2px; position: relative; padding-right: 10px;" src="../../static/images/github-logo.png" alt="問題提交"  title="問題提交"/></a>
-			<a href="https://appengine.google.com/" title="Google App Engine" target="_blank"><img src="../../static/images/gae.png" alt="Google App Engine"  title="Google App Engine"/></a>
+			<a href="https://appengine.google.com/" title="Google App Engine" target="_blank"><img style="position: relative; padding-right: 10px;" src="../../static/images/gae.png" alt="Google App Engine"  title="Google App Engine"/></a>
+			<a href="https://www.openshift.com/" title="OpenShift" target="_blank"><img style="position: relative; padding-right: 10px;" src="../../static/images/openshift.png" alt="OpenShift"  title="OpenShift"/></a>
 			</div>
 		</DIV>
 	</DIV>
@@ -214,6 +215,7 @@
 			loadJs("../../static/js/main.js.depend-min.js?v2.1");
 			loadJs("../../static/js/main.spider.manage-min.js?v2.1");
 			loadJs("../../static/js/main.crawl.exceptionurl.list-min.js?v2.1");
+			loadJs("../../static/js/main.session-min.js");
 		}
 		
 		$(document).ready(function(){
