@@ -131,10 +131,13 @@
       		<div style="padding-left: 3px;">
       			<div style="padding:3px;float: right;" id="xpath_tools"></div>
       			<div style="padding-top: 12px;height: 22px;">
+      				<div style="float:left; width:355px;">
       				<input name="selectType" type="radio" id="selectType" value="outerHTML" >outerHTML
       				<input name="selectType" type="radio" id="selectType" value="innerHTML"  checked="checked">innerHTML
       				<input name="selectType" type="radio" id="selectType" value="innerTEXT">innerTEXT
       				<input name="selectType" type="radio" id="selectType" value="@ATTR">@Attribute
+      				</div>
+      				<div style="padding-left: 355px;"> <input type="text" id="selectAttr" style="display:none; width: 70px; height: 20px; line-height: 20px;"></div>
       			</div>
       		</div>
       		<div style="padding-right:8px;"><textarea name="selectExpress" rows="4" id="selectExpress" style="width:100%"  onkeypress="if(event.keyCode==13) return false;"></textarea></div>
