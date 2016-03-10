@@ -2,8 +2,8 @@
 #jetty http://download.eclipse.org/jetty/
 #jre http://www.oracle.com/technetwork/java/javase/downloads/index.html
 #PhantomJs http://phantomjs.org/download.html
-jre="http://download.oracle.com/otn-pub/java/jdk/8u74-b02/server-jre-8u74-linux-x64.tar.gz"
 jetty="http://download.eclipse.org/jetty/9.3.7.v20160115/dist/jetty-distribution-9.3.7.v20160115.tar.gz"
+jre="http://download.oracle.com/otn-pub/java/jdk/8u74-b02/server-jre-8u74-linux-x64.tar.gz"
 phantomjs="https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-2.1.1-linux-x86_64.tar.bz2"
 
 mkdir newcrawler
