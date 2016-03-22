@@ -49,7 +49,7 @@
         </li>
         <li>
         <input name="isTemp" type="checkbox" id="isTemp" value="true" >
-        <a class="tooltip" style="font-weight:normal;" title="Temporary label doesn’t return crawling data and is often used to serve 'label index'."  href="javascript:void(0);">Temp</a>
+        <a class="tooltip" style="font-weight:normal;" title="Temporary label doesn’t return crawling data."  href="javascript:void(0);">Temp</a>
         </li>
         
         <li>
@@ -129,7 +129,6 @@
       	</div>
       	<div  id="selectLabel" style="display:none;">
       		<div style="padding-left: 3px;">
-      			<div style="padding:3px;float: right;" id="xpath_tools"></div>
       			<div style="padding-top: 12px;height: 22px;">
       				<div style="float:left; width:355px;">
       				<input name="selectType" type="radio" id="selectType" value="outerHTML" >outerHTML
@@ -168,27 +167,76 @@
 	    </table>
         <table width="100%" border="0" id="sort_table">
         	        <tbody>
+        	        
         	<tr class="simplehighlight">
             <td>
 				<input type="hidden" name="tdIndex" value="0" />
 				<input type="hidden" name="sortIndex" value="0" />
 			</td>
-			<td align="right" nowrap style="width: 114px;"><a class="tooltip" style="font-weight:normal;" title="In multi-task nested crawling, take the data matched in the present label for second matching; the label content can be URL or text and if it is URL, it will firstly capture the text and conduct second matching."  href="javascript:void(0);">Nested:</a></td>
+			<td align="right" nowrap style="width: 114px;"><a class="tooltip" style="font-weight:normal;" href="javascript:void(0);" title="When the crawled data contains HTML labels such as (src=，herf=), the automatic matching of the URL address in the label is switched into absolute address. When it doesn’t contain such labels ,automatically check whether data crawled is a legal URL address and if it is legal, it is switched into an absolute address. ">Absolute Path:</a></td>
             <td width="100%">
            		<div class="filterDiv">
-					<ul class="crawl-rules-lable">
-					<li style="line-height: 25px;"> <input name="isNested" type="checkbox" id="isNested" value="true" onclick="crawlRules.fn.changeOption(this)" ></li>
-					</ul>
-					<ul class="crawl-rules-lable" id="isNested_option" style="display:none;">
-					<li  style="line-height: 20px;">
-						<a class="tooltip" style="font-weight:normal;" title="Crawl with rules of specific tasks, the 'quantity of return records each time' is nullified"  href="javascript:void(0);">Nested:</a>
-						<select id="nestedSiteId" name="nestedSiteId" style="width:160px;"></select>
-					</li>
-					<li  style="margin-top: 3px;">
-						<a class="tooltip" style="font-weight:normal;" title="If it is checked, the content matched in the present label will be treated as a URL and the rules of specific tasks will be called for crawling."  href="javascript:void(0);">Is URL</a> 
-				        <input name="isURL" type="checkbox" id="isURL" value="true" >
-					</li>
-					</ul>
+           			<div style="height: 25px;width: 30px;float: left;padding: 8px 0 0 5px;">
+           			<input name="isAbsolute" type="checkbox" id="isAbsolute" value="true" onclick="crawlRules.fn.changeOption(this)">
+           			</div>
+           			
+           			<div style="margin: 0px 0px 0px 45px;display:none;" id="isAbsolute_option">
+	           			<div style="margin: 5px 5px 2px 0px;">
+		           			<div style="height: 25px;width: 90px;float: left;line-height: 25px;">
+		           			<a class="tooltip" style="font-weight:normal;" title="E.g.: BASE URL：'http：//www.newcrawler.com/' relative address:： 'static/pic.jpg' <br/> absolute address: 'http：//www.newcrawler.com/static/pic.jpg <br/> Space refers to use the currently captured URL as the BASE URL’ 如： BASE URL：'http：//www.newcrawler.com/' 相对地址： 'static/pic.jpg' <br/> 绝对地址是：'http：//www.newcrawler.com/static/pic.jpg <br/> 留空表示使用当前采集网址作为BASE URL'"  href="javascript:void(0);">BASE URL：</a>
+		           			</div>
+		           			<div style="margin: 0 0px 0 95px;">
+		           			<input style="width:100%;" id="absoluteUrlBase" type="text" name="absoluteUrlBase" />
+		           			</div>
+		           		</div>
+		           		<div style="margin: 5px 5px 2px 0px;">
+		           			<div style="height: 25px;width: 90px;float: left;line-height: 25px;">
+		           			<a class="tooltip" style="font-weight:normal;display: inline-block;" title="In regular expression matching, take the first group value as the URL to conduct absolute address switching, e.g. (.*)。 <br/> space refers to regard the total character string as a URL to conduct absolute address switching."  href="javascript:void(0);">URL(regex):</a>
+		           			</div>
+		           			<div style="margin: 0 0px 0 95px;">
+		           			<input style="width:100%;" id="absoluteUrlRegex" type="text" name="absoluteUrlRegex" /> 
+		           			</div>
+		           		</div>
+           			</div>
+				</div>
+			</td>
+			<td align="right" nowrap><div class="ui-state-default move"><span class="ui-icon ui-icon-arrow-4" title="Move"></span></div></td>
+          </tr>        
+        	        
+        	        
+        	<tr class="simplehighlight">
+            <td>
+				<input type="hidden" name="tdIndex" value="1" />
+				<input type="hidden" name="sortIndex" value="1" />
+			</td>
+			<td align="right" nowrap style="width: 114px;"><a class="tooltip" style="font-weight:normal;" title="Fetch URL content."  href="javascript:void(0);">Fetch URL：</a></td>
+            <td width="100%">
+            	<div class="filterDiv">
+           			<div style="height: 25px;width: 30px;float: left;padding: 8px 0 0 5px;">
+           			<input name="isFetchUrl" type="checkbox" id="isFetchUrl" value="true" onclick="crawlRules.fn.changeOption(this)" >
+           			</div>
+           			
+           			<div style="margin: 0px 0px 0px 45px;display:none;" id="isFetchUrl_option">
+	           			<div style="margin: 5px 5px 2px 0px;">
+		           			<div style="height: 25px;width: 90px;float: left;line-height: 25px;">
+		           			<a class="tooltip" style="font-weight:normal;" title="CrawlRules.html.label.httpRequest.title"  href="javascript:void(0);">CrawlRules.html.label.httpRequest</a>
+		           			</div>
+		           			<div style="margin: 0 0px 0 95px;">
+		           			<select id="httpRequestId" name="httpRequestId" style="width:160px;">
+          						<option value=""></option>
+       						</select>
+       						<span class="configBox" lang="HttpRequest.html">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+		           			</div>
+		           		</div>
+		           		<div style="margin: 5px 5px 2px 0px;">
+		           			<div style="height: 25px;width: 90px;float: left;line-height: 25px;">
+		           			<a class="tooltip" style="font-weight:normal;display: inline-block;" title="Request parameters, eg：params1=value1&params2=value2&params3=value3"  href="javascript:void(0);">Request parameters：</a>
+		           			</div>
+		           			<div style="margin: 0 0px 0 95px;">
+		           			<input style="width:100%;" id="fetchUrlHttpRequestParams" type="text" name="fetchUrlHttpRequestParams" /> 
+		           			</div>
+		           		</div>
+           			</div>
 				</div>
 			</td>
 			<td align="right" nowrap><div class="ui-state-default move"><span class="ui-icon ui-icon-arrow-4" title="Move"></span></div></td>
@@ -196,8 +244,8 @@
           
           <tr class="simplehighlight">
             <td>
-				<input type="hidden" name="tdIndex" value="1" />
-				<input type="hidden" name="sortIndex" value="1" />
+				<input type="hidden" name="tdIndex" value="2" />
+				<input type="hidden" name="sortIndex" value="2" />
 			</td>
 			<td align="right" nowrap style="width: 114px;"><a class="tooltip" style="font-weight:normal;" href="javascript:void(0);" title="Encode conversion'\uxxxx','&#xxxxx;'">Conversion:</a></td>
             <td width="100%">
@@ -227,8 +275,8 @@
           
 			<tr class="simplehighlight">
 				<td>
-				<input type="hidden" name="tdIndex" value="2" />
-				<input type="hidden" name="sortIndex" value="2" />
+				<input type="hidden" name="tdIndex" value="3" />
+				<input type="hidden" name="sortIndex" value="3" />
 				</td>
 				<td align="right" nowrap style="width: 114px;"><a class="tooltip" style="font-weight:normal;" title="HTML label exclusion is case insensitive; the label followed by '+' refers to the exclusion of the text in the label and the one without '+' refers to exclude the label only and reserve the text in the label. " href="javascript:void(0);">Html Exclude:</a></td>
 	            <td width="100%">
@@ -263,8 +311,8 @@
 			
 			<tr class="simplehighlight">
             <td>
-				<input type="hidden" name="tdIndex" value="3" />
-				<input type="hidden" name="sortIndex" value="3" />
+				<input type="hidden" name="tdIndex" value="4" />
+				<input type="hidden" name="sortIndex" value="4" />
 			</td>
 			<td align="right" nowrap style="width: 114px;"><a class="tooltip" style="font-weight:normal;" href="javascript:void(0);" title="Text composition can generate new text, format: 'new character${this}new character'; in order to validate this rule, '${this}' is needed which refers to data matched under the current rule.">Composition</a></td>
             <td width="100%">
@@ -277,8 +325,8 @@
           
           <tr class="simplehighlight">
             <td>
-				<input type="hidden" name="tdIndex" value="4" />
-				<input type="hidden" name="sortIndex" value="4" />
+				<input type="hidden" name="tdIndex" value="5" />
+				<input type="hidden" name="sortIndex" value="5" />
 			</td>
 			<td align="right" nowrap style="width: 114px;"><a class="tooltip" style="font-weight:normal;" href="javascript:void(0);" title="1. E.g.: '(\d*)' returns the contents of the first group in the regular expression; when it cannot be matched, return NULL; in the case of default multi-matching, separate with the carriage return <br/>2. If the regular expression has brackets, return the contents of the first group in the regular expression, or return all matched contents <br/>3. Support regular expression, when metacharacters in regular expressions such as ^ $ ( ) * + ? . [ \ { | are escaped by adding  \ , they will be matched as character strings <br/>4. When focusing on input box, pressing Ctrl+F will automatically escape regular expression metacharacters <br/>5. Case insensitive matching can be started by embedded label expression '(?i)' and case insensitiveness starts from the embedded position">Regex Filter:</a></td>
 			
@@ -298,8 +346,8 @@
           
           <tr class="simplehighlight">
             <td>
-				<input type="hidden" name="tdIndex" value="5" />
-				<input type="hidden" name="sortIndex" value="5" />
+				<input type="hidden" name="tdIndex" value="6" />
+				<input type="hidden" name="sortIndex" value="6" />
 			</td>
 			<td align="right" nowrap style="width: 114px;"><a class="tooltip" style="font-weight:normal;" href="javascript:void(0);" title="This filter rule can capture json object value and data matched by the label shall be the correct JavaScript. ">JavaScript Filter:</a></td>
             <td width="100%">
@@ -312,8 +360,8 @@
           
           <tr class="simplehighlight">
             <td>
-				<input type="hidden" name="tdIndex" value="6" />
-				<input type="hidden" name="sortIndex" value="6" />
+				<input type="hidden" name="tdIndex" value="7" />
+				<input type="hidden" name="sortIndex" value="7" />
 			</td>
 			<td align="right" nowrap style="width: 114px;"><a class="tooltip" style="font-weight:normal;" href="javascript:void(0);" title="E.g.: <br/>1.compareDate(sysDate.add(dd-2),this) means to crawl data within two day, <br/>this refer to the data values matched under the present rule,  <br/>sysDate.add(dd-2)  means the present time minus two days  <br/>2. Mathematical calculation expressions such as 'ceil(${this}/${label name}),###.##' <br/>'${this}' capture the present label value, and '${label name}' only capture the previous label value. <br/>'###.##'  means to format the calculated result. For more functions supported in <br/> and corresponding operations, please refer to: http://www.objecthunter.net/exp4j/apidocs/index.html">Method Function:</a></td>
             <td width="100%">
@@ -325,8 +373,8 @@
           </tr>
 		  <tr class="simplehighlight">
             <td>
-				<input type="hidden" name="tdIndex" value="7" />
-				<input type="hidden" name="sortIndex" value="7" />
+				<input type="hidden" name="tdIndex" value="8" />
+				<input type="hidden" name="sortIndex" value="8" />
 			</td>
 			<td align="right" nowrap style="width: 114px;"><a class="tooltip" style="font-weight:normal;" href="javascript:void(0);" title="E.g.: &gt;10 or &lt;10, data matched in the rule shall exceed (not exceed) 10 Chinese characters, letters or other texts.">Text Length</a></td>
             <td width="100%">
@@ -338,8 +386,8 @@
           </tr>
           <tr class="simplehighlight">
             <td>
-				<input type="hidden" name="tdIndex" value="8" />
-				<input type="hidden" name="sortIndex" value="8" />
+				<input type="hidden" name="tdIndex" value="9" />
+				<input type="hidden" name="sortIndex" value="9" />
 			</td>
 			<td align="right"  nowrap style="width: 114px;"><a class="tooltip" style="font-weight:normal;" href="javascript:void(0);" title="1. E.g. 'R1C1(.*)' refers to the first article, recording the value of the first reference field and it can only capture the value recorded previously <br/>2. Support regular expression, when metacharacters in regular expressions such as ^ $ ( ) * + ? . [ \ { | are escaped by adding  \ , they will be matched as character strings <br/>3. When focusing on input box, pressing Ctrl+F will automatically escape regular expression metacharacters <br/>4. Case insensitive matching can be started by embedded label expression '(?i)' and case insensitiveness starts from the embedded position">Must Contain:</a></td>
             <td width="100%" id="sortDiv">
@@ -354,8 +402,8 @@
           </tr>
           <tr class="simplehighlight">
             <td>
-				<input type="hidden" name="tdIndex" value="9" />
-				<input type="hidden" name="sortIndex" value="9" />
+				<input type="hidden" name="tdIndex" value="10" />
+				<input type="hidden" name="sortIndex" value="10" />
 			</td>
 			<td align="right" nowrap style="width: 114px;"><a class="tooltip" style="font-weight:normal;" href="javascript:void(0);" title="1. Support regular expression, when metacharacters in regular expressions such as ^ $ ( ) * + ? . [ \ { | are escaped by adding  \ , they will be matched as character strings <br/>2. When focusing on input box, pressing Ctrl+F will automatically escape regular expression metacharacters <br/>3. Case insensitive matching can be started by embedded label expression '(?i)' and case insensitiveness starts from the embedded position">Can’t Contain: </a></td>
              <td width="100%" id="sortDiv">
@@ -370,8 +418,8 @@
           </tr>
 		  <tr class="simplehighlight">
             <td>
-				<input type="hidden" name="tdIndex" value="10" />
-				<input type="hidden" name="sortIndex" value="10" />
+				<input type="hidden" name="tdIndex" value="11" />
+				<input type="hidden" name="sortIndex" value="11" />
 			</td>
 			<td align="right" nowrap style="width: 114px;"><a class="tooltip" style="font-weight:normal;" href="javascript:void(0);" title="1. Support regular expression, when metacharacters in regular expressions such as ^ $ ( ) * + ? . [ \ { | are escaped by adding  \ , they will be matched as character strings <br/>2. When focusing on input box, pressing Ctrl+F will automatically escape regular expression metacharacters <br/>3.  When HTML label is matched, the system conducts automatic nested match <br/>4. Case insensitive matching can be started by embedded label expression '(?i)' and case insensitiveness starts from the embedded position">Exclude Text: </a></td>
             <td width="100%" id="sortDiv">
@@ -387,8 +435,8 @@
           
           <tr class="simplehighlight">
             <td>
-				<input type="hidden" name="tdIndex" value="11" />
-				<input type="hidden" name="sortIndex" value="11" />
+				<input type="hidden" name="tdIndex" value="12" />
+				<input type="hidden" name="sortIndex" value="12" />
 			</td>
 			<td align="right" nowrap style="width: 114px;"><a class="tooltip" style="font-weight:normal;" href="javascript:void(0);" title="1. The old text is a necessary item <br/>2. Support regular expression, when metacharacters in regular expressions such as ^ $ ( ) * + ? . [ \ { | are escaped by adding  \ , they will be matched as character strings <br/>3. When focusing on input box, pressing Ctrl+F will automatically escape regular expression metacharacters <br/>4.  When HTML label is matched, the system conducts automatic nested match <br/>5. Case insensitive matching can be started by embedded label expression '(?i)' and case insensitiveness starts from the embedded position">Replace Text</a></td>
             <td width="100%" id="sortDiv">
@@ -397,36 +445,6 @@
 					<div class="addLabel">
 					<a href="javascript:void(0);" id="replaceTextAddBox" onclick="crawlRules.fn.replaceTextAddBox()">+</a>
 					</div>
-				</div>
-			</td>
-			<td align="right" nowrap><div class="ui-state-default move"><span class="ui-icon ui-icon-arrow-4" title="Move"></span></div></td>
-          </tr>
-          
-          <tr class="simplehighlight">
-            <td>
-				<input type="hidden" name="tdIndex" value="12" />
-				<input type="hidden" name="sortIndex" value="12" />
-			</td>
-			<td align="right" nowrap style="width: 114px;"><a class="tooltip" style="font-weight:normal;" href="javascript:void(0);" title="When the crawled data contains HTML labels such as (src=，herf=), the automatic matching of the URL address in the label is switched into absolute address. When it doesn’t contain such labels ,automatically check whether data crawled is a legal URL address and if it is legal, it is switched into an absolute address. ">Absolute Path:</a></td>
-            <td width="100%">
-           		<div class="filterDiv">
-           			<div style="height: 25px;width: 30px;float: left;padding: 8px 0 0 5px;">
-           			<input name="isAbsolute" type="checkbox" id="isAbsolute" value="true" onclick="crawlRules.fn.changeOption(this)">
-           			</div>
-           			<div style="margin: 0 0px 0 30px;padding: 5px 5px 0;display:none;" id="isAbsolute_option">
-	           			<div style="height: 25px;width: 240px;float: left;">
-	           			<a class="tooltip" style="font-weight:normal;" title="E.g.: BASE URL：'http：//www.newcrawler.com/' relative address:： 'static/pic.jpg' <br/> absolute address: 'http：//www.newcrawler.com/static/pic.jpg <br/> Space refers to use the currently captured URL as the BASE URL’ 如： BASE URL：'http：//www.newcrawler.com/' 相对地址： 'static/pic.jpg' <br/> 绝对地址是：'http：//www.newcrawler.com/static/pic.jpg <br/> 留空表示使用当前采集网址作为BASE URL'"  href="javascript:void(0);">BASE URL：</a>
-	           			<input style="width:160px;" id="absoluteUrlBase" type="text" name="absoluteUrlBase" />
-	           			</div>
-	           			<div style="margin: 0 0px 0 245px;">
-	           			<div style="height: 25px;width: 90px;float: left;padding-top: 5px;">
-	           			<a class="tooltip" style="font-weight:normal;display: inline-block;" title="In regular expression matching, take the first group value as the URL to conduct absolute address switching, e.g. (.*)。 <br/> space refers to regard the total character string as a URL to conduct absolute address switching."  href="javascript:void(0);">URL(regex):</a>
-	           			</div>
-	           			<div style="margin: 0 0px 0 95px;">
-	           			<input style="width:100%;" id="absoluteUrlRegex" type="text" name="absoluteUrlRegex" /> 
-	           			</div>
-	           			</div>
-           			</div>
 				</div>
 			</td>
 			<td align="right" nowrap><div class="ui-state-default move"><span class="ui-icon ui-icon-arrow-4" title="Move"></span></div></td>
@@ -553,7 +571,7 @@
 			<input type="button" value="Import Rules" onClick="crawlRules.fn.importRules();">
 			<input type="button" value="Export Rules " onClick="crawlRules.fn.exportRules();">
 			<input type="button" value="View Code" onClick="crawlRules.fn.viewCode();">  
-			<input type="button" value="XPath Visual" onClick="crawlRules.fn.readXPath();">  
+			<input type="button" value="Configuration" onClick="crawlRules.fn.readXPath();">  
 			</td>
 			</tr>
 		<tr>
@@ -564,7 +582,7 @@
 	<div class="rules_right">
 	        <div id="rulesVersion" style="padding-top: 32px;">
 			  <ul id="sortable"></ul>
-			  <input type="button" value="Create" onClick="crawlRules.fn.rulesVersionAddBox(null, '');" style="margin: 0;padding: 0px 20px 0px 5px;border-left: 0;background-color: rgb(255, 255, 255);background-image: none;">  
+			  <input type="button" value="Create" onclick="crawlRules.fn.addRulesVersion(this)"  lang="CrawlRulesVersion.html" style="margin: 0;padding: 0px 20px 0px 5px;border-left: 0;background-color: rgb(255, 255, 255);background-image: none;">  
 			</div>
         </div>
         

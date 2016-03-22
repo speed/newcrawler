@@ -1,0 +1,115 @@
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>采集規則版本</title>
+
+</head>
+
+<body>
+	<table id="crawlRulesVersionTable" width="100%">
+		<tr>
+	        <td colspan="2" class="label" style="display: none;"><br/><span class="STYLE4" id="mainTitle">采集規則版本</span></td>        
+	      </tr>
+	      <tr>
+		  <td colspan="2" width="100%" >
+		  <form id="crawlRulesVersionForm" name="crawlRulesVersionForm" >
+			<input id="id" name="id" type="hidden">
+			<table id="interTables" width="100%" height="100%" class="table_border2">
+				<tr>
+					<td width="120" nowrap align="right">名稱</td>
+					<td class="td_border">
+					<input id="name" name="name" style="width:100%;" type="text" value=""/>
+					</td>
+				</tr>	
+				<tr>	
+					<td width="120" nowrap align="right">選項</td>
+					<td  class="td_border" >
+					<input name="type" type="checkbox" value="2" />
+					<a class="tooltip" style="font-weight:normal;" title="會話"  href="javascript:void(0);">會話</a>
+					</td>
+			  	</tr>
+			  	<tr>	
+					<td width="120" nowrap align="right" class="label">
+					<a class="tooltip" style="font-weight:normal;" title="會話網址,可以使用${標簽名}的方式讀取上一個版本的值"  href="javascript:void(0);">會話網址</a>
+					</td>
+					<td  class="td_border" >
+					<input id="url" name="url" style="width:100%;" type="text" value="" />
+					</td>
+			  	</tr>
+			  	<tr>	
+					<td width="120" nowrap align="right" class="label">
+					<a class="tooltip" style="font-weight:normal;" title="可以使用${標簽名}的方式讀取上一個版本的值"  href="javascript:void(0);">會話請求參數</a>
+					</td>
+					<td  class="td_border" >
+					<input id="params" name="params" style="width:100%;" type="text" value="" />
+					</td>
+			  	</tr>
+			  	<tr>	
+					<td width="120" nowrap align="right" class="label">
+					<a class="tooltip" style="font-weight:normal;" title="需要在'設置' > 'HTTP請求'中定義"  href="javascript:void(0);">會話HTTP請求</a>
+					</td>
+					<td  class="td_border" >
+					<select id="httpRequestId" name="httpRequestId" style="width:160px;">
+		          			<option value=""></option>
+		       		</select>
+					</td>
+			  	</tr>
+			  	<tr>	
+					<td width="120" nowrap align="right" class="label">
+					<a class="tooltip" style="font-weight:normal;" title="會話網址抓取插件"  href="javascript:void(0);">會話網址抓取插件</a>
+					</td>
+					<td  class="td_border" >
+					<select id="urlfetchPluginId" name="urlfetchPluginId" style="width:160px;">
+		          			<option value=""></option>
+		       		</select>
+					</td>
+			  	</tr>
+				<tr>
+			        <td >
+					</td>
+			        <td class="td_border" colspan="3">
+			        	<input type="button" value="保存" class="save" >
+			        </td>
+				</tr>
+				
+		
+			</table>
+			</form>
+		   </td>
+		  </tr>
+		
+	</table>
+	
+  <script type="text/javascript">
+  $(document).ready(function() { 
+	  var initFun = function(){
+		  var containId;
+		  if (!loadConfig) {
+			  containId=$(document).find("#crawlRulesVersionTable").parents('.ui-tabs-panel').attr("id");
+		  }else{
+				containId="config";
+		  }
+		  var formId=containId+' #crawlRulesVersionForm';
+		  var tableId=containId+' #crawlRulesVersionTable';
+		  crawlRulesVersion=new crawlRulesVersionFun({
+			  containId:containId,
+			  webCrawlerId:webCrawlerId,
+			  siteId:siteId,
+			  jsonData:new Array(),
+			  formId:formId,
+			  tableId:tableId
+		  });
+		  crawlRulesVersion.fn.init();
+		  poshytip('.tooltip');
+	};
+	
+	var initLoading=setInterval(function(){
+		if(typeof crawlRulesVersion != 'undefined'){
+			clearInterval(initLoading);
+			initFun();
+		}
+	},500);
+});
+  </script>
+</body>
+</html>

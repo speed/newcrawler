@@ -71,16 +71,8 @@
 		
 	</tr>
 	<tr>
-		<td align="right" nowrap class="label" ><a class="tooltip" href="javascript:void(0);" title="会话管理">会话管理</a></td>
-		<td class="td_border">
-			<select id="sessionId" name="sessionId" style="width:160px;">
-          			<option value=""></option>
-       		</select>
-       		<span class="configBox" lang="SessionManager.html">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-		</td>
-		
 		<td align="right" nowrap class="label" style="width:150px;">
-		<a class="tooltip" href="javascript:void(0);" title="会话模式, 1.每页面、2.每批次、3.一直保持">会话模式</a></td>
+		<a class="tooltip" href="javascript:void(0);" title="会话模式, 1.每页面、2.每批次、3.一直保持。需要添加会话，可以在数据采集规则 > 添加‘采集规则版本’中勾选会话进行添加。">会话模式</a></td>
 		<td class="td_border">
 			<select id="sessionMode" name="sessionMode" style="width:160px;">
 					<option value="3" selected>一直保持</option>
@@ -88,6 +80,7 @@
           			<option value="2">每批次</option>
        		</select>
 		</td>
+		<td colspan="2"></td>
 	</tr>
 	<tr class="advanced-settings">
         <td colspan="4" style="font-weight: bold;padding: 0px;" height="5px"><hr style="border-color: white;"/></td>           
