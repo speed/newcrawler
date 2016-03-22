@@ -1,4 +1,10 @@
 #install.sh
+#jetty http://download.eclipse.org/jetty/
+#jre http://www.oracle.com/technetwork/java/javase/downloads/index.html
+#PhantomJs http://phantomjs.org/download.html
+jetty="http://download.eclipse.org/jetty/9.3.7.v20160115/dist/jetty-distribution-9.3.7.v20160115.tar.gz"
+jre="http://download.oracle.com/otn-pub/java/jdk/8u74-b02/jre-8u74-linux-i586.tar.gz"
+phantomjs="https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-2.1.1-linux-i686.tar.bz2"
 
 mkdir newcrawler
 cd newcrawler
@@ -7,14 +13,12 @@ apt-get update
 apt-get -y install tar
 
 #jetty
-wget --no-check-certificate http://download.eclipse.org/jetty/9.3.6.v20151106/dist/jetty-distribution-9.3.6.v20151106.tar.gz
-tar zxvf jetty-distribution-9.3.6.v20151106.tar.gz
-mv jetty-distribution-9.3.6.v20151106 jetty
+wget --no-check-certificate  $jetty -O jetty.tar.gz
+mkdir ./jetty && tar -xzvf jetty.tar.gz -C ./jetty --strip-components 1
 
 #jre
-wget --no-check-certificate --no-cookies --header "Cookie: oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jdk/8u66-b17/jre-8u66-linux-i586.tar.gz
-tar zxvf jre-8u66-linux-i586.tar.gz
-mv jre1.8.0_66 jre
+wget --no-check-certificate --no-cookies --header "Cookie: oraclelicense=accept-securebackup-cookie"  $jre -O server-jre-linux.tar.gz
+mkdir ./jre && tar -xzvf server-jre-linux.tar.gz -C ./jre --strip-components 1
 
 
 #war
@@ -27,9 +31,8 @@ rm -R -f -v newcrawler-master
 #PhantomJs
 apt-get -y install bzip2
 apt-get -y install fontconfig libfreetype6 libfreetype6-dev libfontconfig
-wget --no-check-certificate https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-1.9.8-linux-i686.tar.bz2
-tar jxvf phantomjs-1.9.8-linux-i686.tar.bz2
-mv phantomjs-1.9.8-linux-i686 phantomjs
+wget --no-check-certificate $phantomjs -O phantomjs-linux.tar.bz2
+mkdir ./phantomjs && tar -xjvf phantomjs-linux.tar.bz2 -C ./phantomjs --strip-components 1
 phantomjs/bin/phantomjs --version
 
 #Script and Config
@@ -38,9 +41,9 @@ wget --no-check-certificate https://github.com/speed/linux-64bit-jetty-jre/raw/m
 wget --no-check-certificate https://github.com/speed/linux-64bit-jetty-jre/raw/master/stop.sh
 
 #Remove install package
-rm -f -v jetty-distribution-9.3.6.v20151106.tar.gz
-rm -f -v phantomjs-1.9.8-linux-i686.tar.bz2
-rm -f -v jre-8u66-linux-i586.tar.gz
+rm -f -v jetty.tar.gz
+rm -f -v phantomjs-linux.tar.bz2
+rm -f -v server-jre-linux.tar.gz
 rm -f -v master.zip
 
 echo 'Congratulations, the installation is successful.'
