@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>New Crawler™ by speed</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">New Crawler™</h1>
+      <h2 class="project-tagline">Free Web Scraping Tool</h2>
+      <a href="https://github.com/speed/newcrawler" class="btn">View on GitHub</a>
+      <a href="https://github.com/speed/newcrawler/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/speed/newcrawler/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
+
+    <section class="main-content">
+      <h1>
+<a id="newcrawler-quick-start" class="anchor" href="#newcrawler-quick-start" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>NewCrawler Quick Start</h1>
+
+<blockquote>
+<p><a href="http://www.newcrawler.com">www.newcrawler.com</a></p>
+</blockquote>
+
+<h2>
+<a id="install-newcrawler" class="anchor" href="#install-newcrawler" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Install NewCrawler</h2>
+
+<p>Installing software packages on Centos / Fedora servers:</p>
+
+<blockquote>
+<p>x86</p>
+
+<p>wget --no-check-certificate <a href="https://raw.githubusercontent.com/speed/newcrawler/master/install_i586.sh">https://raw.githubusercontent.com/speed/newcrawler/master/install_i586.sh</a></p>
+
+<p>sh install_i586.sh</p>
+
+<p>x64</p>
+
+<p>wget --no-check-certificate <a href="https://raw.githubusercontent.com/speed/newcrawler/master/install_x86_64.sh">https://raw.githubusercontent.com/speed/newcrawler/master/install_x86_64.sh</a></p>
+
+<p>sh install_x86_64.sh</p>
+</blockquote>
+
+<p>Installing software packages on Ubuntu / Debian servers:</p>
+
+<blockquote>
+<p>x86</p>
+
+<p>wget --no-check-certificate <a href="https://raw.githubusercontent.com/speed/newcrawler/master/install_Debian_i586.sh">https://raw.githubusercontent.com/speed/newcrawler/master/install_Debian_i586.sh</a></p>
+
+<p>sh install_Debian_i586.sh</p>
+
+<p>x64</p>
+
+<p>wget --no-check-certificate <a href="https://raw.githubusercontent.com/speed/newcrawler/master/install_Debian_x86_64.sh">https://raw.githubusercontent.com/speed/newcrawler/master/install_Debian_x86_64.sh</a></p>
+
+<p>sh install_Debian_x86_64.sh</p>
+</blockquote>
+
+<pre><code>    # OS Version 、 NewCrawler Directory
+
+    [root@localhost ~]# rpm -q centos-release
+    centos-release-7-0.1406.el7.centos.2.5.x86_64
+
+    [root@localhost ~]# ls
+    install.sh  newcrawler
+
+    [root@localhost ~]# ls newcrawler
+    db  jetty  jre  phantomjs  start.sh  stop.sh  war
+</code></pre>
+
+<h2>
+<a id="startup-newcrawler" class="anchor" href="#startup-newcrawler" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Startup NewCrawler</h2>
+
+<blockquote>
+<p>sh newcrawler/start.sh &amp;</p>
+</blockquote>
+
+<p><a href="http://127.0.0.1:8500">http://127.0.0.1:8500</a> </p>
+
+<h1>
+<a id="鸟巢采集器介绍" class="anchor" href="#%E9%B8%9F%E5%B7%A2%E9%87%87%E9%9B%86%E5%99%A8%E4%BB%8B%E7%BB%8D" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>鸟巢采集器介绍</h1>
+
+<pre><code>鸟巢采集器是一款`WEB`版的网页数据采集工具，鸟巢采集器拥有强大的内容采集和数据过滤功能，能将您采集的数据发布到远程服务器。
+</code></pre>
+
+<p>鸟巢采集器基于<code>JAVA</code>语言开发，是平台无关的可以在任何系统上运行。鸟巢采集采用分布式架构可以轻易的部署爬虫集群。
+鸟巢采集器分<code>WEB服务端</code>和<code>客户端应用</code>，<code>WEB服务端</code>不干预<code>客户端应用</code>的逻辑只为<code>客户端应用</code>提供可视化的操作界面。
+<code>客户端应用</code>完全由用户部署管理，通过<code>WEB服务端</code>对<code>客户端应用</code>的接入，可以对<code>客户端应用</code>进行可视化的管理，如：可视化的规则配置、实时采集日志查看...</p>
+
+<h2>
+<a id="鸟巢采集器特色功能" class="anchor" href="#%E9%B8%9F%E5%B7%A2%E9%87%87%E9%9B%86%E5%99%A8%E7%89%B9%E8%89%B2%E5%8A%9F%E8%83%BD" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>鸟巢采集器特色功能</h2>
+
+<blockquote>
+<p>1.支持部署在免费的云平台，如<a href="https://appengine.google.com"><code>GAE</code></a>、<a href="https://www.openshift.com/"><code>OPENSHIFT</code></a>、<a href="http://ace.console.aliyun.com/"><code>ACE</code></a>、<a href="http://sae.sina.com.cn/"><code>SAE</code></a> ......</p>
+
+<p>2.采集数据推送邮件（Push to <code>Kindle</code>）功能。</p>
+
+<p>3.可配置多种版本的采集规则。</p>
+
+<p>4.提供采集规则有效性的检测功能(网页变动监控)，支持错误发送邮件通知。</p>
+
+<p>5.提供同步采集<code>API</code>，支持异步采集方式。</p>
+
+<p>6.提供数据查询<code>API</code>，支持<code>JSON</code>、<code>RSS</code>(快速创建自己的<code>Feed</code>)的数据返回格式。</p>
+
+<p>7.支持并发速率配置。</p>
+
+<p>8.提供定时、循环多种采集计划任务配置。</p>
+
+<p>9.提供控制台实时查看采集日志，支持日志文件查看。</p>
+
+<p>10.提供分布式爬虫部署，支持按<code>爬虫速率</code>、<code>随机选择</code>，<code>顺序选择</code>的负载均衡方式。</p>
+
+<p>11.提供采集任务的备份与恢复功能。</p>
+
+<p>12.提供嵌套采集功能，解决数据分布在多个页面的情况。</p>
+
+<p>13.循环匹配支持数据合并功能，解决一篇文章分成多页的情况。</p>
+
+<p>14.支持<code>正则</code>、<code>XPath</code>、<code>CSSPath</code>多匹配方式。</p>
+
+<p>15.提供基于 <code>XPath</code> 的可视化配置功能。</p>
+
+<p>16.提供<code>网址抓取插件</code>、<code>数据过滤插件</code>、<code>文件保存插件</code>、<code>数据发布插件</code>四种插件，让采集器适应更多更复杂的需求。</p>
+
+<pre><code>  如要解析网页中的`JavaScript`时可以编写`网址抓取插件`。
+  如匹配的图片需要文本转换时可以编写`数据过滤插件`。
+  如匹配的图片需要保存到本地、`FTP`时可以编写`文件保存插件`。
+  如要将匹配的数据通过`JDBC`发布时可以编写`数据发布插件`。
+</code></pre>
+</blockquote>
+
+<p>修改数据库配置
+edit 'src\main\webapp\WEB-INF\classes\datanucleus.properties'</p>
+
+<pre><code>javax.jdo.option.ConnectionURL=jdbc:mysql://127.0.0.1:3306/newcrawler?characterEncoding=UTF-8
+javax.jdo.option.ConnectionUserName=root
+javax.jdo.option.ConnectionPassword=123456
+</code></pre>
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/speed/newcrawler">New Crawler™</a> is maintained by <a href="https://github.com/speed">speed</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
+
+    </section>
+
+  
+  </body>
+</html>
