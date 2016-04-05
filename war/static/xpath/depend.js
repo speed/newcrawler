@@ -1,0 +1,41 @@
+var removeLoading=function(obj){
+	
+};
+var showLoading=function(obj, opacity){
+	
+};
+
+function showInfo(msg){
+}
+
+//一次性全部删除  
+function moveAllTr(tableId){  
+	var tab=$("#"+tableId).get(0);  
+	//该表格的行数  
+	var rowlen = tab.rows.length;  
+	//deleteRow()方法的参数是行的索引(从0开始)  
+	//如: 表格为4行,索引以此为0,1,2,3;  
+	//以下是从下往上删除,故删除时 行数-1开始,0行不删除,所以rowIndex > 0  
+	for(var rowIndex = rowlen - 1; rowIndex > 0; rowIndex--){                  
+		tab.deleteRow(rowIndex);  
+	}  
+} 
+function queryLoading(tableId){  
+} 
+
+var crawlQueueHasImplMap=new Map();
+
+function getSiteName(siteId){
+	return siteId;
+}
+
+function createTab(url, tabName){
+	
+}
+
+function Map() {
+	var get = function(key) {
+		return true; 
+	}
+	this.get = get;  
+}

@@ -8,6 +8,8 @@
 		<platform>appfog</platform>
 		<platform>other</platform>
 	</platforms>
+	<label>javascript</label>
+	<order>1</order>
 </plugin>
 
 

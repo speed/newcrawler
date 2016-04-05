@@ -749,7 +749,7 @@ h3 {
 .logs_blue{color:rgb(146, 193, 255);}
 .logsViewConsoleWindow{display:none;padding: 3px 5px 5px; border: 1px solid #D8D8D8;text-align: left; margin-top: 7px;}
 .logs_datahighlight{background-color: #666666!important;color: white;}
-.logs{width:100%;height:200px;background-color: rgb(68, 68, 68);color: rgb(236, 236, 236);overflow-y: auto;margin: 4px 0px 2px 0px;padding: 5px 0px 0px 5px;line-height: 22px;font-size: 14px;}
+.logs{height:200px;background-color: rgb(68, 68, 68);color: rgb(236, 236, 236);overflow-y: auto;margin: 4px 0px 2px 0px;padding: 5px 0px 0px 5px;line-height: 22px;font-size: 14px;}
 .resize {display: inline-block;background: url(../images/console/resize.png) no-repeat center center;width: 16px;height: 16px;border: #2c3e50 1px solid;}
 .min {display: inline-block;background: url(../images/console/min.png) no-repeat center center;width: 16px;height: 16px;border: #2c3e50 1px solid;}
 .clear_icon {display: inline-block;background: url(../images/console/clear_icon.png) no-repeat center center;width: 16px;height: 16px;border: #2c3e50 1px solid;}
@@ -819,4 +819,23 @@ h3 {
 #deployMenu a{width: 160px;height: 20px;border: 1px solid #ccc; line-height: 20px;padding: 5px; margin-left: 3px; padding-left: 20px; padding-right: 20px;}
 #deployMenu a.active{background-color: #EFEFEF;color: #FF0084;}
 
+#nc-progress {
+    position: relative;
+    margin: 0 10px 0 0px;
+    height: 10px;
+    background-color: gainsboro;
+    border-radius: 2px;
+}
+#nc-progress #nc-bar {
+    position: absolute;
+    width: 1%;
+    height: 100%;
+    background-color: #30BE30;
+    border-radius: 2px;
+}
+#nc-progress #nc-bar #label {
+    text-align: center; /* If you want to center it */
+    line-height: 10px; /* Set the line-height to the same as the height of the progress bar container, to center it vertically */
+    color: white;
+}
 /*End of scrollable tabs css*/

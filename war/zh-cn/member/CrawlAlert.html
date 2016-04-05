@@ -1,0 +1,122 @@
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>采集状态监控</title>
+</head>
+  <body>
+  <form  id="crawlAlertForm" name="crawlAlertForm" method="post">
+    <table width="100%">
+      <tr>
+	  <td valign="top">
+	  
+	  <input type="hidden" id="id" name="id">
+	  <table width="100%" height="100%" class="table_border2">
+	  <tr>
+	  	 <td nowrap class="label" width="120" style="text-align: right;"><a class="tooltip" href="javascript:void(0);" title="已采集数小于 N 时，发送邮件通知预警">已采集数</a></td>
+	  	 <td class="td_border">
+	  	 	<div class="inputOver">
+          	<input name="urlQueueOut"  type="text" id="urlQueueOut"  style="width:208px; vertical-align: middle;" value=""/>
+          	</div>
+	  	 </td>
+	  </tr>
+	  <tr>
+        <td nowrap class="label" width="120" style="text-align: right;"><a class="tooltip" href="javascript:void(0);" title="新增记录数小于 N 时，发送邮件通知预警">新增记录数</a></td>
+        <td class="td_border">
+        	<div class="inputOver">
+          	<input name="dataCount"  type="text" id="dataCount"  style="width:208px; vertical-align: middle;" value=""/>
+          	</div>
+        </td>
+      </tr>
+      
+	  <tr>
+        <td nowrap class="label" width="120" style="text-align: right;"><a class="tooltip" href="javascript:void(0);" title="抓取的网址出现异常的数量大于 N 时，发送邮件通知预警">抓取异常数</a></td>
+        <td class="td_border">
+        	<div class="inputOver">
+          	<input name="urlException"  type="text" id="urlException"  style="width:208px; vertical-align: middle;" value=""/>
+          	</div>
+        </td>
+      </tr>
+      
+      <tr>
+        <td nowrap class="label" width="120" style="text-align: right;"><a class="tooltip" href="javascript:void(0);" title="没有匹配到数据的网址数量大于 N 时，发送邮件通知预警">无记录数</a></td>
+        <td class="td_border">
+        	<div class="inputOver">
+          	<input name="rulesError"  type="text" id="rulesError"  style="width:208px; vertical-align: middle;" value=""/>
+          	</div>
+        </td>
+      </tr>
+      
+      
+      
+      
+      <tr id="emailNoticeIdTr">
+		<td width="120" align="right" nowrap class="label"><a class="tooltip" href="javascript:void(0);" title="当满足条件时使用指定的邮件模板预警，使用'${ERROR_REPORT}'显示详细报告，需要在 '设置' > '邮件通知' 中定义">邮件模板：</a></td>
+		<td class="td_border">
+			<select id="emailNoticeId" name="emailNoticeId" style="width:160px;">
+          			<option value=""></option>
+       		</select>
+       		<span class="configBox" lang="EmailNotice.html">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+		</td>
+	</tr>
+      
+      <tr>
+        <td ></td>
+        <td class="td_border">
+        <input class="save" type="button" value="Save" onClick="">
+        </td>
+      </tr>
+      
+	  </table>
+	   
+	  </td>
+	  </tr>
+	  
+      <tr>
+	  <td colspan="2" width="100%"  id="crawlAlertTable"> 
+	  		<div>
+			
+			<div style="width:45%;float:left;padding: 50px 0;">
+			<div class="chartDiv" id="crawlAlertChart_urlQueueOut"></div>
+			</div>
+			
+			<div style="width:45%;float:right;padding: 50px 0;">
+			<div class="chartDiv" id="crawlAlertChart_dataCount"></div>
+			
+			</div>
+			</div>
+			
+			<div>
+			<div style="width:45%;float:left;padding: 50px 0;">
+			<div class="chartDiv" id="crawlAlertChart_urlException"></div>
+			
+			</div>
+			<div style="width:45%;float:right;padding: 50px 0;">
+			<div class="chartDiv" id="crawlAlertChart_rulesError"></div>
+			</div>
+			</div>
+	   </td>
+	  </tr>
+  </table>
+  </form>
+  <script type="text/javascript">
+  $(document).ready(function() { 
+	  var initFun= function(){
+		  crawlAlert.v.webCrawlerId=webCrawlerId;
+		  crawlAlert.v.siteId=siteId;
+			
+		  fillEmailNotice(crawlAlert.v.formId, "emailNoticeId", false);
+		  
+		  crawlAlert.fn.init();
+		  poshytip('.tooltip');
+		};
+		
+		var initLoading=setInterval(function(){
+			if(typeof crawlAlert != 'undefined'){
+				clearInterval(initLoading);
+				initFun();
+			}
+		},500);
+	});
+  </script>
+  </body>
+</html>

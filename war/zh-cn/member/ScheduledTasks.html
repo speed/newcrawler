@@ -127,7 +127,7 @@
 			}
 			var scheduledTaskLog=new crawlDataLog(option);
 			scheduledTaskLog.init();
-			
+			scheduledTaskLog.updateCount();
 			$('#scheduleForm .re_statistic').click(function(){
 				scheduledTaskLog.statistic();
 		  	});

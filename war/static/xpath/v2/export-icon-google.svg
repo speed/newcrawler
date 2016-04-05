@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="55px" height="55px" viewBox="0 0 55 55" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.3.2 (12043) - http://www.bohemiancoding.com/sketch -->
+    <title>icon_google</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="mydata_239_update" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="Artboard-20" sketch:type="MSArtboardGroup" transform="translate(-260.000000, -61.000000)">
+            <g id="icon_google-+-icon_google" sketch:type="MSLayerGroup" transform="translate(260.000000, 61.000000)">
+                <g id="logo" transform="translate(6.000000, 1.000000)" sketch:type="MSShapeGroup">
+                    <path d="M43,15.2727273 L27.8235294,15.2727273 L27.8235294,0 L6.22994118,0 C4.37841176,0 2.52941176,1.86072727 2.52941176,3.724 L2.52941176,49.7305455 C2.52941176,51.5963636 4.37841176,53.4545455 6.22994118,53.4545455 L39.2969412,53.4545455 C41.1535294,53.4545455 43,51.5963636 43,49.7305455 L43,15.2727273 L43,15.2727273 Z" id="Shape" fill="#0F9D58"></path>
+                    <path d="M10.1176471,22.9090909 L10.1176471,40.7272727 L35.4117647,40.7272727 L35.4117647,22.9090909 L10.1176471,22.9090909 L10.1176471,22.9090909 Z M12.6470588,25.4545455 L17.7058824,25.4545455 L17.7058824,30.5454545 L12.6470588,30.5454545 L12.6470588,25.4545455 L12.6470588,25.4545455 Z M12.6470588,33.0909091 L17.7058824,33.0909091 L17.7058824,38.1818182 L12.6470588,38.1818182 L12.6470588,33.0909091 L12.6470588,33.0909091 Z M32.8823529,38.1818182 L20.2352941,38.1818182 L20.2352941,33.0909091 L32.8823529,33.0909091 L32.8823529,38.1818182 L32.8823529,38.1818182 Z M32.8823529,30.5454545 L20.2352941,30.5454545 L20.2352941,25.4545455 L32.8823529,25.4545455 L32.8823529,30.5454545 L32.8823529,30.5454545 Z" id="Shape" opacity="0.9" fill="#FFFFFF"></path>
+                    <path d="M27.8235294,15.2727273 L43,15.2727273 L43,26.0654545 L27.8235294,15.2727273 Z" id="Shape" fill="#147042"></path>
+                    <path d="M43,15.2727273 L27.8235294,15.2727273 L27.8235294,0 L43,15.2727273 Z" id="Shape" fill="#7BCFA9"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

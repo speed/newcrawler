@@ -127,6 +127,15 @@
 	</servlet-mapping>
 	
 	<servlet>
+		<servlet-name>lllllllllllllll.IlIlIIIlllllllIII</servlet-name>
+		<servlet-class>lllllllllllllll.IlIlIIIlllllllIII</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>lllllllllllllll.IlIlIIIlllllllIII</servlet-name>
+		<url-pattern>/member/api/data/download</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
 		<servlet-name>lllllllllllllll.IlIllIllIIIIIllII</servlet-name>
 		<servlet-class>lllllllllllllll.IlIllIllIIIIIllII</servlet-class>
 	</servlet>
@@ -210,15 +219,6 @@
 	<servlet-mapping>
 		<servlet-name>lllllllllllllll.IlIlIlIlIlllIIIll</servlet-name>
 		<url-pattern>/member/readxpath</url-pattern>
-	</servlet-mapping>
-	
-	<servlet>
-		<servlet-name>lllllllllllllll.IlIlIllllllIIlIIl</servlet-name>
-		<servlet-class>lllllllllllllll.IlIlIllllllIIlIIl</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>lllllllllllllll.IlIlIllllllIIlIIl</servlet-name>
-		<url-pattern>/member/newcrawlertools</url-pattern>
 	</servlet-mapping>
 	
 	<servlet>

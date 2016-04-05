@@ -10,13 +10,157 @@
 			<span class="ncx-delete-datatype" style="display: none;"></span>
 		</a>    
 		<a lang="0" class="ncx-toolbar-button ncx-pagination ncx-data-dot" title="Pagination" style="display: inline-block; -webkit-transform: translate3d(0px, 0px, 0px); transform: translate3d(0px, 0px, 0px);"></a>
+		
+		<div class="ncx-cron-dot" >
+		<a lang="" class="ncx-toolbar-button ncx-cron ncx-data-dot" title="Cron" style="display: inline-block; -webkit-transform: translate3d(0px, 0px, 0px); transform: translate3d(0px, 0px, 0px);"></a>
+		
+		<div class="ncx-cron-config">
+		
+		<input id="ncx-cron-id"  type="hidden" >
+		<span class="ncx-poptip-arrow ncx-poptip-arrow-top"><em>◆</em><i>◆</i></span>
+		
+		<div style="padding-top: 10px;">
+		<div style="float:left;width:60px;height: 30px;line-height:30px;">
+		<a href="javascript:void(0)" title="Date is empty，Every HH:mm run. Date is 0000-00-00，Daily HH:mm run." style="text-decoration: underline;">Date</a>
+		</div>
+		<div style="padding-left:60px;height: 35px;line-height:35px;">
+		<input id="ncx-cron-date"  type="text" value="0000-00-00" placeholder="yyyy-MM-dd"  style="height: 30px;"></div>
+		</div>
+		
+		<div style="padding-top: 10px;">
+		<div style="float:left;width:60px;height: 35px;line-height:35px;">Time</div>
+		<div style="padding-left:60px;height: 30px;line-height:30px;">
+		<input id="ncx-cron-time"  type="text" class="form-control" value="" placeholder="HH:mm" style="height: 30px;" readonly>
+		</div>
+		</div>
+		
+		
+		</div>
+		</div>
+		
+		<div class="ncx-setting-dot" >
+		<a lang="" class="ncx-toolbar-button ncx-setting ncx-data-dot" title="Setting" style="display: inline-block; -webkit-transform: translate3d(0px, 0px, 0px); transform: translate3d(0px, 0px, 0px);"></a>
+		
+		<div class="ncx-setting-config">
+		<span class="ncx-poptip-arrow ncx-poptip-arrow-top"><em>◆</em><i>◆</i></span>
+		
+		<div style="padding-top: 10px;">
+		<div style="float:left;width:60px;height: 35px;line-height:35px;">Charset</div>
+		<div style="padding-left:60px;height: 30px;line-height:30px;">
+		<select id="ncx-charset-select" style="height: 30px;">
+			<option value=""></option>
+			<option value="UTF-8">UTF-8</option>
+			<option value="GBK">GBK</option>
+			<option value="GB2312">GB2312</option>
+		</select>
+		
+		<input id="ncx-charset"  type="text" style="height: 30px;">
+		</div>
+		</div>
+		
+		<div style="padding-top: 10px;">
+		<div style="float:left;width:60px;height: 35px;line-height:35px;">Headers</div>
+		<div style="padding-left:60px;height: 30px;line-height:30px;">
+		<textarea id="ncx-headers"  style="height: 120px; width: 100%;"></textarea>
+		</div>
+		</div>
+		
+		</div>
+		</div>
 		<a class="ncx-new-datatype" title="New Datatype" style="display:none;"></a> 
 	</div>
+	
 	<div class="ncx-toolbar-section">      
-	<button class="ncx-toolbar-button-primary ncx ncx-button save">Done</button>
+	<button class="ncx-toolbar-button-primary ncx ncx-button ncx-save">Save</button>
+	</div>
+	<div class="ncx-toolbar-section">      
+	<button class="ncx-toolbar-button-primary ncx ncx-button ncx-view">View</button>
+	<span class="ncx-poptip-arrow view-pop" style="display:none;top: 32px;height: 0.3em;width: 1em;"><em>◆</em><i>◆</i></span>
 	</div>
 	<div class="ncx-toolbar-section msg">  
 	    
 	</div>
+	<div class="ncx-toolbar-section ">      
+		<input type="text" id="url" value="" style="height:30px;line-height:30px;max-width:200px;"/>
+	</div>
+	
+	<div class="ncx-toolbar-section ncx-js" title="Load JavaScript" style="float:right;">
+	<span style="padding-top: 1px; position: absolute;">
+	<input type="hidden" id="ncx-pluginId"/> 
+	<input type="checkbox" name="ncx-isJs" class="isJavaScript" value="true"/> 
+	</span>
+	<a href="javascript:void(0);" title="Can't find the data you want?" style="margin-left: 20px;padding-top: 10px;">Load JavaScript</a>
+	</div>
+	</div>
+	
+	
+</div>
+<div id="ncx_toolview">
+	
+	<div class="ncx-content-top">
+		<div class="ncx-content-top-data">
+		<table class="ncx_data_list">
+		</table>
+				
+		</div>
+		<div class="ncx-content-top-btn">
+		<button class="ncx-toolbar-button-primary ncx ncx-button ncx-prevPage">Prev</button>
+		<button class="ncx-toolbar-button-primary ncx ncx-button ncx-nextPage">Next</button>
+		<button class="ncx-toolbar-button-primary ncx ncx-button ncx-refresh">Refresh</button>
+		<button class="ncx-toolbar-button-primary ncx ncx-button ncx-run">Run</button>
+		<button class="ncx-toolbar-button-primary ncx ncx-button ncx-export">Export</button>
+		</div>
+		<div class="ncx-content-top-export" style="display:none;">
+		<span class="ncx-poptip-arrow view-pop" style="display:none;left: 20%;top: -21px;height: 0.4em;width: 1em;"><em>◆</em><i>◆</i></span>
+		<a class="ncx-export-csv ncx-export-icon ncx-download" href="javascript:void(0);" target="_blank">
+		
+		</a>
+		<a class="ncx-export-plotly ncx-export-icon " href="javascript:void(0);" target="_blank">
+		
+		</a>
+		<a class="ncx-export-coding ncx-export-icon" href="javascript:void(0);" target="_blank">
+		
+		</a>
+		</div>
+	</div>
+	
+	<div class="ncx-content-bottom">
+		<a href="javascript:void(0);" class="ncx-crawlDataLog-a"></a>
+		<div id="ncx-crawlDataLog" style="display:none;">
+		<table id="ncx-crawlDataLogList" width="100%" align="center" class="table_border2 tableList" style="border:1px solid #CCCCCC;border-collapse:collapse;background-color: #FFFFFF;">
+			<tr>
+				<td width="25" nowrap bgcolor="whiteSmoke"></td>
+				<td width="25" nowrap bgcolor="whiteSmoke">ID</td>
+				<td width="60" nowrap bgcolor="whiteSmoke">Task</td>
+				<td width="60" nowrap bgcolor="whiteSmoke">Speed</td>
+				<td width="120" nowrap bgcolor="whiteSmoke">CreateTime</td>
+				<td width="120" nowrap bgcolor="whiteSmoke">CompleteTime</td>
+				<td width="120" nowrap bgcolor="whiteSmoke">CostTime</td>
+				<td width="65" nowrap bgcolor="whiteSmoke">QueueIn</td>
+				<td width="65" nowrap bgcolor="whiteSmoke">QueueOut</td>
+				<td width="65" nowrap bgcolor="whiteSmoke">Running</td>
+				<td width="65" nowrap bgcolor="whiteSmoke">Exception</td>
+				<td width="65" nowrap bgcolor="whiteSmoke">Empty</td>
+				<td width="65" nowrap bgcolor="whiteSmoke">Count</td>
+				<td width="65" nowrap bgcolor="whiteSmoke">Deploy</td>
+				<td width="80" nowrap bgcolor="whiteSmoke">Status</td>
+				<td width="120" nowrap bgcolor="whiteSmoke">Progressbar</td>
+				
+				<td width="80" nowrap bgcolor="whiteSmoke">Action</td>
+			</tr>
+		</table>
+		</div>
+		<a href="javascript:void(0);" class="downloadCsv" style="display:none;" target="_blank"><span>download csv</span></a>
+		<a href="javascript:void(0);" class="logsViewConsole"></a>
+		<DIV class="logsViewConsoleWindow" style="display:none;">
+			<div class="logs">
+				<table style="table-layout: fixed;width:100%;border: 0;border-collapse: collapse;"><tbody>
+				<tr><td width="150"></td><td width="100"></td><td width="100"></td><td style="max-width:50%;"></td><td style="max-width:20%;"></td></tr>
+				</tbody></table>
+			</div>
+		</DIV>
 	</div>
 </div>
+<script>
+
+</script>

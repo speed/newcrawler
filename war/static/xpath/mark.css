@@ -70,26 +70,183 @@
   background-color: rgb(252, 241, 121);
 }
 .ncx_curlCover .ncx_selector .ncx-accept-highlight {
-  background: url('/static/xpath/v2/icon-highlight-accept.svg') no-repeat 50% 50%;
+  background: url('v2/icon-highlight-accept.svg') no-repeat 50% 50%;
   background-size: 10px 10px;
   right: 0px;
   padding-right: 10px;
 }
 
 .ncx_curlCover .ncx_selector .ncx-reject-highlight {
-  background: url('/static/xpath/v2/icon-highlight-reject.svg') no-repeat 50% 50%;
+  background: url('v2/icon-highlight-reject.svg') no-repeat 50% 50%;
   background-size: 10px 10px;
   right: 15px;
   padding-right: 10px;
 }
 
+
+.ncx-button, .ncx.ncx-button.ncx-advanced-button {
+	-webkit-appearance: none;
+	border: 1px solid #ddd;
+	border-bottom: 1px solid #ddd;
+	border-radius: 40px;
+	padding: 5px 15px 5px;
+	font-size: 14px;
+	font-weight: 400;
+	font-family: sans-serif;
+	line-height: normal;
+	font-weight: 400;
+	text-transform: none;
+	-webkit-box-shadow: none;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	height: 29px;
+	color: #333;
+	text-shadow: none;
+	box-shadow: none;
+	background: #fefefe;
+	min-width: 56px;
+	cursor: pointer;
+	transition: background-color .2s cubic-bezier(0, 0, .3, 1);
+	outline: none;
+	text-indent: 0
+}
+
+.ncx-button.ncx-advanced-button {
+	transition: opacity .2s cubic-bezier(0, 0, .3, 1), background-color .2s
+		cubic-bezier(0, 0, .3, 1)
+}
+
+.ncx-button:hover, #ncx_toolbar .ncx-button.ncx-advanced-button:hover {
+	background: #f6f6f6;
+	cursor: pointer
+}
+
+.ncx-button:disabled, #ncx_toolbar .ncx-button:disabled {
+	opacity: .5
+}
+
+.ncx-button:disabled:hover, #ncx_toolbar .ncx-button:disabled:hover {
+	background: #fefefe;
+	cursor: default
+}
+
+.ncx-toolbar-button.ncx-pagination {
+	border-radius: 25px;
+	border: 0;
+	outline: none;
+	width: 25px;
+	height: 25px;
+	background: #a6b2c8 url('v2/icon-pagination.svg') no-repeat 50% 52%;
+	background-size: 13px 13px;
+	margin: 0 3px 2px 0;
+	opacity: .4
+}
+.ncx-toolbar-button.ncx-pagination.check {
+	background: #a6b2c8 url('v2/icon-pagination-check.svg') no-repeat
+		50% 52%
+}
+.ncx-toolbar-button.ncx-pagination:hover, #ncx_toolbar .ncx-toolbar-button.ncx-pagination.active {
+	opacity: .8;
+}
+
+
+.ncx-toolbar-button.ncx-setting {
+	border-radius: 25px;
+	border: 0;
+	outline: none;
+	width: 25px;
+	height: 25px;
+	background: #a6b2c8 url('v2/icon-setting.svg') no-repeat 50% 52%;
+	background-size: 13px 13px;
+	margin: 0 3px 2px 0;
+	opacity: .4
+}
+.ncx-toolbar-button.ncx-setting.check {
+	background: #a6b2c8 url('v2/icon-setting.svg') no-repeat
+		50% 52%
+}
+.ncx-toolbar-button.ncx-setting:hover, #ncx_toolbar .ncx-toolbar-button.ncx-setting.active {
+	opacity: 1;
+}
+
+.ncx-toolbar-button.ncx-cron {
+	border-radius: 25px;
+	border: 0;
+	outline: none;
+	width: 25px;
+	height: 25px;
+	background: #a6b2c8 url('v2/iconv-alarm-clock.svg') no-repeat 50% 52%;
+	background-size: 13px 13px;
+	margin: 0 3px 2px 0;
+	opacity: .4
+}
+.ncx-toolbar-button.ncx-cron.check {
+	background: #a6b2c8 url('v2/iconv-alarm-clock.svg') no-repeat 50% 52%
+}
+.ncx-toolbar-button.ncx-cron:hover, #ncx_toolbar .ncx-toolbar-button.ncx-cron.active {
+	opacity: 1;
+}
+
+#ncx_toolbar .ncx-cron-dot {
+    display: inline-block;
+    line-height: 0px;
+    margin: 0;
+    -webkit-transition: opacity .2s cubic-bezier(0, 0, .3, 1);
+    transition: opacity .2s cubic-bezier(0, 0, .3, 1);
+    position: relative;
+}
+#ncx_toolbar .ncx-setting-dot {
+    display: inline-block;
+    line-height: 0px;
+    margin: 0;
+    -webkit-transition: opacity .2s cubic-bezier(0, 0, .3, 1);
+    transition: opacity .2s cubic-bezier(0, 0, .3, 1);
+    position: relative;
+}
+
 #ncx_toolbar {
-	padding: 8px 10px 4px; text-align: left; background-color: #FFFFFF; position: fixed;
+	padding: 8px 10px 4px; 
+	text-align: left; 
+	background-color: #FFFFFF;
+	position: fixed;
 	top: 0; left: 0; z-index: 2147483499; min-width: 100%; height: 45px; border-bottom: 1px solid #efefef;
 	display: inline-table; box-sizing: border-box; -webkit-box-sizing: border-box; -moz-box-sizing: border-box;
+	font-size: 13px!important; 
+	font: 13px Arial,Verdana!important; 
+	color: #111!important; 
+	font-family: "Hiragino Sans GB","Microsoft Yahei",Arial,sans-serif!important;
+}
+
+#ncx_toolview {
+	padding: 8px 10px 4px; text-align: left; background-color: #FFFFFF; position: fixed;
+	top: 48px; left: 0; z-index: 2147483488; min-width: 100%; height: 100%; border-bottom: 1px solid #efefef;
+	display: none; box-sizing: border-box; -webkit-box-sizing: border-box; -moz-box-sizing: border-box;
 	font-size: 13px; color: #111; font-family: "Hiragino Sans GB","Microsoft Yahei",Arial,sans-serif;
 }
 
+#ncx_toolview .ncx-content-top {
+	height: 60%;
+	width: 100%;
+	overflow-y: scroll;
+	background-color: #fff; 
+}
+#ncx_toolview .ncx-content-top-data{
+	width: 100%;
+	margin-top: 35px;
+}
+#ncx_toolview .ncx-content-top-btn {
+    position: fixed;
+    top: 55px;
+    background-color: white;
+    border-radius: 10px;
+}
+
+#ncx_toolview .ncx-content-bottom {
+	height: 40%;
+	width: 100%;
+	background-color: rgb(68, 68, 68); 
+}
 #ncx_toolbar .ncx-toolbar-section {
 	display: inline-block;
 	width: auto;
@@ -182,7 +339,7 @@
 }
 
 #ncx_toolbar .ncx-new-datatype {
-	background: #f2f2f2 url('/static/xpath/v2/icon-plus.svg') no-repeat 50% 50%;
+	background: #f2f2f2 url('v2/icon-plus.svg') no-repeat 50% 50%;
 	background-size: 11px 11px
 }
 #ncx_toolbar .ncx-new-datatype:hover {
@@ -195,75 +352,7 @@
   background-color: #4ab0ff!important;
 }
 
-#ncx_toolbar .ncx-button, .ncx.ncx-button.ncx-advanced-button {
-	-webkit-appearance: none;
-	border: 1px solid #ddd;
-	border-bottom: 1px solid #ddd;
-	border-radius: 20px;
-	padding: 5px 15px 5px;
-	font-size: 14px;
-	font-weight: 400;
-	font-family: sans-serif;
-	line-height: normal;
-	font-weight: 400;
-	text-transform: none;
-	-webkit-box-shadow: none;
-	-webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
-	box-sizing: border-box;
-	height: 29px;
-	color: #333;
-	text-shadow: none;
-	box-shadow: none;
-	background: #fefefe;
-	min-width: 66px;
-	cursor: pointer;
-	transition: background-color .2s cubic-bezier(0, 0, .3, 1);
-	outline: none;
-	text-indent: 0
-}
-
-#ncx_toolbar .ncx-button.ncx-advanced-button {
-	transition: opacity .2s cubic-bezier(0, 0, .3, 1), background-color .2s
-		cubic-bezier(0, 0, .3, 1)
-}
-
-#ncx_toolbar .ncx-button:hover, #ncx_toolbar .ncx-button.ncx-advanced-button:hover {
-	background: #f6f6f6;
-	cursor: pointer
-}
-
-#ncx_toolbar .ncx-button:disabled, #ncx_toolbar .ncx-button:disabled {
-	opacity: .5
-}
-
-#ncx_toolbar .ncx-button:disabled:hover, #ncx_toolbar .ncx-button:disabled:hover {
-	background: #fefefe;
-	cursor: default
-}
-
-#ncx_toolbar .ncx-toolbar-button.ncx-pagination {
-	border-radius: 25px;
-	border: 0;
-	outline: none;
-	width: 25px;
-	height: 25px;
-	background: #a6b2c8 url('/static/xpath/v2/icon-pagination.svg') no-repeat 50% 52%;
-	background-size: 13px 13px;
-	margin: 0 3px 2px 0;
-	opacity: .4
-}
-
-#ncx_toolbar .ncx-toolbar-button.ncx-pagination.check {
-	background: #a6b2c8 url('/static/xpath/v2/icon-pagination-check.svg') no-repeat
-		50% 52%
-}
-
-#ncx_toolbar .ncx-toolbar-button.ncx-pagination:hover, #ncx_toolbar .ncx-toolbar-button.ncx-pagination.active {
-	opacity: .8;
-}
-
-#ncx_toolbar .loading {width: 31px;height: 8px;background: url('/static/xpath/v2/loading.gif') 50% 52%;}
+#ncx_toolbar .loading {width: 31px;height: 8px;background: url('v2/loading.gif') 50% 52%;}
 
 #ncx_toolbar .ncx-data-dot .ncx-delete-datatype {
 	display: none;
@@ -274,7 +363,7 @@
 	top: -6px;
 	opacity: 0;
 	right: -6px;
-	background: red url('/static/xpath/v2/icon-highlight-reject-white.svg') no-repeat
+	background: red url('v2/icon-highlight-reject-white.svg') no-repeat
 		50% 50%;
 	background-size: 7px 7px;
 	cursor: pointer;
@@ -287,4 +376,199 @@
 
 #ncx_toolbar .ncx-data-dot .ncx-delete-datatype.visible:hover {
 	opacity: 1
+}
+
+.ncx-cron-config {display:none;padding: 18px 8px 8px 18px; margin: 0px;position: absolute;top: 45px;left: -55px;z-index: 10;border: #ccc 1px solid;width: 250px;height: 110px;background-color: white;
+    line-height: 4em;color: #000;font-size: 12px;border-radius: 2px;}
+.ncx-setting-config {display:none;padding: 18px; margin: 0px;position: absolute;top: 45px;left: -260px;z-index: 10;border: #ccc 1px solid;width: 650px;height: 220px;background-color: white;
+    line-height: 4em;color: #000;font-size: 12px;border-radius: 2px;}
+    
+.ncx-poptip{position: absolute;top: 10%;left:40%;padding:4em;line-height: 4em;color: #000;font-size: 12px;background-color: #ccc;border: solid 1px #ccc;border-radius: 2px;box-shadow: 0 0 3px #ccc;}
+.ncx-poptip-arrow{position: absolute;overflow: hidden;font-style: normal;font-family: simsun;font-size: 4em;text-shadow:0 0 2px #ccc;}
+.ncx-poptip span{font-size: 4em!important;}
+
+.ncx-poptip-arrow em,.ncx-poptip-arrow i{position: absolute;left:0;top:0;font-style: normal;}
+.ncx-poptip-arrow em{color: #ccc;}
+.ncx-poptip-arrow i{color: #FFF;text-shadow:none;}
+
+.ncx-poptip-arrow-top,.ncx-poptip-arrow-bottom{height: 0.5em;width: 1em;left:50%;margin-top: 0px!important;margin-left:-2em!important;*margin-left:-2em!important;}/* IE6、7 -ncx-poptip-arrow(font-size) / 2 */
+
+.ncx-poptip-arrow-top{top: -0.5em;}
+.ncx-poptip-arrow-top em{top: 4px;}
+.ncx-poptip-arrow-top i{top: 5px;}
+
+#ncx_toolbar .ncx-toolbar-button.ncx-cron-data {
+	border-radius: 25px;
+	border: 0;
+	outline: none;
+	width: 25px;
+	height: 25px;
+	background: #a6b2c8 url('eq-icon.svg') no-repeat 50% 52%;
+	background-size: 13px 13px;
+	margin: 0 3px 2px 0;
+	opacity: .4
+}
+#ncx_toolbar .ncx-toolbar-button.ncx-cron-single.check {
+	background: #a6b2c8 url('eq-icon.svg') no-repeat 50% 52%
+}
+#ncx_toolbar .ncx-toolbar-button.ncx-cron-single {
+	border-radius: 25px;
+	border: 0;
+	outline: none;
+	width: 25px;
+	height: 25px;
+	background: #a6b2c8 url('reset-icon.svg') no-repeat 50% 52%;
+	background-size: 13px 13px;
+	margin: 0 3px 2px 0;
+	opacity: .4
+}
+#ncx_toolbar .ncx-toolbar-button.ncx-cron-single.check {
+	background: #a6b2c8 url('reset-icon.svg') no-repeat 50% 52%
+}
+#ncx_toolbar .ncx-toolbar-button.ncx-cron-loop {
+	border-radius: 25px;
+	border: 0;
+	outline: none;
+	width: 25px;
+	height: 25px;
+	background: #a6b2c8 url('refresh-icon.svg') no-repeat 50% 52%;
+	background-size: 13px 13px;
+	margin: 0 3px 2px 0;
+	opacity: .4
+}
+#ncx_toolbar .ncx-toolbar-button.ncx-cron-loop.check {
+	background: #a6b2c8 url('refresh-icon.svg') no-repeat 50% 52%
+}
+.popover{
+	z-index: 99999999999!important;
+}
+.xdsoft_datetimepicker{
+	z-index: 99999999999!important;
+}
+#ncx_toolbar input {
+	border-color: rgba( 53, 39, 18, 0.1)!important;
+    color: rgba(51, 51, 51, 0.7)!important;
+    padding: 0 0 0 5px!important;
+    border: 1px solid rgba(51, 51, 51, 0.1)!important;
+    line-height: 16px!important;
+    font-size: 14px!important;
+}
+
+.logs_red{color:rgb(255, 112, 112);}
+.logs_green{color:rgb(122, 252, 113);}
+.logs_blue{color:rgb(146, 193, 255);}
+.logsViewConsoleWindow{height: auto;min-height: 50px;display:none;text-align: left;}
+.logs_datahighlight{background-color: #666666!important;color: white;}
+.logs{height: 100%;color: rgb(236, 236, 236);overflow-y: auto;line-height: 22px;font-size: 14px;padding: 0 10px 0 10px;}
+
+.ncx_data_list {
+    border: 1px solid #bbb;
+    border-spacing: 0;
+    border-collapse: collapse;
+    margin: 0 0 1.5em;
+    vertical-align: middle;
+    line-height: 1.67;
+    width: 100%;
+    text-align: left;
+    padding: 6px 10px;
+}
+.ncx_data_list th {
+        border: 1px solid #e7e7e7;
+    background-color: #f5f5f5;
+    font-weight: bold;
+    text-align: left;
+    margin: 0 0 1.5em;
+    padding: 6px 10px;
+}
+.ncx_data_list td {
+    border: 1px solid #e7e7e7;
+    vertical-align: top;
+    padding: 6px 10px;
+}
+
+#ncx_toolview #nc-progress {
+    position: relative;
+    margin: 0 10px 0 0px;
+    height: 10px;
+    background-color: gainsboro;
+    border-radius: 2px;
+}
+#ncx_toolview #nc-progress #nc-bar {
+    position: absolute;
+    width: 1%;
+    height: 100%;
+    background-color: #30BE30;
+    border-radius: 2px;
+}
+#ncx_toolview #nc-progress #nc-bar #label {
+    text-align: center; /* If you want to center it */
+    line-height: 10px; /* Set the line-height to the same as the height of the progress bar container, to center it vertically */
+    color: white;
+}
+#ncx-crawlDataLogList tr{
+	line-height: 25px;
+}
+.label-info {padding: 3px 5px;font-size: 11px;font-weight: normal;border-radius: 2px;line-height: 14px;color: #fff;text-shadow: 0 -1px 0 rgba(0,0,0,0.25);white-space: nowrap;vertical-align: baseline;display: inline-block;}
+
+.bg-gray {background-color: rgb(171, 171, 171);}
+.bg-green {background-color: rgb(84, 195, 128);}
+.bg-blue {background-color: rgb(104, 142, 224);}
+.bg-red {background-color: rgb(221, 116, 78);}
+.bg-black {background-color: #4F4F4F;}
+
+#ncx_toolview .ncx-content-top-export {
+    padding: 8px 10px 4px;
+    text-align: left;
+    background-color: #FFFFFF;
+    position: fixed;
+    top: 98px;
+    left: 225px;
+    z-index: 2147483499;
+    width: 360px;
+    height: 100px;
+    border: 1px solid #efefef;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    font-size: 13px;
+    color: #111;
+    font-family: "Hiragino Sans GB","Microsoft Yahei",Arial,sans-serif;
+}
+#ncx_toolview .ncx-export-icon {
+    display: inline-block;
+    border-radius: 25px;
+    margin: 5px 0px 5px 25px;
+    vertical-align: middle;
+    text-align: center;
+    opacity: .85;
+    font-weight: 400;
+    -webkit-transition: opacity .2s cubic-bezier(0, 0, .3, 1);
+    transition: opacity .2s cubic-bezier(0, 0, .3, 1);
+    text-decoration: none;
+    position: relative;
+}
+#ncx_toolview .ncx-export-csv {
+    border: 0;
+    width: 80px;
+    height: 80px;
+    background: #ebebeb url('v2/export-icon-csv.svg') no-repeat 50% 50%;
+    background-size: 60px 60px;
+}
+
+#ncx_toolview .ncx-export-plotly {
+	border: 0;
+    width: 80px;
+    height: 80px;
+    background: #ebebeb url('v2/export-icon-plotly.svg') no-repeat 50% 50%;
+    background-size: 60px 60px;
+}
+
+#ncx_toolview .ncx-export-coding {
+	border: 0;
+    width: 80px;
+    height: 80px;
+    background: #ebebeb url('v2/export-icon-coding.svg') no-repeat 50% 50%;
+    background-size: 60px 60px;
+}
+.jfk-button-standard{
+	padding: 2px 5px 2px 5px;
 }
