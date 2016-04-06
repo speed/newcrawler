@@ -23,7 +23,7 @@ mkdir ./jre && tar -xzvf server-jre-linux.tar.gz -C ./jre --strip-components 1
 
 #war
 apt-get -y install unzip
-wget --no-check-certificate https://github.com/speed/newcrawler/archive/master.zip
+wget --no-check-certificate https://github.com/speed/newcrawler/archive/master.zip -O master.zip
 unzip -n master.zip
 mv newcrawler-master/war war
 rm -R -f -v newcrawler-master
@@ -36,9 +36,9 @@ mkdir ./phantomjs && tar -xjvf phantomjs-linux.tar.bz2 -C ./phantomjs --strip-co
 phantomjs/bin/phantomjs --version
 
 #Script and Config
-wget --no-check-certificate https://github.com/speed/linux-64bit-jetty-jre/raw/master/jetty/webapps/newcrawler.xml -P jetty/webapps/
-wget --no-check-certificate https://github.com/speed/linux-64bit-jetty-jre/raw/master/start.sh
-wget --no-check-certificate https://github.com/speed/linux-64bit-jetty-jre/raw/master/stop.sh
+wget --no-check-certificate https://github.com/speed/linux-64bit-jetty-jre/raw/master/jetty/webapps/newcrawler.xml -P jetty/webapps/ -O newcrawler.xml
+wget --no-check-certificate https://github.com/speed/linux-64bit-jetty-jre/raw/master/start.sh -O start.sh
+wget --no-check-certificate https://github.com/speed/linux-64bit-jetty-jre/raw/master/stop.sh -O stop.sh
 
 #Remove install package
 rm -f -v jetty.tar.gz
