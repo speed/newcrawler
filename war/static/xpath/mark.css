@@ -4,8 +4,6 @@
 ::-webkit-scrollbar-thumb {height: 50px;background-color: rgba(170, 170, 170, .3);-webkit-border-radius: 3px;}
 ::-webkit-scrollbar-track-piece {width: 8px;background-color: white;}
 
-.ncx_curlCover{top:0;left:0;position:absolute;overflow:hidden;}
-
 .ncx_edit_tpl_tool{-webkit-box-sizing: content-box;box-sizing: content-box;}
 .ncx_edit_tpl_tool .ncx_et_bar{overflow:hidden;cursor:pointer;padding:0;list-style: none;margin:0; padding:0;font-size:12px; font: 12px/1.5 '宋体',Arial,sans-serif;}
 .ncx_edit_tpl_tool .ncx_et_bar.ncx_shape1{width:400px;height:31px;line-height:31px;background-color: rgb(118, 144, 190);}
@@ -51,38 +49,6 @@
 .ncx_et_content input{margin:0;padding:0px;position: relative;bottom: 0;}
 .ncx_et_content .ncx_et_content_inner .ncx_tab_title input{width:138px;color:#666;}
 .ncx_et_content .ncx_et_content_inner .ncx_tab_link input{width:138px;color:#666;}
-
-
-
-.ncx_curlCover .ncx-highlight-button {
-    display: inline-block;
-  cursor: pointer!important;
-  height: 12px;
-  width: 12px;
-  opacity: .4;
-  position: absolute;
-  margin-top: 1px;
-}
-.ncx_curlCover .ncx_selector{
-  position: absolute;
-  height: 15px;
-  width: 35px;
-  background-color: rgb(252, 241, 121);
-}
-.ncx_curlCover .ncx_selector .ncx-accept-highlight {
-  background: url('v2/icon-highlight-accept.svg') no-repeat 50% 50%;
-  background-size: 10px 10px;
-  right: 0px;
-  padding-right: 10px;
-}
-
-.ncx_curlCover .ncx_selector .ncx-reject-highlight {
-  background: url('v2/icon-highlight-reject.svg') no-repeat 50% 50%;
-  background-size: 10px 10px;
-  right: 15px;
-  padding-right: 10px;
-}
-
 
 .ncx-button, .ncx.ncx-button.ncx-advanced-button {
 	-webkit-appearance: none;
@@ -204,13 +170,14 @@
     transition: opacity .2s cubic-bezier(0, 0, .3, 1);
     position: relative;
 }
-
+.ncx_toolbar_cover{
+width:100%; height:46px; z-index : 99999; filter:Alpha(Opacity=100); -moz-opacity: 1; opacity: 1; text-align: left; background : transparent;top:0;left:0;position:absolute;overflow:hidden;
+}
 #ncx_toolbar {
-	padding: 8px 10px 4px; 
+	padding: 5px;
 	text-align: left; 
 	background-color: #FFFFFF;
-	position: fixed;
-	top: 0; left: 0; z-index: 2147483499; min-width: 100%; height: 45px; border-bottom: 1px solid #efefef;
+	min-width: 100%; height: 40px; border-bottom: 1px solid #efefef;
 	display: inline-table; box-sizing: border-box; -webkit-box-sizing: border-box; -moz-box-sizing: border-box;
 	font-size: 13px!important; 
 	font: 13px Arial,Verdana!important; 
@@ -220,7 +187,7 @@
 
 #ncx_toolview {
 	padding: 8px 10px 4px; text-align: left; background-color: #FFFFFF; position: fixed;
-	top: 48px; left: 0; z-index: 2147483488; min-width: 100%; height: 100%; border-bottom: 1px solid #efefef;
+	top: 46px; left: 0; z-index: 2147483488; min-width: 100%; height: 100%; border-bottom: 1px solid #efefef;
 	display: none; box-sizing: border-box; -webkit-box-sizing: border-box; -moz-box-sizing: border-box;
 	font-size: 13px; color: #111; font-family: "Hiragino Sans GB","Microsoft Yahei",Arial,sans-serif;
 }
@@ -454,13 +421,6 @@
     font-size: 14px!important;
 }
 
-.logs_red{color:rgb(255, 112, 112);}
-.logs_green{color:rgb(122, 252, 113);}
-.logs_blue{color:rgb(146, 193, 255);}
-.logsViewConsoleWindow{height: auto;min-height: 50px;display:none;text-align: left;}
-.logs_datahighlight{background-color: #666666!important;color: white;}
-.logs{height: 100%;color: rgb(236, 236, 236);overflow-y: auto;line-height: 22px;font-size: 14px;padding: 0 10px 0 10px;}
-
 .ncx_data_list {
     border: 1px solid #bbb;
     border-spacing: 0;
@@ -473,48 +433,61 @@
     padding: 6px 10px;
 }
 .ncx_data_list th {
-        border: 1px solid #e7e7e7;
+    border: 1px solid #e7e7e7;
     background-color: #f5f5f5;
     font-weight: bold;
     text-align: left;
     margin: 0 0 1.5em;
     padding: 6px 10px;
+    font-size: 14px;
+    line-height: 1.6;
 }
 .ncx_data_list td {
     border: 1px solid #e7e7e7;
     vertical-align: top;
     padding: 6px 10px;
+    font-size: 14px;
+    line-height: 1.6;
 }
 
 #ncx_toolview #nc-progress {
     position: relative;
-    margin: 0 10px 0 0px;
-    height: 10px;
+    margin: 0px 10px 0 0px;
+    height: 14px;
     background-color: gainsboro;
     border-radius: 2px;
 }
 #ncx_toolview #nc-progress #nc-bar {
     position: absolute;
     width: 1%;
-    height: 100%;
     background-color: #30BE30;
     border-radius: 2px;
+    padding: 2px;
+    font-size: 12px;
 }
 #ncx_toolview #nc-progress #nc-bar #label {
     text-align: center; /* If you want to center it */
     line-height: 10px; /* Set the line-height to the same as the height of the progress bar container, to center it vertically */
     color: white;
 }
+#ncx-crawlDataLog{
+	overflow-x: scroll;
+}
 #ncx-crawlDataLogList tr{
 	line-height: 25px;
 }
-.label-info {padding: 3px 5px;font-size: 11px;font-weight: normal;border-radius: 2px;line-height: 14px;color: #fff;text-shadow: 0 -1px 0 rgba(0,0,0,0.25);white-space: nowrap;vertical-align: baseline;display: inline-block;}
+#ncx-crawlDataLogList th{
+	font-size: 13px;
+    line-height: 1.7;
+    font-weight: normal;
+    text-align: left;
+}
+#ncx-crawlDataLogList td{
+	font-size: 14px;
+    line-height: 1.6;
+}
 
-.bg-gray {background-color: rgb(171, 171, 171);}
-.bg-green {background-color: rgb(84, 195, 128);}
-.bg-blue {background-color: rgb(104, 142, 224);}
-.bg-red {background-color: rgb(221, 116, 78);}
-.bg-black {background-color: #4F4F4F;}
+
 
 #ncx_toolview .ncx-content-top-export {
     padding: 8px 10px 4px;
@@ -572,3 +545,22 @@
 .jfk-button-standard{
 	padding: 2px 5px 2px 5px;
 }
+.logs table td{
+	color:white;
+	font-size: 15px;
+    line-height: 1.6;
+}
+.label-info {padding: 3px 5px;font-size: 11px;font-weight: normal;border-radius: 2px;line-height: 14px;color: #fff;text-shadow: 0 -1px 0 rgba(0,0,0,0.25);white-space: nowrap;vertical-align: baseline;display: inline-block;}
+
+.bg-gray {background-color: rgb(171, 171, 171);}
+.bg-green {background-color: rgb(84, 195, 128);}
+.bg-blue {background-color: rgb(104, 142, 224);}
+.bg-red {background-color: rgb(221, 116, 78);}
+.bg-black {background-color: #4F4F4F;}
+
+.logs_red{color:rgb(255, 112, 112);}
+.logs_green{color:rgb(122, 252, 113);}
+.logs_blue{color:rgb(146, 193, 255);}
+.logsViewConsoleWindow{height: auto;min-height: 50px;display:none;text-align: left;}
+.logs_datahighlight{background-color: #666666!important;color: white;}
+.logs{height: 100%;color: rgb(236, 236, 236);overflow-y: auto;line-height: 22px;font-size: 14px;padding: 0 10px 0 10px;}

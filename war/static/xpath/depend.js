@@ -10,7 +10,7 @@ function showInfo(msg){
 
 //一次性全部删除  
 function moveAllTr(tableId){  
-	var tab=$("#"+tableId).get(0);  
+	var tab=jQuery(parent.document.body).find("#"+tableId).get(0);  
 	//该表格的行数  
 	var rowlen = tab.rows.length;  
 	//deleteRow()方法的参数是行的索引(从0开始)  
@@ -38,4 +38,18 @@ function Map() {
 		return true; 
 	}
 	this.get = get;  
+}
+
+function getUrlParameter(sParam){
+    var sPageURL = window.location.search.substring(1);
+    var sURLVariables = sPageURL.split('&');
+    for (var i = 0; i < sURLVariables.length; i++) 
+    {
+        var sParameterName = sURLVariables[i].split('=');
+        if (sParameterName[0] == sParam) 
+        {
+            return sParameterName[1];
+        }
+    }
+    return "";
 }

@@ -213,12 +213,20 @@
 	</servlet-mapping>
 
 	<servlet>
+		<servlet-name>lllllllllllllll.IlIllllIIIIlIIlIl</servlet-name>
+		<servlet-class>lllllllllllllll.IlIllllIIIIlIIlIl</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>lllllllllllllll.IlIllllIIIIlIIlIl</servlet-name>
+		<url-pattern>/member/newcrawler</url-pattern>
+	</servlet-mapping>
+	<servlet>
 		<servlet-name>lllllllllllllll.IlIlIlIlIlllIIIll</servlet-name>
 		<servlet-class>lllllllllllllll.IlIlIlIlIlllIIIll</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>lllllllllllllll.IlIlIlIlIlllIIIll</servlet-name>
-		<url-pattern>/member/readxpath</url-pattern>
+		<url-pattern>/member/newcrawler/read</url-pattern>
 	</servlet-mapping>
 	
 	<servlet>

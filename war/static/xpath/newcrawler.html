@@ -1,5 +1,25 @@
 <html>
-<body>
+<head>
+<link type='text/css' rel='stylesheet' href='../static/xpath/mark.css' />
+<link type='text/css' rel='stylesheet' href='../static/js/datetimepicker-master/jquery.datetimepicker.css' />
+<link type='text/css' rel='stylesheet' href='../static/js/clockpicker/dist/jquery-clockpicker.min.css' />
+
+<script type="text/javascript" src="../static/js/jquery-1.7.min.js"></script>
+<script type="text/javascript" src="../static/js/datetimepicker-master/jquery.datetimepicker.min.js"></script>
+<script type="text/javascript" src="../static/js/clockpicker/dist/jquery-clockpicker.js"></script>
+
+<script type="text/javascript" src="../static/js/jsonrpc-min.js"></script>
+<script type="text/javascript" src="../static/js/main.crawldata.log-min.js"></script>
+<script type="text/javascript" src="../static/js/main.logsview.console-min.js"></script>
+<script type="text/javascript" src="../static/xpath/depend.js"></script>
+
+<script type="text/javascript" src="../static/js/zeroclipboard-2.1.6/ZeroClipboard.min.js"></script>
+<script type="text/javascript" src="../static/xpath/mark-min.js?v2.2"></script>
+
+</head>
+<body style="padding: 0px; margin: 0px; overflow: hidden;">
+<div class="ncx_toolbar_cover">
+</div>
 <div id="ncx_toolbar">
 	<div class="ncx_toolbar_logo" style="float:left;">
 		<a href="//www.newcrawler.com"><img alt="New Crawler" src="//cdn.newcrawler.com/static/images/newcrawler-logo2.png" width="170"></a>
@@ -83,7 +103,7 @@
 	    
 	</div>
 	<div class="ncx-toolbar-section ">      
-		<input type="text" id="url" value="" style="height:30px;line-height:30px;max-width:200px;"/>
+		<input type="text" id="url" value="" style="height:30px;line-height:30px;width:300px;" readonly="readonly"/>
 	</div>
 	
 	<div class="ncx-toolbar-section ncx-js" title="Load JavaScript" style="float:right;">
@@ -133,24 +153,24 @@
 		<div id="ncx-crawlDataLog" style="display:none;">
 		<table id="ncx-crawlDataLogList" width="100%" align="center" class="table_border2 tableList" style="border:1px solid #CCCCCC;border-collapse:collapse;background-color: #FFFFFF;">
 			<tr>
-				<td width="25" nowrap bgcolor="whiteSmoke"></td>
-				<td width="25" nowrap bgcolor="whiteSmoke">ID</td>
-				<td width="60" nowrap bgcolor="whiteSmoke">Task</td>
-				<td width="60" nowrap bgcolor="whiteSmoke">Speed</td>
-				<td width="120" nowrap bgcolor="whiteSmoke">CreateTime</td>
-				<td width="120" nowrap bgcolor="whiteSmoke">CompleteTime</td>
-				<td width="120" nowrap bgcolor="whiteSmoke">CostTime</td>
-				<td width="65" nowrap bgcolor="whiteSmoke">QueueIn</td>
-				<td width="65" nowrap bgcolor="whiteSmoke">QueueOut</td>
-				<td width="65" nowrap bgcolor="whiteSmoke">Running</td>
-				<td width="65" nowrap bgcolor="whiteSmoke">Exception</td>
-				<td width="65" nowrap bgcolor="whiteSmoke">Empty</td>
-				<td width="65" nowrap bgcolor="whiteSmoke">Count</td>
-				<td width="65" nowrap bgcolor="whiteSmoke">Deploy</td>
-				<td width="80" nowrap bgcolor="whiteSmoke">Status</td>
-				<td width="120" nowrap bgcolor="whiteSmoke">Progressbar</td>
+				<th width="25" nowrap bgcolor="whiteSmoke"></th>
+				<th width="25" nowrap bgcolor="whiteSmoke">ID</th>
+				<th width="60" nowrap bgcolor="whiteSmoke">Task</th>
+				<th width="60" nowrap bgcolor="whiteSmoke">Speed</th>
+				<th width="120" nowrap bgcolor="whiteSmoke">CreateTime</th>
+				<th width="120" nowrap bgcolor="whiteSmoke">CompleteTime</th>
+				<th width="120" nowrap bgcolor="whiteSmoke">CostTime</th>
+				<th width="65" nowrap bgcolor="whiteSmoke">QueueIn</th>
+				<th width="65" nowrap bgcolor="whiteSmoke">QueueOut</th>
+				<th width="65" nowrap bgcolor="whiteSmoke">Running</th>
+				<th width="65" nowrap bgcolor="whiteSmoke">Exception</th>
+				<th width="65" nowrap bgcolor="whiteSmoke">Empty</th>
+				<th width="65" nowrap bgcolor="whiteSmoke">Count</th>
+				<th width="65" nowrap bgcolor="whiteSmoke">Deploy</th>
+				<th width="80" nowrap bgcolor="whiteSmoke">Status</th>
+				<th width="120" nowrap bgcolor="whiteSmoke">Progressbar</th>
 				
-				<td width="80" nowrap bgcolor="whiteSmoke">Action</td>
+				<th width="80" nowrap bgcolor="whiteSmoke">Action</th>
 			</tr>
 		</table>
 		</div>
@@ -165,25 +185,69 @@
 		</DIV>
 	</div>
 </div>
+<div id="newcrawler-selector">
 
-<script type='text/javascript' src='../static/js/datetimepicker-master/jquery.datetimepicker.min.js'></script>
-<script type='text/javascript' src='../static/js/clockpicker/dist/jquery-clockpicker.js'></script>
+</div>
+<iframe id="newcrawler" name="newcrawler" lang='#{url}' style='display: block; width: 100%; border: 0px; height: 100%'></iframe>
+
 <script>
-jQuery(document).ready(function(){
-	jQuery(parent.document.body).find('#ncx_toolbar #ncx-cron-time').clockpicker({
-	    "placement": 'bottom',
-	    "align": 'top',
-	    "autoclose": true
-	});
-	
-	jQuery(parent.document.body).find('#ncx_toolbar #ncx-cron-date').datetimepicker({
-		"timepicker":false,
-		"validateOnBlur": false,
-		"closeOnDateSelect": true,
-		"format":'Y-m-d'
-	});
-});
-</script>
+#{js}
 
+var newcrawler_refresh=null; 
+if(window.opener){
+	newcrawler_refresh=window.opener.refreshCrawlRules;
+}
+
+nc = {};
+nc["i18n"]=function(key, params){
+  var msg='';
+  if (_i18n[key] == 'undefined') {
+    return '__' + key + '__';
+  } else {
+    msg= _i18n[key];
+  }
+  if(typeof(params)=='object' && (params instanceof Array)){
+  	for(i=0,len=params.length;i<len;i++){
+  		var regex='{'+i+'}';
+  		msg=msg.replace(regex, params[i]);
+  	}
+  }else{
+  	var regex='{0}';
+  	msg=msg.replace(regex, params);
+  }
+  return msg;
+};
+var _i18n = {
+  'res.not.select.crawler' : 'Not crawler'
+, 'res.logs.type.crawl' : 'Fetch'
+, 'res.logs.type.crawl.retry' : 'Retry'
+, 'res.logs.type.deploy' : 'Deploy'
+, 'res.logs.type.deploy.retry' : 'Deploy retry'
+, 'res.logs.type.download' : 'Download'
+, 'res.logs.type.download.retry' : 'Download Retry'
+, 'res.console.min' : 'Min'
+, 'res.console.max' : 'Max'
+, 'res.console.resize' : 'Resize'
+	
+, 'res.scheduledTasks.name1' : 'Fetch'
+, 'res.scheduledTasks.name2' : 'Checker'
+, 'res.scheduledTasks.name3' : 'Publish Data'
+, 'res.scheduledTasks.name4' : 'Remove'
+, 'res.scheduledTasks.name5' : 'Update URL'
+	
+, 'res.background.statistics' : 'Statistics'
+, 'res.background.statistics.failure' : 'Statistics Failure'
+, 'res.task.run.success' : 'Success'
+, 'res.task.run.failure' : 'Failure'
+, 'res.task.stop.success' : 'Success'
+, 'res.task.stop.failure' : 'Failure'
+, 'res.task.run' : 'Run'
+, 'res.task.stop' : 'Stop'
+, 'res.exception.url.list' : 'List'
+, 'res.page.prev' : 'prev'
+, 'res.page.next' : 'next'
+	};
+	
+</script>
 </body>
 </html>
