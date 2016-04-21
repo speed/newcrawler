@@ -1,19 +1,20 @@
 <html>
 <head>
 <link type='text/css' rel='stylesheet' href='../static/xpath/mark.css' />
-<link type='text/css' rel='stylesheet' href='../static/js/datetimepicker-master/jquery.datetimepicker.css' />
-<link type='text/css' rel='stylesheet' href='../static/js/clockpicker/dist/jquery-clockpicker.min.css' />
 
-<script type="text/javascript" src="../static/js/jquery-1.7.min.js"></script>
-<script type="text/javascript" src="../static/js/datetimepicker-master/jquery.datetimepicker.min.js"></script>
-<script type="text/javascript" src="../static/js/clockpicker/dist/jquery-clockpicker.js"></script>
+<link type='text/css' rel='stylesheet' href='//cdn.newcrawler.com/static/js/datetimepicker-master/jquery.datetimepicker.css' />
+<link type='text/css' rel='stylesheet' href='//cdn.newcrawler.com/static/js/clockpicker/dist/jquery-clockpicker.min.css' />
 
-<script type="text/javascript" src="../static/js/jsonrpc-min.js"></script>
+<script type="text/javascript" src="//cdn.newcrawler.com/static/js/jquery-1.7.min.js"></script>
+<script type="text/javascript" src="//cdn.newcrawler.com/static/js/datetimepicker-master/jquery.datetimepicker.min.js"></script>
+<script type="text/javascript" src="//cdn.newcrawler.com/static/js/clockpicker/dist/jquery-clockpicker.js"></script>
+<script type="text/javascript" src="//cdn.newcrawler.com/static/js/zeroclipboard-2.1.6/ZeroClipboard.min.js"></script>
+<script type="text/javascript" src="//cdn.newcrawler.com/static/js/jsonrpc-min.js"></script>
+
 <script type="text/javascript" src="../static/js/main.crawldata.log-min.js"></script>
 <script type="text/javascript" src="../static/js/main.logsview.console-min.js"></script>
-<script type="text/javascript" src="../static/xpath/depend.js"></script>
 
-<script type="text/javascript" src="../static/js/zeroclipboard-2.1.6/ZeroClipboard.min.js"></script>
+<script type="text/javascript" src="../static/xpath/depend.js"></script>
 <script type="text/javascript" src="../static/xpath/mark-min.js?v2.2"></script>
 
 </head>
@@ -195,7 +196,9 @@
 
 var newcrawler_refresh=null; 
 if(window.opener){
-	newcrawler_refresh=window.opener.refreshCrawlRules;
+	try{
+		newcrawler_refresh=window.opener.refreshCrawlRules;
+	}catch(e){}
 }
 
 nc = {};
