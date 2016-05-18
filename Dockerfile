@@ -1,4 +1,5 @@
 #docker pull newcrawler/spider
+#docker pull hub.c.163.com/newcrawler/spider
 
 FROM centos:centos7  
 MAINTAINER Speed <https://github.com/speed/newcrawler>
