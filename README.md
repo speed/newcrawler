@@ -61,7 +61,7 @@ Startup NewCrawler
 
 http://127.0.0.1:8500 
 
-
+[![ScreenShot](https://raw.github.com/GabLeRoux/WebMole/master/ressources/WebMole_Youtube_Video.png)](http://video.newcrawler.com/newcrawler_v2.2.mp4)
 
 鸟巢采集器介绍
 =========================
