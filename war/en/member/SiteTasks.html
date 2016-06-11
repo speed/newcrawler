@@ -75,9 +75,9 @@
 		<a class="tooltip" href="javascript:void(0);" title="Session mode, 1.Per page, 2.Per batch, 3.always">Session Mode</a></td>
 		<td class="td_border">
 			<select id="sessionMode" name="sessionMode" style="width:160px;">
-					<option value="3" selected>always</option>
-          			<option value="1">Per page</option>
-          			<option value="2">Per batch</option>
+					<option value="3" selected>Always</option>
+          			<option value="1">Per Page</option>
+          			<option value="2">Per Batch</option>
        		</select>
 		</td>
 		<td colspan="2"></td>
@@ -155,6 +155,15 @@
 		<td class="td_border" >
 			<input type="text" id="crawlNumLimit" name="crawlNumLimit" size="90" value="0" style="width: 80px" onkeypress="return event.keyCode>=48&&event.keyCode<=57" onblur="this.value=this.value.replace(/[^0-9]/g,'')"/>
 		</td>
+	</tr >
+	
+	<tr class="advanced-settings">
+		<td align="right" nowrap class="label">Random Delay(S):</td>
+		<td class="td_border" style="height:26px;">
+			<div style="float:left;width:200px;padding-top:5px;padding-left: 5px;"><div id="delaySlider" ></div></div>
+			<div style="float:left;width:30px;margin-left: 10px;"><input id="delay" type="text" name="delay" value="" style="width: 30px; border: 0; color: #f6931f; font-weight: bold;" readonly="readonly"/></div>
+		</td>
+		<td colspan="2"></td>
 	</tr >
 	
 	<tr class="advanced-settings">

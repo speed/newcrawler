@@ -5,10 +5,10 @@
 ::-webkit-scrollbar-track-piece {width: 8px;background-color: white;}
 
 .ncx_edit_tpl_tool{-webkit-box-sizing: content-box;box-sizing: content-box;}
-.ncx_edit_tpl_tool .ncx_et_bar{overflow:hidden;cursor:pointer;padding:0;list-style: none;margin:0; padding:0;font-size:12px; font: 12px/1.5 '宋体',Arial,sans-serif;}
+.ncx_edit_tpl_tool .ncx_et_bar{overflow:hidden;padding:0;list-style: none;margin:0; padding:0;font-size:12px; font: 12px/1.5 '宋体',Arial,sans-serif;}
 .ncx_edit_tpl_tool .ncx_et_bar.ncx_shape1{width:400px;height:31px;line-height:31px;background-color: rgb(118, 144, 190);}
 .ncx_edit_tpl_tool .ncx_et_bar li{float:left;overflow:hidden;text-align:center;-webkit-box-sizing: content-box;box-sizing: content-box;}
-.ncx_edit_tpl_tool .ncx_et_bar li.ncx_col1{width:40px; height:15px; padding:8px 10px;}
+.ncx_edit_tpl_tool .ncx_et_bar li.ncx_col1{cursor: pointer;width:40px; height:15px; padding:8px 10px;}
 
 .ncx_edit_tpl_tool .ncx_et_bar.ncx_shape1 li.ncx_col2{width:66px; padding:0px 8px;}
 .ncx_edit_tpl_tool .ncx_et_bar.ncx_shape1 li.ncx_col3{width:66px; padding:0px 8px;}
@@ -28,7 +28,7 @@
 .ncx_et_content .ncx_et_content_inner{padding:12px 10px;font-size:12px; font: 12px/1.5 '宋体',Arial,sans-serif;}
 .ncx_et_content .ncx_et_content_inner .ncx_xpath{padding: 3px;color:#A80C0C; font-size: 14px;line-height:20px;background-color: white;border: solid 1px #B2B2B2;text-align: left;word-break:break-all;overflow:auto;}
 .ncx_et_content .ncx_et_content_inner .ncx_csspath{padding: 3px;color:#A80C0C; font-size: 14px;line-height:20px;background-color: white;border: solid 1px #B2B2B2;text-align: left;word-break:break-all;overflow:auto;}
-.ncx_et_content .ncx_et_content_inner .ncx_content{max-height: 400px;min-height: 150px;cursor: default;color:#333; line-height:20px;background-color: white;border: solid 1px #B2B2B2;text-align: left;word-break:break-all;overflow:auto;}
+.ncx_et_content .ncx_et_content_inner .ncx_content{max-height: 150px;min-height: 150px;cursor: default;color:#333; line-height:20px;background-color: white;border: solid 1px #B2B2B2;text-align: left;word-break:break-all;overflow:auto;}
 .ncx_et_content .ncx_et_content_inner .ncx_button{margin-left:18px;margin-top:8px;}
 .ncx_et_content .ncx_et_content_inner .ncx_tips{margin-top:8px; color:#B1846A;}
 
