@@ -1,5 +1,10 @@
 
+NewCrawler
+=========================
 
+    Free Web Scraping Tool
+    
+    
 NewCrawler Quick Start
 ==============
 
@@ -51,7 +56,14 @@ Installing software packages on Ubuntu / Debian servers:
 		[root@localhost ~]# ls newcrawler
 		db  jetty  jre  phantomjs  start.sh  stop.sh  war
 
-		
+Modify the database to MySQL or use the default file database
+----
+	#edit 'src\main\webapp\WEB-INF\classes\datanucleus.properties'
+	javax.jdo.option.ConnectionURL=jdbc:mysql://127.0.0.1:3306/newcrawler?characterEncoding=UTF-8
+	javax.jdo.option.ConnectionUserName=root
+	javax.jdo.option.ConnectionPassword=123456
+	
+	
 Startup NewCrawler
 ----
 
@@ -65,18 +77,10 @@ http://127.0.0.1:8500
 
 
 
-NewCrawler
+NewCrawler Cluster
 =========================
-
-    Free Web Scraping Tool
 
 ![ScreenShot](https://raw.githubusercontent.com/speed/resources/master/images/NewCrawler%20Cluster2.png)
 
 
-Modify database
-edit 'src\main\webapp\WEB-INF\classes\datanucleus.properties'
 
-
-	javax.jdo.option.ConnectionURL=jdbc:mysql://127.0.0.1:3306/newcrawler?characterEncoding=UTF-8
-	javax.jdo.option.ConnectionUserName=root
-	javax.jdo.option.ConnectionPassword=123456
