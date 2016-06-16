@@ -26,10 +26,10 @@ RUN cd ~/newcrawler; mkdir ./jre && tar -xzvf server-jre-linux.tar.gz -C ./jre -
 
 #war
 RUN yum -y install unzip
-RUN cd ~/newcrawler; wget --no-check-certificate https://github.com/speed/newcrawler/archive/cluster.zip -O master.zip
-RUN cd ~/newcrawler; unzip -n master.zip
-RUN cd ~/newcrawler; mv newcrawler-master/war war
-RUN cd ~/newcrawler; rm -R -f -v newcrawler-master
+RUN cd ~/newcrawler; wget --no-check-certificate https://github.com/speed/newcrawler/archive/cluster.zip -O cluster.zip
+RUN cd ~/newcrawler; unzip -n cluster.zip
+RUN cd ~/newcrawler; mv newcrawler-cluster/war war
+RUN cd ~/newcrawler; rm -R -f -v newcrawler-cluster
 
 #PhantomJs
 RUN yum -y install bzip2
@@ -47,7 +47,7 @@ RUN cd ~/newcrawler; wget --no-check-certificate https://github.com/speed/linux-
 RUN cd ~/newcrawler; rm -f -v jetty.tar.gz
 RUN cd ~/newcrawler; rm -f -v phantomjs-linux.tar.bz2
 RUN cd ~/newcrawler; rm -f -v server-jre-linux.tar.gz
-RUN cd ~/newcrawler; rm -f -v master.zip
+RUN cd ~/newcrawler; rm -f -v cluster.zip
 
 RUN echo 'Congratulations, the installation is successful.'
 
