@@ -1,4 +1,5 @@
-#docker pull newcrawler/spider
+#docker pull newcrawler/cluster
+#docker pull registry.aliyuncs.com/speed/newcrawler-cluster
 
 FROM centos:centos7  
 MAINTAINER Speed <https://github.com/speed/newcrawler>
