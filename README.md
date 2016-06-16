@@ -63,13 +63,14 @@ http://127.0.0.1:8500
 
 [![ScreenShot](https://raw.githubusercontent.com/speed/resources/master/images/NewCrawler_Video.jpg)](http://video.newcrawler.com/newcrawler_v2.2.mp4)
 
-![ScreenShot](https://raw.githubusercontent.com/speed/resources/master/images/NewCrawler%20Cluster2.png)
+
 
 NewCrawler
 =========================
 
     Free Web Scraping Tool
 
+![ScreenShot](https://raw.githubusercontent.com/speed/resources/master/images/NewCrawler%20Cluster2.png)
 
 
 Modify database
