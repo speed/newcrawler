@@ -122,4 +122,4 @@ edit 'src\main\webapp\WEB-INF\classes\datanucleus.properties'
 	javax.jdo.option.ConnectionUserName=root
 	javax.jdo.option.ConnectionPassword=123456
 
-[![ScreenShot](https://raw.githubusercontent.com/speed/resources/master/images/NewCrawler%20Cluster2.png)]
+![ScreenShot](https://raw.githubusercontent.com/speed/resources/master/images/NewCrawler%20Cluster2.png)
