@@ -26,7 +26,7 @@ RUN cd ~/newcrawler; mkdir ./jre && tar -xzvf server-jre-linux.tar.gz -C ./jre -
 
 #war
 RUN yum -y install unzip
-RUN cd ~/newcrawler; wget --no-check-certificate https://github.com/speed/newcrawler/archive/master.zip -O master.zip
+RUN cd ~/newcrawler; wget --no-check-certificate https://github.com/speed/newcrawler/archive/cluster.zip -O master.zip
 RUN cd ~/newcrawler; unzip -n master.zip
 RUN cd ~/newcrawler; mv newcrawler-master/war war
 RUN cd ~/newcrawler; rm -R -f -v newcrawler-master
