@@ -1,4 +1,5 @@
-#docker pull newcrawler/spider
+#docker pull newcrawler/cluster
+#docker pull registry.aliyuncs.com/speed/newcrawler-cluster
 
 FROM centos:centos7  
 MAINTAINER Speed <https://github.com/speed/newcrawler>
@@ -26,15 +27,15 @@ RUN cd ~/newcrawler; mkdir ./jre && tar -xzvf server-jre-linux.tar.gz -C ./jre -
 
 #war
 RUN yum -y install unzip
-RUN cd ~/newcrawler; wget --no-check-certificate https://github.com/speed/newcrawler/archive/cluster.zip -O master.zip
-RUN cd ~/newcrawler; unzip -n master.zip
-RUN cd ~/newcrawler; mv newcrawler-master/war war
-RUN cd ~/newcrawler; rm -R -f -v newcrawler-master
+RUN cd ~/newcrawler; wget --no-check-certificate https://github.com/speed/newcrawler/archive/cluster.zip -O cluster.zip
+RUN cd ~/newcrawler; unzip -n cluster.zip
+RUN cd ~/newcrawler; mv newcrawler-cluster/war war
+RUN cd ~/newcrawler; rm -R -f -v newcrawler-cluster
 
 #PhantomJs
 RUN yum -y install bzip2
 RUN yum -y install fontconfig freetype libfreetype.so.6 libfontconfig.so.1
-RUN cd ~/newcrawler; wget --no-check-certificate $phantomjs -O phantomjs-linux.tar.bz2
+RUN cd ~/newcrawler; wget --no-check-certificate --header "User-Agent:Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.112 Safari/537.36" $phantomjs -O phantomjs-linux.tar.bz2
 RUN cd ~/newcrawler; mkdir ./phantomjs && tar -xjvf phantomjs-linux.tar.bz2 -C ./phantomjs --strip-components 1
 RUN cd ~/newcrawler; phantomjs/bin/phantomjs --version
 
@@ -47,7 +48,7 @@ RUN cd ~/newcrawler; wget --no-check-certificate https://github.com/speed/linux-
 RUN cd ~/newcrawler; rm -f -v jetty.tar.gz
 RUN cd ~/newcrawler; rm -f -v phantomjs-linux.tar.bz2
 RUN cd ~/newcrawler; rm -f -v server-jre-linux.tar.gz
-RUN cd ~/newcrawler; rm -f -v master.zip
+RUN cd ~/newcrawler; rm -f -v cluster.zip
 
 RUN echo 'Congratulations, the installation is successful.'
 
