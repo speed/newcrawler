@@ -52,4 +52,4 @@ RUN cd ~/newcrawler; rm -f -v cluster.zip
 
 RUN echo 'Congratulations, the installation is successful.'
 
-CMD cd ~/newcrawler; /bin/bash start.sh
+CMD cd ~/newcrawler; /bin/bash start.sh &
