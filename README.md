@@ -67,7 +67,9 @@ Docker install NewCrawler
 ----
 
 >docker pull newcrawler/spider
+
 >docker run -itd -p 8500:8500 --name=newcrawler newcrawler/spider
+
 >docker logs -f newcrawler
 
 	
