@@ -63,15 +63,23 @@ Modify the database to MySQL or use the default file database
 	javax.jdo.option.ConnectionUserName=root
 	javax.jdo.option.ConnectionPassword=123456
 	
+Docker install NewCrawler
+----
+
+>docker pull newcrawler/spider
+
+>docker run -itd -p 8500:8500 --name=newcrawler newcrawler/spider
+
+>docker logs -f newcrawler
+
 	
 Startup NewCrawler
 ----
 
 >sh newcrawler/start.sh &
 
-
-
 http://127.0.0.1:8500 
+
 
 [![ScreenShot](https://raw.githubusercontent.com/speed/resources/master/images/NewCrawler_Video.jpg)](http://video.newcrawler.com/newcrawler_v2.2.mp4)
 
