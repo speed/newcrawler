@@ -53,4 +53,4 @@ RUN cd ~/newcrawler; rm -f -v master.zip
 
 RUN echo 'Congratulations, the installation is successful.'
 
-CMD cd ~/newcrawler; /bin/bash start.sh
+CMD cd ~/newcrawler; /bin/bash -C 'start.sh';/bin/bash
