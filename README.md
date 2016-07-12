@@ -58,11 +58,32 @@ Installing software packages on Ubuntu / Debian servers:
 
 Modify the database to MySQL or use the default file database
 
-	#edit 'src\main\webapp\WEB-INF\classes\datanucleus.properties'
-	javax.jdo.option.ConnectionURL=jdbc:mysql://127.0.0.1:3306/newcrawler?characterEncoding=UTF-8
+	#edit 'war/WEB-INF/classes/datanucleus.properties'
+	
+	javax.jdo.option.ConnectionURL=jdbc:mysql://192.168.0.100:3306/newcrawler?characterEncoding=UTF-8
 	javax.jdo.option.ConnectionUserName=root
 	javax.jdo.option.ConnectionPassword=123456
 	
+	
+	#war/WEB-INF/classes/system.properties
+	#queue
+	queue.store=ActiveMQ
+	queue.store.activeMQ=tcp://192.168.0.100:61616?jms.prefetchPolicy.queuePrefetch=1
+	
+	#cache
+	system.cache=redis
+	system.cache.redis=192.168.0.100:6379
+	
+
+Docker install NewCrawler
+----
+
+>docker pull newcrawler/cluster
+
+>docker run -itd -p 8500:8500 --name=newcrawler newcrawler/cluster
+
+>docker logs -f newcrawler
+
 	
 Startup NewCrawler
 ----
