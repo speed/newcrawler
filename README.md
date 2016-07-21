@@ -1,8 +1,5 @@
 
 <!-- http://shields.io/-->
-[![GitHub release](https://img.shields.io/github/release/speed/newcrawler.svg?maxAge=2592000)](https://github.com/speed/newcrawler/releases)
-[![GitHub](https://img.shields.io/badge/build-passing-brightgreen.svg)](https://github.com/speed/newcrawler/releases)
-[![GitHub commits](https://img.shields.io/github/commits-since/speed/newcrawler/2.2.svg?maxAge=2592000)](https://github.com/speed/newcrawler/releases)
 
 NewCrawler
 =========================
