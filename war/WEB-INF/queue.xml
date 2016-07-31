@@ -26,8 +26,8 @@
 	<queue>
 		<name>R1</name>
 		<rate>6/m</rate>
-    	<bucket-size>10</bucket-size>
-    	<max-concurrent-requests>10</max-concurrent-requests>
+    	<bucket-size>6</bucket-size>
+    	<max-concurrent-requests>4</max-concurrent-requests>
 	</queue>
 	<!-- 4 -->
 	<!-- 1/2s -->
