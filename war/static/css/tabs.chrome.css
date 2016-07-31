@@ -42,6 +42,7 @@ li.button {width: 0; max-width: 0;}
   max-width : 200px;
   line-height: 20px;
   border: 1px solid #DDDDDD;
+  width: 130px;
 }
 
 #tabsview > ul.ui-tabs-nav > .ui-state-hover a, #tabsview > ul.ui-tabs-nav > .ui-state-hover a:link, #tabsview > ul.ui-tabs-nav > .ui-state-hover a:visited {color: rgba(0, 115, 234, 0.74)}

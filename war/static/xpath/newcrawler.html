@@ -4,12 +4,16 @@
 
 <link type='text/css' rel='stylesheet' href='//cdn.newcrawler.com/static/js/datetimepicker-master/jquery.datetimepicker.css' />
 <link type='text/css' rel='stylesheet' href='//cdn.newcrawler.com/static/js/clockpicker/dist/jquery-clockpicker.min.css' />
+<link type='text/css' rel='stylesheet' href='../static/css/pagination.css' />
 
-<script type="text/javascript" src="//cdn.newcrawler.com/static/js/jquery-1.7.min.js"></script>
+<script type="text/javascript" src="//cdn.newcrawler.com/static/js/jquery-1.11.3.min.js"></script>
 <script type="text/javascript" src="//cdn.newcrawler.com/static/js/datetimepicker-master/jquery.datetimepicker.min.js"></script>
 <script type="text/javascript" src="//cdn.newcrawler.com/static/js/clockpicker/dist/jquery-clockpicker.js"></script>
 <script type="text/javascript" src="//cdn.newcrawler.com/static/js/zeroclipboard-2.1.6/ZeroClipboard.min.js"></script>
 <script type="text/javascript" src="//cdn.newcrawler.com/static/js/jsonrpc-min.js"></script>
+<script type="text/javascript" src="//cdn.newcrawler.com/static/js/jquery.pagination-min.js"></script>
+
+<script type="text/javascript" src="../static/js/jquery-table2excel/dist/jquery.table2excel.js"></script>
 
 <script type="text/javascript" src="../static/js/main.crawldata.log-min.js"></script>
 <script type="text/javascript" src="../static/js/main.logsview.console-min.js"></script>
@@ -19,6 +23,7 @@
 
 </head>
 <body style="padding: 0px; margin: 0px; overflow: hidden;">
+		
 <div class="ncx_toolbar_cover">
 </div>
 <div id="ncx_toolbar">
@@ -104,7 +109,10 @@
 	    
 	</div>
 	<div class="ncx-toolbar-section ">      
-		<input type="text" id="url" value="" style="height:30px;line-height:30px;width:300px;" readonly="readonly"/>
+		<a href="javascript:void(0);" title="" style="margin-left: 20px;padding-top: 10px;" target="_blank">
+		<span id="url" style="width:300px;white-space: nowrap; text-overflow: ellipsis; overflow: hidden;display: inline-block;"></span>
+		</a>
+		
 	</div>
 	
 	<div class="ncx-toolbar-section ncx-js" title="Load JavaScript" style="float:right;">
@@ -124,20 +132,40 @@
 	
 	<div class="ncx-content-top">
 		<div class="ncx-content-top-data">
-		<table class="ncx_data_list">
+		<table id="ncx_data_list" class="ncx_data_list">
 		</table>
 				
 		</div>
 		<div class="ncx-content-top-btn">
-		<button class="ncx-toolbar-button-primary ncx ncx-button ncx-prevPage">Prev</button>
-		<button class="ncx-toolbar-button-primary ncx ncx-button ncx-nextPage">Next</button>
-		<button class="ncx-toolbar-button-primary ncx ncx-button ncx-refresh">Refresh</button>
+		
 		<button class="ncx-toolbar-button-primary ncx ncx-button ncx-run">Run</button>
 		<button class="ncx-toolbar-button-primary ncx ncx-button ncx-export">Export</button>
+		<button class="ncx-toolbar-button-primary ncx ncx-button ncx-refresh">Refresh</button>
+		
+		<select id="ncx-pagination-size" style="height: 25px;">
+			<option value="20" selected>20</option>
+			<option value="100">100</option>
+			<option value="500">500</option>
+			<option value="1000">1000</option>
+			<option value="2000">2000</option>
+			<option value="3000">3000</option>
+			<option value="5000">5000</option>
+			<option value="10000">10000</option>
+		</select>
+		
+		<div class='loading' style="top: -35px;position: relative; left: 160px; display:none;"></div>
 		</div>
+		
+		<div style="position: fixed; top: 57px; left: 300px; background: white;">
+		<div id="ncx-pagination">
+		
+		</div>
+		
+		</div>
+		
 		<div class="ncx-content-top-export" style="display:none;">
 		<span class="ncx-poptip-arrow view-pop" style="display:none;left: 20%;top: -21px;height: 0.4em;width: 1em;"><em>◆</em><i>◆</i></span>
-		<a class="ncx-export-csv ncx-export-icon ncx-download" href="javascript:void(0);" target="_blank">
+		<a class="ncx-export-csv ncx-export-icon ncx-download" href="javascript:void(0);">
 		
 		</a>
 		<a class="ncx-export-plotly ncx-export-icon " href="javascript:void(0);" target="_blank">
@@ -189,10 +217,11 @@
 <div id="newcrawler-selector">
 
 </div>
-<iframe id="newcrawler" name="newcrawler" lang='#{url}' style='display: block; width: 100%; border: 0px; height: 100%'></iframe>
+<iframe id="newcrawler" name="newcrawler" style='display: block; width: 100%; border: 0px; height: 100%'></iframe>
 
 <script>
 #{js}
+var newcrawler_url='#{url}'; 
 
 var newcrawler_refresh=null; 
 if(window.opener){

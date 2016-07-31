@@ -207,6 +207,7 @@ width:100%; height:46px; z-index : 99999; filter:Alpha(Opacity=100); -moz-opacit
     top: 55px;
     background-color: white;
     border-radius: 10px;
+    height: 30px;
 }
 
 #ncx_toolview .ncx-content-bottom {
@@ -254,8 +255,8 @@ width:100%; height:46px; z-index : 99999; filter:Alpha(Opacity=100); -moz-opacit
 	-webkit-transition: opacity .2s cubic-bezier(0, 0, .3, 1);
 	transition: opacity .2s cubic-bezier(0, 0, .3, 1);
 	text-decoration: none;
-	position: relative
-	
+	position: relative;
+	cursor: pointer;
 }
 
 #ncx_toolbar .ncx-data-dot:hover {
@@ -320,6 +321,7 @@ width:100%; height:46px; z-index : 99999; filter:Alpha(Opacity=100); -moz-opacit
 }
 
 #ncx_toolbar .loading {width: 31px;height: 8px;background: url('//cdn.newcrawler.com/static/xpath/v2/loading.gif') 50% 52%;}
+#ncx_toolview .loading {width: 31px;height: 8px;background: url('//cdn.newcrawler.com/static/xpath/v2/loading.gif') 50% 52%;}
 
 #ncx_toolbar .ncx-data-dot .ncx-delete-datatype {
 	display: none;
@@ -422,7 +424,6 @@ width:100%; height:46px; z-index : 99999; filter:Alpha(Opacity=100); -moz-opacit
 }
 
 .ncx_data_list {
-    border: 1px solid #bbb;
     border-spacing: 0;
     border-collapse: collapse;
     margin: 0 0 1.5em;
@@ -431,6 +432,7 @@ width:100%; height:46px; z-index : 99999; filter:Alpha(Opacity=100); -moz-opacit
     width: 100%;
     text-align: left;
     padding: 6px 10px;
+    table-layout: fixed;
 }
 .ncx_data_list th {
     border: 1px solid #e7e7e7;
@@ -448,6 +450,9 @@ width:100%; height:46px; z-index : 99999; filter:Alpha(Opacity=100); -moz-opacit
     padding: 6px 10px;
     font-size: 14px;
     line-height: 1.6;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
 
 #ncx_toolview #nc-progress {
@@ -495,7 +500,7 @@ width:100%; height:46px; z-index : 99999; filter:Alpha(Opacity=100); -moz-opacit
     background-color: #FFFFFF;
     position: fixed;
     top: 98px;
-    left: 225px;
+    left: 15px;
     z-index: 2147483499;
     width: 360px;
     height: 100px;
@@ -564,3 +569,7 @@ width:100%; height:46px; z-index : 99999; filter:Alpha(Opacity=100); -moz-opacit
 .logsViewConsoleWindow{height: auto;min-height: 50px;display:none;text-align: left;}
 .logs_datahighlight{background-color: #666666!important;color: white;}
 .logs{height: 100%;color: rgb(236, 236, 236);overflow-y: auto;line-height: 22px;font-size: 14px;padding: 0 10px 0 10px;}
+
+.message_red{background-color: #EA9D9F;border: 1px solid #B27677;}
+.message_green{background-color:#BCDFB7;border:1px solid rgb(173, 202, 169)}
+.message_yellow{background-color: #FFD76E; border: 1px solid #E1BA53;}
