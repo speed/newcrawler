@@ -39,6 +39,15 @@
 	.ui-accordion .ui-accordion-content{
 		padding: 3px;
 	}
+	
+.s_ipt_wr {  width:400px;height: 34px;border: 1px solid #b6b6b6;background: #fff;display: inline-block;vertical-align: top;margin: 0;border-right-width: 0;border-color: #b8b8b8 transparent #ccc #b8b8b8;overflow: hidden;}
+.s_ipt {width: 100%;height: 25px;line-height: 22px;margin-top: 6px;background: transparent;border: 0;outline: 0;-webkit-appearance: none;}
+.s_btn_wr {border-bottom: 1px solid transparent;width: 100px;min-width: 60px;height: 34px;display: inline-block;background-position: -120px -48px;z-index: 0;vertical-align: top;}
+.s_btn:hover {background: #3a659b;border-bottom: 1px solid #5D84AD;}
+.s_btn {cursor: pointer;width: 100%;height: 36px;color: white;letter-spacing: 1px;background: #5686B6;    
+	border-top: 1px solid #b6b6b6;border-right: 1px solid #b6b6b6;border-bottom: 1px solid #456D96;outline: medium;-webkit-appearance: none;-webkit-border-radius: 0;}
+.s_ipt_wr input[type=text]{ height: 34px;line-height: 34px;margin: 0;padding: 0px;width: 100%;border: 0; font-size: 15px;}
+	
 	</style>
 </head>
 
@@ -81,7 +90,15 @@
 		</UL>
 		<DIV class="ui-layout-content ui-widget-content ui-corner-bottom" >
 			<DIV id="tab_1" >
-					<iframe src="https://www.newcrawler.com/zh-tw/home.html" width="100%" height="100%" frameborder="0"></iframe>
+					<div class="quickStart" style="width:100%; height:60%;">
+					<div style="font-size:0;padding-top: 10%;padding-left: 20%;">
+							<span class="s_ipt_wr"><input type="text" name="url" class="s_ipt" value=""></span>
+							<span class="s_btn_wr">
+								<input type="submit" value="Quick Start" class="s_btn" style="font-size: 15px;">
+							</span>
+					</div>					
+					</div>
+					<iframe src="https://www.newcrawler.com/zh-tw/home.html" width="100%" height="40%" frameborder="0"></iframe>
 			</DIV>
 		</DIV>
 

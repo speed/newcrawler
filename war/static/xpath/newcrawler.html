@@ -1,6 +1,6 @@
 <html>
 <head>
-<link type='text/css' rel='stylesheet' href='../static/xpath/mark.css' />
+<link type='text/css' rel='stylesheet' href='../static/xpath/mark.css?v2.3' />
 
 <link type='text/css' rel='stylesheet' href='//cdn.newcrawler.com/static/js/datetimepicker-master/jquery.datetimepicker.css' />
 <link type='text/css' rel='stylesheet' href='//cdn.newcrawler.com/static/js/clockpicker/dist/jquery-clockpicker.min.css' />
@@ -12,14 +12,14 @@
 <script type="text/javascript" src="//cdn.newcrawler.com/static/js/zeroclipboard-2.1.6/ZeroClipboard.min.js"></script>
 <script type="text/javascript" src="//cdn.newcrawler.com/static/js/jsonrpc-min.js"></script>
 <script type="text/javascript" src="//cdn.newcrawler.com/static/js/jquery.pagination-min.js"></script>
-
+<script type="text/javascript" src="//cdn.newcrawler.com/static/js/jquery.json-2.3-min.js"></script>
 <script type="text/javascript" src="../static/js/jquery-table2excel/dist/jquery.table2excel.js"></script>
 
 <script type="text/javascript" src="../static/js/main.crawldata.log-min.js"></script>
 <script type="text/javascript" src="../static/js/main.logsview.console-min.js"></script>
 
 <script type="text/javascript" src="../static/xpath/depend.js"></script>
-<script type="text/javascript" src="../static/xpath/mark-min.js?v2.2"></script>
+<script type="text/javascript" src="../static/xpath/mark-min.js?v2.3"></script>
 
 </head>
 <body style="padding: 0px; margin: 0px; overflow: hidden;">
@@ -129,6 +129,110 @@
 
 
 <div id="ncx_toolview">
+	<div class="ncx-export-window ncx-export-window-wordpress" style="display:none;">
+		<div class="ncx-export-logo ncx-export-wordpress" style="float: left; padding: 70px 0 0 70px;background-color: white;">
+		</div>
+		
+		<div class="close">×</div>
+		
+		<div class="ncx-export-content">
+		<div class="title">Wordpress</div>
+		<div>网站地址(必填)，<span class="help"> 您网站的web首页地址, 例如www.newcrawler.com, 请勿带index.php或index.html等</span></div>
+		<div><input type="text" name="__url"/></div>
+		<div>发布密码(必填)，<span class="help"> 请将wordpress后台中插件设置页面的发布密码粘贴过来, ps:请自行使用数字字母组合修改保存</span></div>
+		<div><input type="text" name="__sign"/></div>
+		
+		<div>文章发布状态</div>
+		<div><select name="post_status"><option value="publish" selected>Published</option><option value="draft">Draft</option></select></div>
+		<div style="display:none;">文章访问密码</div>
+		<div style="display:none;"><input type="text" name="access_password"/></div>
+		
+		<div>字段映射</div>
+		<div>
+		<div class="fieldMap">
+		<div><span>Article Title<input type="hidden" name="param" value="article_title"></span>:<select class="allFileds"><option value="">--</option></select></div>
+		<div><span>Article Content<input type="hidden" name="param" value="article_content"></span>:<select class="allFileds"><option value="">--</option></select><input type="checkbox" name="isUploadImage">Upload Image</div>
+		<div><span>Article Author<input type="hidden" name="param" value="article_author"></span>:<select class="allFileds"><option value="">--</option></select></div>
+		<div><span>Article Thumbnail<input type="hidden" name="param" value="article_thumbnail"></span>:<select class="allFileds"><option value="">--</option></select></div>
+		<div><span>Article Categories<input type="hidden" name="param" value="article_categories"></span>:<select class="allFileds"><option value="">--</option></select></div>
+		<div style="display:none;"><span>Article Topics<input type="hidden" name="param" value="article_topics"></span>:<select class="allFileds"><option value="">--</option></select></div>
+		<div style="display:none;"><span>Publish Time<input type="hidden" name="param" value="publish_time"></span>:<select class="allFileds"><option value="">--</option></select></div>
+		</div>
+		</div>
+		</div>
+	</div>
+	<div class="ncx-export-window ncx-export-window-db" style="display:none;">
+		<div class="ncx-export-logo ncx-export-db" style="float: left; padding: 70px 0 0 70px;background-color: white;">
+		
+		</div>
+		
+		<div class="close">×</div>
+		
+		<div class="ncx-export-content">
+		
+		<div class="title">Database</div>
+		<div>数据库类型</div>
+		<div>
+			<select name="dbType">
+				<option value="mysql" selected>MYSQL</option>
+			</select>
+		</div>
+		<div>数据库主机</div>
+		<div><input type="text" name="dbHost" value="127.0.0.1"/></div>
+		<div>数据库端口</div>
+		<div><input type="text" name="dbPort" value="3306"/></div>
+		<div>数据库名称</div>
+		<div><input type="text" name="dbName" value=""/></div>
+		<div>数据库用户名</div>
+		<div><input type="text" name="dbUser" value=""/></div>
+		<div>数据库密码</div>
+		<div><input type="text" name="dbPassword" value=""/></div>
+		<div>数据库字符集</div>
+		<div>
+			<select id="dbCharset" name="dbCharset">
+				<option value="UTF-8" selected>UTF-8</option>
+				<option value="GBK">GBK</option>
+				<option value="GB2312">GB2312</option>
+			</select>
+		</div>
+		<div>数据库表名</div>
+		<div><input type="text" name="dbTable" value="" readonly="readonly"/></div>
+		<div>字段映射</div>
+		<div>
+		<div class="fieldMap">
+		<div class="temp" style="display:none;"><input type="hidden" name="labelName" value=""><span class="labelName">Label Name</span>:<input type="text" name="param" value=""> <span style="padding-left: 20px;">Length:<input type="text" name="length" value="1500" style="width: 70px;" readonly="readonly"></span></div>
+		</div>
+		</div>
+		</div>
+	</div>
+	<div class="ncx-export-window ncx-export-window-rss" style="display:none;">
+		<div class="ncx-export-logo ncx-export-rss" style="float: left; padding: 70px 0 0 70px;background-color: white;">
+		
+		</div>
+		
+		<div class="close">×</div>
+		
+		<div class="ncx-export-content">
+		
+		<div class="title">RSS</div>
+		<div>字段映射</div>
+		<div>
+		<div class="fieldMap">
+		<div><span>Title<input type="hidden" name="param" value="title"></span>:<select class="allFileds"><option value="">--</option></select></div>
+		<div><span>Link<input type="hidden" name="param" value="link"></span>:<select class="allFileds"><option value="">--</option></select></div>
+		<div><span>Description<input type="hidden" name="param" value="description"></span>:<select class="allFileds"><option value="">--</option></select></div>
+		<div><span>Author<input type="hidden" name="param" value="author"></span>:<select class="allFileds"><option value="">--</option></select></div>
+		<div><span>Category<input type="hidden" name="param" value="category"></span>:<select class="allFileds"><option value="">--</option></select></div>
+		<div><span>Comments<input type="hidden" name="param" value="comments"></span>:<select class="allFileds"><option value="">--</option></select></div>
+		<div><span>PubDate<input type="hidden" name="param" value="pubDate"></span>:<select class="allFileds"><option value="">--</option></select></div>
+		</div>
+		</div>
+		
+		<div style="padding: 30px 30px 30px 135px;" >
+		<a class="ncx-toolbar-button-primary ncx-button ncx-btn-rss" target="_blank" href="javascript:void(0);">RSS</a>
+		</div>
+		</div>
+	</div>
 	
 	<div class="ncx-content-top">
 		<div class="ncx-content-top-data">
@@ -164,14 +268,23 @@
 		</div>
 		
 		<div class="ncx-content-top-export" style="display:none;">
-		<span class="ncx-poptip-arrow view-pop" style="display:none;left: 20%;top: -21px;height: 0.4em;width: 1em;"><em>◆</em><i>◆</i></span>
-		<a class="ncx-export-csv ncx-export-icon ncx-download" href="javascript:void(0);">
+		<span class="ncx-poptip-arrow view-pop" style="display:none;left: 60px;top: -21px;height: 0.4em;width: 1em;"><em>◆</em><i>◆</i></span>
+		<a class="ncx-export-csv ncx-export-icon ncx-download" href="javascript:void(0);" title="Excel">
 		
 		</a>
-		<a class="ncx-export-plotly ncx-export-icon " href="javascript:void(0);" target="_blank">
+		<a class="ncx-export-plotly ncx-export-icon " href="javascript:void(0);" target="_blank" title="plot.ly">
 		
 		</a>
-		<a class="ncx-export-coding ncx-export-icon" href="javascript:void(0);" target="_blank">
+		<a class="ncx-export-coding ncx-export-icon" href="javascript:void(0);" target="_blank" title="JSON">
+		
+		</a>
+		<a class="ncx-export-rss ncx-export-icon" href="javascript:void(0);" target="_blank" title="RSS">
+		
+		</a>
+		<a class="ncx-export-wordpress ncx-export-icon " href="javascript:void(0);" target="_blank" title="Wordpress">
+		
+		</a>
+		<a class="ncx-export-db ncx-export-icon " href="javascript:void(0);" target="_blank" title="Database">
 		
 		</a>
 		</div>
@@ -278,6 +391,8 @@ var _i18n = {
 , 'res.exception.url.list' : 'List'
 , 'res.page.prev' : 'prev'
 , 'res.page.next' : 'next'
+, 'res.published' : 'Published'
+, 'res.unpublished' : 'unPublished'
 	};
 	
 </script>

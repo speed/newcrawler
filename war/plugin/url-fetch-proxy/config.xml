@@ -3,7 +3,6 @@
 	<name>Proxy support</name>
 	<file>plugin-urlfetch-proxy-1.0.0.jar</file>
 	<type>1</type><!-- 1,网址抓取插件  2,数据过滤插件   3,文件保存插件  4,数据发布插件  -->
-	<depend>yes</depend><!-- 需要手动复制lib下的所有jar包到应用lib目录下 -->
 	<platforms>
 		<platform>appfog</platform>
 		<platform>other</platform>

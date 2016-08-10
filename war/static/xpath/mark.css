@@ -187,7 +187,7 @@ width:100%; height:46px; z-index : 99999; filter:Alpha(Opacity=100); -moz-opacit
 
 #ncx_toolview {
 	padding: 8px 10px 4px; text-align: left; background-color: #FFFFFF; position: fixed;
-	top: 46px; left: 0; z-index: 2147483488; min-width: 100%; height: 100%; border-bottom: 1px solid #efefef;
+	top: 46px; left: 0; z-index: 5; min-width: 100%; height: 100%; border-bottom: 1px solid #efefef;
 	display: none; box-sizing: border-box; -webkit-box-sizing: border-box; -moz-box-sizing: border-box;
 	font-size: 13px; color: #111; font-family: "Hiragino Sans GB","Microsoft Yahei",Arial,sans-serif;
 }
@@ -197,10 +197,11 @@ width:100%; height:46px; z-index : 99999; filter:Alpha(Opacity=100); -moz-opacit
 	width: 100%;
 	overflow-y: scroll;
 	background-color: #fff; 
+	margin-top: 35px;
 }
 #ncx_toolview .ncx-content-top-data{
 	width: 100%;
-	margin-top: 35px;
+	
 }
 #ncx_toolview .ncx-content-top-btn {
     position: fixed;
@@ -492,24 +493,68 @@ width:100%; height:46px; z-index : 99999; filter:Alpha(Opacity=100); -moz-opacit
     line-height: 1.6;
 }
 
-
-
 #ncx_toolview .ncx-content-top-export {
-    padding: 8px 10px 4px;
+    padding: 8px 0px 4px 0px;
     text-align: left;
     background-color: #FFFFFF;
     position: fixed;
     top: 98px;
     left: 15px;
-    z-index: 2147483499;
-    width: 360px;
-    height: 100px;
-    border: 1px solid #efefef;
+    z-index: 6;
+    width: 680px;
+    height: 105px;
+    border: 1px solid #dbd9dc;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     font-size: 13px;
     color: #111;
     font-family: "Hiragino Sans GB","Microsoft Yahei",Arial,sans-serif;
+}
+#ncx_toolview .ncx-export-window {
+	height: 100%;
+    width: 100%;
+    z-index: 10;
+    overflow-y: scroll;
+    border: 1px solid #efefef;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+}
+#ncx_toolview .ncx-export-content {
+    padding: 30px 20px 120px 160px;
+    text-align: left;
+    font-size: 13px;
+    color: #111;
+    font-family: "Hiragino Sans GB","Microsoft Yahei",Arial,sans-serif;
+}
+#ncx_toolview .ncx-export-content .title{
+    font-size: 18px;
+    font-weight: bold;
+    color: #376299;
+    padding-bottom: 10px;
+}
+#ncx_toolview .ncx-export-content div{
+	line-height: 35px;
+}
+#ncx_toolview .ncx-export-content input[type=text]{
+	height: 25px;
+    line-height: 25px;
+    width: 350px;
+}
+#ncx_toolview .ncx-export-content .fieldMap span{
+	height: 25px;
+    display: inline-block;
+    width: 120px;
+    padding-right: 15px;
+    line-height: 25px;
+}
+#ncx_toolview .ncx-export-content select{
+	width: 150px;
+    height: 25px;
+    line-height: 25px;
+}
+#ncx_toolview .ncx-export-content .help{
+	color: #9E9D90;
+    font-size: 12px;
 }
 #ncx_toolview .ncx-export-icon {
     display: inline-block;
@@ -544,9 +589,51 @@ width:100%; height:46px; z-index : 99999; filter:Alpha(Opacity=100); -moz-opacit
 	border: 0;
     width: 80px;
     height: 80px;
-    background: #ebebeb url('//cdn.newcrawler.com/static/xpath/v2/export-icon-coding.svg') no-repeat 50% 50%;
+    background: #ebebeb url('../../static/xpath/v2/export-icon-json3.svg') no-repeat 50% 50%;
     background-size: 60px 60px;
 }
+
+#ncx_toolview .ncx-export-rss {
+	border: 0;
+    width: 80px;
+    height: 80px;
+    background: #ebebeb url('../../static/xpath/v2/export-icon-rss2.svg') no-repeat 50% 50%;
+    background-size: 60px 60px;
+}
+#ncx_toolview .ncx-export-wordpress {
+	border: 0;
+    width: 80px;
+    height: 80px;
+    background: #ebebeb url('../../static/xpath/v2/export-icon-wordpress.svg') no-repeat 50% 50%;
+    background-size: 60px 60px;
+}
+
+#ncx_toolview .ncx-export-db {
+	border: 0;
+    width: 80px;
+    height: 80px;
+    background: #ebebeb url('../../static/xpath/v2/export-icon-db.svg') no-repeat 50% 50%;
+    background-size: 60px 60px;
+}
+
+#ncx_toolview .close {
+    float: right;
+    font-size: 30px;
+    line-height: 30px;
+    height: 30px;
+    cursor: pointer;
+    color: #666;
+    width: 30px;
+    text-align: center;
+    position: absolute;
+    right: 13px;
+    top: 5px;
+    font-weight: bold;
+}
+#ncx_toolview .close:hover {
+	color: #FF0000;
+}
+
 .jfk-button-standard{
 	padding: 2px 5px 2px 5px;
 }
@@ -570,6 +657,6 @@ width:100%; height:46px; z-index : 99999; filter:Alpha(Opacity=100); -moz-opacit
 .logs_datahighlight{background-color: #666666!important;color: white;}
 .logs{height: 100%;color: rgb(236, 236, 236);overflow-y: auto;line-height: 22px;font-size: 14px;padding: 0 10px 0 10px;}
 
-.message_red{background-color: #EA9D9F;border: 1px solid #B27677;}
+.message_red{background-color: rgba(255, 164, 164, 0.88);border: 1px solid #FF6969;}
 .message_green{background-color:#BCDFB7;border:1px solid rgb(173, 202, 169)}
 .message_yellow{background-color: #FFD76E; border: 1px solid #E1BA53;}
