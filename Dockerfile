@@ -1,5 +1,5 @@
-#docker pull newcrawler/cluster
-#docker pull registry.aliyuncs.com/speed/newcrawler-cluster
+#docker pull newcrawler/spider
+#docker pull registry.aliyuncs.com/speed/newcrawler
 
 FROM centos:centos7  
 MAINTAINER Speed <https://github.com/speed/newcrawler>
@@ -11,6 +11,7 @@ MAINTAINER Speed <https://github.com/speed/newcrawler>
 ENV jetty="http://download.eclipse.org/jetty/9.3.7.v20160115/dist/jetty-distribution-9.3.7.v20160115.tar.gz"
 ENV jre="http://download.oracle.com/otn-pub/java/jdk/8u74-b02/server-jre-8u74-linux-x64.tar.gz"
 ENV phantomjs="https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-2.1.1-linux-x86_64.tar.bz2"
+
 
 RUN mkdir ~/newcrawler
 
@@ -27,10 +28,10 @@ RUN cd ~/newcrawler; mkdir ./jre && tar -xzvf server-jre-linux.tar.gz -C ./jre -
 
 #war
 RUN yum -y install unzip
-RUN cd ~/newcrawler; wget --no-check-certificate https://github.com/speed/newcrawler/archive/cluster.zip -O cluster.zip
-RUN cd ~/newcrawler; unzip -n cluster.zip
-RUN cd ~/newcrawler; mv newcrawler-cluster/war war
-RUN cd ~/newcrawler; rm -R -f -v newcrawler-cluster
+RUN cd ~/newcrawler; wget --no-check-certificate https://github.com/speed/newcrawler/archive/master.zip -O master.zip
+RUN cd ~/newcrawler; unzip -n master.zip
+RUN cd ~/newcrawler; mv newcrawler-master/war war
+RUN cd ~/newcrawler; rm -R -f -v newcrawler-master
 
 #PhantomJs
 RUN yum -y install bzip2
@@ -48,7 +49,7 @@ RUN cd ~/newcrawler; wget --no-check-certificate https://github.com/speed/linux-
 RUN cd ~/newcrawler; rm -f -v jetty.tar.gz
 RUN cd ~/newcrawler; rm -f -v phantomjs-linux.tar.bz2
 RUN cd ~/newcrawler; rm -f -v server-jre-linux.tar.gz
-RUN cd ~/newcrawler; rm -f -v cluster.zip
+RUN cd ~/newcrawler; rm -f -v master.zip
 
 RUN echo 'Congratulations, the installation is successful.'
 

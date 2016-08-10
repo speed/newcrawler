@@ -19,13 +19,13 @@ Installing software packages on Centos / Fedora servers:
 
 >x86
 
->wget --no-check-certificate https://raw.githubusercontent.com/speed/newcrawler/cluster/install_i586.sh
+>wget --no-check-certificate https://raw.githubusercontent.com/speed/newcrawler/master/install_i586.sh
 
 >sh install_i586.sh
 
 >x64
 
->wget --no-check-certificate https://raw.githubusercontent.com/speed/newcrawler/cluster/install_x86_64.sh
+>wget --no-check-certificate https://raw.githubusercontent.com/speed/newcrawler/master/install_x86_64.sh
 
 >sh install_x86_64.sh
 
@@ -34,13 +34,13 @@ Installing software packages on Ubuntu / Debian servers:
 
 >x86
 
->wget --no-check-certificate https://raw.githubusercontent.com/speed/newcrawler/cluster/install_Debian_i586.sh
+>wget --no-check-certificate https://raw.githubusercontent.com/speed/newcrawler/master/install_Debian_i586.sh
 
 >sh install_Debian_i586.sh
 
 >x64
 
->wget --no-check-certificate https://raw.githubusercontent.com/speed/newcrawler/cluster/install_Debian_x86_64.sh
+>wget --no-check-certificate https://raw.githubusercontent.com/speed/newcrawler/master/install_Debian_x86_64.sh
 
 >sh install_Debian_x86_64.sh
 
@@ -62,27 +62,17 @@ Modify the database to MySQL or use the default file database
 
 	#edit 'war/WEB-INF/classes/datanucleus.properties'
 	
-	javax.jdo.option.ConnectionURL=jdbc:mysql://192.168.0.100:3306/newcrawler?characterEncoding=UTF-8
+	javax.jdo.option.ConnectionURL=jdbc:mysql://127.0.0.1:3306/newcrawler?characterEncoding=UTF-8
 	javax.jdo.option.ConnectionUserName=root
 	javax.jdo.option.ConnectionPassword=123456
 	
 	
-	#war/WEB-INF/classes/system.properties
-	#queue
-	queue.store=ActiveMQ
-	queue.store.activeMQ=tcp://192.168.0.100:61616?jms.prefetchPolicy.queuePrefetch=1
-	
-	#cache
-	system.cache=redis
-	system.cache.redis=192.168.0.100:6379
-	
-
 Docker install NewCrawler
 ----
 
->docker pull newcrawler/cluster
+>docker pull newcrawler/spider
 
->docker run -itd -p 8500:8500 --name=newcrawler newcrawler/cluster
+>docker run -itd -p 8500:8500 --name=newcrawler newcrawler/spider
 
 >docker logs -f newcrawler
 
@@ -92,9 +82,8 @@ Startup NewCrawler
 
 >sh newcrawler/start.sh &
 
-
-
 http://127.0.0.1:8500 
+
 
 [![ScreenShot](https://raw.githubusercontent.com/speed/resources/master/images/NewCrawler_Video.jpg)](http://video.newcrawler.com/newcrawler_v2.2.mp4)
 
