@@ -19,7 +19,7 @@
 <script type="text/javascript" src="../static/js/main.logsview.console-min.js"></script>
 
 <script type="text/javascript" src="../static/xpath/depend.js"></script>
-<script type="text/javascript" src="../static/xpath/mark-min.js?v2.3"></script>
+<script type="text/javascript" src="../static/xpath/mark-min.js?v2.4"></script>
 
 </head>
 <body style="padding: 0px; margin: 0px; overflow: hidden;">
@@ -101,6 +101,12 @@
 	<div class="ncx-toolbar-section">      
 	<button class="ncx-toolbar-button-primary ncx ncx-button ncx-save">Save</button>
 	</div>
+	
+	<div class="ncx-toolbar-section">      
+	<button class="ncx-toolbar-button-primary ncx ncx-button ncx-test">Test</button>
+	<span class="ncx-poptip-arrow view-pop" style="display:none;top: 32px;height: 0.3em;width: 1em;"><em>◆</em><i>◆</i></span>
+	</div>
+	
 	<div class="ncx-toolbar-section">      
 	<button class="ncx-toolbar-button-primary ncx ncx-button ncx-view">View</button>
 	<span class="ncx-poptip-arrow view-pop" style="display:none;top: 32px;height: 0.3em;width: 1em;"><em>◆</em><i>◆</i></span>
@@ -127,7 +133,43 @@
 	
 </div>
 
-
+<div id="ncx_tooltest">
+	
+	<div class="ncx-content-top">
+		<div class="ncx-content-top-data">
+		<table id="ncx_data_list_test" class="ncx_data_list">
+		</table>
+		</div>
+		
+		<div class="ncx-content-top-btn">
+		
+		<button class="ncx-toolbar-button-primary ncx ncx-button ncx-details">Details</button>
+		<button class="ncx-toolbar-button-primary ncx ncx-button ncx-next">Next</button>
+		
+		<div class='loading' style="top: -35px;position: relative; left: 160px; display:none;"></div>
+		</div>
+		
+		<div class="ncx-content-top-details" style="display:none;">
+		<span class="ncx-poptip-arrow view-pop" style="left: 10px;top: -21px;height: 0.4em;width: 1em;"><em>◆</em><i style="color: #000000;">◆</i></span>
+		
+		<div class="ncx-details-content">
+		<div class="title">Details</div>
+		
+		<div class="fieldMap">
+		<div><span class="label">总耗时<input type="hidden" name="param" value="article_content"></span>: <span class="costTotal"></span></div>
+		<div><span class="label">网址抓取耗时<input type="hidden" name="param" value="article_content"></span>: <span class="costFetch"></span></div>
+		<div><span class="label">规则分析耗时<input type="hidden" name="param" value="article_content"></span>: <span class="costParse"></span></div>
+		
+		<div><span class="label">爬虫<input type="hidden" name="param" value="article_title"></span>: <span class="spider"></span></div>
+		<div><span class="label">Cookies<input type="hidden" name="param" value="article_author"></span>: <span class="cookie"></span></div>
+		<div><span class="label">总数<input type="hidden" name="param" value="article_thumbnail"></span>: <span class="total"></span></div>
+		<div><span class="label">下一页<input type="hidden" name="param" value="article_categories"></span>: <a class="nextUrl" target="_blank" style="color: #a5d8ff;"></a></div>
+		</div>
+		
+		</div>
+		</div>
+	</div>
+</div>
 <div id="ncx_toolview">
 	<div class="ncx-export-window ncx-export-window-wordpress" style="display:none;">
 		<div class="ncx-export-logo ncx-export-wordpress" style="float: left; padding: 70px 0 0 70px;background-color: white;">
@@ -269,7 +311,7 @@
 		
 		<div class="ncx-content-top-export" style="display:none;">
 		<span class="ncx-poptip-arrow view-pop" style="display:none;left: 60px;top: -21px;height: 0.4em;width: 1em;"><em>◆</em><i>◆</i></span>
-		<a class="ncx-export-csv ncx-export-icon ncx-download" href="javascript:void(0);" title="Excel">
+		<a class="ncx-export-csv ncx-export-icon" href="javascript:void(0);" title="Excel">
 		
 		</a>
 		<a class="ncx-export-plotly ncx-export-icon " href="javascript:void(0);" target="_blank" title="plot.ly">
@@ -327,6 +369,8 @@
 		</DIV>
 	</div>
 </div>
+
+
 <div id="newcrawler-selector">
 
 </div>
