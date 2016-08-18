@@ -24,10 +24,10 @@ mkdir ./jre && tar -xzvf server-jre-linux.tar.gz -C ./jre --strip-components 1
 
 #war
 yum -y install unzip
-wget --no-check-certificate https://github.com/speed/newcrawler/archive/master.zip -O master.zip
-unzip -n master.zip
-mv newcrawler-master/war war
-rm -R -f -v newcrawler-master
+wget --no-check-certificate https://github.com/speed/newcrawler/archive/cluster.zip -O cluster.zip
+unzip -n cluster.zip
+mv newcrawler-cluster/war war
+rm -R -f -v newcrawler-cluster
 
 #PhantomJs
 yum -y install bzip2
@@ -45,6 +45,6 @@ wget --no-check-certificate https://github.com/speed/linux-64bit-jetty-jre/raw/m
 rm -f -v jetty.tar.gz
 rm -f -v phantomjs-linux.tar.bz2
 rm -f -v server-jre-linux.tar.gz
-rm -f -v master.zip
+rm -f -v cluster.zip
 
 echo 'Congratulations, the installation is successful.'
