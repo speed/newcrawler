@@ -306,7 +306,7 @@ width:100%; height:46px; z-index : 99999; filter:Alpha(Opacity=100); -moz-opacit
 	margin: 5px 5px 5px 0;
 	vertical-align: middle;
 	text-align: center;
-	opacity: .5;
+	opacity: .4;
 	font-weight: 400;
 	-webkit-transition: opacity .2s cubic-bezier(0, 0, .3, 1);
 	transition: opacity .2s cubic-bezier(0, 0, .3, 1);
