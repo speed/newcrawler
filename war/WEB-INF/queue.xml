@@ -25,65 +25,65 @@
 	<!-- 1/10s -->
 	<queue>
 		<name>R1</name>
-		<rate>6/m</rate>
-    	<bucket-size>6</bucket-size>
-    	<max-concurrent-requests>4</max-concurrent-requests>
+		<rate>2/m</rate>
+    	<bucket-size>2</bucket-size>
+    	<max-concurrent-requests>1</max-concurrent-requests>
 	</queue>
 	<!-- 4 -->
 	<!-- 1/2s -->
 	<queue>
 		<name>R2</name>
-		<rate>30/m</rate>
-    	<bucket-size>10</bucket-size>
-    	<max-concurrent-requests>10</max-concurrent-requests>
+		<rate>10/m</rate>
+    	<bucket-size>8</bucket-size>
+    	<max-concurrent-requests>5</max-concurrent-requests>
 	</queue>
 	<!-- 5 -->
 	<!-- 5/s -->
 	<queue>
 		<name>R3</name>
-		<rate>5/s</rate>
-    	<bucket-size>20</bucket-size>
-    	<max-concurrent-requests>20</max-concurrent-requests>
+		<rate>1/s</rate>
+    	<bucket-size>10</bucket-size>
+    	<max-concurrent-requests>10</max-concurrent-requests>
 	</queue>
 	<!-- 6 -->
 	<!-- 15/s -->
 	<queue>
 		<name>R4</name>
-		<rate>15/s</rate>
-    	<bucket-size>30</bucket-size>
-    	<max-concurrent-requests>30</max-concurrent-requests>
+		<rate>5/s</rate>
+    	<bucket-size>20</bucket-size>
+    	<max-concurrent-requests>20</max-concurrent-requests>
 	</queue>
 	<!-- 7 -->
 	<!-- 30/s -->
 	<queue>
 		<name>R5</name>
-		<rate>30/s</rate>
-    	<bucket-size>40</bucket-size>
-    	<max-concurrent-requests>40</max-concurrent-requests>
+		<rate>10/s</rate>
+    	<bucket-size>30</bucket-size>
+    	<max-concurrent-requests>30</max-concurrent-requests>
 	</queue>
 	<!-- 8 -->
 	<!-- 45/s -->
 	<queue>
 		<name>R6</name>
-		<rate>45/s</rate>
-		<bucket-size>60</bucket-size>
-		<max-concurrent-requests>60</max-concurrent-requests>
+		<rate>20/s</rate>
+		<bucket-size>50</bucket-size>
+		<max-concurrent-requests>50</max-concurrent-requests>
 	</queue>
 	<!-- 9 -->
 	<!-- 60/s -->
 	<queue>
 		<name>R7</name>
-		<rate>60/s</rate>
-		<bucket-size>80</bucket-size>
-		<max-concurrent-requests>80</max-concurrent-requests>
+		<rate>30/s</rate>
+		<bucket-size>120</bucket-size>
+		<max-concurrent-requests>90</max-concurrent-requests>
 	</queue>
 	<!-- 10 -->
 	<!-- 60/s -->
 	<queue>
 		<name>R8</name>
-		<rate>80/s</rate>
+		<rate>40/s</rate>
 		<bucket-size>100</bucket-size>
-		<max-concurrent-requests>100</max-concurrent-requests>
+		<max-concurrent-requests>200</max-concurrent-requests>
 	</queue>
 	
 </queue-entries>
