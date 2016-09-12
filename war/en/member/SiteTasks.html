@@ -158,7 +158,7 @@
 	</tr >
 	
 	<tr class="advanced-settings">
-		<td align="right" nowrap class="label">Random Delay(S):</td>
+		<td align="right" nowrap class="label">Random Delay(mins):</td>
 		<td class="td_border" style="height:26px;">
 			<div style="float:left;width:200px;padding-top:5px;padding-left: 5px;"><div id="delaySlider" ></div></div>
 			<div style="float:left;width:30px;margin-left: 10px;"><input id="delay" type="text" name="delay" value="" style="width: 30px; border: 0; color: #f6931f; font-weight: bold;" readonly="readonly"/></div>
@@ -198,6 +198,33 @@
 		</td>
 		
 		<td colspan="2"></td>
+	</tr>
+	
+	<tr class="advanced-settings">
+        <td colspan="4" style="font-weight: bold;padding: 0px;" height="5px"><hr style="border-color: white;"/></td>           
+    </tr>
+    <tr class="advanced-settings">
+		<td align="right" nowrap ><a class="tooltip" href="javascript:void(0);" title="The automatically calculated crawl interval for this task.">Auto Interval</a></td>
+		<td class="td_border">
+		<input id="autoInterval" type="checkbox" name="autoInterval" value="true"/>
+		</td>
+		<td colspan="2" class="intervalN"></td>
+		
+		<td align="right" nowrap style="width:150px; display:none;" class="intervalY"><a class="tooltip" href="javascript:void(0);" title="Crawl default interval for a scheduled task execution time increases delay time">Interval(mins)</a></td>
+		<td class="td_border intervalY" style="display:none;">
+			<input type="text" id="interval" name="interval" size="90" value="0" style="width: 80px" onkeypress="return event.keyCode>=48&&event.keyCode<=57" onblur="this.value=this.value.replace(/[^0-9]/g,'')"/>
+		</td>
+	</tr>
+	<tr class="advanced-settings">
+		<td align="right" nowrap style="display:none;" class="intervalY"><a class="tooltip" href="javascript:void(0);" title="When fetch data, the system will reduce the crawl interval, but not less than the minimum interval, The default value is 0 which means no limit will be applied.">Interval Min(mins)</a></td>
+		<td class="td_border intervalY" style="display:none;">
+			<input type="text" id="intervalMin" name="intervalMin" size="90" value="0" style="width: 80px" onkeypress="return event.keyCode>=48&&event.keyCode<=57" onblur="this.value=this.value.replace(/[^0-9]/g,'')"/>
+		</td>
+		
+		<td align="right" nowrap style="display:none;width:150px;" class="intervalY"><a class="tooltip" href="javascript:void(0);" title="When there is no data to fetch, the system will increase the crawl interval, but not greater than the maximum interval, The default value is 0 which means no limit will be applied.">Interval Max(mins)</a></td>
+		<td class="td_border intervalY" style="display:none;">
+			<input type="text" id="intervalMax" name="intervalMax" size="90" value="0" style="width: 80px" onkeypress="return event.keyCode>=48&&event.keyCode<=57" onblur="this.value=this.value.replace(/[^0-9]/g,'')"/>
+		</td>
 	</tr>
 	
 	<tr>
