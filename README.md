@@ -13,7 +13,7 @@ NewCrawler Quick Start
 
 >www.newcrawler.com
 
-Install NewCrawler
+Linux install NewCrawler
 ----
 
 Installing software packages on Centos / Fedora servers:
@@ -67,7 +67,19 @@ Modify the database to MySQL or use the default file database
 	javax.jdo.option.ConnectionUserName=root
 	javax.jdo.option.ConnectionPassword=123456
 	
-	
+Windows install NewCrawler
+----
+
+>x86
+
+>https://github.com/speed/windows-32bit-jetty-jre
+
+>x64
+
+>https://github.com/speed/windows-64bit-jetty-jre
+
+
+
 Google App Engine  install NewCrawler
 ----
 
