@@ -59,6 +59,16 @@ Installing software packages on Ubuntu / Debian servers:
 		[root@localhost ~]# ls newcrawler
 		db  jetty  jre  phantomjs  start.sh  stop.sh  war
 
+Installing software packages on Google App Engine:
+
+>https://github.com/speed/newcrawler-gae-shell
+
+
+
+
+
+
+
 Modify the database to MySQL or use the default file database
 
 	#edit 'war/WEB-INF/classes/datanucleus.properties'
