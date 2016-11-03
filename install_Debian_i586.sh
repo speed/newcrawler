@@ -38,5 +38,7 @@ wget --no-check-certificate https://github.com/speed/linux-64bit-jetty-jre/raw/m
 rm -f -v jetty.tar.gz
 rm -f -v phantomjs-linux.tar.bz2
 rm -f -v server-jre-linux.tar.gz
+rm -f -v install_*.sh
+rm -f -v Dockerfile
 
 echo 'Congratulations, the installation is successful.'
