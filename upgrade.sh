@@ -1,6 +1,6 @@
 #upgrade
 
-cd newcrawler
+cd ~/newcrawler
 
 #bak
 \cp -R war/WEB-INF/classes war/WEB-INF/classes_bak
