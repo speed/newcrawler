@@ -7,7 +7,10 @@ cd ~/newcrawler
 
 git pull
 
-\cp -R war/WEB-INF/classes_bak war/WEB-INF/classes
+rm -f -v install_*.sh
+rm -f -v Dockerfile
+
+\cp -R war/WEB-INF/classes_bak/* war/WEB-INF/classes
 rm -R -f -v war/WEB-INF/classes_bak
 
 sh stop.sh
