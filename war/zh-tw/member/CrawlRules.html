@@ -121,6 +121,10 @@
         <input name="searchMode" type="radio" id="searchMode" value="label"  onclick="crawlRules.fn.changeSearchMode()">
         <a class="tooltip" style="font-weight:normal;" title="標簽組合，格式：‘${標簽名}其它字符${標簽名}’ <br/> 使用${SYSTEM-TIME} 可以獲取系統時間戳， 格式：1400595057890" href="javascript:void(0);">標簽組合</a>
         
+        
+        <input name="searchMode" type="radio" id="searchMode" value="auto"  onclick="crawlRules.fn.changeSearchMode()">
+        <a class="tooltip" style="font-weight:normal;" title="自动标题、正文提取" href="javascript:void(0);">自动解析</a>
+        
       	</td>
       	</tr></table>
       	<div  id="stringLabel" style="display:block;">
@@ -149,6 +153,15 @@
       	
       	<div  id="labelLabel" style="display:none;">
       		<div style="padding-right:8px;"><textarea name="labelCombination" rows="4" id="labelCombination" style="width:100%" ></textarea></div>
+      	</div>
+      	
+      	<div  id="autoLabel" style="display:none;">
+      		<div style="padding-right:8px;">
+	      		<select name="autoProperty" style="width:150px;">
+		      		<option value="1">Headline</option>
+		      		<option value="2">Content</option>
+	      		</select>
+      		</div>
       	</div>
       </td>
       </tr>
@@ -224,7 +237,7 @@
            			<div style="margin: 0px 0px 0px 45px;display:none;" id="isFetchUrl_option">
 	           			<div style="margin: 5px 5px 2px 0px;">
 		           			<div style="height: 25px;width: 90px;float: left;line-height: 25px;">
-		           			<a class="tooltip" style="font-weight:normal;" title="CrawlRules.html.label.httpRequest.title"  href="javascript:void(0);">CrawlRules.html.label.httpRequest</a>
+		           			<a class="tooltip" style="font-weight:normal;" title="需要在'設置' > 'HTTP請求'中定義"  href="javascript:void(0);">HTTP請求：</a>
 		           			</div>
 		           			<div style="margin: 0 0px 0 95px;">
 		           			<select id="httpRequestId" name="httpRequestId" style="width:160px;">

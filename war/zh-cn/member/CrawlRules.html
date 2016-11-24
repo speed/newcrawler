@@ -121,6 +121,10 @@
         <input name="searchMode" type="radio" id="searchMode" value="label"  onclick="crawlRules.fn.changeSearchMode()">
         <a class="tooltip" style="font-weight:normal;" title="标签组合，格式：‘${标签名}其它字符${标签名}’ <br/> 使用${SYSTEM-TIME} 可以获取系统时间戳， 格式：1400595057890" href="javascript:void(0);">标签组合</a>
         
+        
+        <input name="searchMode" type="radio" id="searchMode" value="auto"  onclick="crawlRules.fn.changeSearchMode()">
+        <a class="tooltip" style="font-weight:normal;" title="自动标题、正文提取" href="javascript:void(0);">自动解析</a>
+        
       	</td>
       	</tr></table>
       	<div  id="stringLabel" style="display:block;">
@@ -149,6 +153,15 @@
       	
       	<div  id="labelLabel" style="display:none;">
       		<div style="padding-right:8px;"><textarea name="labelCombination" rows="4" id="labelCombination" style="width:100%" ></textarea></div>
+      	</div>
+      	
+      	<div  id="autoLabel" style="display:none;">
+      		<div style="padding-right:8px;">
+	      		<select name="autoProperty" style="width:150px;">
+		      		<option value="1">Headline</option>
+		      		<option value="2">Content</option>
+	      		</select>
+      		</div>
       	</div>
       </td>
       </tr>

@@ -1,0 +1,83 @@
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>采集任務</title>
+</head>
+  <body>
+  <table id="crawlTaskTableList" width="100%">
+      <tr>
+	  <td width="100%" valign="top">
+	  <table width="100%">
+	  	<tr>
+        <td width="100%" class="td_border">
+        	<span id="createTask" class="file" style="display:none;" title="SiteTasksByCreate.html">添加采集站點</span>
+        	
+        	<input name="create" type="button" id="create"  value="添加采集站點">
+			<input name="delete" type="button" id="delete"  value="刪除">
+			<input name="pin2Sidebar" type="button" id="pin2Sidebar"  value="附到側邊欄">
+			<input name="unlockFromSidebar" type="button" id="unlockFromSidebar"  value="解鎖從側邊欄">
+			
+		</td>
+        </tr>
+        
+		<tr>
+        <td width="100%">
+		
+		</td>
+        </tr>
+	  </table>
+	  <div style="padding:0px 2px 2px 2px;">
+		
+		<table id="crawlTaskList" width="100%" align="center" class="table_border2 tableList" style="border:1px solid #CCCCCC;border-collapse:collapse;background-color: #FFFFFF;">
+			<tr>
+				<td width="5%" nowrap bgcolor="whiteSmoke">&nbsp;選擇</td>
+				<td width="10%" nowrap bgcolor="whiteSmoke">&nbsp;&nbsp;&nbsp;名稱</td>
+				<td width="60%" nowrap bgcolor="whiteSmoke">網址</td>
+				<td width="10%" nowrap bgcolor="whiteSmoke">創建時間</td>
+				
+			</tr>
+	  </table>
+		
+		<div id="line" style="height:5px;"></div>
+		<div id="hiddenresult" style="display:none;">
+        
+        </div>
+		<div id="Pagination"></div>
+	  </div>
+	  </td>
+	  
+	  </tr>
+	  <tr>
+	  <td align="left" style="padding:5px 5px 0px 5px;" >
+	  	 記錄總數(<label id="URL_COUNT" style="color:red;">0</label>)  <label style="color: rgb(34, 102, 187);cursor: pointer;" class="statistic">重新統計</label>
+	  </td>
+	  </tr>
+
+  </table>
+  <script type="text/javascript">
+$(document).ready(function(){
+	  
+	  var initFun = function(){
+		  var crawlTask=new crawlTaskFun({
+			  tableId:"crawlTaskTableList",
+			  listTableId:"crawlTaskList",
+			  jsonData:new Array(),
+			  webCrawlerId:webCrawlerId,
+			  PER_PAGE_ITEMS:10,
+			  ITEMS_COUNT:0,
+			  cur_page:0
+		  });
+		  crawlTask.fn.init();
+		  poshytip('.tooltip');
+	  };
+	  
+	  var initLoading=setInterval(function(){
+		  if(typeof crawlTask != 'undefined'){
+			 clearInterval(initLoading);
+			 initFun();
+		  }
+	  },500);
+	});
+  </script>
+  </body>
+</html>
