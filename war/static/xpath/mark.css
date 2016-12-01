@@ -26,8 +26,8 @@
 .ncx_et_content{clear:left;display:none;font-size: 13px; line-height: 19px; color: #111; font-family: "Hiragino Sans GB","Microsoft Yahei",Arial,sans-serif;}
 .ncx_et_content_footer{display:none;font-size: 13px; line-height: 19px; color: #111; font-family: "Hiragino Sans GB","Microsoft Yahei",Arial,sans-serif;}
 .ncx_et_content .ncx_et_content_inner{padding:12px 10px;font-size:12px; font: 12px/1.5 '宋体',Arial,sans-serif;}
-.ncx_et_content .ncx_et_content_inner .ncx_xpath{padding: 3px;color:#A80C0C; font-size: 14px;line-height:20px;background-color: white;border: solid 1px #B2B2B2;text-align: left;word-break:break-all;overflow:auto;}
-.ncx_et_content .ncx_et_content_inner .ncx_csspath{padding: 3px;color:#A80C0C; font-size: 14px;line-height:20px;background-color: white;border: solid 1px #B2B2B2;text-align: left;word-break:break-all;overflow:auto;}
+.ncx_et_content .ncx_et_content_inner .ncx_xpath{padding: 3px;color:#A80C0C; font-size: 14px;line-height:25px;background-color: white;border: solid 1px #B2B2B2;text-align: left;word-break:break-all;overflow:auto;height: 25px;width: 100%;}
+.ncx_et_content .ncx_et_content_inner .ncx_csspath{padding: 3px;color:#A80C0C; font-size: 14px;line-height:20px;background-color: white;border: solid 1px #B2B2B2;text-align: left;word-break:break-all;overflow:auto;height: 20px;width: 100%;}
 .ncx_et_content .ncx_et_content_inner .ncx_content{max-height: 150px;min-height: 150px;cursor: default;color:#333; line-height:20px;background-color: white;border: solid 1px #B2B2B2;text-align: left;word-break:break-all;overflow:auto;}
 .ncx_et_content .ncx_et_content_inner .ncx_button{margin-left:18px;margin-top:8px;}
 .ncx_et_content .ncx_et_content_inner .ncx_tips{margin-top:8px; color:#B1846A;}
