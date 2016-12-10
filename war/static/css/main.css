@@ -742,6 +742,12 @@ h3 {
 #scheduledTaskLogTable tr {height: 40px;}
 #scheduledTaskLogTable tr td{text-align: center;}
 
+.filetree span.folder {display: inline-block;}
+.filetree li.expandable span.folder,.filetree li.collapsable span.folder {display: inline-block;}
+.filetree li.expandable span.navicon,.filetree li.collapsable span.navicon {display:inline-block;margin-left: 10px;color:#ccc8c8;}
+.filetree li.expandable span.navicon.hover,.filetree li.collapsable span.navicon.hover {display:inline-block;color: red;}
+.filetree li.expandable span.navicon span,.filetree li.collapsable span.navicon span {display:inline-block;}
+
 .filetree li.expandable span.folder-inactive {background: url(../images/folder-closed-inactive.gif) 0 0 no-repeat;}
 .filetree span.folder-inactive {background: url(../images/folder-closed-inactive.gif) 0 0 no-repeat;}
 .logs_red{color:rgb(255, 112, 112);}

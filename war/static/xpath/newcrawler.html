@@ -1,6 +1,6 @@
 <html>
 <head>
-<link type='text/css' rel='stylesheet' href='../static/xpath/mark.css?v2.3' />
+<link type='text/css' rel='stylesheet' href='../static/xpath/mark.css?v3.1' />
 
 <link type='text/css' rel='stylesheet' href='//cdn.newcrawler.com/static/js/datetimepicker-master/jquery.datetimepicker.css' />
 <link type='text/css' rel='stylesheet' href='//cdn.newcrawler.com/static/js/clockpicker/dist/jquery-clockpicker.min.css' />
@@ -19,7 +19,7 @@
 <script type="text/javascript" src="../static/js/main.logsview.console-min.js"></script>
 
 <script type="text/javascript" src="../static/xpath/depend.js"></script>
-<script type="text/javascript" src="../static/xpath/mark-min.js?v2.4"></script>
+<script type="text/javascript" src="../static/xpath/mark-min.js?v3.1"></script>
 
 </head>
 <body style="padding: 0px; margin: 0px; overflow: hidden;">
@@ -37,8 +37,26 @@
 			<span class="ncx-count">0</span>
 			<span class="ncx-delete-datatype" style="display: none;"></span>
 		</a>    
-		<a lang="0" class="ncx-toolbar-button ncx-pagination ncx-data-dot" title="Pagination" style="display: inline-block; -webkit-transform: translate3d(0px, 0px, 0px); transform: translate3d(0px, 0px, 0px);"></a>
-		
+		<a lang="0" class="ncx-toolbar-button ncx-pagination ncx-label ncx-data-dot" title="Pagination">
+			<span class="ncx-count" style="display: none;">0</span>
+			<span class="ncx-delete-datatype" style="display: none;"></span>
+		</a>
+		<a class="ncx-new-datatype" title="Done" style=""></a> 
+	</div>
+	
+	<div class="ncx-toolbar-section">      
+	<select id="ncx-selector-attr" style="line-height: 22px; height: 22;width:90px;">
+		<optgroup label="Html">
+		<option value ="outerHTML">OuterHTML</option>
+	    <option value ="innerHTML" selected>InnerHTML</option>
+	    <option value ="innerTEXT">InnerTEXT</option>
+	  	</optgroup>
+	    <optgroup label="Attr">
+	  	</optgroup>
+	</select>
+	</div>
+	
+	<div class="ncx-toolbar-section ncx-datatypes" style="display: inline-block; -webkit-transform: translate3d(0px, 0px, 0px); transform: translate3d(0px, 0px, 0px);">    
 		<div class="ncx-cron-dot" >
 		<a lang="" class="ncx-toolbar-button ncx-cron ncx-data-dot" title="Cron" style="display: inline-block; -webkit-transform: translate3d(0px, 0px, 0px); transform: translate3d(0px, 0px, 0px);"></a>
 		
@@ -95,48 +113,62 @@
 		
 		</div>
 		</div>
-		<a class="ncx-new-datatype" title="New Datatype" style="display:none;"></a> 
 	</div>
 	
-	<div class="ncx-toolbar-section">      
+	<div class="ncx-toolbar-section" style="padding:0;">      
 	<button class="ncx-toolbar-button-primary ncx ncx-button ncx-save">Save</button>
 	</div>
 	
-	<div class="ncx-toolbar-section">      
+	<div class="ncx-toolbar-section" style="padding:0;">      
 	<button class="ncx-toolbar-button-primary ncx ncx-button ncx-test">Test</button>
 	<span class="ncx-poptip-arrow view-pop" style="display:none;top: 32px;height: 0.3em;width: 1em;"><em>◆</em><i>◆</i></span>
 	</div>
 	
-	<div class="ncx-toolbar-section">      
+	<div class="ncx-toolbar-section" style="padding:0;">      
 	<button class="ncx-toolbar-button-primary ncx ncx-button ncx-view">View</button>
 	<span class="ncx-poptip-arrow view-pop" style="display:none;top: 32px;height: 0.3em;width: 1em;"><em>◆</em><i>◆</i></span>
 	</div>
 	<div class="ncx-toolbar-section msg">  
 	    
 	</div>
-	<div class="ncx-toolbar-section ">      
-		<a href="javascript:void(0);" title="" style="margin-left: 20px;padding-top: 10px;" target="_blank">
-		<span id="url" style="width:300px;white-space: nowrap; text-overflow: ellipsis; overflow: hidden;display: inline-block;"></span>
+	<div class="ncx-toolbar-section " style="text-overflow: ellipsis; overflow: hidden; white-space: nowrap; max-width: 200px; position: relative; top: 5px;">      
+		<a href="javascript:void(0);" title="" style="padding-top: 10px;" target="_blank">
+		<span id="url" style="width:300px;white-space: nowrap; text-overflow: ellipsis; overflow: hidden;"></span>
 		</a>
 	</div>
 	
-	<div class="ncx-toolbar-section" style="float:right;margin-right: 70px">
+	<div class="ncx-toolbar-section" style="float:right;margin-right: 20px">
 		<div class="ncx-setting-dot" >
 		<a lang="" class="ncx-toolbar-button ncx-help ncx-data-dot" title="Help" style="opacity: 1;display: inline-block; -webkit-transform: translate3d(0px, 0px, 0px); transform: translate3d(0px, 0px, 0px);"></a>
 		
-		<div class="ncx-help-info">
-		<span class="ncx-poptip-arrow ncx-poptip-arrow-top" style="left: 94%;"><em>◆</em><i>◆</i></span>
+		<div class="ncx-help-info" style="display:none;">
+		<span class="ncx-poptip-arrow ncx-poptip-arrow-top" style="left: 315;"><em>◆</em><i>◆</i></span>
 		
 		<div>
 		<div class="explain-block">
             <h2 style="color: #f5992b;">Hotkey</h2>
-            <div class="content">
-                <span class="hint-text">
-                    <span class="info">
+            <div class="content" style="padding-top: 15px;">
+                <span class="hint-text" style="line-height: 20px;">
+                    <span class="info" style="width: 80px;">
                         <span class="glyphicon glyphicon-info-sign"></span>
-                        Ctrl:
+                        Space
                     </span>
-                    <span style="line-height: 1.42857;">Turn on/off the multiple selection.</span><br/>
+                    <span style="line-height: 1.42857;">Turn on/off the detail.</span><br/>
+                    <span class="info" style="width: 80px;">
+                        <span class="glyphicon glyphicon-info-sign"></span>
+                        ESC
+                    </span>
+                    <span style="line-height: 1.42857;">Reset column.</span><br/>
+                    <span class="info" style="width: 80px;">
+                        <span class="glyphicon glyphicon-info-sign"></span>
+                        Enter
+                    </span>
+                    <span style="line-height: 1.42857;">Save column.</span><br/>
+                    <span class="info" style="width: 80px;">
+                        <span class="glyphicon glyphicon-info-sign"></span>
+                        Right Arrow
+                    </span>
+                    <span style="line-height: 1.42857;">Save column.</span><br/>
                 </span>
             </div>
         </div>
@@ -152,9 +184,16 @@
 	</span>
 	<a href="javascript:void(0);" title="Can't find the data you want?" style="margin-left: 20px;padding-top: 10px;">Load JavaScript</a>
 	</div>
+	
+	<div class="ncx-toolbar-section ncx-style" title="Disabled CSS Style" style="float:right;margin-top: 8px;">
+	<span style="padding-top: 1px; position: absolute;">
+	<input type="hidden" id="ncx-pluginId"/> 
+	<input type="checkbox" name="ncx-isStyle" class="isStyle" value="true" checked/> 
+	</span>
+	<a href="javascript:void(0);" title="Can't find the data you want?" style="margin-left: 20px;padding-top: 10px;">CSS</a>
 	</div>
 	
-	
+	</div>
 </div>
 
 <div id="ncx_tooltest">
@@ -195,6 +234,7 @@
 	</div>
 </div>
 <div id="ncx_toolview">
+	<div style="width:100%;height:46px;"></div>
 	<div class="ncx-export-window ncx-export-window-wordpress" style="display:none;">
 		<div class="ncx-export-logo ncx-export-wordpress" style="float: left; padding: 70px 0 0 70px;background-color: white;">
 		</div>
@@ -301,6 +341,7 @@
 	</div>
 	
 	<div class="ncx-content-top">
+		<div style="width:100%;height:42px;"></div>
 		<div class="ncx-content-top-data">
 		<table id="ncx_data_list" class="ncx_data_list">
 		</table>
@@ -394,11 +435,15 @@
 	</div>
 </div>
 
+<div id="newcrawler-csspath" style="z-index: 1;border-radius: 0px 0px 6px 0px;font-size: small;padding: 46px 15px 0;opacity: 0.7;position: absolute;color: #000000;line-height: 20px;background-color: #ffffff;">
+
+</div>
 
 <div id="newcrawler-selector">
 
 </div>
-<iframe id="newcrawler" name="newcrawler" style='display: block; width: 100%; border: 0px; height: 100%'></iframe>
+
+<iframe id="newcrawler" name="newcrawler" style='display: block; width: 100%; border: 0px; height: 100%; position:absolute;top:46px;bottom:0;'></iframe>
 
 <script>
 #{js}
