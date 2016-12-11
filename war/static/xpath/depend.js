@@ -6,6 +6,7 @@ var showLoading=function(obj, opacity){
 };
 
 function showInfo(msg){
+	console.log(msg);
 }
 
 //一次性全部删除  
