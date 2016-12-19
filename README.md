@@ -13,7 +13,7 @@ NewCrawler Quick Start
 
 >www.newcrawler.com
 
-Linux install NewCrawler
+Linux
 ----
 
 Installing software packages on Centos / Fedora servers:
@@ -67,7 +67,7 @@ Modify the database to MySQL or use the default file database
 	javax.jdo.option.ConnectionUserName=root
 	javax.jdo.option.ConnectionPassword=123456
 	
-Windows install NewCrawler
+Windows
 ----
 
 >x86
@@ -80,13 +80,13 @@ Windows install NewCrawler
 
 
 
-Google App Engine  install NewCrawler
+Google App Engine
 ----
 
 >https://github.com/speed/newcrawler-gae-shell
 
 
-Docker install NewCrawler
+Docker
 ----
 
 >docker pull newcrawler/spider
