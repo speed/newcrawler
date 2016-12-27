@@ -22,6 +22,7 @@ wget --no-check-certificate --no-cookies --header "Cookie: oraclelicense=accept-
 mkdir ./jre && tar -xzvf server-jre-linux.tar.gz -C ./jre --strip-components 1
 
 #jre jce email send 
+yum -y install unzip
 jce="http://download.oracle.com/otn-pub/java/jce/7/UnlimitedJCEPolicyJDK7.zip"
 wget --no-check-certificate --no-cookies --header "Cookie: oraclelicense=accept-securebackup-cookie" $jre -O UnlimitedJCEPolicyJDK7.zip
 mv jre/jre/lib/security/local_policy.jar jre/jre/lib/security/local_policy.jar_bak
