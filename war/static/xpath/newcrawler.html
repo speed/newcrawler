@@ -1,6 +1,6 @@
 <html>
 <head>
-<link type='text/css' rel='stylesheet' href='../static/xpath/mark.css?v3.2' />
+<link type='text/css' rel='stylesheet' href='../static/xpath/mark.css?v3.3' />
 
 <link type='text/css' rel='stylesheet' href='//cdn.newcrawler.com/static/js/datetimepicker-master/jquery.datetimepicker.css' />
 <link type='text/css' rel='stylesheet' href='//cdn.newcrawler.com/static/js/clockpicker/dist/jquery-clockpicker.min.css' />
@@ -19,7 +19,8 @@
 <script type="text/javascript" src="../static/js/main.logsview.console-min.js"></script>
 
 <script type="text/javascript" src="../static/xpath/depend.js"></script>
-<script type="text/javascript" src="../static/xpath/mark-min.js?v3.2"></script>
+<script type="text/javascript" src="../static/xpath/mark-min.js?v3.3"></script>
+<script type="text/javascript" src="../static/js/base64-min.js"></script>
 
 </head>
 <body style="padding: 0px; margin: 0px; overflow: hidden;">
@@ -182,15 +183,21 @@
 	<input type="hidden" id="ncx-pluginId"/> 
 	<input type="checkbox" name="ncx-isJs" class="isJavaScript" value="true"/> 
 	</span>
-	<a href="javascript:void(0);" title="Can't find the data you want?" style="margin-left: 20px;padding-top: 10px;">Load JavaScript</a>
+	<a href="javascript:void(0);" title="Can't find the data you want?" style="margin-left: 20px;padding-top: 10px;">JavaScript</a>
 	</div>
 	
 	<div class="ncx-toolbar-section ncx-style" title="Disabled CSS Style" style="float:right;margin-top: 8px;">
 	<span style="padding-top: 1px; position: absolute;">
-	<input type="hidden" id="ncx-pluginId"/> 
 	<input type="checkbox" name="ncx-isStyle" class="isStyle" value="true" checked/> 
 	</span>
 	<a href="javascript:void(0);" title="Can't find the data you want?" style="margin-left: 20px;padding-top: 10px;">CSS</a>
+	</div>
+	
+	<div class="ncx-toolbar-section ncx-event" title="Load Event" style="float:right;margin-top: 8px;">
+	<span style="padding-top: 1px; position: absolute;">
+	<input type="checkbox" name="ncx-isEvent" class="isEvent" value="true"/> 
+	</span>
+	<a href="javascript:void(0);" title="Can't find the data you want?" style="margin-left: 20px;padding-top: 10px;">Event</a>
 	</div>
 	
 	</div>
