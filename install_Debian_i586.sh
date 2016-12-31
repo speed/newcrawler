@@ -25,7 +25,7 @@ mkdir ./jre && tar -xzvf server-jre-linux.tar.gz -C ./jre --strip-components 1
 #jre jce email send 
 apt-get -y install unzip
 jce="http://download.oracle.com/otn-pub/java/jce/7/UnlimitedJCEPolicyJDK7.zip"
-wget --no-check-certificate --no-cookies --header "Cookie: oraclelicense=accept-securebackup-cookie" $jre -O UnlimitedJCEPolicyJDK7.zip
+wget --no-check-certificate --no-cookies --header "Cookie: oraclelicense=accept-securebackup-cookie" $jce -O UnlimitedJCEPolicyJDK7.zip
 mv jre/jre/lib/security/local_policy.jar jre/jre/lib/security/local_policy.jar_bak
 mv jre/jre/lib/security/US_export_policy.jar jre/jre/lib/security/US_export_policy.jar_bak
 unzip -n UnlimitedJCEPolicyJDK7.zip
