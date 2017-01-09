@@ -104,6 +104,17 @@ Startup NewCrawler
 http://127.0.0.1:8500 
 
 
+Shutdown NewCrawler
+----
+
+>sh newcrawler/stop.sh
+
+Upgrade NewCrawler
+----
+
+>sh newcrawler/upgrade.sh
+
+
 [![ScreenShot](https://raw.githubusercontent.com/speed/resources/master/images/NewCrawler_Video.jpg)](http://video.newcrawler.com/newcrawler_v2.2.mp4)
 
 
