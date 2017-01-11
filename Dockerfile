@@ -16,7 +16,7 @@ ENV phantomjs="https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-2.1.1-l
 
 RUN yum -y install wget tar git
 
-RUN git clone https://github.com/speed/newcrawler.git
+RUN git clone https://github.com/speed/newcrawler.git ~/newcrawler
 
 #jetty
 RUN cd ~/newcrawler; wget --no-check-certificate $jetty -O jetty.tar.gz
