@@ -8,7 +8,7 @@ phantomjs="https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-2.1.1-linux
 
 yum -y install tar git
 
-git clone https://github.com/speed/newcrawler.git
+git clone https://github.com/speed/newcrawler.git ~/newcrawler
 
 cd newcrawler
 
