@@ -75,3 +75,7 @@ USER ncuser
 CMD cd /opt/newcrawler; /bin/bash -C 'start.sh';/bin/bash
 
 RUN echo 'Startup is successful.'
+
+EXPOSE 8500
+
+
