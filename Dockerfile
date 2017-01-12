@@ -69,7 +69,7 @@ RUN cd /opt/newcrawler; rm -f -v Dockerfile
 
 RUN echo 'Congratulations, the installation is successful.'
 
-RUN chmod +rwx /opt/newcrawler
+RUN chmod -R +rwx /opt/newcrawler
 RUN chown -R ncuser:ncuser /opt/newcrawler
 
 USER ncuser
