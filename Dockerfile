@@ -60,3 +60,5 @@ RUN cd ~/newcrawler; rm -f -v Dockerfile
 RUN echo 'Congratulations, the installation is successful.'
 
 CMD cd ~/newcrawler; /bin/bash -C 'start.sh';/bin/bash
+
+RUN echo 'Startup is successful.'
