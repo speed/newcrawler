@@ -26,6 +26,8 @@ RUN useradd ncuser --shell /bin/bash --create-home \
 
 RUN git clone https://github.com/speed/newcrawler.git /opt/newcrawler
 
+sed -ie 's/jdbc:hsqldb:file:~\/newcrawler\/db\/spider/jdbc:hsqldb:file:\/opt\/newcrawler\/db\/spider/g' /opt/newcrawler/war/WEB-INF/classes/datanucleus.properties
+
 #jetty
 RUN cd /opt/newcrawler; wget --no-check-certificate $jetty -O jetty.tar.gz
 RUN cd /opt/newcrawler; mkdir ./jetty && tar -xzvf jetty.tar.gz -C ./jetty --strip-components 1
