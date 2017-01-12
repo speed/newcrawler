@@ -14,7 +14,7 @@ ENV phantomjs="https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-2.1.1-l
 
 USER root
 
-RUN yum -y install wget tar git
+RUN yum -y install wget tar git sed
 
 #========================================
 # Add normal user with passwordless sudo
