@@ -20,7 +20,7 @@ RUN yum -y install wget tar git
 # Add normal user with passwordless sudo
 #======================================== 
 useradd ncuser --shell /bin/bash --create-home \
-  && sudo usermod -a -G wheel ncuser \
+  && usermod -a -G wheel ncuser \
   && echo '%wheel ALL = (ALL) NOPASSWD: ALL' >> /etc/sudoers \
   && echo 'ncuser:secret' | chpasswd
 
