@@ -12,7 +12,7 @@ ENV jetty="http://repo1.maven.org/maven2/org/eclipse/jetty/jetty-distribution/9.
 ENV jre="http://download.oracle.com/otn-pub/java/jdk/8u74-b02/server-jre-8u74-linux-x64.tar.gz"
 ENV phantomjs="https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-2.1.1-linux-x86_64.tar.bz2"
 
-RUN yum -y install wget tar git
+RUN yum -y install wget tar git sudo
 
 #========================================
 # Add normal user with passwordless sudo
