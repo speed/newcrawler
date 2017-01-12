@@ -16,10 +16,10 @@ cd newcrawler
 wget --no-check-certificate $jetty -O jetty.tar.gz
 mkdir ./jetty && tar -xzvf jetty.tar.gz -C ./jetty --strip-components 1
 
-
 #jre
 wget --no-check-certificate --no-cookies --header "Cookie: oraclelicense=accept-securebackup-cookie" $jre -O server-jre-linux.tar.gz
 mkdir ./jre && tar -xzvf server-jre-linux.tar.gz -C ./jre --strip-components 1
+chmod +rwx ./jre -R
 
 #jre jce email send 
 yum -y install unzip
