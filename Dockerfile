@@ -14,13 +14,13 @@ ENV phantomjs="https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-2.1.1-l
 
 USER root
 
-RUN yum -y install wget tar git
+RUN yum -y install wget tar git sudo
 
 #========================================
 # Add normal user with passwordless sudo
 #======================================== 
-useradd ncuser --shell /bin/bash --create-home \
-  && usermod -a -G wheel ncuser \
+sudo useradd ncuser --shell /bin/bash --create-home \
+  && sudo usermod -a -G wheel ncuser \
   && echo '%wheel ALL = (ALL) NOPASSWD: ALL' >> /etc/sudoers \
   && echo 'ncuser:secret' | chpasswd
 
