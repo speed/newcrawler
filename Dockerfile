@@ -16,12 +16,12 @@ RUN yum -y install wget tar git sudo
 
 #========================================
 # Add normal user with passwordless sudo
-#========================================
-RUN sudo useradd ncuser --shell /bin/bash --create-home \
-  && sudo usermod -a -G sudo ncuser \
-  && echo 'ALL ALL = (ALL) NOPASSWD: ALL' >> /etc/sudoers \
+#======================================== 
+sudo useradd ncuser --shell /bin/bash --create-home \
+  && sudo usermod -a -G wheel ncuser \
+  && echo '%wheel ALL = (ALL) NOPASSWD: ALL' >> /etc/sudoers \
   && echo 'ncuser:secret' | chpasswd
-
+  
 USER root
 
 RUN git clone https://github.com/speed/newcrawler.git /opt/newcrawler
