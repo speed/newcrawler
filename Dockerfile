@@ -12,9 +12,17 @@ ENV jetty="http://repo1.maven.org/maven2/org/eclipse/jetty/jetty-distribution/9.
 ENV jre="http://download.oracle.com/otn-pub/java/jdk/8u74-b02/server-jre-8u74-linux-x64.tar.gz"
 ENV phantomjs="https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-2.1.1-linux-x86_64.tar.bz2"
 
-
-
 RUN yum -y install wget tar git
+
+#========================================
+# Add normal user with passwordless sudo
+#========================================
+RUN sudo useradd ncuser --shell /bin/bash --create-home \
+  && sudo usermod -a -G sudo ncuser \
+  && echo 'ALL ALL = (ALL) NOPASSWD: ALL' >> /etc/sudoers \
+  && echo 'ncuser:secret' | chpasswd
+
+USER root
 
 RUN git clone https://github.com/speed/newcrawler.git /opt/newcrawler
 
@@ -58,6 +66,11 @@ RUN cd /opt/newcrawler; rm -f -v install_*.sh
 RUN cd /opt/newcrawler; rm -f -v Dockerfile
 
 RUN echo 'Congratulations, the installation is successful.'
+
+RUN chmod +x /opt/newcrawler
+RUN chown -R ncuser:ncuser /opt/newcrawler
+
+USER seluser
 
 CMD cd /opt/newcrawler; /bin/bash -C 'start.sh';/bin/bash
 
