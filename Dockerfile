@@ -14,14 +14,14 @@ ENV phantomjs="https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-2.1.1-l
 
 USER root
 
-RUN yum -y install wget tar git sed
+RUN yum -y install wget tar git sed sudo
 
 #========================================
 # Add normal user with passwordless sudo
 #======================================== 
-RUN useradd ncuser --shell /bin/bash --create-home \
-  && usermod -a -G wheel ncuser \
-  && echo '%wheel ALL = (ALL) NOPASSWD: ALL' >> /etc/sudoers \
+RUN sudo useradd ncuser --shell /bin/bash --create-home \
+  && sudo usermod -a -G sudo ncuser \
+  && echo 'ALL ALL = (ALL) NOPASSWD: ALL' >> /etc/sudoers \
   && echo 'ncuser:secret' | chpasswd
 
 RUN git clone https://github.com/speed/newcrawler.git /opt/newcrawler
