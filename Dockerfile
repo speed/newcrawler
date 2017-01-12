@@ -70,7 +70,7 @@ RUN echo 'Congratulations, the installation is successful.'
 RUN chmod +x /opt/newcrawler
 RUN chown -R ncuser:ncuser /opt/newcrawler
 
-USER seluser
+USER ncuser
 
 CMD cd /opt/newcrawler; /bin/bash -C 'start.sh';/bin/bash
 
