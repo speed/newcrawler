@@ -55,7 +55,7 @@ RUN cd /opt/newcrawler; phantomjs/bin/phantomjs --version
 
 #Script and Config
 RUN cd /opt/newcrawler; wget --no-check-certificate https://github.com/speed/linux-64bit-jetty-jre/raw/master/jetty/webapps/newcrawler.xml -P jetty/webapps/ -O jetty/webapps/newcrawler.xml
-RUN cd /opt/newcrawler; wget --no-check-certificate https://github.com/speed/linux-64bit-jetty-jre/raw/master/start.sh -O start.sh
+RUN cd /opt/newcrawler; wget --no-check-certificate https://github.com/speed/linux-64bit-jetty-jre/raw/master/start.sh?v2 -O start.sh
 RUN cd /opt/newcrawler; wget --no-check-certificate https://github.com/speed/linux-64bit-jetty-jre/raw/master/stop.sh -O stop.sh
 
 #Remove install package
@@ -67,7 +67,7 @@ RUN cd /opt/newcrawler; rm -f -v Dockerfile
 
 RUN echo 'Congratulations, the installation is successful.'
 
-RUN chmod +x /opt/newcrawler
+RUN chmod +rwx /opt/newcrawler
 RUN chown -R ncuser:ncuser /opt/newcrawler
 
 USER ncuser
