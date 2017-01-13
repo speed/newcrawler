@@ -62,6 +62,9 @@ RUN cd /opt/newcrawler; wget --no-check-certificate https://github.com/speed/lin
 RUN cd /opt/newcrawler; wget --no-check-certificate https://github.com/speed/linux-64bit-jetty-jre/raw/master/start.sh -O start.sh
 RUN cd /opt/newcrawler; wget --no-check-certificate https://github.com/speed/linux-64bit-jetty-jre/raw/master/stop.sh -O stop.sh
 
+RUN mkdir /opt/selenium; wget --no-verbose -O /opt/selenium/ModHeader.crx https://raw.githubusercontent.com/speed/newcrawler-plugin-urlfetch-chrome/master/crx/ModHeader.crx\
+    && chmod 755 /opt/selenium/ModHeader.crx
+
 #Remove install package
 RUN cd /opt/newcrawler; rm -f -v jetty.tar.gz
 RUN cd /opt/newcrawler; rm -f -v phantomjs-linux.tar.bz2
