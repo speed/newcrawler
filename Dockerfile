@@ -59,7 +59,7 @@ RUN cd /opt/newcrawler; phantomjs/bin/phantomjs --version
 
 #Script and Config
 RUN cd /opt/newcrawler; wget --no-check-certificate https://github.com/speed/linux-64bit-jetty-jre/raw/master/jetty/webapps/newcrawler.xml -P jetty/webapps/ -O jetty/webapps/newcrawler.xml
-RUN cd /opt/newcrawler; wget --no-check-certificate https://github.com/speed/linux-64bit-jetty-jre/raw/master/start.sh -O start.sh
+RUN cd /opt/newcrawler; wget --no-check-certificate https://github.com/speed/newcrawler/raw/master/start.sh -O start.sh
 RUN cd /opt/newcrawler; wget --no-check-certificate https://github.com/speed/linux-64bit-jetty-jre/raw/master/stop.sh -O stop.sh
 
 RUN mkdir /opt/selenium; wget --no-verbose -O /opt/selenium/ModHeader.crx https://raw.githubusercontent.com/speed/newcrawler-plugin-urlfetch-chrome/master/crx/ModHeader.crx\
@@ -81,15 +81,7 @@ USER ncuser
 
 EXPOSE 8500
 
-#CMD cd /opt/newcrawler; /bin/bash -C 'start.sh';/bin/bash
-
-RUN export PATH=/opt/newcrawler/jre/bin/
-
-RUN java -version
-
-RUN echo ${JAVA_OPTS}
-
-RUN cd /opt/newcrawler/jetty; java ${JAVA_OPTS} -DSTOP.PORT=8504 -DSTOP.KEY=stop_jetty -jar start.jar jetty.port=8500 &
+CMD cd /opt/newcrawler; /bin/bash -C 'start.sh';/bin/bash
 
 RUN echo 'Startup is successful.'
 
