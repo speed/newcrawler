@@ -79,7 +79,15 @@ RUN chown -R ncuser:ncuser /opt/newcrawler
 
 USER ncuser
 
-CMD cd /opt/newcrawler; /bin/bash -C 'start.sh';/bin/bash
+#CMD cd /opt/newcrawler; /bin/bash -C 'start.sh';/bin/bash
+
+RUN export PATH=/opt/newcrawler/jre/bin/
+
+RUN java -version
+
+RUN echo ${JAVA_OPTS}
+
+RUN java ${JAVA_OPTS} -DSTOP.PORT=8504 -DSTOP.KEY=stop_jetty -jar /opt/newcrawler/jetty/start.jar jetty.port=8500 &
 
 RUN echo 'Startup is successful.'
 
