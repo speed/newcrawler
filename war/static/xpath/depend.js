@@ -54,3 +54,13 @@ function getUrlParameter(sParam){
     }
     return "";
 }
+
+function handlerException(errorObject){
+	var msg = errorObject['msg']+"";
+	if(msg==null || msg=="" || msg == undefined || msg == "undefined" ){
+		msg="System Exception!";
+  	}
+	newcrawler.message("show", msg, 0, "red");
+	
+	throw new JSONRpcClient.Exception (errorObject);
+}

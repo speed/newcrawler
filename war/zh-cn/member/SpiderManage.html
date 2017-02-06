@@ -52,7 +52,7 @@
 	  <td colspan="2" width="100%" valign="top">
 	  <form  id="spiderForm" name="spiderForm" method="post">
 	  <input type="hidden" id="id" name="id">
-	  <table width="100%" height="100%" class="table_border2">
+	  <table width="100%" height="100%" class="table_border2" id="siteSpiderTable">
 	  <tr>
         <td width="120" align="right" nowrap class="label">APP URL：</td>
         <td class="td_border">
@@ -89,7 +89,9 @@
       
       <tr>
 			<td colspan="5">
-				<table id="siteSpiderTable" width="100%" align="center" class="table_border2 tableList" style="border:1px solid #CCCCCC;border-collapse:collapse;background-color: #FFFFFF;">
+			
+				<div style="padding:0px 2px 2px 2px;" id="siteSpiderTable" >
+				<table id="siteSpiderList" width="100%" align="center" class="table_border2 tableList" style="border:1px solid #CCCCCC;border-collapse:collapse;background-color: #FFFFFF;">
 					<tr>
 						<td width="3%" nowrap bgcolor="whiteSmoke">&nbsp;选择</td>
 						<td width="5%" nowrap bgcolor="whiteSmoke">状态</td>
@@ -104,8 +106,20 @@
 						<td width="8%" nowrap bgcolor="whiteSmoke">文件下载失败总数</td>
 					</tr>
 				</table>
+				
+				<div id="line" style="height:5px;"></div>
+				<div id="hiddenresult" style="display:none;">
+		        
+		        </div>
+				<div id="Pagination"></div>
+				 </div>
 			</td>
 		</tr>
+		<tr>
+		  <td align="left" style="padding:5px 5px 0px 5px;"  colspan="5">
+		  	 记录总数(<label id="URL_COUNT" style="color:red;">0</label>)  <label style="color: rgb(34, 102, 187);cursor: pointer;" class="statistic">重新统计</label>
+		  </td>
+		 </tr>
       
 	  </table>
 	   </form>	  
