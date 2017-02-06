@@ -5,6 +5,8 @@ cd ~/newcrawler
 #bak
 \cp -R war/WEB-INF/classes war/WEB-INF/classes_bak
 
+git checkout start.sh
+git checkout war/WEB-INF/classes
 git pull
 
 rm -f -v install_*.sh
