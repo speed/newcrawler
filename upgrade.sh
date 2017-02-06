@@ -5,12 +5,6 @@ cd ~/newcrawler
 #bak
 \cp -R war/WEB-INF/classes war/WEB-INF/classes_bak
 
-rm -f -v start.sh
-rm -f -v stop.sh
-
-git checkout start.sh
-git checkout stop.sh
-
 git checkout war/WEB-INF/classes
 git pull
 
