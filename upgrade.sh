@@ -8,6 +8,9 @@ cd ~/newcrawler
 rm -f -v start.sh
 rm -f -v stop.sh
 
+git checkout start.sh
+git checkout stop.sh
+
 git checkout war/WEB-INF/classes
 git pull
 
