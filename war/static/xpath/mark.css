@@ -324,7 +324,7 @@ width:100%; height:46px; z-index : 99999; filter:Alpha(Opacity=100); -moz-opacit
 #ncx_toolbar .ncx-data-dot {
 	display: inline-block;
 	height: 25px;
-	width: 25px;
+	min-width: 25px;
 	line-height: 30px;
 	border-radius: 25px;
 	margin: 5px 5px 5px 0;
@@ -429,7 +429,7 @@ width:100%; height:46px; z-index : 99999; filter:Alpha(Opacity=100); -moz-opacit
 
 .ncx-cron-config {display:none;padding: 18px 8px 8px 18px; margin: 0px;position: absolute;top: 45px;left: -61px;z-index: 10;border: #ccc 1px solid;width: 250px;height: 110px;background-color: white;
     line-height: 4em;color: #000;font-size: 12px;border-radius: 2px;}
-.ncx-setting-config {display:none;padding: 18px; margin: 0px;position: absolute;top: 45px;left: -260px;z-index: 10;border: #ccc 1px solid;width: 650px;height: 220px;background-color: white;
+.ncx-setting-config {display:none;padding: 18px; margin: 0px;position: absolute;top: 45px;left: -260px;z-index: 10;border: #ccc 1px solid;width: 650px;height: 330px;background-color: white;
     line-height: 4em;color: #000;font-size: 12px;border-radius: 2px;}
     
 .ncx-poptip{position: absolute;top: 10%;left:40%;padding:4em;line-height: 4em;color: #000;font-size: 12px;background-color: #ccc;border: solid 1px #ccc;border-radius: 2px;box-shadow: 0 0 3px #ccc;}

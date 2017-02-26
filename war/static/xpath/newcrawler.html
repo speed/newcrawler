@@ -91,24 +91,38 @@
 		<div class="ncx-setting-config">
 		<span class="ncx-poptip-arrow ncx-poptip-arrow-top"><em>◆</em><i>◆</i></span>
 		
-		<div style="padding-top: 10px;">
-		<div style="float:left;width:60px;height: 35px;line-height:35px;">Charset</div>
-		<div style="padding-left:60px;height: 30px;line-height:30px;">
+		<div style="line-height: 25px;">
+		Charset
+		<div style="height: 30px;line-height:30px;">
 		<select id="ncx-charset-select" style="height: 30px;">
 			<option value=""></option>
 			<option value="UTF-8">UTF-8</option>
 			<option value="GBK">GBK</option>
 			<option value="GB2312">GB2312</option>
+			<option value="GB18030">GB18030</option>
 		</select>
-		
 		<input id="ncx-charset"  type="text" style="height: 30px;">
 		</div>
 		</div>
 		
-		<div style="padding-top: 10px;">
-		<div style="float:left;width:60px;height: 35px;line-height:35px;">Headers</div>
-		<div style="padding-left:60px;height: 30px;line-height:30px;">
-		<textarea id="ncx-headers"  style="height: 120px; width: 100%;"></textarea>
+		<div style="padding-top: 10px;line-height: 25px;">
+		Headers
+		<div>
+		<textarea id="ncx-headers"  style="height: 80px; width: 100%;"></textarea>
+		</div>
+		</div>
+		
+		<div style="padding-top: 10px;line-height: 25px;">
+		Skip rows
+		<div style="height: 30px;line-height:30px;">
+		<input id="ncx-skipRows"  type="text" style="height: 30px;" value=0 onkeypress="return event.keyCode>=48&&event.keyCode<=57" onblur="this.value=this.value.replace(/[^0-9]/g,'')"/>
+		</div>
+		</div>
+		
+		<div style="padding-top: 10px;line-height: 25px;">
+		The latest info is at the end of the list
+		<div style="height: 30px;line-height:30px;">
+		<input id="ncx-newDataInEndPage"  type="checkbox" value=true>
 		</div>
 		</div>
 		

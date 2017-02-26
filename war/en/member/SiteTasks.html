@@ -138,10 +138,9 @@
 		<td class="td_border">
 			<input id="isNotSaveData" type="checkbox" name="isNotSaveData" value="Y" />
 		</td>
-		
-		<td align="right" nowrap style="width:150px;"><a class="tooltip" href="javascript:void(0);" title="In loop matching, if the records matched in one single page are too many, this config can be adopted to return the result set in several times. <br/> When repeated data is found and it is not allowed in the config of the task, the return of the remaining result set will be stopped.">Record Return Limit:</a></td>
+		<td align="right" nowrap  style="width:150px;"><a class="tooltip" href="javascript:void(0);" title="The latest info is at the end of the list">End update：</a></td>
 		<td class="td_border" >
-			<input type="text" id="maxSize" name="maxSize" size="90" value="0" style="width: 80px" onkeypress="return event.keyCode>=48&&event.keyCode<=57" onblur="this.value=this.value.replace(/[^0-9]/g,'')"/>
+			<input id="newDataInEndPage" type="checkbox" name="newDataInEndPage" value="true" />
 		</td>
 	</tr>
 	
@@ -158,11 +157,23 @@
 	</tr >
 	
 	<tr class="advanced-settings">
+		<td align="right" nowrap style="width:150px;"><a class="tooltip" href="javascript:void(0);" title="In loop matching, if the records matched in one single page are too many, this config can be adopted to return the result set in several times. <br/> When repeated data is found and it is not allowed in the config of the task, the return of the remaining result set will be stopped.">Record Return Limit:</a></td>
+		<td class="td_border" >
+			<input type="text" id="maxSize" name="maxSize" size="90" value="0" style="width: 80px" onkeypress="return event.keyCode>=48&&event.keyCode<=57" onblur="this.value=this.value.replace(/[^0-9]/g,'')"/>
+		</td>
+		<td align="right" nowrap style="width:150px;"><a class="tooltip" href="javascript:void(0);" title="BBS usually has a top function, too much the top information will affect the latest information on the crawl, so need to skip the N line to get the latest information.">Skip Rows：</a></td>
+		<td class="td_border" >
+			<input type="text" id="skipRows" name="skipRows" size="90" value="0" style="width: 80px" onkeypress="return event.keyCode>=48&&event.keyCode<=57" onblur="this.value=this.value.replace(/[^0-9]/g,'')"/>
+		</td>
+	</tr >
+	<tr class="advanced-settings">
+		
 		<td align="right" nowrap class="label">Random Delay(mins):</td>
 		<td class="td_border" style="height:26px;">
 			<div style="float:left;width:200px;padding-top:5px;padding-left: 5px;"><div id="delaySlider" ></div></div>
 			<div style="float:left;width:30px;margin-left: 10px;"><input id="delay" type="text" name="delay" value="" style="width: 30px; border: 0; color: #f6931f; font-weight: bold;" readonly="readonly"/></div>
 		</td>
+		
 		<td colspan="2"></td>
 	</tr >
 	
