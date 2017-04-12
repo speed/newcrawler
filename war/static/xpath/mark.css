@@ -851,3 +851,6 @@ width:100%; height:46px; z-index : 99999; filter:Alpha(Opacity=100); -moz-opacit
 @-webkit-keyframes pulseanim{0%{opacity:1}100%{opacity:0;-webkit-transform:scale(1.1,1.3);transform:scale(1.1,1.3)}}
 @keyframes pulseanim{0%{opacity:1}100%{opacity:0;-webkit-transform:scale(1.1,1.3);transform:scale(1.1,1.3)}}
 
+.CodeMirror {border-top: 1px solid black; border-bottom: 1px solid black;height: 100%;width: 100%;font-family: monospace;}
+.CodeMirror-scroll {height: 100%;width: 100%;}
+.activeline {background: #e8f2ff !important;}
