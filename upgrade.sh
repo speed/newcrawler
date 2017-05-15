@@ -16,4 +16,7 @@ rm -R -f -v war/WEB-INF/classes_bak
 
 sh stop.sh
 
+#error='Cannot allocate memory'
+pkill java
+
 sh start.sh &
