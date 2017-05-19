@@ -199,21 +199,21 @@
 	<input type="hidden" id="ncx-pluginId"/> 
 	<input type="checkbox" name="ncx-isJs" class="isJavaScript" value="true"/> 
 	</span>
-	<a href="javascript:void(0);" title="Can't find the data you want?" style="margin-left: 20px;padding-top: 10px;">JavaScript</a>
+	<a href="javascript:void(0);" title="Turn Off/On JavaScript" style="margin-left: 20px;padding-top: 10px;">JavaScript</a>
 	</div>
 	
 	<div class="ncx-toolbar-section ncx-style" title="Disabled CSS Style" style="float:right;margin-top: 8px;">
 	<span style="padding-top: 1px; position: absolute;">
 	<input type="checkbox" name="ncx-isStyle" class="isStyle" value="true" checked/> 
 	</span>
-	<a href="javascript:void(0);" title="Can't find the data you want?" style="margin-left: 20px;padding-top: 10px;">CSS</a>
+	<a href="javascript:void(0);" title="Turn Off/On CSS style" style="margin-left: 20px;padding-top: 10px;">CSS</a>
 	</div>
 	
 	<div class="ncx-toolbar-section ncx-event" title="Load Event" style="float:right;margin-top: 8px;">
 	<span style="padding-top: 1px; position: absolute;">
 	<input type="checkbox" name="ncx-isEvent" class="isEvent" value="true"/> 
 	</span>
-	<a href="javascript:void(0);" title="Can't find the data you want?" style="margin-left: 20px;padding-top: 10px;">Event</a>
+	<a href="javascript:void(0);" title="Turn Off/On selector" style="margin-left: 20px;padding-top: 10px;">Event</a>
 	</div>
 	
 	</div>
@@ -467,8 +467,14 @@
 
 </div>
 
-<iframe id="newcrawler" name="newcrawler" style='display: block; width: 100%; border: 0px; height: 100%; position:absolute;top:46px;bottom:0;'></iframe>
-
+<div style="display: block; width: 100%; border: 0px; height: 100%;">
+	<div style="width: 100%; height: 46px;"></div>
+	
+	<div style="width: 100%; position: absolute; top: 46px; bottom: 0px; left: 0px;">
+	<iframe id="newcrawler" name="newcrawler" style='display: block; width: 100%; border: 0px; height: 100%; '></iframe>
+	</div>
+	
+</div>
 <div id="viewcode"  style="display:none;">
 	<form><textarea id="code" name="code" style="width:100%;height:100%;"></textarea></form>
 </div>
