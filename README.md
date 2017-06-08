@@ -107,7 +107,7 @@ Upgrade NewCrawler
 >sh newcrawler/upgrade.sh
 
 
-[![ScreenShot](https://raw.githubusercontent.com/speed/resources/master/images/NewCrawler_Video.jpg)](http://www.newcrawler.com/demo.html){:target="_blank"}
+[![ScreenShot](https://raw.githubusercontent.com/speed/resources/master/images/NewCrawler_Video.jpg)](http://www.newcrawler.com/demo.html)
 
 
 
