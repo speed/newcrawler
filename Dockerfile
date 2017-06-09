@@ -9,7 +9,7 @@ MAINTAINER Speed <https://github.com/speed/newcrawler>
 #jre http://www.oracle.com/technetwork/java/javase/downloads/index.html
 #PhantomJs http://phantomjs.org/download.html
 ENV jetty="http://repo1.maven.org/maven2/org/eclipse/jetty/jetty-distribution/9.3.13.v20161014/jetty-distribution-9.3.13.v20161014.tar.gz"
-ENV jre="http://download.oracle.com/otn-pub/java/jdk/8u74-b02/server-jre-8u74-linux-x64.tar.gz"
+ENV jre="http://download.oracle.com/otn-pub/java/jdk/8u131-b11/d54c1d3a095b4ff2b6607d096fa80163/jre-8u131-linux-x64.tar.gz"
 ENV phantomjs="https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-2.1.1-linux-x86_64.tar.bz2"
 
 USER root
