@@ -43,10 +43,10 @@ RUN cd /opt/newcrawler; mkdir ./jre && tar -xzvf server-jre-linux.tar.gz -C ./jr
 RUN yum -y install unzip
 ENV jce="http://download.oracle.com/otn-pub/java/jce/7/UnlimitedJCEPolicyJDK7.zip"
 RUN cd /opt/newcrawler; wget --no-check-certificate --no-cookies --header "Cookie: oraclelicense=accept-securebackup-cookie" $jce -O UnlimitedJCEPolicyJDK7.zip
-RUN cd /opt/newcrawler; mv jre/jre/lib/security/local_policy.jar jre/jre/lib/security/local_policy.jar_bak
-RUN cd /opt/newcrawler; mv jre/jre/lib/security/US_export_policy.jar jre/jre/lib/security/US_export_policy.jar_bak
+RUN cd /opt/newcrawler; mv jre/lib/security/local_policy.jar jre/lib/security/local_policy.jar_bak
+RUN cd /opt/newcrawler; mv jre/lib/security/US_export_policy.jar jre/lib/security/US_export_policy.jar_bak
 RUN cd /opt/newcrawler; unzip -n UnlimitedJCEPolicyJDK7.zip
-RUN cd /opt/newcrawler; mv UnlimitedJCEPolicy/*.jar jre/jre/lib/security
+RUN cd /opt/newcrawler; mv UnlimitedJCEPolicy/*.jar jre/lib/security
 RUN cd /opt/newcrawler; rm -f -v UnlimitedJCEPolicyJDK7.zip
 RUN cd /opt/newcrawler; rm -f -v -R UnlimitedJCEPolicy
 
