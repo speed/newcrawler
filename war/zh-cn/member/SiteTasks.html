@@ -105,9 +105,9 @@
 			<input id="isMerge" type="checkbox" name="isMerge" value="Y" />
 		</td>
 		
-		<td align="right" nowrap style="width:150px;"><a class="tooltip" href="javascript:void(0);" title="循环匹配+倒序返回，实现倒序采集，往往最后一条记录才时最新的。">倒序返回：</a></td>
+		<td align="right" nowrap  style="width:150px;"><a class="tooltip" href="javascript:void(0);" title="默认最新内容在列表头部，当更新内容在列表尾部时需要勾选此项，只能CSSPATH匹配有效">列表尾部更新：</a></td>
 		<td class="td_border" >
-			<input id="isReverse" type="checkbox" name="isReverse" value="Y" />
+			<input id="newDataInEndPage" type="checkbox" name="newDataInEndPage" value="true" />
 		</td>
 	</tr>
 	
@@ -133,16 +133,7 @@
 		</td>
 	</tr>
 	
-	<tr class="advanced-settings">
-		<td align="right" nowrap ><a class="tooltip" href="javascript:void(0);" title="当采集的数据量比较大时不推荐用采集器来管理采集到的数据，不保存采集的数据可以有效减少数据库读写操作，提高采集性能。">不保存数据：</a></td>
-		<td class="td_border">
-			<input id="isNotSaveData" type="checkbox" name="isNotSaveData" value="Y" />
-		</td>
-		<td align="right" nowrap  style="width:150px;"><a class="tooltip" href="javascript:void(0);" title="默认最新内容在列表头部，当更新内容在列表尾部时需要勾选此项，只能CSSPATH匹配有效">列表尾部更新：</a></td>
-		<td class="td_border" >
-			<input id="newDataInEndPage" type="checkbox" name="newDataInEndPage" value="true" />
-		</td>
-	</tr>
+	
 	
 	<tr class="advanced-settings">
 		<td align="right" nowrap  ><a class="tooltip" href="javascript:void(0);" title="为空或小于1时不限制。计划任务在执行 '数据自动采集' 时会检测当前站点未完成的采集队列数，超过限制时将不开启本次采集任务。这样可以避免开启过多的采集队列而耗尽系统资源。">最大采集队列数：</a></td>

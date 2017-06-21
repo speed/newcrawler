@@ -29,7 +29,7 @@
 			<input id="isAuto" type="checkbox" name="isAuto" value="Y" checked="checked"/>
 		</td>
 		
-		<td align="right" nowrap style="width:150px;" ><a class="tooltip" href="javascript:void(0);" title="Automatic + Import Crawling, conduct URL crawling during URL import.">Import Crawling:</a></td>
+		<td align="right" nowrap style="width:150px;" ><a class="tooltip" href="javascript:void(0);" title="Automatic + Import Crawling, conduct URL crawling during URL import. ">Import Crawling:</a></td>
 		<td class="td_border">
 			<input id="isRealtimeCrawl" type="checkbox" name="isRealtimeCrawl" value="Y" />
 		</td>
@@ -105,9 +105,9 @@
 			<input id="isMerge" type="checkbox" name="isMerge" value="Y" />
 		</td>
 		
-		<td align="right" nowrap style="width:150px;"><a class="tooltip" href="javascript:void(0);" title="Loop + Reverse, realizing reverse crawling; usually the last record is the latest one. ">Reverse:</a></td>
+		<td align="right" nowrap  style="width:150px;"><a class="tooltip" href="javascript:void(0);" title="The latest info is at the end of the list">End update：</a></td>
 		<td class="td_border" >
-			<input id="isReverse" type="checkbox" name="isReverse" value="Y" />
+			<input id="newDataInEndPage" type="checkbox" name="newDataInEndPage" value="true" />
 		</td>
 	</tr>
 	
@@ -133,16 +133,7 @@
 		</td>
 	</tr>
 	
-	<tr class="advanced-settings">
-		<td align="right" nowrap ><a class="tooltip" href="javascript:void(0);" title="When the quantity of data crawled is comparably large, it is not recommendable to use crawler to manage data crawled; not saving data crawled can effectively reduce the reading and writing operation of database and enhance crawling performance.">Not Save Data:</a></td>
-		<td class="td_border">
-			<input id="isNotSaveData" type="checkbox" name="isNotSaveData" value="Y" />
-		</td>
-		<td align="right" nowrap  style="width:150px;"><a class="tooltip" href="javascript:void(0);" title="The latest info is at the end of the list">End update：</a></td>
-		<td class="td_border" >
-			<input id="newDataInEndPage" type="checkbox" name="newDataInEndPage" value="true" />
-		</td>
-	</tr>
+	
 	
 	<tr class="advanced-settings">
 		<td align="right" nowrap  ><a class="tooltip" href="javascript:void(0);" title="When it is null or smaller than 1, it is not limited. In the process of executing ‘automatic data crawling’, the planed task will check the uncompleted crawling queue number of the current task; if it exceeds the limit, the crawling task this time won’t be opened. It can avoids exhausting system materials by opening too many crawling queues. ">Queue Limit: </a></td>
