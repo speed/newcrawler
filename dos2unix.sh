@@ -1,4 +1,6 @@
 #! /bin/sh
+#chmod +x dos2unix.sh
+
 
 for x
 do
