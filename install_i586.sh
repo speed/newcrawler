@@ -4,7 +4,7 @@
 #jre http://www.oracle.com/technetwork/java/javase/downloads/index.html
 #PhantomJs http://phantomjs.org/download.html
 jetty="http://repo1.maven.org/maven2/org/eclipse/jetty/jetty-distribution/9.3.13.v20161014/jetty-distribution-9.3.13.v20161014.tar.gz"
-jre="http://download.oracle.com/otn-pub/java/jdk/8u74-b02/jre-8u74-linux-i586.tar.gz"
+jre="http://download.oracle.com/otn-pub/java/jdk/8u144-b01/090f390dda5b47b9b721c7dfaa008135/jre-8u144-linux-i586.tar.gz"
 phantomjs="https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-2.1.1-linux-i686.tar.bz2"
 
 yum -y install tar git
