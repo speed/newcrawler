@@ -1,9 +1,5 @@
 #install.sh
-<<<<<<< HEAD
 
-=======
-#test
->>>>>>> 40704a801ebca1b3fd97d3f97c300a5a245bcb8e
 #jetty https://www.eclipse.org/jetty/download.html
 #jre http://www.oracle.com/technetwork/java/javase/downloads/index.html
 #PhantomJs http://phantomjs.org/download.html
