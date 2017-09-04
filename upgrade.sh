@@ -19,4 +19,6 @@ sh stop.sh
 #error='Cannot allocate memory'
 pkill java
 
+pkill chrome
+
 sh start.sh &
