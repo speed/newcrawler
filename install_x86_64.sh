@@ -12,6 +12,11 @@ yum -y install tar git
 
 git clone https://github.com/speed/newcrawler.git ~/newcrawler
 
+if [ ! -f "~/newcrawler/war/index.html" ]; then
+	echo "newcrawler is not installed!"
+	exit 0
+fi
+
 cd newcrawler
 
 #jetty
