@@ -36,7 +36,6 @@ if [ ! -f "~/newcrawler/jre/bin/java" ]; then
 	wget --no-check-certificate --no-cookies --header "Cookie: oraclelicense=accept-securebackup-cookie" $jre -O server-jre-linux.tar.gz
 	mkdir ./jre && tar -xzvf server-jre-linux.tar.gz -C ./jre --strip-components 1
 	chmod +rwx ./jre -R
-	jre/bin/java -version
 	
 	if [ ! -f "~/newcrawler/jre/bin/java" ]; then
 	  echo "JAVA is not installed!"
@@ -69,7 +68,6 @@ yum -y install fontconfig freetype libfreetype.so.6 libfontconfig.so.1
 if [ ! -f "~/newcrawler/phantomjs/bin/phantomjs" ]; then
 	wget --no-check-certificate $phantomjs -O phantomjs-linux.tar.bz2
 	mkdir ./phantomjs && tar -xjvf phantomjs-linux.tar.bz2 -C ./phantomjs --strip-components 1
-	phantomjs/bin/phantomjs --version
 
 	if [ ! -f "~/newcrawler/phantomjs/bin/phantomjs" ]; then
 	  echo "PhantomJS is not installed!"
@@ -104,5 +102,8 @@ rm -f -v phantomjs-linux.tar.bz2
 rm -f -v server-jre-linux.tar.gz
 rm -f -v install_*.sh
 rm -f -v Dockerfile
+
+phantomjs/bin/phantomjs --version
+jre/bin/java -version
 
 echo 'Congratulations, the installation is successful.'
