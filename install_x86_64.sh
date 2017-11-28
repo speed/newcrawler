@@ -43,25 +43,6 @@ if [ ! -f "jre/bin/java" ]; then
 	fi
 fi
 
-#jre jce email send 
-yum -y install unzip
-if [ ! -f "UnlimitedJCEPolicy/local_policy.jar" ]; then
-	jce="http://download.oracle.com/otn-pub/java/jce/7/UnlimitedJCEPolicyJDK7.zip"
-	wget --no-check-certificate --no-cookies --header "Cookie: oraclelicense=accept-securebackup-cookie" $jce -O UnlimitedJCEPolicyJDK7.zip
-	mv jre/jre/lib/security/local_policy.jar jre/jre/lib/security/local_policy.jar_bak
-	mv jre/jre/lib/security/US_export_policy.jar jre/jre/lib/security/US_export_policy.jar_bak
-	unzip -n UnlimitedJCEPolicyJDK7.zip
-
-	if [ ! -f "UnlimitedJCEPolicy/local_policy.jar" ]; then
-	  echo "UnlimitedJCEPolicy is not installed!"
-	  exit 0
-	fi
-	
-	mv UnlimitedJCEPolicy/*.jar jre/jre/lib/security
-	rm -f -v UnlimitedJCEPolicyJDK7.zip
-	rm -f -v -R UnlimitedJCEPolicy
-fi
-
 #PhantomJs
 yum -y install bzip2
 yum -y install fontconfig freetype libfreetype.so.6 libfontconfig.so.1
