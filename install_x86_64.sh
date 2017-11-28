@@ -15,38 +15,83 @@ git clone https://github.com/speed/newcrawler.git ~/newcrawler
 cd newcrawler
 
 #jetty
-wget --no-check-certificate $jetty -O jetty.tar.gz
-mkdir ./jetty && tar -xzvf jetty.tar.gz -C ./jetty --strip-components 1
+if [ ! -f "~/newcrawler/jetty/bin/jetty.sh" ]; then
+	rm -Rivf ./jetty
+	wget --no-check-certificate $jetty -O jetty.tar.gz
+	mkdir ./jetty && tar -xzvf jetty.tar.gz -C ./jetty --strip-components 1
+	if [ ! -f "~/newcrawler/jetty/bin/jetty.sh" ]; then
+	  echo "Jetty is not installed!"
+	  exit 0
+	fi
+fi
 
 #jre
-wget --no-check-certificate --no-cookies --header "Cookie: oraclelicense=accept-securebackup-cookie" $jre -O server-jre-linux.tar.gz
-mkdir ./jre && tar -xzvf server-jre-linux.tar.gz -C ./jre --strip-components 1
-chmod +rwx ./jre -R
+if [ ! -f "~/newcrawler/jre/bin/java" ]; then
+	rm -Rivf ./jre
+	wget --no-check-certificate --no-cookies --header "Cookie: oraclelicense=accept-securebackup-cookie" $jre -O server-jre-linux.tar.gz
+	mkdir ./jre && tar -xzvf server-jre-linux.tar.gz -C ./jre --strip-components 1
+	chmod +rwx ./jre -R
+	jre/bin/java -version
+	
+	if [ ! -f "~/newcrawler/jre/bin/java" ]; then
+	  echo "JAVA is not installed!"
+	  exit 0
+	fi
+fi
 
 #jre jce email send 
 yum -y install unzip
-jce="http://download.oracle.com/otn-pub/java/jce/7/UnlimitedJCEPolicyJDK7.zip"
-wget --no-check-certificate --no-cookies --header "Cookie: oraclelicense=accept-securebackup-cookie" $jce -O UnlimitedJCEPolicyJDK7.zip
-mv jre/jre/lib/security/local_policy.jar jre/jre/lib/security/local_policy.jar_bak
-mv jre/jre/lib/security/US_export_policy.jar jre/jre/lib/security/US_export_policy.jar_bak
-unzip -n UnlimitedJCEPolicyJDK7.zip
-mv UnlimitedJCEPolicy/*.jar jre/jre/lib/security
-rm -f -v UnlimitedJCEPolicyJDK7.zip
-rm -f -v -R UnlimitedJCEPolicy
+if [ ! -f "~/newcrawler/UnlimitedJCEPolicy/local_policy.jar" ]; then
+	jce="http://download.oracle.com/otn-pub/java/jce/7/UnlimitedJCEPolicyJDK7.zip"
+	wget --no-check-certificate --no-cookies --header "Cookie: oraclelicense=accept-securebackup-cookie" $jce -O UnlimitedJCEPolicyJDK7.zip
+	mv jre/jre/lib/security/local_policy.jar jre/jre/lib/security/local_policy.jar_bak
+	mv jre/jre/lib/security/US_export_policy.jar jre/jre/lib/security/US_export_policy.jar_bak
+	unzip -n UnlimitedJCEPolicyJDK7.zip
 
+	if [ ! -f "~/newcrawler/UnlimitedJCEPolicy/local_policy.jar" ]; then
+	  echo "UnlimitedJCEPolicy is not installed!"
+	  exit 0
+	fi
+	
+	mv UnlimitedJCEPolicy/*.jar jre/jre/lib/security
+	rm -f -v UnlimitedJCEPolicyJDK7.zip
+	rm -f -v -R UnlimitedJCEPolicy
+fi
 
 #PhantomJs
 yum -y install bzip2
 yum -y install fontconfig freetype libfreetype.so.6 libfontconfig.so.1
-wget --no-check-certificate $phantomjs -O phantomjs-linux.tar.bz2
-mkdir ./phantomjs && tar -xjvf phantomjs-linux.tar.bz2 -C ./phantomjs --strip-components 1
-phantomjs/bin/phantomjs --version
+if [ ! -f "~/newcrawler/phantomjs/bin/phantomjs" ]; then
+	wget --no-check-certificate $phantomjs -O phantomjs-linux.tar.bz2
+	mkdir ./phantomjs && tar -xjvf phantomjs-linux.tar.bz2 -C ./phantomjs --strip-components 1
+	phantomjs/bin/phantomjs --version
+
+	if [ ! -f "~/newcrawler/phantomjs/bin/phantomjs" ]; then
+	  echo "PhantomJS is not installed!"
+	  exit 0
+	fi
+fi
 
 #Script and Config
 rm -f -v start.sh
 wget --no-check-certificate https://github.com/speed/linux-64bit-jetty-jre/raw/master/jetty/webapps/newcrawler.xml -P jetty/webapps/ -O jetty/webapps/newcrawler.xml
 wget --no-check-certificate https://github.com/speed/linux-64bit-jetty-jre/raw/master/start.sh -O start.sh
 wget --no-check-certificate https://github.com/speed/linux-64bit-jetty-jre/raw/master/stop.sh -O stop.sh
+
+if [ ! -f "~/newcrawler/start.sh" ]; then
+	echo "'start.sh' is not installed!"
+	exit 0
+fi
+
+if [ ! -f "~/newcrawler/stop.sh" ]; then
+	echo "'stop.sh' is not installed!"
+	exit 0
+fi
+
+if [ ! -f "~/newcrawler/jetty/webapps/newcrawler.xml" ]; then
+	echo "'newcrawler.xml' is not installed!"
+	exit 0
+fi
 
 #Remove install package
 rm -f -v jetty.tar.gz
