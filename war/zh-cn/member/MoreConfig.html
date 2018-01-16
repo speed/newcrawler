@@ -1,20 +1,23 @@
 <html>
   <head>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-    <title>More setting</title>
+    <title>采集器设置</title>
 </head>
   <body>
     <table id="webCrawlerConfig" width="100%">
       <tr class="queueConfig" style="display:none;">
-        <td colspan="2" class="label" height="30px" valign="bottom"><span class="STYLE4">Queue Config</span></td>        
+        <td colspan="2" class="label" height="30px" valign="bottom"><span class="STYLE4">队列配置</span></td>        
       </tr>
       <tr  class="queueConfig" style="display:none;">
 	  <td colspan="2" width="100%" valign="top">
 	  <form  id="queueForm" name="queueForm" method="post">
 	  <input type="hidden" id="id" name="id">
 	  <table width="100%" height="100%" class="table_border2">
+	  
+	  
+        
 	  <tr>
-        <td width="120" align="right" nowrap class="label">Name:</td>
+        <td width="120" align="right" nowrap class="label">名称：</td>
         <td class="td_border">
         <div class="inputOver" >
         <input type="text" id="name" name="name" style="width:100%" />
@@ -22,21 +25,21 @@
         </td>
       </tr>
        <tr>
-        <td width="120" align="right" nowrap class="label">Rate:</td>
+        <td width="120" align="right" nowrap class="label">速率：</td>
         <td class="td_border">
         <div class="inputOver" style="padding-left: 8px;">
 	        <div style="float:left;width:200px;padding-top:5px;"><div id="rateSlider" ></div></div>
 			<div style="float:left;width:40px;margin-left: 10px;"><input id="rate" type="text" name="rate" value="" style="border: 0; color: #f6931f; font-weight: bold;" readonly="readonly"/></div>
 	        <select name="rateUnit" id="rateUnit" style="width: 80px;">
-				<option value="s">/s(second)</option>
-				<option value="m">/m(minute)</option>
-				<option value="h">/h(hour)</option>
+				<option value="s">/s(秒)</option>
+				<option value="m">/m(分)</option>
+				<option value="h">/h(时)</option>
 			</select>
         </div>
         </td>
       </tr>
       <tr>
-        <td width="120" align="right" nowrap class="label">Max Concurrent:</td>
+        <td width="120" align="right" nowrap class="label">最大并发：</td>
         <td class="td_border">
          	<div class="inputOver" style="padding-left: 8px;">
         	<div style="float:left;width:200px;padding-top:5px;"><div id="maxConcurrentSlider" ></div></div>
@@ -48,9 +51,9 @@
       <tr>
         <td ></td>
         <td class="td_border">
-        <input type="button" value="Create" onClick="queueManage.fn.create();">
-        <input type="button" value="Remove" onClick="queueManage.fn.remove();">
-        <input type="button" value="Update" onClick="queueManage.fn.update();">
+        <input type="button" value="添加" onClick="queueManage.fn.create();">
+        <input type="button" value="删除" onClick="queueManage.fn.remove();">
+        <input type="button" value="更新" onClick="queueManage.fn.update();">
 		</td>
       </tr>
       
@@ -58,13 +61,13 @@
 			<td colspan="5">
 				<table id="queueTable" width="100%" align="center" class="table_border2 tableList" style="border:1px solid #CCCCCC;border-collapse:collapse;background-color: #FFFFFF;">
 					<tr>
-						<td width="5%" nowrap bgcolor="whiteSmoke">&nbsp;Select</td>
-						<td width="15%" nowrap bgcolor="whiteSmoke">Name</td>
-						<td width="10%" nowrap bgcolor="whiteSmoke">Rate</td>
-						<td width="10%" nowrap bgcolor="whiteSmoke">Max Concurrent</td>
-						<td width="10%" nowrap bgcolor="whiteSmoke">Task Total</td>
-						<td width="20%" nowrap bgcolor="whiteSmoke">Create Date</td>
-						<td width="20%" nowrap bgcolor="whiteSmoke">Update Date</td>
+						<td width="5%" nowrap bgcolor="whiteSmoke">&nbsp;选择</td>
+						<td width="15%" nowrap bgcolor="whiteSmoke">名称</td>
+						<td width="10%" nowrap bgcolor="whiteSmoke">速率</td>
+						<td width="10%" nowrap bgcolor="whiteSmoke">最大并发</td>
+						<td width="10%" nowrap bgcolor="whiteSmoke">任务数</td>
+						<td width="20%" nowrap bgcolor="whiteSmoke">建立时间</td>
+						<td width="20%" nowrap bgcolor="whiteSmoke">更新时间</td>
 					</tr>
 				</table>
 			</td>
@@ -76,8 +79,27 @@
       </tr>
     
     
+      
       <tr>
-        <td colspan="2" class="label"><span class="STYLE4">Other</span></td>        
+        <td colspan="2" class="label"><span class="STYLE4">爬虫分享</span></td>        
+      </tr>
+	  <tr>
+	  <td colspan="2">
+	  	<form id="shareSpiderForm">
+		<table width="100%" height="100%" class="table_border2">
+			<tr>
+	        <td width="120">&nbsp;</td>
+	        <td class="td_border">
+	           <input name="system.property.share" id="system.property.share" type="checkbox" value="true" />我要分享  
+	        </td>
+			</tr>
+		</table>
+		</form>
+	  </td>
+	  </tr>
+      
+      <tr>
+        <td colspan="2" class="label"><span class="STYLE4">其它设置</span></td>        
       </tr>
       <tr>
 	  <td colspan="2" width="100%" >
@@ -85,29 +107,29 @@
 		<input id="id" name="id" type="hidden">
 		<table width="100%" height="100%" class="table_border2">
 			<tr>
-				<td width="120" align="right" class="label"><a class="tooltip" href="javascript:void(0);" title="Crawling Rate, default R3.">Crawling Rate：</a></td>
+				<td width="120" align="right" class="label"><a class="tooltip" href="javascript:void(0);" title="采集器默认的采集速率，不定义时系统使用R3作为默认采集速率">默认采集速率：</a></td>
 				<td  class="td_border" >
 	       		<select class="queueSelect" id="queueName" name="queueName" style="width:160px;">
        			</select>
 				</td>
 		  	 </tr>
 		  	 <tr>
-				<td width="120" align="right" class="label"><a class="tooltip" href="javascript:void(0);" title="RPC authenticate code.">RPC KEY：</a></td>
+				<td width="120" align="right" class="label"><a class="tooltip" href="javascript:void(0);" title="当采集器作为子爬虫时，可以设置访问密钥，限制未授权的访问">访问密钥：</a></td>
 				<td  class="td_border" >
 				<input style="width:200px;" id="system.property.rpcAuth" type="text" name="system.property.rpcAuth" value="" />
 				<input class="genRandomChar" type="button" value="Random"/>
 				</td>
 		  	 </tr>
 			 <tr>
-		        <td width="120" align="right" nowrap class="label"><a class="tooltip" href="javascript:void(0);" title="Callback Time">Callback Time:</a></td>
+		        <td width="120" align="right" nowrap class="label"><a class="tooltip" href="javascript:void(0);" title="采集器使用异步的方式调用爬虫采集，所以系统需要设定一个间隔时间不断的检测爬虫是否回调，当超过间隔时间没有返回结果时会重新采集网址">回调检测时间：</a></td>
 		        <td class="td_border">
 					<div style="float:left;width:200px;padding-top:5px;"><div id="callbackTimeSlider" ></div></div>
 					<div style="float:left;width:40px;margin-left: 10px;"><input id="callbackTime" type="text" name="callbackTime" value="" style="border: 0; color: #f6931f; font-weight: bold;" readonly="readonly"/></div>
-					<span style="width: 80px;line-height: 23px;">Minutes</span>
+					<span style="width: 80px;line-height: 23px;">分钟</span>
 		        </td>
 		      </tr>
 			 <tr>
-				<td width="120" align="right" class="label"><a class="tooltip" href="javascript:void(0);" title="URL fetching plug-in, needing to be defined in ‘setting’>’plug-in management’">Fetching Plug-in</a></td>
+				<td width="120" align="right" class="label"><a class="tooltip" href="javascript:void(0);" title="全局的网址抓取插件，优先级高于采集站点中配置的网址抓取插件，需要在 '设置' > '插件管理' 中定义">网址抓取插件：</a></td>
 				<td  class="td_border" >
 				<select id="urlfetchPluginId" name="urlfetchPluginId" style="width:160px;">
 	          			<option value=""></option>
@@ -116,17 +138,17 @@
 				</td>
 		  	 </tr>
 			 <tr>
-				<td width="120" align="right" class="label">Schedule Control:</td>
+				<td width="120" align="right" class="label">计划任务控制：</td>
 				<td  class="td_border">
 				<table><tr>
-				<td>Stop</td><td> <input id="system.property.cron" type="radio" name="system.property.cron" value="stop" /></td>
+				<td>停止</td><td> <input type="radio" name="system.property.cron" value="stop" /></td>
 				<td width="10"> </td>
-				<td>Run</td><td> <input id="system.property.cron" type="radio" name="system.property.cron" value="run" checked/></td>
+				<td>运行</td><td> <input type="radio" name="system.property.cron" value="run" checked/></td>
 				</tr></table>
 				</td>
 		  	</tr>
 		  	<tr>
-				<td width="120" align="right" class="label"><a class="tooltip" href="javascript:void(0);" title="Use the default value if APP management email is unknown.">APP Email:</a></td>
+				<td width="120" align="right" class="label"><a class="tooltip" href="javascript:void(0);" title="当不知道APP管理邮箱时，请使用默认值。">APP管理邮箱：</a></td>
 				<td  class="td_border" >
 				<div class="inputOver">
 				<input style="width:100%;" id="system.property.email" type="text" name="system.property.email" value="" />
@@ -134,7 +156,7 @@
 				</td>
 		  	</tr>
 		  	<tr>
-				<td width="120" align="right" class="label"><a class="tooltip" href="javascript:void(0);" title="Authorized users can visit the current application, different users can be split by 'Enter'; use '*' to indicate that all users are allowed to visit.">Authorized User:</a></td>
+				<td width="120" align="right" class="label"><a class="tooltip" href="javascript:void(0);" title="授权用户访问当前应用，多个用户用 换行 '回车' 分隔，可以使用 '*' 来表示允许所有用户访问。">授权用户：</a></td>
 				<td  class="td_border" >
 				<textarea id="system.property.users" name="system.property.users" rows="5" style="width: 100%;border: 1px solid #999;" ></textarea>
 				</td>
@@ -147,7 +169,7 @@
 				<td width="120" align="right" class="label"></td>
 				<td  class="td_border">
 					<select onchange="systemConfig.fn.changeEmail(this.value)">
-						<option value="custom">Custom</option>
+						<option value="custom">自定义</option>
 						<option value="gmail">gmail.com</option>
 						<option value="qq">qq.com</option>
 						<option value="163">163.com</option>
@@ -161,7 +183,7 @@
 				</td>
 		  	</tr>
 		  	<tr>
-				<td width="120" align="right" class="label"><a class="tooltip" href="javascript:void(0);" title="SMTP Host">SMTP Host</a></td>
+				<td width="120" align="right" class="label"><a class="tooltip" href="javascript:void(0);" title="SMTP主机：">SMTP主机：</a></td>
 				<td  class="td_border" >
 				<div class="inputOver">
 				<input id="system.property.smtpHost" name="system.property.smtpHost" type="text" class="input" value="" />
@@ -169,7 +191,7 @@
 				</td>
 		  	</tr>
 		  	<tr>
-				<td width="120" align="right" class="label"><a class="tooltip" href="javascript:void(0);" title="SMTP Port:">SMTP Port:</a></td>
+				<td width="120" align="right" class="label"><a class="tooltip" href="javascript:void(0);" title="SMTP端口：">SMTP端口：</a></td>
 				<td  class="td_border" >
 				<div class="inputOver">
 				<input id="system.property.smtpPort" name="system.property.smtpPort" type="text" class="input" value="465" />
@@ -177,7 +199,7 @@
 				</td>
 		  	</tr>
 		  	<tr>
-				<td width="120" align="right" class="label"><a class="tooltip" href="javascript:void(0);" title="Email:">Email:</a></td>
+				<td width="120" align="right" class="label"><a class="tooltip" href="javascript:void(0);" title="邮箱地址：">邮箱地址：</a></td>
 				<td  class="td_border" >
 				<div class="inputOver">
 				<input id="system.property.smtpUsername" name="system.property.smtpUsername" type="text" class="input" value="" />
@@ -185,7 +207,7 @@
 				</td>
 		  	</tr>
 		  	<tr>
-				<td width="120" align="right" class="label"><a class="tooltip" href="javascript:void(0);" title="Email Password:">Email Password:</a></td>
+				<td width="120" align="right" class="label"><a class="tooltip" href="javascript:void(0);" title="邮箱密码：">邮箱密码：</a></td>
 				<td  class="td_border" >
 				<div class="inputOver">
 				<input name="system.property.smtpPassword" id="system.property.smtpPassword" type="password" class="input" value="" />
@@ -197,7 +219,7 @@
     		</tr>
 			<tr>
 		        <td>&nbsp;</td>
-		        <td class="td_border"><input type="button" value="Save" onClick="systemConfig.fn.save()" ></td>
+		        <td class="td_border"><input type="button" value="保存" onClick="systemConfig.fn.save()" ></td>
 			</tr>
 		</table>
 		</form>
@@ -205,7 +227,7 @@
 	  </tr>
 	  
 	  <tr>
-        <td colspan="2" class="label"><span class="STYLE4">Cache Clearing</span></td>        
+        <td colspan="2" class="label"><span class="STYLE4">采集器缓存清除</span></td>        
       </tr>
 	  <tr>
 	  <td colspan="2">
@@ -214,7 +236,7 @@
 			<tr>
         <td width="120">&nbsp;</td>
         <td class="td_border">
-          <input type="button" value="Cache Clear" onClick="cacheClear.fn.clear()"></td>
+          <input type="button" value="缓存清除" onClick="cacheClear.fn.clear()"></td>
 			</tr>
 		</table>
 		</form>
@@ -222,7 +244,7 @@
 	  </tr>
 
 	   <tr>
-        <td colspan="2" class="label"><span class="STYLE4">Data Clearing</span></td>        
+        <td colspan="2" class="label"><span class="STYLE4">采集器数据清除</span></td>        
       </tr>
 	  <tr>
 	  <td colspan="2">
@@ -230,7 +252,7 @@
 		<table width="100%" height="100%" class="table_border2">
 			<tr>
 				<td width="120" align="right" class="label">
-				Task
+				站点：
 				</td>
 				<td  class="td_border">
 				   	<select id="siteList" name="siteList" style="width:160px;">
@@ -238,39 +260,39 @@
 	        	</td>
 		    </tr>
 			<tr>
-				<td width="120" align="right" class="label">All:</td>
+				<td width="120" align="right" class="label">所有数据：</td>
 				<td  class="td_border">
-			   <input name="tables" type="checkbox" id="tables" value="SiteTable" onclick="dataClear.fn.disabledAll(this,'tables')" ></td>
+			   <input name="tables" type="checkbox" value="SiteTable" onclick="dataClear.fn.disabledAll(this,'tables')" ></td>
 		    </tr>
 			<tr>
-				<td width="120" align="right" class="label">URL List:</td>
+				<td width="120" align="right" class="label">采集网址表：</td>
 				<td  class="td_border">
-			   <input name="tables" type="checkbox" id="tables" value="CrawlUrlTable" ></td>
+			   <input name="tables" type="checkbox" value="CrawlUrlTable" ></td>
 		    </tr>
 	  		<tr>
-				<td width="120" align="right" class="label">Data List:</td>
+				<td width="120" align="right" class="label">采集到的数据表：</td>
 				<td class="td_border">
-			   <input name="tables" type="checkbox" id="tables" value="CrawlDataTable" ></td>
+			   <input name="tables" type="checkbox" value="CrawlDataTable" ></td>
 		    </tr>
 			  <tr>
-				<td width="120" align="right" class="label">Rules Cache:</td>
+				<td width="120" align="right" class="label">采集规则缓存表：</td>
 				<td class="td_border">
-			   <input name="tables" type="checkbox" id="tables" value="CrawlCacheTable" ></td>
+			   <input name="tables" type="checkbox" value="CrawlCacheTable" ></td>
 			  </tr>
 			  <tr>
-				<td width="120" align="right" class="label">Crawl Rules:</td>
+				<td width="120" align="right" class="label">采集规则表：</td>
 				<td class="td_border">
-			   <input name="tables" type="checkbox" id="tables" value="DataRulesTable" ></td>
+			   <input name="tables" type="checkbox" value="DataRulesTable" ></td>
 			  </tr>
 			  <tr>
-				<td width="120" align="right" class="label">Publish Rules</td>
+				<td width="120" align="right" class="label">数据发布规则表：</td>
 				<td class="td_border">
-			   <input name="tables" type="checkbox" id="tables" value="DeployTable" ></td>
+			   <input name="tables" type="checkbox" value="DeployTable" ></td>
 			  </tr>
 			<tr>
         <td>&nbsp;</td>
         <td class="td_border">
-          <input type="button" value="Data Clear" onClick="dataClear.fn.clear()"></td>
+          <input type="button" value="数据清除" onClick="dataClear.fn.clear()"></td>
 			</tr>
 		</table>
 		</form>

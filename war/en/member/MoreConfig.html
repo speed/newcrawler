@@ -13,6 +13,9 @@
 	  <form  id="queueForm" name="queueForm" method="post">
 	  <input type="hidden" id="id" name="id">
 	  <table width="100%" height="100%" class="table_border2">
+	  
+	  
+        
 	  <tr>
         <td width="120" align="right" nowrap class="label">Name:</td>
         <td class="td_border">
@@ -76,6 +79,25 @@
       </tr>
     
     
+      
+      <tr>
+        <td colspan="2" class="label"><span class="STYLE4">Share Spider</span></td>        
+      </tr>
+	  <tr>
+	  <td colspan="2">
+	  	<form id="shareSpiderForm">
+		<table width="100%" height="100%" class="table_border2">
+			<tr>
+	        <td width="120">&nbsp;</td>
+	        <td class="td_border">
+	           <input name="system.property.share" id="system.property.share" type="checkbox" value="true" />Share  
+	        </td>
+			</tr>
+		</table>
+		</form>
+	  </td>
+	  </tr>
+      
       <tr>
         <td colspan="2" class="label"><span class="STYLE4">Other</span></td>        
       </tr>
@@ -119,9 +141,9 @@
 				<td width="120" align="right" class="label">Schedule Control:</td>
 				<td  class="td_border">
 				<table><tr>
-				<td>Stop</td><td> <input id="system.property.cron" type="radio" name="system.property.cron" value="stop" /></td>
+				<td>Stop</td><td> <input type="radio" name="system.property.cron" value="stop" /></td>
 				<td width="10"> </td>
-				<td>Run</td><td> <input id="system.property.cron" type="radio" name="system.property.cron" value="run" checked/></td>
+				<td>Run</td><td> <input type="radio" name="system.property.cron" value="run" checked/></td>
 				</tr></table>
 				</td>
 		  	</tr>
@@ -240,32 +262,32 @@
 			<tr>
 				<td width="120" align="right" class="label">All:</td>
 				<td  class="td_border">
-			   <input name="tables" type="checkbox" id="tables" value="SiteTable" onclick="dataClear.fn.disabledAll(this,'tables')" ></td>
+			   <input name="tables" type="checkbox" value="SiteTable" onclick="dataClear.fn.disabledAll(this,'tables')" ></td>
 		    </tr>
 			<tr>
 				<td width="120" align="right" class="label">URL List:</td>
 				<td  class="td_border">
-			   <input name="tables" type="checkbox" id="tables" value="CrawlUrlTable" ></td>
+			   <input name="tables" type="checkbox" value="CrawlUrlTable" ></td>
 		    </tr>
 	  		<tr>
 				<td width="120" align="right" class="label">Data List:</td>
 				<td class="td_border">
-			   <input name="tables" type="checkbox" id="tables" value="CrawlDataTable" ></td>
+			   <input name="tables" type="checkbox" value="CrawlDataTable" ></td>
 		    </tr>
 			  <tr>
 				<td width="120" align="right" class="label">Rules Cache:</td>
 				<td class="td_border">
-			   <input name="tables" type="checkbox" id="tables" value="CrawlCacheTable" ></td>
+			   <input name="tables" type="checkbox" value="CrawlCacheTable" ></td>
 			  </tr>
 			  <tr>
 				<td width="120" align="right" class="label">Crawl Rules:</td>
 				<td class="td_border">
-			   <input name="tables" type="checkbox" id="tables" value="DataRulesTable" ></td>
+			   <input name="tables" type="checkbox" value="DataRulesTable" ></td>
 			  </tr>
 			  <tr>
 				<td width="120" align="right" class="label">Publish Rules</td>
 				<td class="td_border">
-			   <input name="tables" type="checkbox" id="tables" value="DeployTable" ></td>
+			   <input name="tables" type="checkbox" value="DeployTable" ></td>
 			  </tr>
 			<tr>
         <td>&nbsp;</td>
