@@ -26,7 +26,7 @@ RUN sudo useradd ncuser --shell /bin/bash --create-home \
 
 RUN git clone https://github.com/speed/newcrawler.git /home/ncuser/newcrawler
 
-RUN sed -ie 's/jdbc:hsqldb:file:~\/newcrawler\/db\/spider/jdbc:hsqldb:file:\/opt\/newcrawler\/db\/spider/g' /home/ncuser/newcrawler/war/WEB-INF/classes/datanucleus.properties
+RUN sed -ie 's/jdbc:hsqldb:file:~\/newcrawler\/db\/spider/jdbc:hsqldb:file:\/home\/ncuser\/newcrawler\/db\/spider/g' /home/ncuser/newcrawler/war/WEB-INF/classes/datanucleus.properties
 
 RUN cd /home/ncuser/newcrawler; mkdir ./db
 
