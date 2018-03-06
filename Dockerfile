@@ -24,56 +24,53 @@ RUN sudo useradd ncuser --shell /bin/bash --create-home \
   && echo 'ALL ALL = (ALL) NOPASSWD: ALL' >> /etc/sudoers \
   && echo 'ncuser:secret' | chpasswd
 
-RUN git clone https://github.com/speed/newcrawler.git /opt/newcrawler
+RUN git clone https://github.com/speed/newcrawler.git /home/ncuser/newcrawler
 
-RUN sed -ie 's/jdbc:hsqldb:file:~\/newcrawler\/db\/spider/jdbc:hsqldb:file:\/opt\/newcrawler\/db\/spider/g' /opt/newcrawler/war/WEB-INF/classes/datanucleus.properties
+RUN sed -ie 's/jdbc:hsqldb:file:~\/newcrawler\/db\/spider/jdbc:hsqldb:file:\/opt\/newcrawler\/db\/spider/g' /home/ncuser/newcrawler/war/WEB-INF/classes/datanucleus.properties
 
-RUN cd /opt/newcrawler; mkdir ./db
+RUN cd /home/ncuser/newcrawler; mkdir ./db
 
 #jetty
-RUN cd /opt/newcrawler; wget --no-check-certificate $jetty -O jetty.tar.gz
-RUN cd /opt/newcrawler; mkdir ./jetty && tar -xzvf jetty.tar.gz -C ./jetty --strip-components 1
+RUN cd /home/ncuser/newcrawler; wget --no-check-certificate $jetty -O jetty.tar.gz
+RUN cd /home/ncuser/newcrawler; mkdir ./jetty && tar -xzvf jetty.tar.gz -C ./jetty --strip-components 1
 
 
 #jre
-RUN cd /opt/newcrawler; wget --no-check-certificate --no-cookies --header "Cookie: oraclelicense=accept-securebackup-cookie" $jre -O server-jre-linux.tar.gz
-RUN cd /opt/newcrawler; mkdir ./jre && tar -xzvf server-jre-linux.tar.gz -C ./jre --strip-components 1
+RUN cd /home/ncuser/newcrawler; wget --no-check-certificate --no-cookies --header "Cookie: oraclelicense=accept-securebackup-cookie" $jre -O server-jre-linux.tar.gz
+RUN cd /home/ncuser/newcrawler; mkdir ./jre && tar -xzvf server-jre-linux.tar.gz -C ./jre --strip-components 1
 
 #PhantomJs
 RUN yum -y install bzip2
 RUN yum -y install fontconfig freetype libfreetype.so.6 libfontconfig.so.1
-RUN cd /opt/newcrawler; wget --no-check-certificate --header "User-Agent:Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.112 Safari/537.36" $phantomjs -O phantomjs-linux.tar.bz2
-RUN cd /opt/newcrawler; mkdir ./phantomjs && tar -xjvf phantomjs-linux.tar.bz2 -C ./phantomjs --strip-components 1
-RUN cd /opt/newcrawler; phantomjs/bin/phantomjs --version
+RUN cd /home/ncuser/newcrawler; wget --no-check-certificate --header "User-Agent:Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.112 Safari/537.36" $phantomjs -O phantomjs-linux.tar.bz2
+RUN cd /home/ncuser/newcrawler; mkdir ./phantomjs && tar -xjvf phantomjs-linux.tar.bz2 -C ./phantomjs --strip-components 1
+RUN cd /home/ncuser/newcrawler; phantomjs/bin/phantomjs --version
 
 #Script and Config
-RUN cd /opt/newcrawler; wget --no-check-certificate https://github.com/speed/linux-64bit-jetty-jre/raw/master/jetty/webapps/newcrawler.xml -P jetty/webapps/ -O jetty/webapps/newcrawler.xml
-RUN cd /opt/newcrawler; wget --no-check-certificate https://github.com/speed/linux-64bit-jetty-jre/raw/master/start-docker.sh -O start.sh
-RUN cd /opt/newcrawler; wget --no-check-certificate https://github.com/speed/linux-64bit-jetty-jre/raw/master/stop.sh -O stop.sh
+RUN cd /home/ncuser/newcrawler; wget --no-check-certificate https://github.com/speed/linux-64bit-jetty-jre/raw/master/jetty/webapps/newcrawler.xml -P jetty/webapps/ -O jetty/webapps/newcrawler.xml
+RUN cd /home/ncuser/newcrawler; wget --no-check-certificate https://github.com/speed/linux-64bit-jetty-jre/raw/master/start-docker.sh -O start.sh
+RUN cd /home/ncuser/newcrawler; wget --no-check-certificate https://github.com/speed/linux-64bit-jetty-jre/raw/master/stop.sh -O stop.sh
 
 RUN mkdir /opt/selenium; wget --no-verbose -O /opt/selenium/ModHeader.crx https://raw.githubusercontent.com/speed/newcrawler-plugin-urlfetch-chrome/master/crx/ModHeader.crx\
     && chmod 755 /opt/selenium/ModHeader.crx
 
 #Remove install package
-RUN cd /opt/newcrawler; rm -f -v jetty.tar.gz
-RUN cd /opt/newcrawler; rm -f -v phantomjs-linux.tar.bz2
-RUN cd /opt/newcrawler; rm -f -v server-jre-linux.tar.gz
-RUN cd /opt/newcrawler; rm -f -v install_*.sh
-RUN cd /opt/newcrawler; rm -f -v Dockerfile
+RUN cd /home/ncuser/newcrawler; rm -f -v jetty.tar.gz
+RUN cd /home/ncuser/newcrawler; rm -f -v phantomjs-linux.tar.bz2
+RUN cd /home/ncuser/newcrawler; rm -f -v server-jre-linux.tar.gz
+RUN cd /home/ncuser/newcrawler; rm -f -v install_*.sh
+RUN cd /home/ncuser/newcrawler; rm -f -v Dockerfile
 
 RUN echo 'Congratulations, the installation is successful.'
 
-RUN chmod -R a+rwx /opt/newcrawler
-RUN chown -R ncuser:ncuser /opt/newcrawler
+RUN chmod -R a+rwx /home/ncuser/newcrawler
+RUN chown -R ncuser:ncuser /home/ncuser/newcrawler
 
 USER ncuser
 
 EXPOSE 8500
 
-CMD cd /opt/newcrawler; /bin/bash -C 'start.sh';/bin/bash
+CMD cd /home/ncuser/newcrawler; /bin/bash -C 'start.sh';/bin/bash
 
 RUN echo 'Startup is successful.'
-
-
-
 
