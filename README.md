@@ -87,6 +87,11 @@ Docker
 
 >docker logs -f newcrawler
 
+Docker aliyun
+----
+
+>docker run -itd -p 8500:8500 --name=newcrawler registry.cn-shenzhen.aliyuncs.com/speed/spider
+
 	
 Startup NewCrawler
 ----
