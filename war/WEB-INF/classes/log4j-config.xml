@@ -49,7 +49,8 @@
 			<param name="LevelMax" value="ERROR" />
 		</filter>
 	</appender>
-
+	
+	<!-- test 2 -->
 	<root>
 		<priority value="INFO" />
 		<appender-ref ref="STDOUT" />
