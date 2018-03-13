@@ -3,16 +3,21 @@
 cd ~/newcrawler
 
 #bak
-\cp -R war/WEB-INF/classes war/WEB-INF/classes_bak
+mkdir war/WEB-INF/classes_bak
+\cp war/WEB-INF/classes/config.properties war/WEB-INF/classes_bak/config.properties
+\cp war/WEB-INF/classes/datanucleus.properties war/WEB-INF/classes_bak/datanucleus.properties
 
 git checkout war/WEB-INF/classes
 git pull
 
-rm -f -v install_*.sh
-rm -f -v Dockerfile
+rm -ivf install_*.sh
+rm -ivf Dockerfile
 
-\cp -R war/WEB-INF/classes_bak/* war/WEB-INF/classes
-rm -R -f -v war/WEB-INF/classes_bak
+\cp war/WEB-INF/classes_bak/config.properties war/WEB-INF/classes/config.properties
+\cp war/WEB-INF/classes_bak/datanucleus.properties war/WEB-INF/classes/datanucleus.properties
+
+
+rm -ivfR war/WEB-INF/classes_bak
 
 sh stop.sh
 
