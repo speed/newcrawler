@@ -111,6 +111,9 @@ Upgrade NewCrawler
 
 >sh newcrawler/upgrade.sh
 
+Install Chrome
+----
+https://github.com/speed/selenium
 
 [![ScreenShot](https://raw.githubusercontent.com/speed/resources/master/images/NewCrawler_Video.jpg)](http://www.newcrawler.com/demo.html)
 
