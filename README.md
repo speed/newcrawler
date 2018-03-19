@@ -83,14 +83,14 @@ Docker
 
 >docker pull newcrawler/spider
 
->docker run -itd -p 8500:8500 --name=newcrawler newcrawler/spider
+>docker run -itd -p --net=host 8500:8500 --name=newcrawler newcrawler/spider
 
 >docker logs -f newcrawler
 
 Docker aliyun
 ----
 
->docker run -itd -p 8500:8500 --name=newcrawler registry.cn-shenzhen.aliyuncs.com/speed/spider
+>docker run -itd -p --net=host 8500:8500 --name=newcrawler registry.cn-shenzhen.aliyuncs.com/speed/spider
 
 	
 Startup NewCrawler
@@ -111,6 +111,9 @@ Upgrade NewCrawler
 
 >sh newcrawler/upgrade.sh
 
+Install Chrome
+----
+https://github.com/speed/selenium
 
 [![ScreenShot](https://raw.githubusercontent.com/speed/resources/master/images/NewCrawler_Video.jpg)](http://www.newcrawler.com/demo.html)
 
