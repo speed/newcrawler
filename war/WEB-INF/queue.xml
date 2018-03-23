@@ -17,9 +17,9 @@
 	<!-- 1/1s -->
 	<queue>
 		<name>DEFAULT</name>
-		<rate>5/s</rate>
-    	<bucket-size>20</bucket-size>
-    	<max-concurrent-requests>20</max-concurrent-requests>
+		<rate>10/s</rate>
+    	<bucket-size>50</bucket-size>
+    	<max-concurrent-requests>50</max-concurrent-requests>
 	</queue>
 	<!-- 3 -->
 	<!-- 1/10s -->
