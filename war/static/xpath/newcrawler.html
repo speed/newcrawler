@@ -19,7 +19,7 @@
 <script type="text/javascript" src="../static/js/main.logsview.console-min.js"></script>
 
 <script type="text/javascript" src="../static/xpath/depend.js"></script>
-<script type="text/javascript" src="../static/xpath/mark-min.js?v3.7.4"></script>
+<script type="text/javascript" src="../static/xpath/mark-min.js?v3.7.7"></script>
 <script type="text/javascript" src="../static/js/base64-min.js"></script>
 
 <link rel="stylesheet" href="../static/js/codemirror/codemirror.css">
@@ -328,11 +328,20 @@
 			</select>
 		</div>
 		<div>数据库表名</div>
-		<div><input type="text" name="dbTable" value="" readonly="readonly"/></div>
+		<div><input type="text" name="dbTable" value=""/></div>
 		<div>字段映射</div>
 		<div>
 		<div class="fieldMap">
-		<div class="temp" style="display:none;"><input type="hidden" name="labelName" value=""><span class="labelName">Label Name</span>:<input type="text" name="param" value=""> <span style="padding-left: 20px;">Length:<input type="text" name="length" value="1500" style="width: 70px;" readonly="readonly"></span></div>
+		<div class="temp" style="display:none;">
+			<input type="hidden" name="labelName" value="">
+			<span class="labelName">Label Name</span>
+			<select name="dataTypeName" style="width: 150px;">
+				<option value="VARCHAR">VARCHAR</option>
+				<option value="INT">INT</option>
+				<option value="DOUBLE">DOUBLE</option>
+			</select>
+			<span style="padding-left: 20px;">Length:<input type="text" name="dataTypeLen" value="1500" style="width: 70px;"></span>
+			</div>
 		</div>
 		</div>
 		</div>
