@@ -7,7 +7,8 @@
 #PhantomJs http://phantomjs.org/download.html
 jetty="http://repo1.maven.org/maven2/org/eclipse/jetty/jetty-distribution/9.3.13.v20161014/jetty-distribution-9.3.13.v20161014.tar.gz"
 jre="https://github.com/speed/newcrawler-dependency/raw/master/jdk8u172/jre-8u172-linux-i586.tar.gz"
-phantomjs="https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-2.1.1-linux-i686.tar.bz2"
+#phantomjs="https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-2.1.1-linux-i686.tar.bz2"
+phantomjs="https://github.com/speed/newcrawler-dependency/raw/master/phantomjs/phantomjs-2.1.1-linux-i686.tar.bz2"
 
 yum -y install tar git
 
