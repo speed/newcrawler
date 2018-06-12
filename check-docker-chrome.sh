@@ -1,4 +1,5 @@
 #! /bin/sh  
+
 chromepid=`ps aux|grep  'java -jar /opt/selenium/selenium-server-standalone.jar' | grep -v grep | awk '{print $2}' | wc -l`
 
 #Docker Chrome check
