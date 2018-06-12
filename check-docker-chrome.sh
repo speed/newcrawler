@@ -2,7 +2,7 @@
 chromepid=`ps aux|grep  'java -jar /opt/selenium/selenium-server-standalone.jar' | grep -v grep | awk '{print $2}' | wc -l`
 
 #Docker Chrome check
-service docker status | grep 'inactive (dead)' &> /dev/null
+/bin/systemctl status  docker.service | grep 'inactive (dead)' &> /dev/null
 if [ $? -ne 0 ]; then
 	echo "Docker???"
 else
@@ -10,7 +10,7 @@ else
 	service docker start
 fi
 
-service docker status | grep 'active (running)' &> /dev/null
+/bin/systemctl status  docker.service | grep 'active (running)' &> /dev/null
 if [ $? -ne 0 ]; then
 	echo "Docker does not run!"
 else
