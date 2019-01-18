@@ -1,1 +1,1 @@
-create database newcrawler;
+CREATE DATABASE  IF NOT EXISTS `newcrawler` /*!40100 DEFAULT CHARACTER SET utf8 */;
