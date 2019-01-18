@@ -13,7 +13,7 @@ fi
 systemctl enable mariadb
 
 
-mysql --default-character-set=utf8 newcrawler< ~/newcrawler/newcrawler.sql
+mysql --default-character-set=utf8 < ~/newcrawler/newcrawler.sql
 
 sudo sed -i "s/.*javax.jdo.option.ConnectionDriverName.*/javax.jdo.option.ConnectionDriverName = com.mysql.jdbc.Driver/" ~/newcrawler/war/WEB-INF/classes/config.properties
 sudo sed -i "s/.*javax.jdo.option.ConnectionURL.*/javax.jdo.option.ConnectionURL=jdbc:mysql://127.0.0.1:3306/newcrawler?characterEncoding=UTF-8/" ~/newcrawler/war/WEB-INF/classes/config.properties
