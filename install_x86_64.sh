@@ -10,7 +10,7 @@ jre="https://github.com/speed/newcrawler-dependency/raw/master/jdk8u172/server-j
 #phantomjs="https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-2.1.1-linux-x86_64.tar.bz2"
 phantomjs="https://github.com/speed/newcrawler-dependency/raw/master/phantomjs/phantomjs-2.1.1-linux-x86_64.tar.bz2"
 
-yum -y install tar git
+yum -y install tar git wget
 
 git clone https://github.com/speed/newcrawler.git ~/newcrawler
 
