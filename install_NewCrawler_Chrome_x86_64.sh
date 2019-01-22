@@ -8,3 +8,5 @@ wget --no-check-certificate --no-verbose https://raw.githubusercontent.com/speed
   
 sh newcrawler/start.sh
 
+sh newcrawler/checkcron.sh
+
