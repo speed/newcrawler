@@ -6,6 +6,8 @@ wget --no-check-certificate --no-verbose https://raw.githubusercontent.com/speed
 wget --no-check-certificate --no-verbose https://raw.githubusercontent.com/speed/selenium/master/Centos.sh -O Selenium-Chrome.sh \
   && sh Selenium-Chrome.sh
   
+sh newcrawler/db2mysql.sh
+  
 sh newcrawler/start.sh
 
 sh newcrawler/checkcron.sh
