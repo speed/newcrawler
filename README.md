@@ -42,7 +42,7 @@ Installing NewCrawler and Chrome software packages on Centos / Fedora servers:
 
 >x86
 
->curl -fsSL https://raw.githubusercontent.com/speed/newcrawler/master/install_NewCrawler_Chrome_x86_64.sh | sh
+>curl -fsSL https://raw.githubusercontent.com/speed/newcrawler/master/install_NewCrawler_Chrome_MySQL_x86_64.sh | sh
 
 
 
