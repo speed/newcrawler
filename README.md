@@ -38,7 +38,7 @@ Installing software packages on Ubuntu / Debian servers:
 >curl -fsSL https://raw.githubusercontent.com/speed/newcrawler/master/install_Debian_x86_64.sh | sh
 
 
-Installing NewCrawler and Chrome
+Installing NewCrawler and Chrome software packages on Centos / Fedora servers:
 
 >x86
 
