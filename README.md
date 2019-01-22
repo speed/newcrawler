@@ -38,6 +38,14 @@ Installing software packages on Ubuntu / Debian servers:
 >curl -fsSL https://raw.githubusercontent.com/speed/newcrawler/master/install_Debian_x86_64.sh | sh
 
 
+Installing NewCrawler and Chrome
+
+>x86
+
+>curl -fsSL https://raw.githubusercontent.com/speed/newcrawler/master/install_NewCrawler_Chrome_x86_64.sh | sh
+
+
+
 
 
 		# OS Version 、 NewCrawler Directory
