@@ -20,6 +20,8 @@ fi
 if [ -f "$selenium" ]; then
 	if [ $chromepid -eq 0 ]; then
 		echo "Start Chrome process....."
+		pkill chrome
+		pkill Xvfb
 		su - seluser -c "(xvfb-run -n 99 --server-args=\"-screen 0 1024x768x8 -ac +extension RANDR\" java -jar /opt/selenium/selenium-server-standalone.jar > /dev/null &)"
 	else
 		echo "Chrome runing ok."
