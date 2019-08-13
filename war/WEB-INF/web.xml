@@ -45,8 +45,6 @@
 	<filter-mapping>
 		<filter-name>lllllllllllllll.IlIllIlIlllIlllll</filter-name>
 		<url-pattern>/*</url-pattern>
-		<dispatcher>REQUEST</dispatcher>
-		<dispatcher>INCLUDE</dispatcher>
 	</filter-mapping>
 	
 	<filter>

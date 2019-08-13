@@ -1,0 +1,98 @@
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>采集器設置</title>
+</head>
+  <body>
+    <table id="queueManageTable"  width="100%">
+    <tr class="queueConfig" style="display:none;">
+        <td colspan="2" class="label" height="30px" valign="bottom"><span class="STYLE4">隊列配置</span></td>        
+      </tr>
+      <tr  class="queueConfig" style="display:none;">
+	  <td colspan="2" width="100%" valign="top">
+	  <form  id="queueForm" name="queueForm" method="post">
+	  <input type="hidden" id="id" name="id">
+	  <table width="100%" height="100%" class="table_border2">
+	  
+	  
+        
+	  <tr>
+        <td width="120" align="right" nowrap class="label">名稱：</td>
+        <td class="td_border">
+        <div class="inputOver" >
+        <input type="text" id="name" name="name" style="width:100%" />
+        </div>
+        </td>
+      </tr>
+       <tr>
+        <td width="120" align="right" nowrap class="label">速率：</td>
+        <td class="td_border">
+        <div class="inputOver" style="padding-left: 8px;">
+	        <div style="float:left;width:200px;padding-top:5px;"><div id="rateSlider" ></div></div>
+			<div style="float:left;width:40px;margin-left: 10px;"><input id="rate" type="text" name="rate" value="" style="border: 0; color: #f6931f; font-weight: bold;" readonly="readonly"/></div>
+	        <select name="rateUnit" id="rateUnit" style="width: 80px;">
+				<option value="s">/s(秒)</option>
+				<option value="m">/m(分)</option>
+				<option value="h">/h(時)</option>
+			</select>
+        </div>
+        </td>
+      </tr>
+      <tr>
+        <td width="120" align="right" nowrap class="label">最大並發：</td>
+        <td class="td_border">
+         	<div class="inputOver" style="padding-left: 8px;">
+        	<div style="float:left;width:200px;padding-top:5px;"><div id="maxConcurrentSlider" ></div></div>
+			<div style="float:left;width:40px;margin-left: 10px;"><input id="maxConcurrent" type="text" name="maxConcurrent" value="" style="border: 0; color: #f6931f; font-weight: bold;" readonly="readonly"/></div>
+			</div>
+        </td>
+      </tr>
+
+      <tr>
+        <td ></td>
+        <td class="td_border">
+        <input type="button" value="添加" onClick="queueManage.fn.create();">
+        <input type="button" value="刪除" onClick="queueManage.fn.remove();">
+        <input type="button" value="更新" onClick="queueManage.fn.update();">
+		</td>
+      </tr>
+      
+      <tr>
+			<td colspan="5">
+				<table id="queueTable" width="100%" align="center" class="table_border2 tableList" style="border:1px solid #CCCCCC;border-collapse:collapse;background-color: #FFFFFF;">
+					<tr>
+						<td width="5%" nowrap bgcolor="whiteSmoke">&nbsp;選擇</td>
+						<td width="15%" nowrap bgcolor="whiteSmoke">名稱</td>
+						<td width="10%" nowrap bgcolor="whiteSmoke">速率</td>
+						<td width="10%" nowrap bgcolor="whiteSmoke">最大並發</td>
+						<td width="10%" nowrap bgcolor="whiteSmoke">任務數</td>
+						<td width="20%" nowrap bgcolor="whiteSmoke">建立時間</td>
+						<td width="20%" nowrap bgcolor="whiteSmoke">更新時間</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+      
+	  </table>
+	   </form>	  
+	   </td>
+      </tr>
+      
+  </table>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			var initFun = function() {
+				queueManage.fn.init();
+				poshytip('.tooltip');
+			};
+	
+			var initLoading=setInterval(function(){
+				if(typeof systemConfig != 'undefined'){
+					clearInterval(initLoading);
+					initFun();
+				}
+			},500);
+		});
+	</script>
+</body>
+</html>
