@@ -20,6 +20,12 @@
 		cursor: pointer;
 		text-decoration: underline;
 	}
+	#log pre{
+		margin: 0px;
+	}
+	#log .heightlight{
+		color: #FFEB3B;
+	}
 
     </style>
 </head>
@@ -55,7 +61,7 @@
 		title: "日誌",
 		autoOpen: false,
 		buttons: {
-			"Next": function() { logsView.fn.readFileNext()},
+			"Load More": function() { logsView.fn.readFileNext()},
 			"Close": function() { logsView.fn.closeLog(); $( this ).dialog( "close" );}
 		},
 		height: 400,

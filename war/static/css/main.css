@@ -309,6 +309,12 @@ h3 {
 	float: left;
 	height: 16px;
 	padding: 2px 0px 7px 25px;
+	
+	overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    white-space: nowrap;
 }
 
 #excludeHtmlTagsDiv {
