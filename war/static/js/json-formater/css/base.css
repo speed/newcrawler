@@ -1,0 +1,53 @@
+body{
+    font-family:Menlo,Monaco,Consolas,"Helvetica Neue",Helvetica,"Courier New",'微软雅黑', monospace, Arial,sans-serif,'黑体';
+    color: #555;
+}
+a{
+    display: inline-block;
+    text-decoration: none;
+    font-family: Menlo,Monaco,Consolas,'微软雅黑';
+    color: #29abe2;
+}
+.green{
+    color:#0fd59d;
+}
+.red{
+    color:#f98280;
+}
+.blue{
+    color:#29abe2;
+}
+input:focus, textarea:focus {
+    outline: none;
+}
+a:hover{
+    text-decoration: none;
+    color: #15b374;
+}
+.label-success{
+    background-color: #0fd59d;
+}
+.header{
+    box-shadow: 0px 0px 1px #e5e5e5;
+    border-bottom: solid 1px #d5d5d5;
+    padding: 0px;
+}
+.logo{
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 24px;
+    color: #0fd59d;
+    padding: 10px;
+}
+.navi{
+    padding:5px 20px;
+    font-size:14px;
+    font-weight:bold;font-family:Menlo,Monaco,Consolas,"Courier New",monospace, "Helvetica Neue",Helvetica,Arial,sans-serif,'幼圆'
+}
+.navi a{
+    padding: 0px 20px;
+    color: #999;
+}
+.navi a:hover{
+    color: #15b374;
+}

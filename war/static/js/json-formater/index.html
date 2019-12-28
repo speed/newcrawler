@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <title>JSON Formater</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+    <link href="css/base.css" rel="stylesheet">
+    <style>
+	.numberedtextarea-number{
+		display: none;
+	}
+	</style>
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <!-- Favicons -->
+</head>
+<body style="over-flow:hidden;">
+<header class="header">
+    <div class="row-fluid" >
+        <div class="col-md-5" style="position:relative;">
+            <a class="logo" href="index.html">JSON Formater</span></a>
+        </div>
+        <br style="clear:both;" />
+    </div>
+</header>
+
+
+<main class="row-fluid">
+    <div class="col-md-5" style="padding:0;">
+        <textarea id="json-src" placeholder="在此输入json字符串..."   class="form-control"  style="height:722px;padding:0 10px 10px 20px;border:0;border-right:solid 1px #ddd;border-bottom:solid 1px #ddd;border-radius:0;resize: none; outline:none;">{}</textarea>
+    </div>
+    <div class="col-md-7" style="padding:0;">
+        <div style="padding:10px;font-size:16px;border-bottom:solid 1px #ddd;" class="navi">
+            <a href="index.html#" class="tip zip" title="压缩"  data-placement="bottom"><i class="fa fa-database"></i></a>
+            <a href="index.html#" class="tip shown"  title="显示行号"  data-placement="bottom"><i class="glyphicon glyphicon-sort-by-order"></i></a>
+            <a href="index.html#" class="tip clear" title="清空"  data-placement="bottom"><i class="fa fa-trash"></i></a>
+        </div>
+        <div id="right-box"  style="height:679px;border-right:solid 1px #ddd;border-bottom:solid 1px #ddd;border-radius:0;resize: none;overflow-y:scroll; outline:none;position:relative;">
+            <div id="line-num" style="background-color:#fafafa;padding:0px 8px;float:left;border-right:dashed 1px #eee;display:none;z-index:-1;color:#999;position:absolute;text-align:center;over-flow:hidden;">
+                <div>0</div>
+            </div>
+            <div class="ro" id="json-target" style="padding:0px 25px;over">
+            </div>
+        </div>
+        <form id="form-save" method="POST"><input type="hidden" value="" id="txt-content" name="content"></form>
+    </div>
+    <br style="clear:both;" />
+</main>
+
+<script src="js/jquery.min.js"></script>
+<script src="js/jquery.message.js"></script>
+<script src="js/jquery.json.js"></script>
+<script src="js/jquery.xml2json.js"></script>
+<script src="js/jquery.json2xml.js"></script>
+<script src="js/json2.js"></script>
+<script src="js/jsonlint.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/jquery.numberedtextarea.js"></script>
+<script type="text/javascript">
+$('textarea').numberedtextarea();
+var current_json = '';
+var current_json_str = '';
+var xml_flag = false;
+var zip_flag = false;
+var shown_flag = false;
+$('.tip').tooltip();
+function init(){
+    xml_flag = false;
+    zip_flag = false;
+    shown_flag = false;
+    renderLine();
+    $('.xml').attr('style','color:#999;');
+    $('.zip').attr('style','color:#999;');
+
+}
+$('#json-src').keyup(function(){
+    init();
+    var content = $.trim($(this).val());
+    var result = '';
+    if (content!='') {
+        //如果是xml,那么转换为json
+        if (content.substr(0,1) === '<' && content.substr(-1,1) === '>') {
+            try{
+                var json_obj = $.xml2json(content);
+                content = JSON.stringify(json_obj);
+            }catch(e){
+                result = '解析错误：<span style="color: #f1592a;font-weight:bold;">' + e.message + '</span>';
+                current_json_str = result;
+                $('#json-target').html(result);
+                return false;
+            }
+        }
+        try{
+	    content = content.replace(/[\r\n]/g,"");
+            current_json = jsonlint.parse(content);
+            current_json_str = JSON.stringify(current_json);
+            result = new JSONFormat(content,4).toString();
+        }catch(e){
+            result = '<span style="color: #f1592a;font-weight:bold;">' + e + '</span>';
+            current_json_str = result;
+        }
+
+        $('#json-target').html(result);
+    }else{
+        $('#json-target').html('');
+    }
+
+});
+$('.xml').click(function(){
+    if (xml_flag) {
+        $('#json-src').keyup();
+    }else{
+        var result = $.json2xml(current_json);
+        $('#json-target').html('<textarea style="width:100%;height:100%;border:0;resize:none;">'+result+'</textarea>');
+        xml_flag = true;
+        $(this).attr('style','color:#15b374;');
+    }
+
+});
+$('.shown').click(function(){
+    if (!shown_flag) {
+        renderLine();
+        $('#json-src').attr("style","height:722px;padding:0 10px 10px 40px;border:0;border-right:solid 1px #ddd;border-bottom:solid 1px #ddd;border-radius:0;resize: none; outline:none;");
+        $('#json-target').attr("style","padding:0px 50px;");
+        $('#line-num').show();
+        $('.numberedtextarea-line-numbers').show();
+        shown_flag = true;
+        $(this).attr('style','color:#15b374;');
+    }else{
+        $('#json-src').attr("style","height:722px;padding:0 10px 10px 20px;border:0;border-right:solid 1px #ddd;border-bottom:solid 1px #ddd;border-radius:0;resize: none; outline:none;");
+        $('#json-target').attr("style","padding:0px 20px;");
+        $('#line-num').hide();
+        $('.numberedtextarea-line-numbers').hide();
+        shown_flag = false;
+        $(this).attr('style','color:#999;');
+    }
+});
+function renderLine(){
+    var line_num = $('#json-target').height()/20;
+    $('#line-num').html("");
+    var line_num_html = "";
+    for (var i = 1; i < line_num+1; i++) {
+        line_num_html += "<div>"+i+"<div>";
+    }
+    $('#line-num').html(line_num_html);
+}
+$('.zip').click(function(){
+    if (zip_flag) {
+        $('#json-src').keyup();
+    }else{
+        $('#json-target').html(current_json_str);
+        zip_flag = true;
+        $(this).attr('style','color:#15b374;');
+    }
+
+});
+$('.clear').click(function(){
+     $('#json-src').val('');
+     $('#json-target').html('');
+});
+$('.save').click(function(){
+    var content = JSON.stringify(current_json);
+    $('#txt-content').val(content);
+    $("#form-save").submit();
+});
+$('#json-src').keyup();
+$('.numberedtextarea-line-numbers').hide();
+</script>
+</body>
+</html>
