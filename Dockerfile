@@ -49,9 +49,9 @@ RUN cd /home/ncuser/newcrawler; mkdir ./phantomjs && tar -xjvf phantomjs-linux.t
 RUN cd /home/ncuser/newcrawler; phantomjs/bin/phantomjs --version
 
 #Script and Config
-RUN cd /home/ncuser/newcrawler; wget --no-check-certificate https://github.com/speed/linux-64bit-jetty-jre/raw/master/jetty/webapps/newcrawler.xml -P jetty/webapps/ -O jetty/webapps/newcrawler.xml
-RUN cd /home/ncuser/newcrawler; wget --no-check-certificate https://github.com/speed/linux-64bit-jetty-jre/raw/master/start-docker.sh -O start.sh
-RUN cd /home/ncuser/newcrawler; wget --no-check-certificate https://github.com/speed/linux-64bit-jetty-jre/raw/master/stop.sh -O stop.sh
+RUN cd /home/ncuser/newcrawler; wget --no-check-certificate https://github.com/speed/windows-64bit-jetty-jre/raw/master/jetty/webapps/newcrawler.xml -P jetty/webapps/ -O jetty/webapps/newcrawler.xml
+RUN cd /home/ncuser/newcrawler; wget --no-check-certificate https://github.com/speed/newcrawler/raw/master/start-docker.sh -O start.sh
+RUN cd /home/ncuser/newcrawler; wget --no-check-certificate https://github.com/speed/newcrawler/raw/master/stop.sh -O stop.sh
 
 RUN mkdir /opt/selenium; wget --no-verbose -O /opt/selenium/ModHeader.crx https://raw.githubusercontent.com/speed/newcrawler-plugin-urlfetch-chrome/master/crx/ModHeader.crx\
     && chmod 755 /opt/selenium/ModHeader.crx
