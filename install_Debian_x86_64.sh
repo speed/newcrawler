@@ -45,9 +45,10 @@ fi
 
 #Script and Config
 rm -f -v start.sh
-wget --no-check-certificate https://github.com/speed/windows-64bit-jetty-jre/raw/master/jetty/webapps/newcrawler.xml -P jetty/webapps/ -O jetty/webapps/newcrawler.xml
+wget --no-check-certificate https://github.com/speed/newcrawler/raw/master/config/newcrawler.xml -P jetty/webapps/ -O jetty/webapps/newcrawler.xml
 wget --no-check-certificate https://github.com/speed/newcrawler/raw/master/start.sh -O start.sh
 wget --no-check-certificate https://github.com/speed/newcrawler/raw/master/stop.sh -O stop.sh
+
 
 
 if [ ! -f "start.sh" ]; then
