@@ -1,8 +1,8 @@
 #install.sh
 #jetty https://www.eclipse.org/jetty/download.html
 #jre http://www.oracle.com/technetwork/java/javase/downloads/index.html
-ENV jetty="http://dependency.newcrawler.com/jetty/jetty-distribution-9.4.27.v20200227.tar.gz"
-ENV jre="http://dependency.newcrawler.com/jre/jre-8u241-linux-x64.tar.gz"
+jetty="http://dependency.newcrawler.com/jetty/jetty-distribution-9.4.27.v20200227.tar.gz"
+jre="http://dependency.newcrawler.com/jre/jre-8u241-linux-x64.tar.gz"
 
 apt-get update
 apt-get -y install tar git wget
