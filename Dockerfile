@@ -50,6 +50,7 @@ RUN mkdir /opt/selenium; wget --no-verbose -O /opt/selenium/ModHeader.crx https:
     && chmod 755 /opt/selenium/ModHeader.crx
 
 #Remove install package
+RUN cd /home/ncuser/newcrawler; rm -f -v start-docker.sh
 RUN cd /home/ncuser/newcrawler; rm -f -v jetty.tar.gz
 RUN cd /home/ncuser/newcrawler; rm -f -v server-jre-linux.tar.gz
 RUN cd /home/ncuser/newcrawler; rm -f -v install_*.sh
