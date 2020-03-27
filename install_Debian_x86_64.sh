@@ -45,11 +45,7 @@ fi
 
 #Script and Config
 rm -f -v start.sh
-wget --no-check-certificate https://github.com/speed/newcrawler/raw/master/config/newcrawler.xml -P jetty/webapps/ -O jetty/webapps/newcrawler.xml
-wget --no-check-certificate https://github.com/speed/newcrawler/raw/master/start.sh -O start.sh
-wget --no-check-certificate https://github.com/speed/newcrawler/raw/master/stop.sh -O stop.sh
-
-
+wget --no-check-certificate https://raw.githubusercontent.com/speed/newcrawler/master/config/newcrawler.xml -P jetty/webapps/ -O jetty/webapps/newcrawler.xml
 
 if [ ! -f "start.sh" ]; then
 	echo "'start.sh' is not installed!"
