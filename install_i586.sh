@@ -4,11 +4,8 @@
 
 #jetty https://www.eclipse.org/jetty/download.html
 #jre http://www.oracle.com/technetwork/java/javase/downloads/index.html
-#PhantomJs http://phantomjs.org/download.html
 jetty="http://repo1.maven.org/maven2/org/eclipse/jetty/jetty-distribution/9.3.13.v20161014/jetty-distribution-9.3.13.v20161014.tar.gz"
 jre="https://github.com/speed/newcrawler-dependency/raw/master/jdk8u172/jre-8u172-linux-i586.tar.gz"
-#phantomjs="https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-2.1.1-linux-i686.tar.bz2"
-phantomjs="https://github.com/speed/newcrawler-dependency/raw/master/phantomjs/phantomjs-2.1.1-linux-i686.tar.bz2"
 
 yum -y install tar git wget
 
@@ -46,17 +43,9 @@ if [ ! -f "jre/bin/java" ]; then
 fi
 
 #PhantomJs
-yum -y install bzip2
-yum -y install fontconfig freetype libfreetype.so.6 libfontconfig.so.1
-if [ ! -f "phantomjs/bin/phantomjs" ]; then
-	wget --no-check-certificate $phantomjs -O phantomjs-linux.tar.bz2
-	mkdir ./phantomjs && tar -xjvf phantomjs-linux.tar.bz2 -C ./phantomjs --strip-components 1
+#yum -y install bzip2
+#yum -y install fontconfig freetype libfreetype.so.6 libfontconfig.so.1
 
-	if [ ! -f "phantomjs/bin/phantomjs" ]; then
-	  echo "PhantomJS is not installed!"
-	  exit 0
-	fi
-fi
 
 #Script and Config
 rm -f -v start.sh
@@ -82,12 +71,10 @@ fi
 
 #Remove install package
 rm -f -v jetty.tar.gz
-rm -f -v phantomjs-linux.tar.bz2
 rm -f -v server-jre-linux.tar.gz
 rm -f -v install_*.sh
 rm -f -v Dockerfile
 
-phantomjs/bin/phantomjs --version
 jre/bin/java -version
 
 echo 'Congratulations, the installation is successful.'
