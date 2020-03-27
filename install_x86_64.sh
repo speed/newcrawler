@@ -66,6 +66,7 @@ if [ ! -f "jetty/webapps/newcrawler.xml" ]; then
 fi
 
 #Remove install package
+rm -f -v start-docker.sh
 rm -f -v jetty.tar.gz
 rm -f -v server-jre-linux.tar.gz
 rm -f -v install_*.sh
