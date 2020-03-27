@@ -7,9 +7,8 @@ MAINTAINER Speed <https://github.com/speed/newcrawler>
 #install.sh
 #jetty https://www.eclipse.org/jetty/download.html
 #jre http://www.oracle.com/technetwork/java/javase/downloads/index.html
-ENV jetty="https://repo1.maven.org/maven2/org/eclipse/jetty/jetty-distribution/9.4.27.v20200227/jetty-distribution-9.4.27.v20200227.tar.gz"
-#ENV jre="http://download.oracle.com/otn-pub/java/jdk/8u172-b11/a58eab1ec242421181065cdc37240b08/server-jre-8u172-linux-x64.tar.gz"
-ENV jre="https://github.com/speed/newcrawler-dependency/raw/master/jdk8u172/server-jre-8u172-linux-x64.tar.gz"
+ENV jetty="http://dependency.newcrawler.com/jetty/jetty-distribution-9.4.27.v20200227.tar.gz"
+ENV jre="http://dependency.newcrawler.com/jre/jre-8u241-linux-x64.tar.gz"
 
 USER root
 
