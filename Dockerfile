@@ -46,9 +46,6 @@ RUN cd /home/ncuser/newcrawler; wget --no-check-certificate https://github.com/s
 RUN cd /home/ncuser/newcrawler; wget --no-check-certificate https://github.com/speed/newcrawler/raw/master/start-docker.sh -O start.sh
 RUN cd /home/ncuser/newcrawler; wget --no-check-certificate https://github.com/speed/newcrawler/raw/master/stop.sh -O stop.sh
 
-RUN mkdir /opt/selenium; wget --no-verbose -O /opt/selenium/ModHeader.crx https://github.com/speed/newcrawler/raw/master/config/ModHeader.crx\
-    && chmod 755 /opt/selenium/ModHeader.crx
-
 #Remove install package
 RUN cd /home/ncuser/newcrawler; rm -f -v start-docker.sh
 RUN cd /home/ncuser/newcrawler; rm -f -v jetty.tar.gz
