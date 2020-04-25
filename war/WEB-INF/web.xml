@@ -9,19 +9,19 @@
 	<!-- JAVA版  -->
 	
 	<listener>
-	  <listener-class>lllllllllllllll.IIlIIlIlIllIlI</listener-class>
-	</listener>
-	
-	<listener>
 	  <listener-class>lllllllllllllll.IlIIIlIIlllllI</listener-class>
 	</listener>
 	
+	<listener>
+	  <listener-class>lllllllllllllll.IIIlIIIlllllIl</listener-class>
+	</listener>
+	
 	<filter>
-		<filter-name>lllllllllllllll.IllIlIIlIIllll</filter-name>
-		<filter-class>lllllllllllllll.IllIlIIlIIllll</filter-class>
+		<filter-name>lllllllllllllll.IIlIlIIIllIIIl</filter-name>
+		<filter-class>lllllllllllllll.IIlIlIIIllIIIl</filter-class>
 	</filter>
 	<filter-mapping>
-		<filter-name>lllllllllllllll.IllIlIIlIIllll</filter-name>
+		<filter-name>lllllllllllllll.IIlIlIIIllIIIl</filter-name>
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
 		
@@ -39,11 +39,11 @@
 	</filter-mapping>
 	
 	<filter>
-		<filter-name>lllllllllllllll.IIIIIIlllIIllI</filter-name>
-		<filter-class>lllllllllllllll.IIIIIIlllIIllI</filter-class>
+		<filter-name>lllllllllllllll.IllIlIIlIIllll</filter-name>
+		<filter-class>lllllllllllllll.IllIlIIlIIllll</filter-class>
 	</filter>
 	<filter-mapping>
-		<filter-name>lllllllllllllll.IIIIIIlllIIllI</filter-name>
+		<filter-name>lllllllllllllll.IllIlIIlIIllll</filter-name>
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
 	
@@ -58,11 +58,11 @@
 	
 	<!-- JAVA版  -->
 	<servlet>
-		<servlet-name>lllllllllllllll.IIlIlIIIllIIIl</servlet-name>
-		<servlet-class>lllllllllllllll.IIlIlIIIllIIIl</servlet-class>
+		<servlet-name>lllllllllllllll.IIllIllIIlIlll</servlet-name>
+		<servlet-class>lllllllllllllll.IIllIllIIlIlll</servlet-class>
 	</servlet>
 	<servlet-mapping>
-		<servlet-name>lllllllllllllll.IIlIlIIIllIIIl</servlet-name>
+		<servlet-name>lllllllllllllll.IIllIllIIlIlll</servlet-name>
 		<url-pattern>/install/setup</url-pattern>
 	</servlet-mapping>
 	<servlet>
