@@ -118,6 +118,9 @@
         <input name="searchMode" type="radio" id="searchMode" value="csspath"  onclick="crawlRules.fn.changeSearchMode()">
         <a class="tooltip" style="font-weight:normal;" href="javascript:void(0);" title="CSSPath匹配，考慮速度請優先使用正則匹配。註意循環匹配的站點中使用CSSPath不會循環匹配。<br/>CSSPath格式 ：#comment-123 div div div p">CSSPath</a>
         
+        <input name="searchMode" type="radio" id="searchMode" value="jsonpath"  onclick="crawlRules.fn.changeSearchMode()">
+        <a class="tooltip" style="font-weight:normal;" href="javascript:void(0);" title="JsonPath匹配，考虑速度请优先使用正则匹配。注意循环匹配的站点中使用JsonPath不会循环匹配。<br/>JsonPath格式 ：rows:nth-of-type(*) > STCD">JsonPath</a>
+        
         <input name="searchMode" type="radio" id="searchMode" value="label"  onclick="crawlRules.fn.changeSearchMode()">
         <a class="tooltip" style="font-weight:normal;" title="標簽組合，格式：‘${標簽名}其它字符${標簽名}’ <br/> 使用${SYSTEM-TIME} 可以獲取系統時間戳， 格式：1400595057890" href="javascript:void(0);">標簽組合</a>
         
@@ -381,7 +384,10 @@
 			<td align="right" nowrap style="width: 114px;"><a class="tooltip" style="font-weight:normal;" href="javascript:void(0);" title="使用此過濾規則可以提取出json對象的值，但標簽匹配到的數據必須是正確的JavaScript。">JavaScript過濾：</a></td>
             <td width="100%">
             <div class="dataFilterDiv">
-            <input name="javascriptFilter" type="text" id="javascriptFilter" style="width:100%;vertical-align: middle;" class="regex">
+            <select id="dataJavascriptId" name="dataJavascriptId" style="width:160px;">
+          			<option value=""></option>
+       		</select>
+       		<span class="configBox" lang="JavaScriptManage.html">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
             </div>
             </td>
             <td align="right" nowrap><div class="ui-state-default move"><span class="ui-icon ui-icon-arrow-4" title="Move"></span></div></td>

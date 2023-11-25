@@ -524,6 +524,10 @@ input[type=checkbox].form-error,input[type=password].form-error,input[type=text]
 		</div>
 		<script type="text/javascript" src="../static/js/jsonrpc-min.js"></script>
 		<script>
+			//"//global.newcrawler.com/captcha/gen/"
+			var getCaptchaUrl="";
+			
+		
 			function gotoUrl(url){
 				var language=getcookie("NC_LANG");
 				var host="www.newcrawler.com";
@@ -568,7 +572,7 @@ input[type=checkbox].form-error,input[type=password].form-error,input[type=text]
 						var data=eval("("+result+")");
 						if (data["code"]=="1") {
 							document.getElementById("captcha-DIV").style.display="block";
-							document.getElementById("opencaptcha").src="//global.newcrawler.com/captcha/gen/"+data["image"];
+							document.getElementById("opencaptcha").src=getCaptchaUrl+data["image"];
 							
 							return;
 						}
@@ -593,7 +597,7 @@ input[type=checkbox].form-error,input[type=password].form-error,input[type=text]
 				jsonrpc.loginService.getOpencaptcha(function(result,exception,profile){
 					var data=eval("("+result+")");
 					if (data["code"]=="1") {
-						document.getElementById("opencaptcha").src="//global.newcrawler.com/captcha/gen/"+data["image"];
+						document.getElementById("opencaptcha").src=getCaptchaUrl+data["image"];
 						return;
 					}
 				});
@@ -671,11 +675,11 @@ input[type=checkbox].form-error,input[type=password].form-error,input[type=text]
 						document.getElementById('signIn').style.display="block";
 						
 						document.getElementById("captcha-DIV").style.display="block";
-						document.getElementById("opencaptcha").src="//global.newcrawler.com/captcha/gen/"+data["image"];
+						document.getElementById("opencaptcha").src=getCaptchaUrl+data["image"];
 						return;
 					}
 					if (data["code"]=="3" || data["code"]=="4") {
-						document.getElementById("opencaptcha").src="//global.newcrawler.com/captcha/gen/"+data["image"];
+						document.getElementById("opencaptcha").src=getCaptchaUrl+data["image"];
 					}
 					message("fade", data["message"], 2000);
 					document.getElementById('loading').style.display="none";

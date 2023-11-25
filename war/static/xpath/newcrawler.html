@@ -19,6 +19,9 @@
 <script type="text/javascript" src="../static/js/main.logsview.console-min.js"></script>
 
 <script type="text/javascript" src="../static/xpath/depend.js"></script>
+
+<link type='text/css' rel='stylesheet' href='../static/xpath/json2Html.css' />
+<script type="text/javascript" src="../static/xpath/json2Html.js"></script>
 <script type="text/javascript" src="../static/xpath/mark-min.js?v3.7.7"></script>
 <script type="text/javascript" src="../static/js/base64-min.js"></script>
 
@@ -187,6 +190,13 @@
 		</div>
 		</div>
 		</div>
+	</div>
+	
+	<div class="ncx-toolbar-section ncx-json" title="Load JSON" style="float:right;margin-top: 7px;">
+	<span style="padding-top: 1px; position: absolute;">
+	<input type="checkbox" name="ncx-isJson" class="isJson" value="true"/> 
+	</span>
+	<a href="javascript:void(0);" title="Http Response Content-Type:application/json" style="margin-left: 20px;padding-top: 10px;">Application/JSON</a>
 	</div>
 	
 	<div class="ncx-toolbar-section ncx-js" title="Load JavaScript" style="float:right;margin-top: 7px;">

@@ -118,6 +118,9 @@
         <input name="searchMode" type="radio" id="searchMode" value="csspath"  onclick="crawlRules.fn.changeSearchMode()">
         <a class="tooltip" style="font-weight:normal;" href="javascript:void(0);" title="CSSPath match, give priority to regular expression match if speed is considered. Please noted that if CSSPath is applied in loop matching tasks, loop matching will not be performed. <br/>CSSPath format: #comment-123 div div div p  ">CSSPath</a>
         
+        <input name="searchMode" type="radio" id="searchMode" value="jsonpath"  onclick="crawlRules.fn.changeSearchMode()">
+        <a class="tooltip" style="font-weight:normal;" href="javascript:void(0);" title="JsonPath match。<br/>JsonPath format：rows:nth-of-type(*) > STCD">JsonPath</a>
+        
         <input name="searchMode" type="radio" id="searchMode" value="label"  onclick="crawlRules.fn.changeSearchMode()">
         <a class="tooltip" style="font-weight:normal;" title="Label combination, format: ‘${label name}other characters${label name}’ <br/> ${SYSTEM-TIME} could be used to capture system time stamp, format: 1400595057890" href="javascript:void(0);">Combination</a>
         
@@ -381,7 +384,10 @@
 			<td align="right" nowrap style="width: 114px;"><a class="tooltip" style="font-weight:normal;" href="javascript:void(0);" title="This filter rule can capture json object value and data matched by the label shall be the correct JavaScript. ">JavaScript Filter:</a></td>
             <td width="100%">
             <div class="dataFilterDiv">
-            <input name="javascriptFilter" type="text" id="javascriptFilter" style="width:100%;vertical-align: middle;" class="regex">
+            <select id="dataJavascriptId" name="dataJavascriptId" style="width:160px;">
+          			<option value=""></option>
+       		</select>
+       		<span class="configBox" lang="JavaScriptManage.html">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
             </div>
             </td>
             <td align="right" nowrap><div class="ui-state-default move"><span class="ui-icon ui-icon-arrow-4" title="Move"></span></div></td>

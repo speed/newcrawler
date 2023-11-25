@@ -8,6 +8,20 @@
 		</layout>
 	</appender>
 
+	<appender name="DEBUG" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="${logs.home}/application-debug.log" />
+		<param name="Append" value="true" />
+		<param name="Encoding" value="UTF-8"/>
+		<param name="DatePattern" value="'.'yyyy-MM-dd'.log'" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d--%p --%m%n" />
+		</layout>
+		<filter class="org.apache.log4j.varia.LevelRangeFilter">
+			<param name="LevelMin" value="DEBUG" />
+			<param name="LevelMax" value="ERROR" />
+		</filter>
+	</appender>
+	
 	<appender name="INFO" class="org.apache.log4j.DailyRollingFileAppender">
 		<param name="File" value="${logs.home}/application-info.log" />
 		<param name="Append" value="true" />
@@ -52,10 +66,11 @@
 	
 	<!-- test 2 -->
 	<root>
-		<priority value="INFO" />
+		<priority value="DEBUG" />
 		<appender-ref ref="STDOUT" />
 		<appender-ref ref="INFO" />
 		<appender-ref ref="WARN" />
 		<appender-ref ref="ERROR" />
+		<appender-ref ref="DEBUG" />
 	</root>
 </log4j:configuration>   

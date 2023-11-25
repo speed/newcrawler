@@ -1,0 +1,22 @@
+element.style {
+    width: 50px;
+}
+
+.ncx-json-li {
+    padding: 2px 15px;
+    width: 100%;
+    display: list-item;
+}
+.ncx-json-li .ncx-json-prop-obj {
+    border: 1px solid #e7e7e7;
+    vertical-align: top;
+    padding: 6px 10px;
+    font-size: 14px;
+    line-height: 1.6;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    width: 50px;
+    display: inline-block;
+}
+

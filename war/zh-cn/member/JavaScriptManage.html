@@ -1,0 +1,118 @@
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>JavaScriptManage.html.title</title>
+</head>
+  <body>
+    <table width="100%" >
+      
+	   <tr>
+        <td colspan="2" class="label"  style="display: none;"><br/><span class="STYLE4" id="mainTitle">JS 脚 本配置</span></td>        
+      </tr>
+      	
+      <tr>
+	  <td colspan="2" width="100%" >
+	  <form id="javaScriptManageForm" name="javaScriptManageForm" >
+		<input id="id" name="id" type="hidden">
+		<table width="100%" height="100%" class="table_border2">
+			<tr>
+				<td width="120"  align="right" nowrap class="label">名称</td>
+				<td width="100%" class="td_border" colspan="4">
+					<input id="name" type="text" name="name" value="" style="width: 150px" />
+				</td>
+			</tr>	
+			 
+			<tr>
+				<td width="120" align="right" nowrap class="label"><a class="tooltip" title="JS脚本分网址处理和数据处理脚本">类型：</a></td>
+				<td class="td_border" colspan="1" width="90">
+				<select id="type" name="type" class="type">
+					<option value="URL">URL</option>
+					<option value="DATA">DATA</option>
+				</select>
+				</td>
+			</tr>
+			<tr>
+				<td width="120" align="right" valign="top" nowrap><a class="tooltip" title="JavaScript 内容">JavaScript：</a></td>
+				<td width="100%" class="td_border" colspan="4">
+				<div style="padding-right:8px;">
+					<textarea id="jsBody" name="jsBody" style="word-break:break-all;overflow-y:visible;height:120px;width:100%;padding: 0px;margin: 0px">function jsHandle(data) { return data; }</textarea>
+				</div>
+				</td>
+			</tr>
+			<tr>
+		        <td>&nbsp;</td>
+		        <td class="td_border"  colspan="4">
+		        	<input type="button" value="添加" class="create">
+			        <input type="button" value="删除" class="remove">
+			        <input type="button" value="更新" class="update">
+		        </td>
+			</tr>
+			<tr>
+			<td colspan="5">
+				<table id="javascriptManageTable" width="100%" align="center" class="table_border2 tableList" style="border:1px solid #CCCCCC;border-collapse:collapse;background-color: #FFFFFF;">
+					<tr>
+						<td width="5%" nowrap bgcolor="whiteSmoke">&nbsp;选择</td>
+						<td width="10%" nowrap bgcolor="whiteSmoke">&nbsp;&nbsp;&nbsp;名称</td>
+						<td width="10%" nowrap bgcolor="whiteSmoke">类型</td>
+						<td width="10%" nowrap bgcolor="whiteSmoke">创建时间</td>
+					</tr>
+				</table>
+				
+				<div id="line" style="height:5px;"></div>
+				<div id="hiddenresult" style="display:none;">
+		        
+		        </div>
+				<div id="Pagination"></div>
+				
+			</td>
+			
+		</tr>
+		<tr>
+			<td  colspan="5">
+			<div>
+				 记录总数(<label id="JAVASCRIPT_COUNT" style="color:red;">0</label>)  <label style="color: rgb(34, 102, 187);cursor: pointer;" class="statistic">重新统计</label>
+			</div>
+			</td>
+		</tr>
+		</table>
+		</form>
+	   </td>
+	  </tr>
+	   
+	   
+  </table>
+  <script type="text/javascript">
+$(document).ready(function(){
+	  
+	  var initFun = function(){
+		  var formId;
+		  var tableId;
+		  if (!loadConfig) {
+			  var id=$(document).find("#javaScriptManageForm").parents('.ui-tabs-panel').attr("id");
+			  formId=id+" #javaScriptManageForm";
+			  tableId=id+" #javascriptManageTable";
+			}else{
+				formId="config #javaScriptManageForm";
+				tableId="config #javascriptManageTable";
+		  }
+		  var javascriptManage=new javascriptManageFun({
+			  formId:formId,
+			  tableId:tableId,
+			  jsonData:new Array(),
+			  webCrawlerId:webCrawlerId
+		  });
+		  javascriptManage.fn.init();
+		  javascriptManage.fn.query(function(){reConfigBoxSize();});
+		  poshytip('.tooltip');
+	  };
+	  
+	  var initLoading=setInterval(function(){
+		  if(typeof javascriptManage != 'undefined'){
+			 clearInterval(initLoading);
+			 initFun();
+		  }
+	  },500);
+	});
+  </script>
+  </body>
+</html>
